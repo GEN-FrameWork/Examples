@@ -370,10 +370,11 @@
                    gradientcolor="163,113,247" gradientmode="track">
           </element>
 
-          <element name="scale-row" type="form" class="flex-row" style="margin: 8,0,0,0; justify-content: space-between;" width="160" height="15">
-            <element name="ram_scale_0"   type="text" class="label-dim" sizefont="11">0%</element>
-            <element name="ram_scale_50"  type="text" class="label-dim" sizefont="11">50%</element>
-            <element name="ram_scale_100" type="text" class="label-dim" sizefont="11">100%</element>
+          <!-- Scale = same 160px as bar. Three fixed slots + text-align (not space-between on glyph widths). -->
+          <element name="scale-row" type="form" class="flex-row" style="margin: 8,0,0,0;" width="160" height="15">
+            <element name="ram_scale_0"   type="text" class="label-dim" width="53" height="15" style="text-align: left;   flex-shrink: 0; flex-grow: 0;" sizefont="11">0%</element>
+            <element name="ram_scale_50"  type="text" class="label-dim" width="54" height="15" style="text-align: center; flex-shrink: 0; flex-grow: 0;" sizefont="11">50%</element>
+            <element name="ram_scale_100" type="text" class="label-dim" width="53" height="15" style="text-align: right;  flex-shrink: 0; flex-grow: 0;" sizefont="11">100%</element>
           </element>
         </element>
       </element>
@@ -435,10 +436,10 @@
                    gradientcolor="210,153,34" gradientmode="track">
           </element>
 
-          <element name="scale-row" type="form" class="flex-row" style="margin: 8,0,0,0; justify-content: space-between;" width="160" height="15">
-            <element name="disk_scale_0"   type="text" class="label-dim" sizefont="11">0%</element>
-            <element name="disk_scale_50"  type="text" class="label-dim" sizefont="11">50%</element>
-            <element name="disk_scale_100" type="text" class="label-dim" sizefont="11">100%</element>
+          <element name="scale-row" type="form" class="flex-row" style="margin: 8,0,0,0;" width="160" height="15">
+            <element name="disk_scale_0"   type="text" class="label-dim" width="53" height="15" style="text-align: left;   flex-shrink: 0; flex-grow: 0;" sizefont="11">0%</element>
+            <element name="disk_scale_50"  type="text" class="label-dim" width="54" height="15" style="text-align: center; flex-shrink: 0; flex-grow: 0;" sizefont="11">50%</element>
+            <element name="disk_scale_100" type="text" class="label-dim" width="53" height="15" style="text-align: right;  flex-shrink: 0; flex-grow: 0;" sizefont="11">100%</element>
           </element>
         </element>
       </element>

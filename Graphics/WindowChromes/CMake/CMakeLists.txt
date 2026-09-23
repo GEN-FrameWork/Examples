@@ -66,7 +66,7 @@ add_definitions(${APP_CFG_WINDOWCHROMES})
 # --------------------------------------------------------------------
 # Android package settings
 
-set(GEN_ANDROID_APP_LABEL                                  "UI_Options")
+set(GEN_ANDROID_APP_LABEL                                  "WindowChromes")
 
 # --------------------------------------------------------------------
 # Main CMakeList of GEN

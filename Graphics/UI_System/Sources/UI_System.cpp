@@ -2500,6 +2500,12 @@ void UI_SYSTEM::HandleEvent_Graphics(GRPXEVENT* event)
                                                         GEN_USERINTERFACE.UIScale_PrepareLayout(dashboard);
                                                       }
 
+                                                    // L.4 re-resolve is NOT called on every size tick: fixed design
+                                                    // + autofit means vw/% do not change with the window; calling
+                                                    // Layouts_ReresolveStyleLengths here corrupted flex/% positions
+                                                    // (progress scale labels, card grid). Use Layouts_SetDesignSize
+                                                    // when the authoring viewport itself changes.
+
                                                     GEN_USERINTERFACE.Update();
 
                                                     XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("[UI_System] UIScale size -> %.2f autofit=%d (%dx%d)"),
