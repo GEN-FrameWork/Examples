@@ -139,7 +139,6 @@ class UI_ELEMENT;
 class UI_ELEMENT_TEXT;
 class UI_OPTIONS_CFG;
 
-
 class UI_OPTIONS : public APPFLOWGRAPHICS, public XFSMACHINE
 {
   public:

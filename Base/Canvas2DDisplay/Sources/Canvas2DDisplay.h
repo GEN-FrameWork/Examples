@@ -85,9 +85,6 @@
 
 #endif
 
-
-
-
 #ifdef STM32F072xB
 
   #define SCREEN_GRP_RESET              DIOGPIO_PINSGROUP_B

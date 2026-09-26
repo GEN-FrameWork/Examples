@@ -32,8 +32,6 @@
 
 #include "DIOCoreProtocol_RegisterData.h"
 
-
-
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
 #define NETCONN_COREPROTOCOL_REGISTERDATA_HEADER_VAR_GROUP       __L("group")

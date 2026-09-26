@@ -62,7 +62,6 @@ bool UI_SYSTEM_CFG::GetIsInstanced()
 }
 
 
-
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         UI_SYSTEM_CFG& UI_SYSTEM_CFG::GetInstance(bool ini)
@@ -105,8 +104,6 @@ bool UI_SYSTEM_CFG::DelInstance()
 }
 
 
-
-
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         bool UI_SYSTEM_CFG::DoVariableMapping()
@@ -123,10 +120,8 @@ bool UI_SYSTEM_CFG::DoVariableMapping()
       return false;
     }
 
-  AddValue(XFILECFG_VALUETYPE_FLOAT, UI_SYSTEMCFG_SECTIONGENERAL, UI_SYSTEMCFG_UISCALE, &uiscale,
-           __L("UI scale / zoom (0.75 .. 2.0)"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
-  AddValue(XFILECFG_VALUETYPE_BOOLEAN, UI_SYSTEMCFG_SECTIONGENERAL, UI_SYSTEMCFG_UISCALE_AUTOFIT, &uiscale_autofit,
-           __L("Autofit UI scale to window (Fase 5)"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
+  AddValue(XFILECFG_VALUETYPE_FLOAT, UI_SYSTEMCFG_SECTIONGENERAL, UI_SYSTEMCFG_UISCALE, &uiscale, __L("UI scale / zoom (0.75 .. 2.0)"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
+  AddValue(XFILECFG_VALUETYPE_BOOLEAN, UI_SYSTEMCFG_SECTIONGENERAL, UI_SYSTEMCFG_UISCALE_AUTOFIT, &uiscale_autofit, __L("Autofit UI scale to window (Fase 5)"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
 
   return true;
 }
@@ -213,12 +208,14 @@ void UI_SYSTEM_CFG::SetUIScale(float scale)
 
 
 /**-------------------------------------------------------------------------------------------------------------------
-*
+* 
 * @fn         bool UI_SYSTEM_CFG::GetUIScaleAutofit()
 * @brief      Whether autofit-to-window is enabled.
 * @ingroup    EXAMPLES
-*
-*---------------------------------------------------------------------------------------------------------------------*/
+* 
+* @return     bool : true if the operation is successful; otherwise false.
+* 
+* --------------------------------------------------------------------------------------------------------------------*/
 bool UI_SYSTEM_CFG::GetUIScaleAutofit()
 {
   return uiscale_autofit;
@@ -226,12 +223,14 @@ bool UI_SYSTEM_CFG::GetUIScaleAutofit()
 
 
 /**-------------------------------------------------------------------------------------------------------------------
-*
+* 
 * @fn         void UI_SYSTEM_CFG::SetUIScaleAutofit(bool autofit)
 * @brief      Persist autofit preference.
 * @ingroup    EXAMPLES
-*
-*---------------------------------------------------------------------------------------------------------------------*/
+* 
+* @param[in]  autofit : 
+* 
+* --------------------------------------------------------------------------------------------------------------------*/
 void UI_SYSTEM_CFG::SetUIScaleAutofit(bool autofit)
 {
   uiscale_autofit = autofit;
@@ -274,7 +273,6 @@ UI_SYSTEM_CFG::~UI_SYSTEM_CFG()
 {
   Clean();
 }
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------

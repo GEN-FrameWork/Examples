@@ -32,7 +32,6 @@
 
 #include "APPFlowCFG.h"
 
-
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
 #define UI_OPTIONSCFG_SECTIONGENERAL    __L("general")

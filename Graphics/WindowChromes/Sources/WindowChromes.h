@@ -139,7 +139,6 @@ class UI_ELEMENT;
 class UI_ELEMENT_TEXT;
 class WINDOWCHROMES_CFG;
 
-
 class WINDOWCHROMES : public APPFLOWGRAPHICS, public XFSMACHINE
 {
   public:

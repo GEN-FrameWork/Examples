@@ -46,7 +46,6 @@ class BINCONNPRO_CFG : public APPFLOWCFG
 {
   public:
 
-
     static bool                     GetIsInstanced                          ();
     static BINCONNPRO_CFG&          GetInstance                             (bool ini = true);
     static bool                     DelInstance                             ();

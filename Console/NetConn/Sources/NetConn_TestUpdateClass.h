@@ -33,15 +33,10 @@
 #include "XString.h"
 #include "XSerializable.h"
 
-
-
-
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
 #define NETCONN_TESTUPDATECLASS_NUMBER_STR    __L("number") 
 #define NETCONN_TESTUPDATECLASS_STRING_STR    __L("string")
-
-
 
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 

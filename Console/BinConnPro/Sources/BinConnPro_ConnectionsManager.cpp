@@ -89,8 +89,6 @@ BINCONNPRO_CONNECTIONSMANAGER::~BINCONNPRO_CONNECTIONSMANAGER()
 }
 
 
-
-
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         bool BINCONNPRO_CONNECTIONSMANAGER::Ini(bool isserver, bool isenumlocalactive, int port, BINCONNPRO_APPLICATIONDATA* applicationdata)
@@ -130,7 +128,6 @@ bool BINCONNPRO_CONNECTIONSMANAGER::Ini(bool isserver, bool isenumlocalactive, i
 }
 
 
-
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         int BINCONNPRO_CONNECTIONSMANAGER::ProtocolConnections_GetNConnected()
@@ -163,7 +160,6 @@ int BINCONNPRO_CONNECTIONSMANAGER::ProtocolConnections_GetNConnected()
 
   return nprotocolconnectionsON;
 }
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------
@@ -200,7 +196,6 @@ DIOPROTOCOL_CONNECTION* BINCONNPRO_CONNECTIONSMANAGER::ProtocolConnections_GetBy
 
   return NULL;
 }
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------
@@ -259,7 +254,7 @@ DIOPROTOCOL* BINCONNPRO_CONNECTIONSMANAGER::CreateProtocol()
 
   cipher->SetChainingMode(CIPHERCHAININGMODE_CBC);
   cipher->SetPaddingType(XBUFFER_PADDINGTYPE_ZEROS);
-  cipher->SetInitVector(inivector,sizeof(inivector));
+  cipher->SetInitVector(inivector, sizeof(inivector));
 
   key->Set(keydata, sizeof(keydata));
 

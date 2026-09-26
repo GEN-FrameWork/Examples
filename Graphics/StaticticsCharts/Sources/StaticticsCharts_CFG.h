@@ -32,7 +32,6 @@
 
 #include "APPFlowCFG.h"
 
-
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
 #define STATICTICSCHARTSCFG_SECTIONGENERAL    __L("general")

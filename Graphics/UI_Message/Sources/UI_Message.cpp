@@ -210,9 +210,7 @@ bool UI_MESSAGE::AppProc_Ini()
 
   Application_GetName()->Set(APPLICATION_NAMEAPP);
 
-  SetInitOptions( APPFLOWGRAPHICS_INIOPTION_CREATEMAINSCREEN    |
-                  APPFLOWGRAPHICS_INIOPTION_SHOWMAINSCREEN      |
-                  APPFLOWGRAPHICS_INIOPTION_INPUT);
+  SetInitOptions(APPFLOWGRAPHICS_INIOPTION_CREATEMAINSCREEN | APPFLOWGRAPHICS_INIOPTION_SHOWMAINSCREEN | APPFLOWGRAPHICS_INIOPTION_INPUT);
 
   //--------------------------------------------------------------------------------------------------
 
@@ -229,9 +227,9 @@ bool UI_MESSAGE::AppProc_Ini()
 
   GEN_XPATHSMANAGER.AdjustRootPathDefault(APPFLOW_DEFAULT_DIRECTORY_ROOT);
 
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_GRAPHICS      , APPFLOW_DEFAULT_DIRECTORY_GRAPHICS);
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_FONTS         , APPFLOW_DEFAULT_DIRECTORY_FONTS);
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS    , APPFLOW_DEFAULT_DIRECTORY_UI_LAYOUTS);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_GRAPHICS, APPFLOW_DEFAULT_DIRECTORY_GRAPHICS);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_FONTS, APPFLOW_DEFAULT_DIRECTORY_FONTS);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS, APPFLOW_DEFAULT_DIRECTORY_UI_LAYOUTS);
 
 
   GEN_XPATHSMANAGER.CreateAllPathSectionOnDisk();
@@ -507,12 +505,12 @@ bool UI_MESSAGE::UpdateInput()
 
               if(changed)
                 {
-                  GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_CURSOR_MOVE,  cursor_x,  cursor_y);
+                  GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_CURSOR_MOVE, cursor_x, cursor_y);
                 }
 
               if(button[UI_MESSAGE_BUTTON_MOUSE]->IsPressedWithRelease())
                 {
-                  GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_SELECCTION,  cursor_x,  cursor_y);   
+                  GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_SELECCTION, cursor_x, cursor_y);   
 
                   cursor->GetMotion()->Reset();       
                 }
@@ -521,8 +519,8 @@ bool UI_MESSAGE::UpdateInput()
                 {             
                   if(button[UI_MESSAGE_BUTTON_TOUCHSCREEN]->IsPressed())
                     {             
-                      GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_CURSOR_MOVE,  cursor_x,  cursor_y);
-                      GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_SELECCTION,   cursor_x, cursor_y);          
+                      GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_CURSOR_MOVE, cursor_x, cursor_y);
+                      GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_SELECCTION, cursor_x, cursor_y);          
 
                       cursor->GetMotion()->Reset();
                     }
@@ -619,8 +617,7 @@ bool UI_MESSAGE::Ini_Canvas(GRPSCREEN* screen)
       return false;
     }
     
-  bool status = screen->CreateViewport(APPLICATION_GUI_MESSAGE_VIEWPORT_ID  , 0.0f, 0.0f, (float)screen->GetWidth()   , (float)screen->GetHeight()
-                                                                            ,    0,    0, screen->GetWidth()          , screen->GetHeight());   
+  bool status = screen->CreateViewport(APPLICATION_GUI_MESSAGE_VIEWPORT_ID, 0.0f, 0.0f, (float)screen->GetWidth(), (float)screen->GetHeight(), 0, 0, screen->GetWidth(), screen->GetHeight());   
   return status; 
 }
 

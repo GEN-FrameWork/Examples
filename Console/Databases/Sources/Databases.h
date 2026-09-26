@@ -85,11 +85,8 @@ enum DATABASESTASKID
 
 #define APPLICATION_YEAROFCREATION                2018
 
-
 #define DATABASES_TABLE_TEST_NAME                 __L("TableTest")
 #define DATABASES_TABLE_MAXFIELDS                 16
-
-
 
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 
@@ -105,7 +102,6 @@ class DIOCHECKTCPIPCONNECTIONS;
 class DIOCHECKINTERNETCONNECTION;
 class DIOSCRAPERWEBPUBLICIP;
 class DIOSCRAPERWEBUSERAGENTID;
-
 
 class DATABASES : public APPFLOWCONSOLE, public XFSMACHINE
 {

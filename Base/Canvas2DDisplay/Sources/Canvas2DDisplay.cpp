@@ -128,7 +128,7 @@ bool CANVAS2DDISPLAY::AppProc_Ini()
   #ifdef MICROCONTROLLER
     XTRACE_SETTARGET(0, XTRACE_TYPE_SPECIAL , XTRACE_DEFAULT_SPECIALAIM);
   #else
-    XTRACE_SETTARGET(0, XTRACE_TYPE_NET     , GEN_XTRACE_NET_DEFAULT_01);
+    XTRACE_SETTARGET(0, XTRACE_TYPE_NET, GEN_XTRACE_NET_DEFAULT_01);
   #endif
 
   XTRACE_PRINTCOLOR(1, __L("Start Application"));
@@ -387,7 +387,6 @@ bool CANVAS2DDISPLAY::Test_DIOStreamSPI()
 
   return true;
 }
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------

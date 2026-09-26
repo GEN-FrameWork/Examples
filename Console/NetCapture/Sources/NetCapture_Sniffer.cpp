@@ -157,10 +157,6 @@ void NETCAPTURE_FRAME::Clean()
 }
 
 
-
-
-
-
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         NETCAPTURE_SNIFFER::NETCAPTURE_SNIFFER()
@@ -372,7 +368,7 @@ DIOPCAP* NETCAPTURE_SNIFFER::GetDIOPCap()
 
 /**-------------------------------------------------------------------------------------------------------------------
 *
-* @fn         bool NETCAPTURE_SNIFFER::Sniffer_Add(bool issend, XBYTE* framedata, XDWORD framesize )
+* @fn         bool NETCAPTURE_SNIFFER::Sniffer_Add(bool issend, XBYTE* framedata, XDWORD framesize)
 * @brief      Sniffer add.
 * @ingroup    EXAMPLES
 *
@@ -559,7 +555,6 @@ bool NETCAPTURE_SNIFFER::Sniffer_Interpreter(NETCAPTURE_FRAME* frame)
 }
 
 
-
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         void NETCAPTURE_SNIFFER::Clean()
@@ -624,12 +619,7 @@ void NETCAPTURE_SNIFFER::ThreadRunFunctionSniffer(void* param)
              
               XTRACE_PRINTCOLOR(XTRACE_COLOR_PURPLE, __L("----------------------------------------------------------------------------------------------------"));
 
-              XTRACE_PRINTCOLOR(XTRACE_COLOR_PURPLE, __L("%s    [%s](%s) -> [%s](%s)  port [%d]") , protocoltypestr.Get()
-                                                                                                  , sourceMAC.Get()
-                                                                                                  , sourceIP.Get()
-                                                                                                  , targetMAC.Get()
-                                                                                                  , targetIP.Get()
-                                                                                                  , frame->GetSourcePort());
+              XTRACE_PRINTCOLOR(XTRACE_COLOR_PURPLE, __L("%s [%s](%s) -> [%s](%s) port [%d]"), protocoltypestr.Get(), sourceMAC.Get(), sourceIP.Get(), targetMAC.Get(), targetIP.Get(), frame->GetSourcePort());
 
               XTRACE_PRINTDATABLOCKCOLOR(XTRACE_COLOR_BLUE, frame->GetDataPayload(), frame->GetDataPayLoadSize()); 
             }       

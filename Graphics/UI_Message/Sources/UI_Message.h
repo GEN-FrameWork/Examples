@@ -140,7 +140,6 @@ class GRPBITMAP;
 class GRPBITMAPSEQUENCE;
 class UI_MESSAGE_CFG;
 
-
 class UI_MESSAGE : public APPFLOWGRAPHICS, public XFSMACHINE
 {
   public:

@@ -88,7 +88,6 @@ enum INIBASETASKID
 
 
 
-
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 
 class XTIME;
@@ -109,7 +108,6 @@ class APPFLOWINTERNETSERVICES;
 class INIBASE_COREPROTOCOL_CONNECTIONSMANAGER;
 class INIBASE_AGENTSTATE;
 class INIBASE_TESTUPDATECLASS;
-
 
 class INIBASE : public APPFLOWCONSOLE, public XOBSERVER, public XFSMACHINE
 {

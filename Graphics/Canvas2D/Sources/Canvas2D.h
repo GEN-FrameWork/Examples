@@ -132,7 +132,6 @@ class SNDFACTORY_XEVENT;
 class SNDITEM;
 class CANVAS2D_CFG;
 
-
 class CANVAS2D : public APPFLOWGRAPHICS, public XFSMACHINE
 {
   public:

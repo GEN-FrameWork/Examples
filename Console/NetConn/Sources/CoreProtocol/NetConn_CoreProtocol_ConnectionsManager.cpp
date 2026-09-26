@@ -296,14 +296,14 @@ DIOCOREPROTOCOL* NETCONN_COREPROTOCOL_CONNECTIONSMANAGER::CreateProtocol(DIOCORE
       return NULL;
     }
 
-  protocol->Commands_Add(NETCONN_COREPROTOCOL_COMMAND_TYPE_GETVERSION   , NETCONN_COREPROTOCOL_COMMAND_TYPE_STRING_GETVERSION   , DIOCOREPROTOCOL_BIDIRECTIONALITYMODE_BOTH);
+  protocol->Commands_Add(NETCONN_COREPROTOCOL_COMMAND_TYPE_GETVERSION, NETCONN_COREPROTOCOL_COMMAND_TYPE_STRING_GETVERSION, DIOCOREPROTOCOL_BIDIRECTIONALITYMODE_BOTH);
   protocol->Commands_Add(NETCONN_COREPROTOCOL_COMMAND_TYPE_OTHERCOMMAND , NETCONN_COREPROTOCOL_COMMAND_TYPE_STRING_OTHERCOMMAND , DIOCOREPROTOCOL_BIDIRECTIONALITYMODE_TOCLIENT);
 
   NETCONN_COREPROTOCOL_CONNECTION* netconn_connection = (NETCONN_COREPROTOCOL_CONNECTION*)connection;
   if(netconn_connection)
     {   
-      protocol->UpdateClass_Add(__L("agentstate")       , netconn_connection->GetAgentState(), true, 180);
-      protocol->UpdateClass_Add(__L("testupdateclass")  , netconn_connection->GetTestUpdateClass(), true, 0, DIOCOREPROTOCOL_UPDATECLASS_FLAG_FORCHANGE);
+      protocol->UpdateClass_Add(__L("agentstate"), netconn_connection->GetAgentState(), true, 180);
+      protocol->UpdateClass_Add(__L("testupdateclass"), netconn_connection->GetTestUpdateClass(), true, 0, DIOCOREPROTOCOL_UPDATECLASS_FLAG_FORCHANGE);
     }
 
   return protocol;  
@@ -356,7 +356,7 @@ void NETCONN_COREPROTOCOL_CONNECTIONSMANAGER::HandleEvent_CoreProtocolConnection
                                                                                     XSTRING nextstatusstring;
 
                                                                                     connection->Status_GetString(event->GetActualStatus(), actualstatusstring);
-                                                                                    connection->Status_GetString(event->GetNextStatus()  , nextstatusstring);
+                                                                                    connection->Status_GetString(event->GetNextStatus(), nextstatusstring);
 
                                                                                     XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("[Net Conn] Change connection status: %s --> %s"), actualstatusstring.Get(), nextstatusstring.Get());
                                                                                   }

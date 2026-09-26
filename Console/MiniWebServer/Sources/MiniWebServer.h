@@ -83,13 +83,10 @@ enum MINIWEBSERVERTASKID
 
 #define APPLICATION_YEAROFCREATION                2018
 
-
 #define APPLICATION_DIRECTORY_WEB                 __L("web")
 
 #define MINIWEBSERVER_TABLE_TEST_NAME             __L("TableTest")
 #define MINIWEBSERVER_TABLE_MAXFIELDS             16
-
-
 
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 
@@ -103,7 +100,6 @@ class XSCHEDULER_XEVENT;
 class DIOWEBSERVER_XEVENT;
 class APPFLOWINTERNETSERVICES;
 class APPFLOWWEBSERVER;
-
 
 class MINIWEBSERVER : public APPFLOWCONSOLE, public XOBSERVER, public XFSMACHINE
 {

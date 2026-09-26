@@ -59,7 +59,6 @@ BINCONNPRO_PROTOCOL_DEVICE::BINCONNPRO_PROTOCOL_DEVICE()
 }
 
 
-
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         BINCONNPRO_PROTOCOL_DEVICE::~BINCONNPRO_PROTOCOL_DEVICE()
@@ -76,7 +75,6 @@ BINCONNPRO_PROTOCOL_DEVICE::~BINCONNPRO_PROTOCOL_DEVICE()
 }
 
 
-
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         BINCONNPRO_PROTOCOL_DEVICETYPE BINCONNPRO_PROTOCOL_DEVICE::GetType()
@@ -90,7 +88,6 @@ BINCONNPRO_PROTOCOL_DEVICETYPE BINCONNPRO_PROTOCOL_DEVICE::GetType()
 {
   return type;
 }
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------
@@ -110,7 +107,6 @@ void BINCONNPRO_PROTOCOL_DEVICE::SetType(BINCONNPRO_PROTOCOL_DEVICETYPE type)
 }
 
 
-
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         XDWORD BINCONNPRO_PROTOCOL_DEVICE::GetID()
@@ -124,7 +120,6 @@ XDWORD BINCONNPRO_PROTOCOL_DEVICE::GetID()
 {
   return ID;
 }
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------
@@ -142,7 +137,6 @@ void BINCONNPRO_PROTOCOL_DEVICE::SetID(XDWORD ID)
 {
   this->ID = ID;
 }
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------

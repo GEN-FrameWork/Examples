@@ -439,7 +439,7 @@ bool INIBASE::KeyValidSecuences(int key)
   if((character<32) || (character>127)) character = __C('?');
   APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, __L("Key pressed: 0x%02X [%c]"), key, character);
 
-  console->Printf(__L("\r    \r"));
+  console->Printf(__L("\r \r"));
 
   switch(key)
     {
@@ -474,7 +474,6 @@ bool INIBASE::Show_AllStatus()
 
   return true;
 }
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------

@@ -436,7 +436,7 @@ bool SCRIPTSEXAMPLE::KeyValidSecuences(int key)
   if((character<32) || (character>127)) character = __C('?');
   APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, __L("Key pressed: 0x%02X [%c]"), key, character);
 
-  console->Printf(__L("\r    \r"));
+  console->Printf(__L("\r \r"));
 
   switch(key)
     {
@@ -482,7 +482,7 @@ bool SCRIPTSEXAMPLE::Show_AppStatus()
   XDWORD  total;
   XDWORD  free;
 
-  GEN_XSYSTEM.GetMemoryInfo(total,free);
+  GEN_XSYSTEM.GetMemoryInfo(total, free);
 
   string  = __L("Memoria total");
   string2.Format(__L("%d Kb, libre %d Kb (el %d%%)"), total, free, GEN_XSYSTEM.GetFreeMemoryPercent());
@@ -509,7 +509,6 @@ bool SCRIPTSEXAMPLE::Show_AppStatus()
 
   return true;
 }
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------
@@ -573,10 +572,10 @@ void SCRIPTSEXAMPLE::HandleEvent_Script(SCRIPT_XEVENT* event)
   switch(event->GetEventType())
     {      
 
-      case SCRIPT_XEVENT_TYPE_ERROR    : XTRACE_PRINTCOLOR(4,__L("Script ERROR [%d]: %s line %d -> \"%s\""), event->GetError(), event->GetErrorText()->Get(), event->GetNLine(), event->GetCurrentToken()->Get());
+      case SCRIPT_XEVENT_TYPE_ERROR    : XTRACE_PRINTCOLOR(4, __L("Script ERROR [%d]: %s line %d -> \"%s\""), event->GetError(), event->GetErrorText()->Get(), event->GetNLine(), event->GetCurrentToken()->Get());
                                          break;
 
-      case SCRIPT_XEVENT_TYPE_BREAK    : XTRACE_PRINTCOLOR(4,__L("Script BREAK: line %d -> \"%s\""), event->GetNLine(), event->GetCurrentToken()->Get());
+      case SCRIPT_XEVENT_TYPE_BREAK    : XTRACE_PRINTCOLOR(4, __L("Script BREAK: line %d -> \"%s\""), event->GetNLine(), event->GetCurrentToken()->Get());
                                          break;
 
     }

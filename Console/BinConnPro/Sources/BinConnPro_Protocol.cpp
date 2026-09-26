@@ -58,9 +58,9 @@
 *---------------------------------------------------------------------------------------------------------------------*/
 BINCONNPRO_PROTOCOL::BINCONNPRO_PROTOCOL(DIOSTREAM* diostream) : DIOPROTOCOL(diostream)
 {
-  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETDEVICETYPEANDID       , __L("")           , __L("DD")                 , RCV_GetDeviceTypeAndID        , __L("GetDeviceTypeAndID")         );
-  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETCENTERNAME            , __L("")           , __L("S")                  , RCV_GetCenterName             , __L("GetCenterName")              );
-  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETLOCATION              , __L("")           , __L("SSSSD")              , RCV_GetLocation               , __L("GetLocation")                );
+  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETDEVICETYPEANDID, __L(""), __L("DD"), RCV_GetDeviceTypeAndID, __L("GetDeviceTypeAndID"));
+  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETCENTERNAME, __L(""), __L("S"), RCV_GetCenterName, __L("GetCenterName"));
+  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETLOCATION, __L(""), __L("SSSSD"), RCV_GetLocation, __L("GetLocation"));
 }
 
 
@@ -112,7 +112,6 @@ bool BINCONNPRO_PROTOCOL::CMD_GetDeviceTypeAndID(XDWORD& devicetype, XDWORD& dev
 }
 
 
-
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         int BINCONNPRO_PROTOCOL::RCV_GetDeviceTypeAndID(DIOPROTOCOL* protocol, DIOPROTOCOL_COMMAND* cmd, XBUFFER& xbuffer, XDWORD rID, XDWORD& param)
@@ -142,8 +141,6 @@ int BINCONNPRO_PROTOCOL::RCV_GetDeviceTypeAndID(DIOPROTOCOL* protocol, DIOPROTOC
 
   return xbuffer.AddWithMask(cmd->GetSOUTMask(), devicetype, deviceID);
 }
-
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------
@@ -177,7 +174,6 @@ bool BINCONNPRO_PROTOCOL::CMD_GetCenterName(XSTRING& centername)
 }
 
 
-
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         int BINCONNPRO_PROTOCOL::RCV_GetCenterName(DIOPROTOCOL* protocol, DIOPROTOCOL_COMMAND* cmd, XBUFFER& xbuffer, XDWORD rID, XDWORD& param)
@@ -203,8 +199,6 @@ int BINCONNPRO_PROTOCOL::RCV_GetCenterName(DIOPROTOCOL* protocol, DIOPROTOCOL_CO
   xbuffer.Delete();
   return xbuffer.AddWithMask(cmd->GetSOUTMask(), &applicationdata->centername);
 }
-
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------
@@ -242,8 +236,6 @@ bool BINCONNPRO_PROTOCOL::CMD_GetLocation(XSTRING& street, XSTRING& city, XSTRIN
 }
 
 
-
-
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         int BINCONNPRO_PROTOCOL::RCV_GetLocation(DIOPROTOCOL* protocol, DIOPROTOCOL_COMMAND* cmd, XBUFFER& xbuffer, XDWORD rID, XDWORD& param)
@@ -267,13 +259,8 @@ int BINCONNPRO_PROTOCOL::RCV_GetLocation(DIOPROTOCOL* protocol, DIOPROTOCOL_COMM
   if(!applicationdata) return DIOPROTOCOL_ERRORRECEIVED;
 
   xbuffer.Delete();
-  return xbuffer.AddWithMask(cmd->GetSOUTMask(), applicationdata->location.GetStreet()
-                                               , applicationdata->location.GetCity()
-                                               , applicationdata->location.GetState()
-                                               , applicationdata->location.GetCountry()
-                                               , applicationdata->location.GetPostalCode());
+  return xbuffer.AddWithMask(cmd->GetSOUTMask(), applicationdata->location.GetStreet(), applicationdata->location.GetCity(), applicationdata->location.GetState(), applicationdata->location.GetCountry(), applicationdata->location.GetPostalCode());
 }
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------

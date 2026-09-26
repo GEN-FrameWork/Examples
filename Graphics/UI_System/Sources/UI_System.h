@@ -153,7 +153,6 @@ class UI_ELEMENT;
 class UI_ELEMENT_TEXT;
 class UI_SYSTEM_CFG;
 
-
 class UI_SYSTEM : public APPFLOWGRAPHICS, public XFSMACHINE
 {
   public:
@@ -175,31 +174,6 @@ class UI_SYSTEM : public APPFLOWGRAPHICS, public XFSMACHINE
     bool                            Ini_UserInterface                       (bool on);
 
     bool                            DrawFrame                               ();
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     static void                     ThreadFunction_UpdateHardwareInfo       (void* param);
 
@@ -244,17 +218,6 @@ class UI_SYSTEM : public APPFLOWGRAPHICS, public XFSMACHINE
 
     XQWORD                          lastupdatehardwareinfo_second;
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
     XTHREAD*                        hardwareinfothread;
     XMUTEX*                         hardwareinfomutex;
 
@@ -271,15 +234,8 @@ class UI_SYSTEM : public APPFLOWGRAPHICS, public XFSMACHINE
     int                             disk_slot_index;
     bool                            isconnected;                             
 
-    
-    
-    
-    
     bool                            dashboardloaded;
 
-    
-    
-    
     XSTRING                         cpu_temperature_str;
     XSTRING                         ram_used_total_str;
     XSTRING                         ram_used_str;

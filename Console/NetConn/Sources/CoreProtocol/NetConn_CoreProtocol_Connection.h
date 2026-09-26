@@ -35,8 +35,6 @@
 #include "NetConn_AgentState.h"
 #include "NetConn_TestUpdateClass.h"
 
-
-
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
 

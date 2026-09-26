@@ -33,7 +33,6 @@
 #include "DIOProtocol.h"
 #include "BinConnPro_ApplicationData.h"
 
-
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
 #define BINCONNPRO_PROTOCOL_VERSION                       0

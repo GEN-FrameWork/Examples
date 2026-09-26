@@ -65,7 +65,6 @@ enum NETCAPTUREXFSMSTATES
   NETCAPTURE_LASTSTATE
 };
 
-
 #define APPLICATION_VERSION                       0
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 0
@@ -76,8 +75,6 @@ enum NETCAPTUREXFSMSTATES
 #define APPLICATION_OWNER                         __L("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2024
-
-
 
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 

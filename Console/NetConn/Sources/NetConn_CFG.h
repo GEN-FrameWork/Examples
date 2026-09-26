@@ -32,8 +32,6 @@
 
 #include "APPFlowCFG.h"
 
-
-
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
 #define NETCONN_CFG_SECTION_GENERAL                           __L("general")
@@ -43,17 +41,13 @@
 #define NETCONN_CFG_CONNECTION_TRANSPORTTYPE                  __L("transporttype")
 #define NETCONN_CFG_CONNECTION_TRANSPORTCONFIG                __L("transportconfig")
 
-
 #define NETCONN_APPFLOW_CFG_DEFAULT_REMARK_COLUMN             98
 
-
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
-
 
 class NETCONN_CFG : public APPFLOWCFG
 {
   public:
-
 
     static bool                     GetIsInstanced                    ();
     static NETCONN_CFG&             GetInstance                       (bool ini = true);

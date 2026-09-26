@@ -205,9 +205,7 @@ bool CANVAS2D::AppProc_Ini()
 
   Application_GetName()->Set(APPLICATION_NAMEAPP);
 
-  SetInitOptions( APPFLOWGRAPHICS_INIOPTION_CREATEMAINSCREEN    |
-                  APPFLOWGRAPHICS_INIOPTION_SHOWMAINSCREEN      |
-                  APPFLOWGRAPHICS_INIOPTION_INPUT);
+  SetInitOptions(APPFLOWGRAPHICS_INIOPTION_CREATEMAINSCREEN | APPFLOWGRAPHICS_INIOPTION_SHOWMAINSCREEN | APPFLOWGRAPHICS_INIOPTION_INPUT);
 
   //--------------------------------------------------------------------------------------------------
 
@@ -224,10 +222,10 @@ bool CANVAS2D::AppProc_Ini()
 
   GEN_XPATHSMANAGER.AdjustRootPathDefault(APPFLOW_DEFAULT_DIRECTORY_ROOT);
 
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_GRAPHICS      , APPFLOW_DEFAULT_DIRECTORY_GRAPHICS);
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_SOUNDS        , APPFLOW_DEFAULT_DIRECTORY_SOUNDS);
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_FONTS         , APPFLOW_DEFAULT_DIRECTORY_FONTS);
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS    , APPFLOW_DEFAULT_DIRECTORY_UI_LAYOUTS);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_GRAPHICS, APPFLOW_DEFAULT_DIRECTORY_GRAPHICS);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_SOUNDS, APPFLOW_DEFAULT_DIRECTORY_SOUNDS);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_FONTS, APPFLOW_DEFAULT_DIRECTORY_FONTS);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS, APPFLOW_DEFAULT_DIRECTORY_UI_LAYOUTS);
 
 
   GEN_XPATHSMANAGER.CreateAllPathSectionOnDisk();
@@ -375,11 +373,11 @@ bool CANVAS2D::AppProc_FirstUpdate()
     xpath.Add(__L("armour-walking2.ogg"));
     armorwalkingsounds[1] = GEN_SNDFACTORY.CreateItem(xpath);
      
-    SubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_INI   , &GEN_SNDFACTORY.GetInstance());
-    SubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_PLAY  , &GEN_SNDFACTORY.GetInstance());
+    SubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_INI, &GEN_SNDFACTORY.GetInstance());
+    SubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_PLAY, &GEN_SNDFACTORY.GetInstance());
     SubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_PAUSE , &GEN_SNDFACTORY.GetInstance());
-    SubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_STOP  , &GEN_SNDFACTORY.GetInstance());
-    SubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_END   , &GEN_SNDFACTORY.GetInstance());
+    SubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_STOP, &GEN_SNDFACTORY.GetInstance());
+    SubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_END, &GEN_SNDFACTORY.GetInstance());
   }
 
   #endif
@@ -463,11 +461,11 @@ bool CANVAS2D::AppProc_End()
  
   #if SND_ACTIVE
 
-  UnSubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_INI   , &GEN_SNDFACTORY.GetInstance());
-  UnSubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_PLAY  , &GEN_SNDFACTORY.GetInstance());
+  UnSubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_INI, &GEN_SNDFACTORY.GetInstance());
+  UnSubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_PLAY, &GEN_SNDFACTORY.GetInstance());
   UnSubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_PAUSE , &GEN_SNDFACTORY.GetInstance());
-  UnSubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_STOP  , &GEN_SNDFACTORY.GetInstance());
-  UnSubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_END   , &GEN_SNDFACTORY.GetInstance());
+  UnSubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_STOP, &GEN_SNDFACTORY.GetInstance());
+  UnSubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_END, &GEN_SNDFACTORY.GetInstance());
  
   GEN_SNDFACTORY.Sound_StopAll();
 
@@ -662,7 +660,7 @@ bool CANVAS2D::Ini_Graphics(GRPSCREEN* screen)
 
   //--------------------------------------------------------------------------------------
 
-  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("Main Screen: Width %d, height %d"),  screen->GetWidth(), screen->GetHeight());
+  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("Main Screen: Width %d, height %d"), screen->GetWidth(), screen->GetHeight());
 
   
   screen->SetPosition(GRPPROPERTYMODE_SCREEN_CENTER, GRPPROPERTYMODE_SCREEN_CENTER);
@@ -673,7 +671,7 @@ bool CANVAS2D::Ini_Graphics(GRPSCREEN* screen)
   
   screen->SetDesktopScreenSelected(GRPSCREENTYPE_DESKTOP_SCREEN1);
 
-  status = screen->CreateViewport(APPLICATION_GUI_MAIN_VIEWPORT_ID, 0.0f, 0.0f, (float)screen->GetWidth(), (float)screen->GetHeight(),  0,  0, (backgroundbmp->GetWidth()) , (backgroundbmp->GetHeight()));
+  status = screen->CreateViewport(APPLICATION_GUI_MAIN_VIEWPORT_ID, 0.0f, 0.0f, (float)screen->GetWidth(), (float)screen->GetHeight(), 0, 0, (backgroundbmp->GetWidth()), (backgroundbmp->GetHeight()));
 
 
   /*
@@ -915,10 +913,10 @@ bool CANVAS2D::DrawFrame()
   canvas->SetLineColor(&colorwhite);
   canvas->SetFillColor(&colorgray);
 
-  canvas->RoundRect(scrollposx +  pos_signboard, 50, scrollposx + pos_signboard + 570 , 150, 20, true);
+  canvas->RoundRect(scrollposx + pos_signboard, 50, scrollposx + pos_signboard + 570, 150, 20, true);
 
   canvas->Vectorfont_GetConfig()->SetColor(&coloryellow);
-  canvas->VectorFont_Printf(scrollposx + pos_signboard + 20,  90, __L("Once upon a time,"));
+  canvas->VectorFont_Printf(scrollposx + pos_signboard + 20, 90, __L("Once upon a time,"));
   canvas->VectorFont_Printf(scrollposx + pos_signboard + 90, 130, __L("in a kingdom far, far away... "));
   
   canvas->DrawFramerate(GetMainScreen(), scrollposx + 10, 30);
@@ -965,7 +963,6 @@ bool CANVAS2D::UserInterface_CFGChromes(GRPSCREEN* screen)
 
   return true;
 }
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------

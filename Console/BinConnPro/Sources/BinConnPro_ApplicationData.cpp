@@ -58,7 +58,6 @@ BINCONNPRO_APPLICATIONDATA::BINCONNPRO_APPLICATIONDATA()
 }
 
 
-
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         BINCONNPRO_APPLICATIONDATA::~BINCONNPRO_APPLICATIONDATA()
@@ -73,7 +72,6 @@ BINCONNPRO_APPLICATIONDATA::~BINCONNPRO_APPLICATIONDATA()
 {
   Clean();
 }
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------

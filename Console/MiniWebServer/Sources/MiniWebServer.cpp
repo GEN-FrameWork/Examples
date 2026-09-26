@@ -215,8 +215,8 @@ bool MINIWEBSERVER::AppProc_Ini()
 
   GEN_XPATHSMANAGER.AdjustRootPathDefault(APPFLOW_DEFAULT_DIRECTORY_ROOT);
 
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_WEB           ,  APPFLOW_DEFAULT_DIRECTORY_WEB);
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_CERTIFICATES  ,  APPFLOW_DEFAULT_DIRECTORY_CERTIFICATES);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_WEB, APPFLOW_DEFAULT_DIRECTORY_WEB);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_CERTIFICATES, APPFLOW_DEFAULT_DIRECTORY_CERTIFICATES);
 
   GEN_XPATHSMANAGER.CreateAllPathSectionOnDisk();
 
@@ -294,7 +294,7 @@ bool MINIWEBSERVER::AppProc_FirstUpdate()
       
       string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, string2.Get());
       
-      console->PrintMessage(string.Get(),1,true,false);
+      console->PrintMessage(string.Get(), 1, true, false);
 
       appwebserver = GEN_NEW APPFLOWWEBSERVER();
       if(appwebserver) status = true;
@@ -306,10 +306,10 @@ bool MINIWEBSERVER::AppProc_FirstUpdate()
 
       if(status)
         {
-          SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_REQUEST             , (XSUBJECT *)appwebserver);
-          SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_DOAUTHENTICATE      , (XSUBJECT *)appwebserver);
-          SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_CHECKAUTHENTICATE   , (XSUBJECT *)appwebserver);
-          SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_REQUEST_ENDPOINT    , (XSUBJECT *)appwebserver);
+          SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_REQUEST, (XSUBJECT *)appwebserver);
+          SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_DOAUTHENTICATE, (XSUBJECT *)appwebserver);
+          SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_CHECKAUTHENTICATE, (XSUBJECT *)appwebserver);
+          SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_REQUEST_ENDPOINT, (XSUBJECT *)appwebserver);
 
           apirest = GEN_NEW MINIWEBSERVER_APIREST(this);
           if(!apirest) return false;
@@ -330,7 +330,7 @@ bool MINIWEBSERVER::AppProc_FirstUpdate()
 
   string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, string2.Get());
 
-  console->PrintMessage(string.Get(),1,true,false);
+  console->PrintMessage(string.Get(), 1, true, false);
 
   appwebsocket = GEN_NEW APPFLOWWEBSERVER();
   if(appwebsocket) status = true;
@@ -342,18 +342,18 @@ bool MINIWEBSERVER::AppProc_FirstUpdate()
 
   if(status)
     {
-      SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_REQUEST                , (XSUBJECT *)appwebsocket);
-      SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_DOAUTHENTICATE         , (XSUBJECT *)appwebsocket);
-      SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_CHECKAUTHENTICATE      , (XSUBJECT *)appwebsocket);
-      SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_WEBSOCKET_CONNECTED    , (XSUBJECT *)appwebsocket);
-      SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_WEBSOCKET_READDATA     , (XSUBJECT *)appwebsocket);
+      SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_REQUEST, (XSUBJECT *)appwebsocket);
+      SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_DOAUTHENTICATE, (XSUBJECT *)appwebsocket);
+      SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_CHECKAUTHENTICATE, (XSUBJECT *)appwebsocket);
+      SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_WEBSOCKET_CONNECTED, (XSUBJECT *)appwebsocket);
+      SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_WEBSOCKET_READDATA, (XSUBJECT *)appwebsocket);
       SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_WEBSOCKET_DISCONNECTED , (XSUBJECT *)appwebsocket);
     }
 
   APPFLOW_LOG_ENTRY((status)?XLOGLEVEL_INFO:XLOGLEVEL_ERROR, APPFLOW_CFG_LOG_SECTIONID_INITIATION, false, __L("%s: %s") , string.Get(), stringresult.Get());
 
-  console->PrintMessage(__L(" "),0,false,true);
-  console->WaitKey(__L("  Pulsa una tecla para continuar... (%d)"), 1, false, 5);
+  console->PrintMessage(__L(" "), 0, false, true);
+  console->WaitKey(__L(" Pulsa una tecla para continuar... (%d)"), 1, false, 5);
 
   //--------------------------------------------------------------------------------------------------
 
@@ -460,13 +460,13 @@ bool MINIWEBSERVER::AppProc_End()
 
   if(appwebserver)
     {
-      string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK,__L("Desactivando servidor web"));
-      console->PrintMessage(string.Get(),1,true,false);
+      string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, __L("Desactivando servidor web"));
+      console->PrintMessage(string.Get(), 1, true, false);
 
-      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_REQUEST             , (XSUBJECT *)appwebserver);
-      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_DOAUTHENTICATE      , (XSUBJECT *)appwebserver);
-      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_CHECKAUTHENTICATE   , (XSUBJECT *)appwebserver);
-      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_REQUEST_ENDPOINT    , (XSUBJECT *)appwebserver);
+      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_REQUEST, (XSUBJECT *)appwebserver);
+      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_DOAUTHENTICATE, (XSUBJECT *)appwebserver);
+      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_CHECKAUTHENTICATE, (XSUBJECT *)appwebserver);
+      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_REQUEST_ENDPOINT, (XSUBJECT *)appwebserver);
 
       delete appwebserver;
       appwebserver = NULL;
@@ -487,15 +487,15 @@ bool MINIWEBSERVER::AppProc_End()
 
   if(appwebsocket)
     {
-      string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK,__L("Desactivando WebSocket"));
-      console->PrintMessage(string.Get(),1,true,false);
+      string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, __L("Desactivando WebSocket"));
+      console->PrintMessage(string.Get(), 1, true, false);
 
-      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_REQUEST                 , (XSUBJECT *)appwebsocket);
-      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_DOAUTHENTICATE          , (XSUBJECT *)appwebsocket);
-      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_CHECKAUTHENTICATE       , (XSUBJECT *)appwebsocket);
-      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_WEBSOCKET_CONNECTED     , (XSUBJECT *)appwebsocket);
-      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_WEBSOCKET_READDATA      , (XSUBJECT *)appwebsocket);
-      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_WEBSOCKET_DISCONNECTED  , (XSUBJECT *)appwebsocket);
+      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_REQUEST, (XSUBJECT *)appwebsocket);
+      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_DOAUTHENTICATE, (XSUBJECT *)appwebsocket);
+      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_CHECKAUTHENTICATE, (XSUBJECT *)appwebsocket);
+      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_WEBSOCKET_CONNECTED, (XSUBJECT *)appwebsocket);
+      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_WEBSOCKET_READDATA, (XSUBJECT *)appwebsocket);
+      UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_WEBSOCKET_DISCONNECTED, (XSUBJECT *)appwebsocket);
 
       delete appwebsocket;
       appwebsocket = NULL;
@@ -536,7 +536,7 @@ bool MINIWEBSERVER::KeyValidSecuences(int key)
   if((character<32) || (character>127)) character = __C('?');
   APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, __L("Key pressed: 0x%02X [%c]"), key, character);
 
-  console->Printf(__L("\r    \r"));
+  console->Printf(__L("\r \r"));
 
   switch(key)
     {
@@ -644,9 +644,7 @@ bool MINIWEBSERVER::Show_WebSocketConfig()
       while(connection)
         {
           string.Empty();
-          string2.Format(__L("Ver. %2d - Protocol \"%s\" - [%s]") , connection->GetRequest()->WebSocket_GetVersion()
-                                                                  , connection->GetRequest()->WebSocket_GetProtocol()->Get()
-                                                                  , connection->GetRequest()->GetResource()->Get());
+          string2.Format(__L("Ver. %2d - Protocol \"%s\" - [%s]"), connection->GetRequest()->WebSocket_GetVersion(), connection->GetRequest()->WebSocket_GetProtocol()->Get(), connection->GetRequest()->GetResource()->Get());
           Show_Line(string, string2);
 
           connection = appwebsocket->GetWebServer()->Websocket_GetNextConnection();
@@ -674,8 +672,8 @@ bool MINIWEBSERVER::Show_AllStatus()
 
   APPFLOW_EXTENDED.ShowAll();
 
-  if(Show_WebServerConfig())       console->PrintMessage(__L(""),0, false, true);
-  if(Show_WebSocketConfig())       console->PrintMessage(__L(""),0, false, true);
+  if(Show_WebServerConfig())       console->PrintMessage(__L(""), 0, false, true);
+  if(Show_WebSocketConfig())       console->PrintMessage(__L(""), 0, false, true);
 
   if(xmutexshowallstatus) xmutexshowallstatus->UnLock();
 

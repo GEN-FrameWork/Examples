@@ -221,9 +221,7 @@ bool STATICTICSCHARTS::AppProc_Ini()
 
   Application_GetName()->Set(APPLICATION_NAMEAPP);
 
-  SetInitOptions( APPFLOWGRAPHICS_INIOPTION_CREATEMAINSCREEN    |
-                  APPFLOWGRAPHICS_INIOPTION_SHOWMAINSCREEN      |
-                  APPFLOWGRAPHICS_INIOPTION_INPUT);
+  SetInitOptions(APPFLOWGRAPHICS_INIOPTION_CREATEMAINSCREEN | APPFLOWGRAPHICS_INIOPTION_SHOWMAINSCREEN | APPFLOWGRAPHICS_INIOPTION_INPUT);
 
   //--------------------------------------------------------------------------------------------------
 
@@ -240,9 +238,9 @@ bool STATICTICSCHARTS::AppProc_Ini()
 
   GEN_XPATHSMANAGER.AdjustRootPathDefault(APPFLOW_DEFAULT_DIRECTORY_ROOT);
 
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_GRAPHICS      , APPFLOW_DEFAULT_DIRECTORY_GRAPHICS);
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_FONTS         , APPFLOW_DEFAULT_DIRECTORY_FONTS);
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS    , APPFLOW_DEFAULT_DIRECTORY_UI_LAYOUTS);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_GRAPHICS, APPFLOW_DEFAULT_DIRECTORY_GRAPHICS);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_FONTS, APPFLOW_DEFAULT_DIRECTORY_FONTS);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS, APPFLOW_DEFAULT_DIRECTORY_UI_LAYOUTS);
 
 
   GEN_XPATHSMANAGER.CreateAllPathSectionOnDisk();
@@ -599,7 +597,7 @@ bool STATICTICSCHARTS::Ini_StaticticCharts()
 
   for(int d=0; d<48; d++)   
     {
-      values.Add((double)xrand->Between(10,80));     
+      values.Add((double)xrand->Between(10, 80));     
     }
 
   
@@ -745,7 +743,7 @@ bool STATICTICSCHARTS::Ini_Graphics(GRPSCREEN* screen)
 
   screen->GetTitle()->Set(__L("Statictics Chars Canvas"));  
 
-  GetMainScreen()->CreateViewport(GRPVIEWPORT_ID_MAIN , 0.0f, 0.0f, (float)screen->GetWidth()   , (float)screen->GetHeight(), 0, 0, (screen->GetWidth()), (screen->GetHeight()));
+  GetMainScreen()->CreateViewport(GRPVIEWPORT_ID_MAIN, 0.0f, 0.0f, (float)screen->GetWidth(), (float)screen->GetHeight(), 0, 0, (screen->GetWidth()), (screen->GetHeight()));
 
   //--------------------------------------------------------------------------------------
 
@@ -853,7 +851,6 @@ bool STATICTICSCHARTS::Ini_UserInterface(bool on)
         
   return true;
 }
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------

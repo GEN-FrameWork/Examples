@@ -134,9 +134,9 @@ bool NETCONN_CFG::DoVariableMapping()
   //-----------------------------------------------------
   // Connection
 
-  AddValue(XFILECFG_VALUETYPE_BOOLEAN   , NETCONN_CFG_SECTION_CONNECTION        , NETCONN_CFG_CONNECTION_ISSERVER                , &connection_isserver                                 , __L("Is server active")                                                                 , APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
-  AddValue(XFILECFG_VALUETYPE_STRING    , NETCONN_CFG_SECTION_CONNECTION        , NETCONN_CFG_CONNECTION_TRANSPORTTYPE           , &connection_transporttype                            , __L("Transport type")                                                                   , APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
-  AddValue(XFILECFG_VALUETYPE_STRING    , NETCONN_CFG_SECTION_CONNECTION        , NETCONN_CFG_CONNECTION_TRANSPORTCONFIG         , &connection_transportconfig                          , __L("Transport config")                                                                 , APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
+  AddValue(XFILECFG_VALUETYPE_BOOLEAN, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_ISSERVER, &connection_isserver, __L("Is server active"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
+  AddValue(XFILECFG_VALUETYPE_STRING, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_TRANSPORTTYPE, &connection_transporttype, __L("Transport type"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
+  AddValue(XFILECFG_VALUETYPE_STRING, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_TRANSPORTCONFIG, &connection_transportconfig, __L("Transport config"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
   
   return true;
 }

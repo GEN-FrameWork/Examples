@@ -32,15 +32,11 @@
 
 #include "APPFlowCFG.h"
 
-
-
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
 #define INIBASE_CFG_SECTION_GENERAL                           __L("general")
 
 #define INIBASE_APPFLOW_CFG_DEFAULT_REMARK_COLUMN             98
-
-
 
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 

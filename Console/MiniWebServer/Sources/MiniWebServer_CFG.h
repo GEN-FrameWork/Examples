@@ -32,8 +32,6 @@
 
 #include "APPFlowCFG.h"
 
-
-
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
 #define MINIWEBSERVER_CFG_SECTION_PROTOCOL                            __L("protocol")

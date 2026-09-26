@@ -32,14 +32,10 @@
 
 #include "XSerializable.h"
 
-
-
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
 #define NETCONN_AGENTSTATE_TOTALMEMORY_STR    __L("total_memory") 
 #define NETCONN_AGENTSTATE_FREEMEMORY_STR     __L("free_memory")
-
-
 
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 

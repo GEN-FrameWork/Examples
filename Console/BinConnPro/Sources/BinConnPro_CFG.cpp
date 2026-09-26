@@ -66,7 +66,6 @@ bool BINCONNPRO_CFG::GetIsInstanced()
 }
 
 
-
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         BINCONNPRO_CFG& BINCONNPRO_CFG::GetInstance(bool ini)
@@ -128,10 +127,10 @@ bool BINCONNPRO_CFG::DoVariableMapping()
   //-----------------------------------------------------
   // MACHINE PROTOCOL
 
-  AddValue(XFILECFG_VALUETYPE_BOOLEAN , BINCONNPRO_CFG_SECTION_PROTOCOL       , BINCONNPRO_CFG_PROTOCOL_ISACTIVE                      , &protocol_isactive);
-  AddValue(XFILECFG_VALUETYPE_BOOLEAN , BINCONNPRO_CFG_SECTION_PROTOCOL       , BINCONNPRO_CFG_PROTOCOL_ISLOCALENUMACTIVE             , &protocol_islocalenumactive);
-  AddValue(XFILECFG_VALUETYPE_INT     , BINCONNPRO_CFG_SECTION_PROTOCOL       , BINCONNPRO_CFG_PROTOCOL_PORT                          , &protocol_port);
-  AddValue(XFILECFG_VALUETYPE_STRING  , BINCONNPRO_CFG_SECTION_PROTOCOL       , BINCONNPRO_CFG_PROTOCOL_TARGET                        , &protocol_target);
+  AddValue(XFILECFG_VALUETYPE_BOOLEAN, BINCONNPRO_CFG_SECTION_PROTOCOL, BINCONNPRO_CFG_PROTOCOL_ISACTIVE, &protocol_isactive);
+  AddValue(XFILECFG_VALUETYPE_BOOLEAN, BINCONNPRO_CFG_SECTION_PROTOCOL, BINCONNPRO_CFG_PROTOCOL_ISLOCALENUMACTIVE, &protocol_islocalenumactive);
+  AddValue(XFILECFG_VALUETYPE_INT, BINCONNPRO_CFG_SECTION_PROTOCOL, BINCONNPRO_CFG_PROTOCOL_PORT, &protocol_port);
+  AddValue(XFILECFG_VALUETYPE_STRING, BINCONNPRO_CFG_SECTION_PROTOCOL, BINCONNPRO_CFG_PROTOCOL_TARGET, &protocol_target);
 
   return true;
 }
@@ -170,7 +169,6 @@ bool BINCONNPRO_CFG::DoDefault()
 }
 
 
-
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         bool BINCONNPRO_CFG::Protocol_IsActive()
@@ -184,7 +182,6 @@ bool BINCONNPRO_CFG::Protocol_IsActive()
 {
   return protocol_isactive;
 }
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------
@@ -202,7 +199,6 @@ bool BINCONNPRO_CFG::Protocol_IsLocalEnumActive()
 }
 
 
-
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         int BINCONNPRO_CFG::Protocol_GetPort()
@@ -216,7 +212,6 @@ int BINCONNPRO_CFG::Protocol_GetPort()
 {
   return protocol_port;
 }
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------
@@ -274,7 +269,6 @@ BINCONNPRO_CFG::~BINCONNPRO_CFG()
 {
   Clean();
 }
-
 
 
 /**-------------------------------------------------------------------------------------------------------------------

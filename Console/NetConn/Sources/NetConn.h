@@ -90,7 +90,6 @@ enum NETCONNTASKID
 
 
 
-
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 
 class XTIME;
@@ -111,7 +110,6 @@ class APPFLOWINTERNETSERVICES;
 class NETCONN_COREPROTOCOL_CONNECTIONSMANAGER;
 class NETCONN_AGENTSTATE;
 class NETCONN_TESTUPDATECLASS;
-
 
 class NETCONN : public APPFLOWCONSOLE, public XOBSERVER, public XFSMACHINE
 {

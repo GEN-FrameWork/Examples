@@ -195,9 +195,7 @@ bool UI_SYSTEM::AppProc_Ini()
 
   Application_GetName()->Set(APPLICATION_NAMEAPP);
 
-  SetInitOptions( APPFLOWGRAPHICS_INIOPTION_CREATEMAINSCREEN    |
-                  APPFLOWGRAPHICS_INIOPTION_SHOWMAINSCREEN      |
-                  APPFLOWGRAPHICS_INIOPTION_INPUT);
+  SetInitOptions(APPFLOWGRAPHICS_INIOPTION_CREATEMAINSCREEN | APPFLOWGRAPHICS_INIOPTION_SHOWMAINSCREEN | APPFLOWGRAPHICS_INIOPTION_INPUT);
 
   //--------------------------------------------------------------------------------------------------
 
@@ -209,9 +207,9 @@ bool UI_SYSTEM::AppProc_Ini()
 
   GEN_XPATHSMANAGER.AdjustRootPathDefault(APPFLOW_DEFAULT_DIRECTORY_ROOT);
 
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_GRAPHICS      , APPFLOW_DEFAULT_DIRECTORY_GRAPHICS);
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_FONTS         , APPFLOW_DEFAULT_DIRECTORY_FONTS);
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS    , APPFLOW_DEFAULT_DIRECTORY_UI_LAYOUTS);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_GRAPHICS, APPFLOW_DEFAULT_DIRECTORY_GRAPHICS);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_FONTS, APPFLOW_DEFAULT_DIRECTORY_FONTS);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS, APPFLOW_DEFAULT_DIRECTORY_UI_LAYOUTS);
 
 
   GEN_XPATHSMANAGER.CreateAllPathSectionOnDisk();
@@ -564,12 +562,12 @@ bool UI_SYSTEM::UpdateInput()
 
               if(changed)
                 {
-                  GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_CURSOR_MOVE,  cursor_x,  cursor_y);
+                  GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_CURSOR_MOVE, cursor_x, cursor_y);
                 }
 
               if(button[UI_SYSTEM_BUTTON_MOUSE]->IsPressedWithRelease())
                 {
-                  GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_SELECCTION,  cursor_x,  cursor_y);   
+                  GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_SELECCTION, cursor_x, cursor_y);   
 
                   cursor->GetMotion()->Reset();       
                 }
@@ -578,8 +576,8 @@ bool UI_SYSTEM::UpdateInput()
                 {             
                   if(button[UI_SYSTEM_BUTTON_TOUCHSCREEN]->IsPressed())
                     {             
-                      GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_CURSOR_MOVE,  cursor_x,  cursor_y);
-                      GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_SELECCTION,   cursor_x, cursor_y);          
+                      GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_CURSOR_MOVE, cursor_x, cursor_y);
+                      GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_SELECCTION, cursor_x, cursor_y);          
 
                       cursor->GetMotion()->Reset();
                     }
@@ -651,7 +649,7 @@ bool UI_SYSTEM::Ini_Graphics(GRPSCREEN* screen)
 
   //--------------------------------------------------------------------------------------
 
-  GetMainScreen()->CreateViewport(GRPVIEWPORT_ID_MAIN , 0.0f, 0.0f, (float)screen->GetWidth()   , (float)screen->GetHeight(), 0, 0, (screen->GetWidth()), (screen->GetHeight()));
+  GetMainScreen()->CreateViewport(GRPVIEWPORT_ID_MAIN, 0.0f, 0.0f, (float)screen->GetWidth(), (float)screen->GetHeight(), 0, 0, (screen->GetWidth()), (screen->GetHeight()));
 
   // Fase 5: allow window growth beyond design for autofit/pillarbox demos (WM_GETMINMAXINFO uses viewport max).
   {
@@ -795,8 +793,7 @@ bool UI_SYSTEM::Ini_UserInterface(bool on)
         GEN_USERINTERFACE.UIScale_PrepareLayout(dashboard);
         if(screen)
           {
-            XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("[UI_System] Android UIScale=1.0 design=%dx%d (GLES letterbox fits device)"),
-                              dashboard->GetDesignWidth(), dashboard->GetDesignHeight());
+            XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("[UI_System] Android UIScale=1.0 design=%dx%d (GLES letterbox fits device)"), dashboard->GetDesignWidth(), dashboard->GetDesignHeight());
           }
         #else
         if(doautofit && !useenv)
@@ -930,13 +927,7 @@ bool UI_SYSTEM::DrawFrame()
 
   if((diag_t3 - diag_t0) > 20000)
     {
-      XDIAGLOG_WRITE("SLOWFRAME", "n=%llu total=%lluus canvasrebuild=%lluus elementsrebuild=%lluus update=%lluus skinvisits=%u skinvisible=%u skindirty=%u shadowcalls=%u shadowus=%llu shadowhits=%u shadowmiss=%u",
-                      (unsigned long long)diag_framecounter,
-                      (unsigned long long)(diag_t3-diag_t0), (unsigned long long)(diag_t1-diag_t0),
-                      (unsigned long long)(diag_t2-diag_t1), (unsigned long long)(diag_t3-diag_t2),
-                      (unsigned int)diagskin_visits, (unsigned int)diagskin_visible, (unsigned int)diagskin_dirty,
-                      (unsigned int)diagskin_shadowcalls, (unsigned long long)diagskin_shadowus,
-                      (unsigned int)diagskin_shadowcachehits, (unsigned int)diagskin_shadowcachemiss);
+      XDIAGLOG_WRITE("SLOWFRAME", "n=%llu total=%lluus canvasrebuild=%lluus elementsrebuild=%lluus update=%lluus skinvisits=%u skinvisible=%u skindirty=%u shadowcalls=%u shadowus=%llu shadowhits=%u shadowmiss=%u", (unsigned long long)diag_framecounter, (unsigned long long)(diag_t3-diag_t0), (unsigned long long)(diag_t1-diag_t0), (unsigned long long)(diag_t2-diag_t1), (unsigned long long)(diag_t3-diag_t2), (unsigned int)diagskin_visits, (unsigned int)diagskin_visible, (unsigned int)diagskin_dirty, (unsigned int)diagskin_shadowcalls, (unsigned long long)diagskin_shadowus, (unsigned int)diagskin_shadowcachehits, (unsigned int)diagskin_shadowcachemiss);
     }
 
   if((XDIAGLOG_NOWUS() - diag_hb_windowstart) > 1000000ULL)
@@ -1058,11 +1049,7 @@ bool UI_SYSTEM::HardwareInfo_Compute(bool forced)
 
   if((diagh_t6 - diagh_t0) > 5000)   // this whole unlocked block took over 5ms
     {
-      XDIAGLOG_WRITE("HWINFO", "cpu=%lluus mem=%lluus datetime=%lluus volumes=%lluus connection=%lluus footer=%lluus total=%lluus",
-                      (unsigned long long)(diagh_t1-diagh_t0), (unsigned long long)(diagh_t2-diagh_t1),
-                      (unsigned long long)(diagh_t3-diagh_t2), (unsigned long long)(diagh_t4-diagh_t3),
-                      (unsigned long long)(diagh_t5-diagh_t4), (unsigned long long)(diagh_t6-diagh_t5),
-                      (unsigned long long)(diagh_t6-diagh_t0));
+      XDIAGLOG_WRITE("HWINFO", "cpu=%lluus mem=%lluus datetime=%lluus volumes=%lluus connection=%lluus footer=%lluus total=%lluus", (unsigned long long)(diagh_t1-diagh_t0), (unsigned long long)(diagh_t2-diagh_t1), (unsigned long long)(diagh_t3-diagh_t2), (unsigned long long)(diagh_t4-diagh_t3), (unsigned long long)(diagh_t5-diagh_t4), (unsigned long long)(diagh_t6-diagh_t5), (unsigned long long)(diagh_t6-diagh_t0));
     }
 
   //--------------------------------------------------------------------------------------
@@ -1331,7 +1318,7 @@ bool UI_SYSTEM::DashboardSlot_ApplySection(UI_SYSTEM_SECTIONID sectionID)
                       (sectionID == UI_SYSTEM_SECTIONID_MEMORIA) ||
                       (sectionID == UI_SYSTEM_SECTIONID_DISCO));
 
-  UI_ELEMENT* element_datetime = GEN_USERINTERFACE.Element_Get(__L("card_datetime")   , UI_ELEMENT_TYPE_FORM);
+  UI_ELEMENT* element_datetime = GEN_USERINTERFACE.Element_Get(__L("card_datetime"), UI_ELEMENT_TYPE_FORM);
   UI_ELEMENT* element_history  = GEN_USERINTERFACE.Element_Get(__L("card_cpu_history"), UI_ELEMENT_TYPE_FORM);
 
   if(!element_datetime || !element_history) return false;
@@ -1713,7 +1700,7 @@ bool UI_SYSTEM::HardwareInfo_UpdateDateTime(XSTRING& outdate, XSTRING& outtime)
 
   xdatetime->Read();
 
-  outdate.Format(__L("%02d/%02d/%04d"), xdatetime->GetDay(),  xdatetime->GetMonth(),   xdatetime->GetYear());
+  outdate.Format(__L("%02d/%02d/%04d"), xdatetime->GetDay(), xdatetime->GetMonth(), xdatetime->GetYear());
   outtime.Format(__L("%02d:%02d:%02d"), xdatetime->GetHours(), xdatetime->GetMinutes(), xdatetime->GetSeconds());
 
   GEN_XFACTORY.DeleteDateTime(xdatetime);
@@ -1856,7 +1843,7 @@ bool UI_SYSTEM::HardwareInfo_UpdateVolumes(XSTRING* outname, XSTRING* outused, X
 
       if(name && name->GetSize())
         {
-          if(label && label->GetSize()) outname[c].Format(__L("%s  %s"), name->Get(), label->Get());
+          if(label && label->GetSize()) outname[c].Format(__L("%s %s"), name->Get(), label->Get());
            else                         outname[c].Set(name->Get());
         }
        else
@@ -2484,8 +2471,7 @@ void UI_SYSTEM::HandleEvent_Graphics(GRPXEVENT* event)
                                                     dashboard->SetUIScaleForFit(UI_LAYOUT_UISCALE_DEFAULT);
                                                     GEN_USERINTERFACE.UIScale_PrepareLayout(dashboard);
                                                     GEN_USERINTERFACE.Update();
-                                                    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("[UI_System] Android config: keep design %dx%d UIScale=1.0"),
-                                                                      dashboard->GetDesignWidth(), dashboard->GetDesignHeight());
+                                                    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("[UI_System] Android config: keep design %dx%d UIScale=1.0"), dashboard->GetDesignWidth(), dashboard->GetDesignHeight());
                                                     #else
                                                     if(dashboard->GetUIScaleAutofit())
                                                       {
@@ -2508,10 +2494,7 @@ void UI_SYSTEM::HandleEvent_Graphics(GRPXEVENT* event)
 
                                                     GEN_USERINTERFACE.Update();
 
-                                                    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("[UI_System] UIScale size -> %.2f autofit=%d (%dx%d)"),
-                                                                      dashboard->GetUIScale(),
-                                                                      dashboard->GetUIScaleAutofit() ? 1 : 0,
-                                                                      screen->GetWidth(), screen->GetHeight());
+                                                    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("[UI_System] UIScale size -> %.2f autofit=%d (%dx%d)"), dashboard->GetUIScale(), dashboard->GetUIScaleAutofit() ? 1 : 0, screen->GetWidth(), screen->GetHeight());
                                                     #endif
                                                   }
                                               }

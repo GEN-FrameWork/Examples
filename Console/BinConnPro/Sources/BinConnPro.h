@@ -104,7 +104,6 @@ enum BINCONNPROTASKID
                                                         }             \
                                                     }
 
-
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 
 class XTIME;
@@ -125,7 +124,6 @@ class APPFLOWINTERNETSERVICES;
 class BINCONNPRO_PROTOCOL;
 class BINCONNPRO_APPLICATIONDATA;
 class BINCONNPRO_CONNECTIONSMANAGER;
-
 
 class BINCONNPRO : public APPFLOWCONSOLE, public XOBSERVER, public XFSMACHINE
 {

@@ -32,7 +32,6 @@
 
 #include "APPFlowCFG.h"
 
-
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
 #define UI_MESSAGECFG_SECTIONGENERAL    __L("general")

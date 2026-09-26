@@ -86,8 +86,6 @@ enum SCRIPTSEXAMPLETASKID
 
 #define APPLICATION_YEAROFCREATION                2018
 
-
-
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 
 class XTIME;
@@ -106,7 +104,6 @@ class GRPBITMAPSECUENCE;
 class GRPXEVENT;
 class SCRIPT;
 class SCRIPTSEXAMPLE_CFG;
-
 
 class SCRIPTSEXAMPLE : public APPFLOWCONSOLE, public XFSMACHINE
 {
