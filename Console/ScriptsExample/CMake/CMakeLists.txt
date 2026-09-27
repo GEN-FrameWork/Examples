@@ -51,7 +51,9 @@ option(SCRIPT_LIB_CONSOLE_FEATURE                               "Script Lib Cons
 option(SCRIPT_LIB_CFG_FEATURE                                   "Script Lib Config File"                                  ON )          
 option(SCRIPT_LIB_WINDOW_FEATURE                                "Script Lib Window"                                       ON ) 
 option(SCRIPT_LIB_INPUTSIMULATE_FEATURE                         "Script Lib Input Simulated"                              ON )   
-option(SCRIPT_LIB_DEVTEST_FEATURE                               "Script Lib Developed Test Funcions"                      ON )    
+option(SCRIPT_LIB_DEVTEST_FEATURE                               "Script Lib Developed Test Funcions"                      ON )
+# Trusted by default. Set ON for sandbox (restricted Lua libs; no auto Dir/Process).
+option(SCRIPT_LIB_SANDBOX_FEATURE                               "Script Lib Sandbox (restrict Lua + omit Dir/Process)"    OFF )
 
 option(DIO_FEATURE                                              "Input/Output"                                            ON )
 
