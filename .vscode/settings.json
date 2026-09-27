@@ -4,14 +4,14 @@
   "cmake.configureOnOpen": false,
   "cmake.autoSelectActiveFolder": false,
   "cmake.skipConfigureIfCachePresent": true,
-  "cmake.sourceDirectory": "${workspaceFolder}/Graphics/UI_System/CMake",
+  "cmake.sourceDirectory": "${workspaceFolder}/Console/ScriptsExample/CMake",
   "cmake.defaultConfigurePreset": "2-windows-intel64",
   "cmake.defaultBuildPreset": "2-windows-intel64",
-  "cmake.copyCompileCommands": "${workspaceFolder}/Graphics/UI_System/CMake/compile_commands.json",
-  "C_Cpp.default.compileCommands": "${workspaceFolder}/Graphics/UI_System/CMake/compile_commands.json",
+  "cmake.copyCompileCommands": "${workspaceFolder}/Console/ScriptsExample/CMake/compile_commands.json",
+  "C_Cpp.default.compileCommands": "${workspaceFolder}/Console/ScriptsExample/CMake/compile_commands.json",
   "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
   "clangd.arguments": [
-    "--compile-commands-dir=${workspaceFolder}/Graphics/UI_System/CMake"
+    "--compile-commands-dir=${workspaceFolder}/Console/ScriptsExample/CMake"
   ],
   "files.associations": {
     "*.cmake": "cmake",
