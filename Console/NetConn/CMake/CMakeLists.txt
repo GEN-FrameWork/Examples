@@ -24,7 +24,6 @@ option(DIO_FEATURE                                              "Data Input/Outp
 option(DIO_CHECKCONNECTIONS_FEATURE                             "Check Connections"                                       ON )
 option(DIO_NETWORKTIMEPROTOCOL_FEATURE                          "Network Time Protocol"                                   ON )
 option(DIO_DYNDNS_FEATURE                                       "DynDNS"                                                  ON )
-option(DIO_SCRAPERWEB_FEATURE                                   "Scraper Web"                                             ON )
 option(DIO_STREAM_FEATURE                                       "Stream"                                                  ON )    
 option(DIO_STREAMUART_FEATURE                                   "Stream UART"                                             ON )    
 option(DIO_STREAMTCPIP_FEATURE                                  "Stream TCPIP"                                            ON )

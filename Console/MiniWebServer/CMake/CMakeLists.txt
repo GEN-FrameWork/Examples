@@ -29,7 +29,6 @@ option(DIO_CHECKCONNECTIONS_FEATURE                             "Check Connectio
 option(DIO_NETWORKTIMEPROTOCOL_FEATURE                          "Network Time Protocol"                                   ON )
 option(DIO_DYNDNS_FEATURE                                       "DynDNS"                                                  ON )
 option(DIO_WEBSERVER_FEATURE                                    "Web Server"                                              ON )
-option(DIO_SCRAPERWEB_FEATURE                                   "Scraper Web"                                             ON )
     
 option(APPFLOW_FEATURE                                          "Application Flow modules"                                ON )
 option(APPFLOW_CONSOLE_FEATURE                                  "Application Flow Console"                                ON )

@@ -27,7 +27,7 @@ option(DIO_FEATURE                                              "Data Input/Outp
 option(DIO_CHECKCONNECTIONS_FEATURE                             "Check Connections"                                       ON )
 option(DIO_NETWORKTIMEPROTOCOL_FEATURE                          "Network Time Protocol"                                   ON )
 option(DIO_DYNDNS_FEATURE                                       "DynDNS"                                                  ON )
-option(DIO_SCRAPERWEB_FEATURE                                   "Scraper Web"                                             ON )
+
 
 option(DIO_PROTOCOL_FEATURE                                     "Data Input/Output Protocol"                              ON )
     
