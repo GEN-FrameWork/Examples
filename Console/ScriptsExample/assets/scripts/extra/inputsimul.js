@@ -36,18 +36,20 @@ function main()
 
   Log_AddEntry(1, "Script", "[script %s] Exec application: %s", scriptname, appname);
  
-  Window_SetPosition(appname, windowtitle, 10, 10);
-  Window_Resize(appname, windowtitle, 800, 600);
-  Window_SetFocus(appname, windowtitle);
+  Screen_SetPosition(appname, windowtitle, 10, 10);
+  Screen_Resize(appname, windowtitle, 800, 600);
+  Screen_SetFocus(appname, windowtitle);
 
-  Window_SetBmpFindCFG(2, 0);
+  Screen_SetBmpFindCFG(2, 0);
 
-  var posx = Window_GetPosX(appname, windowtitle, maskbitmapname);
-  var posy = Window_GetPosY(appname, windowtitle, maskbitmapname);
+  var outx = { value: 0 };
+  var outy = { value: 0 };
+  Screen_GetPosX(appname, windowtitle, maskbitmapname, outx);
+  Screen_GetPosY(appname, windowtitle, maskbitmapname, outy);
 
-  TracePrintColor(1, "Position of %s %d, %d", appname, posx, posy);
+  TracePrintColor(1, "Position of %s %d, %d", appname, outx.value, outy.value);
 
-  InpSim_Mouse_Click(posx, posy);
+  InpSim_Mouse_Click(outx.value, outy.value);
 
   /*
   InpSim_Mouse_Click(posx + 30, posy + 50);
@@ -98,15 +100,15 @@ function main()
   InpSim_Key_ClickByLiteral("\\" , 1);
   InpSim_Key_ClickByLiteral("\"" , 1);
   
-  //InpSim_Key_ClickByLiteral("¿"  , 1);
-  //InpSim_Key_ClickByLiteral("¡"  , 1);
-  //InpSim_Key_ClickByLiteral("ñ"  , 1);
-  //InpSim_Key_ClickByLiteral("Ñ"  , 1);
-  //InpSim_Key_ClickByLiteral("·"  , 1);
+  //InpSim_Key_ClickByLiteral("ï¿½"  , 1);
+  //InpSim_Key_ClickByLiteral("ï¿½"  , 1);
+  //InpSim_Key_ClickByLiteral("ï¿½"  , 1);
+  //InpSim_Key_ClickByLiteral("ï¿½"  , 1);
+  //InpSim_Key_ClickByLiteral("ï¿½"  , 1);
  
   InpSim_Key_ClickByLiteral("ENTER", 1);
 
-  InpSim_Key_ClickByText("Texto De Prueba 0123456789 !@#$%^&*()_+-=[]{}|;:',.<¿¡ñÑ?/\\\"·", 1);
+  InpSim_Key_ClickByText("Texto De Prueba 0123456789 !@#$%^&*()_+-=[]{}|;:',.<ï¿½ï¿½ï¿½ï¿½?/\\\"ï¿½", 1);
   */
 
   Sleep(1000);

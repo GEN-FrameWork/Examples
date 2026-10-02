@@ -112,8 +112,10 @@ form.sidebar-nav {
   flex-direction:   column;
   /* Track L.2: rem gap (0.5rem = 8px at --root-font-size 16). Same visual as former row-gap: 8. */
   row-gap:          0.5rem;
-  /* Fase 8 demo: rem padding against :root --root-font-size. */
-  padding-top:      0.5rem;
+  /* padding-top must stay 0: nav-*-btn hit overlays are absolute (ypos 118/174/...). First row
+     offset is only nav-resumen-row margin-top:24 from sidebar top (y=46) -> row top 70 = btn top.
+     A non-zero padding-top shifts every flex row down while the hover/selected wash stays on the
+     buttons, so the band reads "a few pixels too high" relative to icon+label (2026-10 regression). */
 }
 
 form.nav-row {
