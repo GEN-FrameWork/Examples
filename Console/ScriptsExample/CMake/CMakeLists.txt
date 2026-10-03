@@ -53,6 +53,7 @@ option(DIO_SCRAPERWEB_GEOLOCATIONIP_FEATURE                     "Scraper Web Geo
 option(DIO_SCRAPERWEB_WEATHER_FEATURE                           "Scraper Web Weather"                                     ON )
 option(DIO_SCRAPERWEB_TRANSLATION_FEATURE                       "Scraper Web Translation"                                 ON )
 option(DIO_SCRAPERWEB_MACMANUFACTURER_FEATURE                   "Scraper Web MAC Manufacturer"                            ON )
+option(DIO_SCRAPERWEB_USERAGENTID_FEATURE                       "Scraper Web User Agent ID"                                ON )
 option(SCRIPT_LIB_LOG_FEATURE                                   "Script Lib Log"                                          ON )    
 option(SCRIPT_LIB_CONSOLE_FEATURE                               "Script Lib Console"                                      ON ) 
 option(SCRIPT_LIB_CFG_FEATURE                                   "Script Lib Config File"                                  ON )          
