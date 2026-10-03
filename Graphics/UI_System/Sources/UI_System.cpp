@@ -2139,7 +2139,13 @@ bool UI_SYSTEM::UserInterface_ElementSelected(UI_ELEMENT* element)
 {
   if(!element) return false;
 
+  XSTRING elementname;
 
+  elementname = element->GetName()->Get();
+
+  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("UI Element [%s]: Selected! "), element->GetName()->Get());
+
+  // Chrome / window controls. Test IDs: ActionScriptQA/assets/scripts/tests_catalog.json
   switch(element->GetChromeRole())
     {
       case UI_ELEMENT_CHROMEROLE_ICON     : break;
@@ -2164,36 +2170,79 @@ bool UI_SYSTEM::UserInterface_ElementSelected(UI_ELEMENT* element)
                                             }
                                             break;
 
-      case UI_ELEMENT_CHROMEROLE_CLOSE    : SetExitType(APPFLOWBASE_EXITTYPE_BY_USER);
-                                            break;
+      case UI_ELEMENT_CHROMEROLE_CLOSE    : // UI_System: chrome close selected
+                                            XTRACE_PRINTMSGTESTS(1099, 0);
+                                            SetExitType(APPFLOWBASE_EXITTYPE_BY_USER);
+                                            return true;
 
       default                             : break;
     }
 
+  // Sidebar menu. Each branch emits TESTS_RESULT (id, 0=ok) then switches section.
+  if(!elementname.Compare(__L("nav-resumen-btn"), true))
+    {
+      // UI_System: nav Resumen selected
+      XTRACE_PRINTMSGTESTS(1001, 0);
+      UserInterface_SelectSection(UI_SYSTEM_SECTIONID_RESUMEN);
+    }
 
-  XSTRING elementname;
+  if(!elementname.Compare(__L("nav-cpu-btn"), true))
+    {
+      // UI_System: nav CPU selected
+      XTRACE_PRINTMSGTESTS(1002, 0);
+      UserInterface_SelectSection(UI_SYSTEM_SECTIONID_CPU);
+    }
 
-  elementname = element->GetName()->Get();
+  if(!elementname.Compare(__L("nav-memoria-btn"), true))
+    {
+      // UI_System: nav Memoria selected
+      XTRACE_PRINTMSGTESTS(1003, 0);
+      UserInterface_SelectSection(UI_SYSTEM_SECTIONID_MEMORIA);
+    }
 
-  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("UI Element [%s]: Selected! "), element->GetName()->Get());
+  if(!elementname.Compare(__L("nav-red-btn"), true))
+    {
+      // UI_System: nav Red selected
+      XTRACE_PRINTMSGTESTS(1004, 0);
+      UserInterface_SelectSection(UI_SYSTEM_SECTIONID_RED);
+    }
 
-  if(!elementname.Compare(__L("nav-resumen-btn")       , true)) UserInterface_SelectSection(UI_SYSTEM_SECTIONID_RESUMEN);
-  if(!elementname.Compare(__L("nav-cpu-btn")           , true)) UserInterface_SelectSection(UI_SYSTEM_SECTIONID_CPU);
-  if(!elementname.Compare(__L("nav-memoria-btn")       , true)) UserInterface_SelectSection(UI_SYSTEM_SECTIONID_MEMORIA);
-  if(!elementname.Compare(__L("nav-red-btn")           , true)) UserInterface_SelectSection(UI_SYSTEM_SECTIONID_RED);
-  if(!elementname.Compare(__L("nav-disco-btn")         , true)) UserInterface_SelectSection(UI_SYSTEM_SECTIONID_DISCO);
-  if(!elementname.Compare(__L("nav-procesos-btn")      , true)) UserInterface_SelectSection(UI_SYSTEM_SECTIONID_PROCESOS);
-  if(!elementname.Compare(__L("nav-alertas-btn")       , true)) UserInterface_SelectSection(UI_SYSTEM_SECTIONID_ALERTAS);
-  if(!elementname.Compare(__L("nav-configuracion-btn") , true)) UserInterface_SelectSection(UI_SYSTEM_SECTIONID_CONFIGURACION);
+  if(!elementname.Compare(__L("nav-disco-btn"), true))
+    {
+      // UI_System: nav Disco selected
+      XTRACE_PRINTMSGTESTS(1005, 0);
+      UserInterface_SelectSection(UI_SYSTEM_SECTIONID_DISCO);
+    }
+
+  if(!elementname.Compare(__L("nav-procesos-btn"), true))
+    {
+      // UI_System: nav Procesos selected
+      XTRACE_PRINTMSGTESTS(1006, 0);
+      UserInterface_SelectSection(UI_SYSTEM_SECTIONID_PROCESOS);
+    }
+
+  if(!elementname.Compare(__L("nav-alertas-btn"), true))
+    {
+      // UI_System: nav Alertas selected
+      XTRACE_PRINTMSGTESTS(1007, 0);
+      UserInterface_SelectSection(UI_SYSTEM_SECTIONID_ALERTAS);
+    }
+
+  if(!elementname.Compare(__L("nav-configuracion-btn"), true))
+    {
+      // UI_System: nav Configuracion selected
+      XTRACE_PRINTMSGTESTS(1008, 0);
+      UserInterface_SelectSection(UI_SYSTEM_SECTIONID_CONFIGURACION);
+    }
 
   // Disk carousel buttons (empty hit targets over icons — same idea as nav-*-btn).
-  if((!elementname.Compare(__L("disk_prev_btn"), true)))
+  if(!elementname.Compare(__L("disk_prev_btn"), true))
     {
       HardwareInfo_CycleDisk(-1);
       HardwareInfo_Apply();
     }
 
-  if((!elementname.Compare(__L("disk_next_btn"), true)))
+  if(!elementname.Compare(__L("disk_next_btn"), true))
     {
       HardwareInfo_CycleDisk(+1);
       HardwareInfo_Apply();
