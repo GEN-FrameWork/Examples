@@ -224,12 +224,12 @@ bool INIBASE::AppProc_Ini()
       if(param)
         {
           
-          if(!param->Compare(__L("SERVER"), true))  
+          if(!param->Compare(_L("SERVER"), true))  
             {
               
             }
 
-          if(!param->Compare(__L("CLIENT"), true))  
+          if(!param->Compare(_L("CLIENT"), true))  
             {
               
             }
@@ -238,7 +238,7 @@ bool INIBASE::AppProc_Ini()
 
   //--------------------------------------------------------------------------------------------------
 
-  Application_GetName()->AddFormat(__L("%s"), APPLICATION_NAMEAPP); 
+  Application_GetName()->AddFormat(_L("%s"), APPLICATION_NAMEAPP); 
 
   GEN_SET_VERSION(Application_GetName()->Get(), APPLICATION_NAMEFILE, APPLICATION_VERSION, APPLICATION_SUBVERSION, APPLICATION_SUBVERSIONERR, APPLICATION_OWNER, APPLICATION_YEAROFCREATION)
   
@@ -299,8 +299,8 @@ bool INIBASE::AppProc_FirstUpdate()
 
   //--------------------------------------------------------------------------------------------------
   
-  //console->PrintMessage(__L(" "), 0, false, true);
-  //console->WaitKey(__L("  Pulsa una tecla para continuar... (%d)"), 1, false, 5);
+  //console->PrintMessage(_L(" "), 0, false, true);
+  //console->WaitKey(_L("  Pulsa una tecla para continuar... (%d)"), 1, false, 5);
 
   //--------------------------------------------------------------------------------------------------
 
@@ -436,10 +436,10 @@ bool INIBASE::KeyValidSecuences(int key)
 {
   XCHAR character = (XCHAR)key;
 
-  if((character<32) || (character>127)) character = __C('?');
-  APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, __L("Key pressed: 0x%02X [%c]"), key, character);
+  if((character<32) || (character>127)) character = _C('?');
+  APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, _L("Key pressed: 0x%02X [%c]"), key, character);
 
-  console->Printf(__L("\r \r"));
+  console->Printf(_L("\r \r"));
 
   switch(key)
     {

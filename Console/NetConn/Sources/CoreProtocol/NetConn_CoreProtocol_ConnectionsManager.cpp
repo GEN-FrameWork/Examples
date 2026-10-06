@@ -133,7 +133,7 @@ bool NETCONN_COREPROTOCOL_CONNECTIONSMANAGER::Ini(bool isserver)
 
   // ------------------------------------------------------------------------------------------------------
 
-  if(!APPFLOW_CFG.Connection_GetTransportType()->Compare(__L("TCPIP"), true))
+  if(!APPFLOW_CFG.Connection_GetTransportType()->Compare(_L("TCPIP"), true))
     {
       DIOSTREAMTCPIPCONFIG*  diostreamTCPIPCFG = NULL;
       DIOSTREAM*             diostreamTCPIP    = NULL;
@@ -147,7 +147,7 @@ bool NETCONN_COREPROTOCOL_CONNECTIONSMANAGER::Ini(bool isserver)
       diostreamTCPIPCFG->SetMode(isserver?DIOSTREAMMODE_SERVERMULTISOCKET:DIOSTREAMMODE_CLIENT);
   
       diostreamTCPIPCFG->SetFromString(APPFLOW_CFG.Connection_GetTransportConfig()->Get());
-      if(isserver) diostreamTCPIPCFG->GetRemoteURL()->Set(__L("")); 
+      if(isserver) diostreamTCPIPCFG->GetRemoteURL()->Set(_L("")); 
 
       diostreamTCPIP = GEN_DIOFACTORY.CreateStreamIO(diostreamTCPIPCFG);
       if(!diostreamTCPIP) 
@@ -167,7 +167,7 @@ bool NETCONN_COREPROTOCOL_CONNECTIONSMANAGER::Ini(bool isserver)
   
   // ------------------------------------------------------------------------------------------------------
 
-  if(!APPFLOW_CFG.Connection_GetTransportType()->Compare(__L("SERIAL"), true))
+  if(!APPFLOW_CFG.Connection_GetTransportType()->Compare(_L("SERIAL"), true))
     {
       protocolCFG.SetIsEncapsulatedBase64(true);
 
@@ -185,8 +185,8 @@ bool NETCONN_COREPROTOCOL_CONNECTIONSMANAGER::Ini(bool isserver)
       diostreamUARTCFG->SetMode(isserver?DIOSTREAMMODE_SERVER:DIOSTREAMMODE_CLIENT);
 
       //XSYSTEM_PLATFORM platform = GEN_XSYSTEM.GetPlatform();
-      //diostreamUARTCFG->SetFromString(__L("COM3,9600,8,N,1,NONE"));        
-      //diostreamUARTCFG->SetFromString(__L("/dev/ttyUSB0,9600,8,N,1,NONE"));  
+      //diostreamUARTCFG->SetFromString(_L("COM3,9600,8,N,1,NONE"));        
+      //diostreamUARTCFG->SetFromString(_L("/dev/ttyUSB0,9600,8,N,1,NONE"));  
         
       diostreamUARTCFG->SetFromString(APPFLOW_CFG.Connection_GetTransportConfig()->Get());
 
@@ -302,8 +302,8 @@ DIOCOREPROTOCOL* NETCONN_COREPROTOCOL_CONNECTIONSMANAGER::CreateProtocol(DIOCORE
   NETCONN_COREPROTOCOL_CONNECTION* netconn_connection = (NETCONN_COREPROTOCOL_CONNECTION*)connection;
   if(netconn_connection)
     {   
-      protocol->UpdateClass_Add(__L("agentstate"), netconn_connection->GetAgentState(), true, 180);
-      protocol->UpdateClass_Add(__L("testupdateclass"), netconn_connection->GetTestUpdateClass(), true, 0, DIOCOREPROTOCOL_UPDATECLASS_FLAG_FORCHANGE);
+      protocol->UpdateClass_Add(_L("agentstate"), netconn_connection->GetAgentState(), true, 180);
+      protocol->UpdateClass_Add(_L("testupdateclass"), netconn_connection->GetTestUpdateClass(), true, 0, DIOCOREPROTOCOL_UPDATECLASS_FLAG_FORCHANGE);
     }
 
   return protocol;  
@@ -343,7 +343,7 @@ void NETCONN_COREPROTOCOL_CONNECTIONSMANAGER::HandleEvent_CoreProtocolConnection
                                                                                           }
                                                                                       }
 
-                                                                                    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("[Net Conn] Create connection"));
+                                                                                    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("[Net Conn] Create connection"));
                                                                                   }
                                                                               }
                                                                               break;
@@ -358,7 +358,7 @@ void NETCONN_COREPROTOCOL_CONNECTIONSMANAGER::HandleEvent_CoreProtocolConnection
                                                                                     connection->Status_GetString(event->GetActualStatus(), actualstatusstring);
                                                                                     connection->Status_GetString(event->GetNextStatus(), nextstatusstring);
 
-                                                                                    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("[Net Conn] Change connection status: %s --> %s"), actualstatusstring.Get(), nextstatusstring.Get());
+                                                                                    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("[Net Conn] Change connection status: %s --> %s"), actualstatusstring.Get(), nextstatusstring.Get());
                                                                                   }
                                                                               }
                                                                               break;

@@ -79,10 +79,10 @@ enum SCRIPTSEXAMPLETASKID
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 0
 
-#define APPLICATION_NAMEAPP                       __L("Scripts Example")
-#define APPLICATION_NAMEFILE                      __L("scriptsexample")
+#define APPLICATION_NAMEAPP                       _L("Scripts Example")
+#define APPLICATION_NAMEFILE                      _L("scriptsexample")
 
-#define APPLICATION_OWNER                         __L("EndoraSoft")
+#define APPLICATION_OWNER                         _L("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2018
 

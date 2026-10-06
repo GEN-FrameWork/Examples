@@ -153,10 +153,10 @@ bool NETCONN_TESTUPDATECLASS::Update()
 
       switch(rand->Between(0, 3))
         {              
-          case  0 : string = __L("hello, how are you?");    break;
-          case  1 : string = __L("hello, Tests 1");         break;
-          case  2 : string = __L("hello, Tests 2");         break;
-          case  3 : string = __L("hello, Tests 3");         break;        
+          case  0 : string = _L("hello, how are you?");    break;
+          case  1 : string = _L("hello, Tests 1");         break;
+          case  2 : string = _L("hello, Tests 2");         break;
+          case  3 : string = _L("hello, Tests 3");         break;        
         }
 
       GEN_XFACTORY.DeleteRand(rand);

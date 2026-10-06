@@ -58,9 +58,9 @@
 *---------------------------------------------------------------------------------------------------------------------*/
 BINCONNPRO_PROTOCOL::BINCONNPRO_PROTOCOL(DIOSTREAM* diostream) : DIOPROTOCOL(diostream)
 {
-  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETDEVICETYPEANDID, __L(""), __L("DD"), RCV_GetDeviceTypeAndID, __L("GetDeviceTypeAndID"));
-  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETCENTERNAME, __L(""), __L("S"), RCV_GetCenterName, __L("GetCenterName"));
-  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETLOCATION, __L(""), __L("SSSSD"), RCV_GetLocation, __L("GetLocation"));
+  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETDEVICETYPEANDID, _L(""), _L("DD"), RCV_GetDeviceTypeAndID, _L("GetDeviceTypeAndID"));
+  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETCENTERNAME, _L(""), _L("S"), RCV_GetCenterName, _L("GetCenterName"));
+  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETLOCATION, _L(""), _L("SSSSD"), RCV_GetLocation, _L("GetLocation"));
 }
 
 

@@ -120,8 +120,8 @@ bool UI_SYSTEM_CFG::DoVariableMapping()
       return false;
     }
 
-  AddValue(XFILECFG_VALUETYPE_FLOAT, UI_SYSTEMCFG_SECTIONGENERAL, UI_SYSTEMCFG_UISCALE, &uiscale, __L("UI scale / zoom (0.75 .. 2.0)"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
-  AddValue(XFILECFG_VALUETYPE_BOOLEAN, UI_SYSTEMCFG_SECTIONGENERAL, UI_SYSTEMCFG_UISCALE_AUTOFIT, &uiscale_autofit, __L("Autofit UI scale to window (Fase 5)"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
+  AddValue(XFILECFG_VALUETYPE_FLOAT, UI_SYSTEMCFG_SECTIONGENERAL, UI_SYSTEMCFG_UISCALE, &uiscale, _L("UI scale / zoom (0.75 .. 2.0)"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
+  AddValue(XFILECFG_VALUETYPE_BOOLEAN, UI_SYSTEMCFG_SECTIONGENERAL, UI_SYSTEMCFG_UISCALE_AUTOFIT, &uiscale_autofit, _L("Autofit UI scale to window (Fase 5)"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
 
   return true;
 }
@@ -157,11 +157,11 @@ bool UI_SYSTEM_CFG::DoDefault()
   log_activesectionsID.Empty();
 
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_INITIATION;
-  log_activesectionsID                  += __L(",");
+  log_activesectionsID                  += _L(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_GENERIC;
-  log_activesectionsID                  += __L(",");
+  log_activesectionsID                  += _L(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_STATUSAPP;
-  log_activesectionsID                  += __L(",");
+  log_activesectionsID                  += _L(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_ENDING;
 
   log_levelmask                         = XLOGLEVEL_ALL;

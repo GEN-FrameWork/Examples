@@ -218,7 +218,7 @@ bool BINCONNPRO::AppProc_Ini()
       XSTRING* param = (XSTRING*)GetExecParams()->Get(0);
       if(param)
         {
-          if(!param->Compare(__L("SERVER"), true))  modeserver = true;
+          if(!param->Compare(_L("SERVER"), true))  modeserver = true;
         }
     }
 
@@ -288,8 +288,8 @@ bool BINCONNPRO::AppProc_FirstUpdate()
       status = true;
 
       if(modeserver)
-             string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, __L("Activando conexion servidor"));
-        else string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, __L("Activando conexion cliente"));
+             string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, _L("Activando conexion servidor"));
+        else string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, _L("Activando conexion cliente"));
 
       console->PrintMessage(string.Get(), 1, true, false);
 
@@ -304,7 +304,7 @@ bool BINCONNPRO::AppProc_FirstUpdate()
           if(modeserver)
             {
               status = connectionsmanager->Ini(modeserver, APPFLOW_CFG.Protocol_IsLocalEnumActive(), APPFLOW_CFG.Protocol_GetPort(), NULL);
-              connectionsmanager->TargetURL_Add(__L(""));
+              connectionsmanager->TargetURL_Add(_L(""));
             }
            else
             {
@@ -327,17 +327,17 @@ bool BINCONNPRO::AppProc_FirstUpdate()
           SubscribeEvent(DIOPROTOCOL_CONNECTIONSMANAGER_XEVENT_TYPE_DISCONNECTEDCONNECTION , connectionsmanager);
         }
 
-      stringresult = (status)?__L("Ok."):__L("ERROR!");
+      stringresult = (status)?_L("Ok."):_L("ERROR!");
       console->PrintMessage(stringresult.Get(), 0, false, true);
 
-      APPFLOW_LOG_ENTRY((status)?XLOGLEVEL_INFO:XLOGLEVEL_ERROR, APPFLOW_CFG_LOG_SECTIONID_INITIATION, false, __L("%s: %s") , string.Get(), stringresult.Get());
+      APPFLOW_LOG_ENTRY((status)?XLOGLEVEL_INFO:XLOGLEVEL_ERROR, APPFLOW_CFG_LOG_SECTIONID_INITIATION, false, _L("%s: %s") , string.Get(), stringresult.Get());
       if(!status) return false;
     }
 
   //--------------------------------------------------------------------------------------------------
 
-  console->PrintMessage(__L(" "), 0, false, true);
-  console->WaitKey(__L(" Pulsa una tecla para continuar... (%d)"), 1, false, 5);
+  console->PrintMessage(_L(" "), 0, false, true);
+  console->WaitKey(_L(" Pulsa una tecla para continuar... (%d)"), 1, false, 5);
 
   //--------------------------------------------------------------------------------------------------
 
@@ -429,8 +429,8 @@ bool BINCONNPRO::AppProc_End()
   if(connectionsmanager)
     {
       if(modeserver)
-             string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, __L("Desactivando conexion servidor"));
-        else string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, __L("Desactivando conexion cliente"));
+             string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, _L("Desactivando conexion servidor"));
+        else string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, _L("Desactivando conexion cliente"));
 
       console->PrintMessage(string.Get(), 1, true, false);
 
@@ -445,10 +445,10 @@ bool BINCONNPRO::AppProc_End()
       delete connectionsmanager;
       connectionsmanager = NULL;
 
-      stringresult = __L("Ok.");
+      stringresult = _L("Ok.");
 
       console->PrintMessage(stringresult.Get(), 0, false, true);
-      APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_ENDING, false, __L("%s: %s"), string.Get(), stringresult.Get());
+      APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_ENDING, false, _L("%s: %s"), string.Get(), stringresult.Get());
     }
 
   //--------------------------------------------------------------------------------------
@@ -495,10 +495,10 @@ bool BINCONNPRO::KeyValidSecuences(int key)
 {
   XCHAR character = (XCHAR)key;
 
-  if((character<32) || (character>127)) character = __C('?');
-  APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, __L("Key pressed: 0x%02X [%c]"), key, character);
+  if((character<32) || (character>127)) character = _C('?');
+  APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, _L("Key pressed: 0x%02X [%c]"), key, character);
 
-  console->Printf(__L("\r \r"));
+  console->Printf(_L("\r \r"));
 
   switch(key)
     {
@@ -525,14 +525,14 @@ bool BINCONNPRO::Show_ConnectionsStatus()
   XSTRING string;
   XSTRING string2;
 
-  string  = __L("Modo de protocolo");
+  string  = _L("Modo de protocolo");
   if(modeserver)
-          string2.Format(__L("Servidor"));
-    else  string2.Format(__L("Cliente"));
+          string2.Format(_L("Servidor"));
+    else  string2.Format(_L("Cliente"));
   Show_Line(string, string2);
 
   string.Empty();
-  string2.Format(__L("Puerto [%d] "), APPFLOW_CFG.Protocol_GetPort());
+  string2.Format(_L("Puerto [%d] "), APPFLOW_CFG.Protocol_GetPort());
   Show_Line(string, string2);
 
   return true;
@@ -555,11 +555,11 @@ bool BINCONNPRO::Show_DeviceConnectedStatus()
 
   if(modeserver)
     {
-      string  = __L("Dispositivos conectados");
+      string  = _L("Dispositivos conectados");
 
       if(!connectionsmanager->ProtocolConnections_GetNConnected())
         {
-          string2 = __L("Ninguno.");
+          string2 = _L("Ninguno.");
 
           Show_Line(string, string2);
         }
@@ -591,7 +591,7 @@ bool BINCONNPRO::Show_DeviceConnectedStatus()
 
               _applicationdata->device.GetDeviceTypeInString(typestring);
 
-              string.Format(__L(" %-16s [%8d] %-16s %-18s [%d.%d.%d]"), typestring.Get(), _applicationdata->device.GetID(), IPstring.Get(), _applicationdata->applicationname.Get(), _applicationdata->applicationversion, _applicationdata->applicationsubversion, _applicationdata->applicationsubversionerr);
+              string.Format(_L(" %-16s [%8d] %-16s %-18s [%d.%d.%d]"), typestring.Get(), _applicationdata->device.GetID(), IPstring.Get(), _applicationdata->applicationname.Get(), _applicationdata->applicationversion, _applicationdata->applicationsubversion, _applicationdata->applicationsubversionerr);
 
               Show_LineDirect(string, true);
             }
@@ -601,17 +601,17 @@ bool BINCONNPRO::Show_DeviceConnectedStatus()
     }
    else
     {
-      string  = __L("Estado dispositivo");
+      string  = _L("Estado dispositivo");
 
       string2.Empty();
 
       if(!connectionsmanager->ProtocolConnections_GetNConnected())
         {
-          string2 = __L("Desconectado");
+          string2 = _L("Desconectado");
         }
        else
         {
-          string2 = __L("Conectado");
+          string2 = _L("Conectado");
           if(connectionsmanager->ProtocolConnections_GetFirstConnected())
             {
               if(connectionsmanager->ProtocolConnections_GetFirstConnected()->GetDIOProtocol())
@@ -628,9 +628,9 @@ bool BINCONNPRO::Show_DeviceConnectedStatus()
                              XSTRING IPstring;
                              IP->GetXString(IPstring);
 
-                             string2 += __L(" [");
+                             string2 += _L(" [");
                              string2 += IPstring.Get();
-                             string2 += __L("]");
+                             string2 += _L("]");
                            }
                        }
                     }
@@ -660,8 +660,8 @@ bool BINCONNPRO::Show_AllStatus()
 
   APPFLOW_EXTENDED.ShowAll();
 
-  if(Show_ConnectionsStatus())      console->PrintMessage(__L(""), 0, false, true);
-  if(Show_DeviceConnectedStatus())  console->PrintMessage(__L(""), 0, false, true);
+  if(Show_ConnectionsStatus())      console->PrintMessage(_L(""), 0, false, true);
+  if(Show_DeviceConnectedStatus())  console->PrintMessage(_L(""), 0, false, true);
 
   if(xmutexshowallstatus) xmutexshowallstatus->UnLock();
 
@@ -703,7 +703,7 @@ bool BINCONNPRO::InitializeProtocolConnectionServer(BINCONNPRO_PROTOCOL* protoco
         }
     }
 
-  applicationdata->centername.Set(__L("Test Point"));
+  applicationdata->centername.Set(_L("Test Point"));
   applicationdata->location.GetStreet()->Set(APPFLOW_CFG.Location_GetStreet()->Get());
   applicationdata->location.GetCity()->Set(APPFLOW_CFG.Location_GetCity()->Get());
   applicationdata->location.GetCountry()->Set(APPFLOW_CFG.Location_GetCountry()->Get());
@@ -713,7 +713,7 @@ bool BINCONNPRO::InitializeProtocolConnectionServer(BINCONNPRO_PROTOCOL* protoco
   status =  protocol->CMD_GetProtocolVersion(applicationdata->protocolversion, applicationdata->protocolsubversion, applicationdata->protocolsubversionerr);
   if(!status)
     {
-      XTRACE_PRINTCOLOR(4, __L("Ini Server protocol from %s: Not get version protocol."), IPstring.Get());
+      XTRACE_PRINTCOLOR(4, _L("Ini Server protocol from %s: Not get version protocol."), IPstring.Get());
       return false;
     }
 
@@ -721,21 +721,21 @@ bool BINCONNPRO::InitializeProtocolConnectionServer(BINCONNPRO_PROTOCOL* protoco
      (applicationdata->protocolsubversion    != BINCONNPRO_PROTOCOL_SUBVERSION)    ||
      (applicationdata->protocolsubversionerr != BINCONNPRO_PROTOCOL_SUBVERSIONERR))
     {
-      XTRACE_PRINTCOLOR(4, __L("Ini Server protocol from %s: Not version protocol valid."), IPstring.Get());
+      XTRACE_PRINTCOLOR(4, _L("Ini Server protocol from %s: Not version protocol valid."), IPstring.Get());
       return false;
     }
 
   status = protocol->CMD_Application_GetVersion(applicationdata->applicationversion, applicationdata->applicationsubversion, applicationdata->applicationsubversionerr);
   if(!status)
     {
-      XTRACE_PRINTCOLOR(4, __L("Ini Server protocol from %s: Not get application version."), IPstring.Get());
+      XTRACE_PRINTCOLOR(4, _L("Ini Server protocol from %s: Not get application version."), IPstring.Get());
       return false;
     }
 
   status =  protocol->CMD_Application_GetName(applicationdata->applicationname);
   if(!status)
     {
-      XTRACE_PRINTCOLOR(4, __L("Ini Server protocol from %s: Not get application name."), IPstring.Get());
+      XTRACE_PRINTCOLOR(4, _L("Ini Server protocol from %s: Not get application name."), IPstring.Get());
       return false;
     }
 
@@ -745,7 +745,7 @@ bool BINCONNPRO::InitializeProtocolConnectionServer(BINCONNPRO_PROTOCOL* protoco
   status = protocol->CMD_GetDeviceTypeAndID(devicetype, deviceID);
   if(!status)
     {
-      XTRACE_PRINTCOLOR(4, __L("Ini Server protocol from %s: Not get machine ID."), IPstring.Get());
+      XTRACE_PRINTCOLOR(4, _L("Ini Server protocol from %s: Not get machine ID."), IPstring.Get());
       return false;
     }
 
@@ -775,7 +775,7 @@ bool BINCONNPRO::InitializeProtocolConnectionClient(BINCONNPRO_PROTOCOL* protoco
   status =  protocol->CMD_GetProtocolVersion(applicationdata->protocolversion, applicationdata->protocolsubversion, applicationdata->protocolsubversionerr);
   if(!status)
     {
-      XTRACE_PRINTCOLOR(4, __L("Ini Client protocol:  Not get version protocol."));
+      XTRACE_PRINTCOLOR(4, _L("Ini Client protocol:  Not get version protocol."));
       return false;
     }
 
@@ -783,14 +783,14 @@ bool BINCONNPRO::InitializeProtocolConnectionClient(BINCONNPRO_PROTOCOL* protoco
      (applicationdata->protocolsubversion    != BINCONNPRO_PROTOCOL_SUBVERSION)    ||
      (applicationdata->protocolsubversionerr != BINCONNPRO_PROTOCOL_SUBVERSIONERR))
     {
-      XTRACE_PRINTCOLOR(4, __L("Ini Client protocol:  Not version protocol valid."));
+      XTRACE_PRINTCOLOR(4, _L("Ini Client protocol:  Not version protocol valid."));
       return false;
     }
 
   status = protocol->CMD_GetCenterName(applicationdata->centername);
   if(!status)
     {
-      XTRACE_PRINTCOLOR(4, __L("Ini Client protocol:  Not get center name."));
+      XTRACE_PRINTCOLOR(4, _L("Ini Client protocol:  Not get center name."));
       return false;
     }
 
@@ -805,7 +805,7 @@ bool BINCONNPRO::InitializeProtocolConnectionClient(BINCONNPRO_PROTOCOL* protoco
   status = protocol->CMD_GetLocation(street, city, state, country, postalcode);
   if(!status)
     {
-      XTRACE_PRINTCOLOR(4, __L("Ini Client protocol:  Not get location."));
+      XTRACE_PRINTCOLOR(4, _L("Ini Client protocol:  Not get location."));
       return false;
     }
 
@@ -847,14 +847,14 @@ void BINCONNPRO::HandleEvent_ServerProtocolConnections(DIOPROTOCOL_CONNECTIONSMA
                                                                                   protocol= (BINCONNPRO_PROTOCOL*)protocolconnection->GetDIOProtocol();
                                                                                   if(!protocol)
                                                                                     {
-                                                                                      XTRACE_PRINTCOLOR(4, __L("Ini Server protocol: Not instance protocol."));
+                                                                                      XTRACE_PRINTCOLOR(4, _L("Ini Server protocol: Not instance protocol."));
                                                                                       break;
                                                                                     }
 
                                                                                   BINCONNPRO_APPLICATIONDATA* applicationdata = (BINCONNPRO_APPLICATIONDATA*)protocol->GetApplicationData();
                                                                                   if(!applicationdata)
                                                                                     {
-                                                                                      XTRACE_PRINTCOLOR(4, __L("Ini Server protocol from %s: Not instance protocol data."), IPstring.Get());
+                                                                                      XTRACE_PRINTCOLOR(4, _L("Ini Server protocol from %s: Not instance protocol data."), IPstring.Get());
                                                                                       break;
                                                                                     }
 

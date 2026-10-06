@@ -34,9 +34,9 @@
 
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
-#define UI_SYSTEMCFG_SECTIONGENERAL    __L("general")
-#define UI_SYSTEMCFG_UISCALE           __L("uiscale")
-#define UI_SYSTEMCFG_UISCALE_AUTOFIT   __L("uiscale_autofit")
+#define UI_SYSTEMCFG_SECTIONGENERAL    _L("general")
+#define UI_SYSTEMCFG_UISCALE           _L("uiscale")
+#define UI_SYSTEMCFG_UISCALE_AUTOFIT   _L("uiscale_autofit")
 
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 

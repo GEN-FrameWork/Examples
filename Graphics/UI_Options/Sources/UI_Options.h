@@ -102,10 +102,10 @@ enum UI_OPTIONS_BUTTONS
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 1
 
-#define APPLICATION_NAMEAPP                       __L("UI_Options")
-#define APPLICATION_NAMEFILE                      __L("ui_options")
+#define APPLICATION_NAMEAPP                       _L("UI_Options")
+#define APPLICATION_NAMEFILE                      _L("ui_options")
 
-#define APPLICATION_OWNER                         __L("EndoraSoft")
+#define APPLICATION_OWNER                         _L("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2018
 

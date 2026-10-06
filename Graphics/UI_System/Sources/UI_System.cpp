@@ -266,7 +266,7 @@ bool UI_SYSTEM::AppProc_Ini()
   hardwareinfomutex = GEN_XFACTORY.Create_Mutex();
   if(!hardwareinfomutex) return false;
 
-  hardwareinfothread = GEN_XFACTORY.CreateThread(XTHREADGROUPID_UI_SYSTEM_HARDWAREINFO, __L("UI_SYSTEM::HardwareInfo"), ThreadFunction_UpdateHardwareInfo, this);
+  hardwareinfothread = GEN_XFACTORY.CreateThread(XTHREADGROUPID_UI_SYSTEM_HARDWAREINFO, _L("UI_SYSTEM::HardwareInfo"), ThreadFunction_UpdateHardwareInfo, this);
   if(!hardwareinfothread) return false;
 
   hardwareinfothread->SetWaitYield(200);
@@ -286,7 +286,7 @@ bool UI_SYSTEM::AppProc_Ini()
     // cascade into CreateMainScreenProcess never running → OnStep STATUS_KO → silent finish.
     if(!GEN_XTRANSLATION.Ini(xpath))
       {
-        XTRACE_PRINTCOLOR(XTRACE_COLOR_RED, __L("[UI_System] Translation file not loaded: %s"), xpath.Get());
+        XTRACE_PRINTCOLOR(XTRACE_COLOR_RED, _L("[UI_System] Translation file not loaded: %s"), xpath.Get());
       }
      else
       {
@@ -365,7 +365,7 @@ bool UI_SYSTEM::AppProc_FirstUpdate()
       // so logcat can show the real Load() failure instead of a silent exit.
       if(!Ini_UserInterface(true))
         {
-          XTRACE_PRINTCOLOR(XTRACE_COLOR_RED, __L("[UI_System] Dashboard load failed in FirstUpdate"));
+          XTRACE_PRINTCOLOR(XTRACE_COLOR_RED, _L("[UI_System] Dashboard load failed in FirstUpdate"));
           dashboardloaded = false;
         }
        else
@@ -640,7 +640,7 @@ bool UI_SYSTEM::Ini_Graphics(GRPSCREEN* screen)
   screen->SetWidth(1440);
   screen->SetHeight(900);
 
-  screen->GetTitle()->Set(__L("Monitor del Sistema"));  
+  screen->GetTitle()->Set(_L("Monitor del Sistema"));  
   screen->SetDesktopScreenSelected(GRPSCREENTYPE_DESKTOP_MAIN);
 
   //--------------------------------------------------------------------------------------
@@ -745,7 +745,7 @@ bool UI_SYSTEM::Ini_UserInterface(bool on)
  
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS, xpath);
   xpath.Slash_Add();
-  xpath.Add(__L("ui_system/dashboard.xml"));
+  xpath.Add(_L("ui_system/dashboard.xml"));
     
   if(!GEN_USERINTERFACE.Load(xpath, screen, 0)) 
     {
@@ -760,7 +760,7 @@ bool UI_SYSTEM::Ini_UserInterface(bool on)
   // native surface is GLES letterbox + MapWindowToCanvas — NOT UIScale Present. Force scale=1.0 so
   // Windows-style Present stays identity and we never double-letterbox.
   {
-    UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(__L("dashboard"));
+    UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(_L("dashboard"));
     if(dashboard)
       {
         dashboard->SetDesignSize(1440, 900);
@@ -793,7 +793,7 @@ bool UI_SYSTEM::Ini_UserInterface(bool on)
         GEN_USERINTERFACE.UIScale_PrepareLayout(dashboard);
         if(screen)
           {
-            XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("[UI_System] Android UIScale=1.0 design=%dx%d (GLES letterbox fits device)"), dashboard->GetDesignWidth(), dashboard->GetDesignHeight());
+            XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("[UI_System] Android UIScale=1.0 design=%dx%d (GLES letterbox fits device)"), dashboard->GetDesignWidth(), dashboard->GetDesignHeight());
           }
         #else
         if(doautofit && !useenv)
@@ -1181,25 +1181,25 @@ bool UI_SYSTEM::HardwareInfo_Apply()
   // this function only ever runs on the main thread.
   //--------------------------------------------------------------------------------------
 
-  UI_ELEMENT_PROGRESS_IMAGE* element_temp = (UI_ELEMENT_PROGRESS_IMAGE*)GEN_USERINTERFACE.Element_Get(__L("cpu_temp_bar"), UI_ELEMENT_TYPE_PROGRESSIMAGE);
+  UI_ELEMENT_PROGRESS_IMAGE* element_temp = (UI_ELEMENT_PROGRESS_IMAGE*)GEN_USERINTERFACE.Element_Get(_L("cpu_temp_bar"), UI_ELEMENT_TYPE_PROGRESSIMAGE);
   if(element_temp) element_temp->SetLevel(temperaturelevel);
 
-  UI_ELEMENT_PROGRESS_RADIAL* element_cpu = (UI_ELEMENT_PROGRESS_RADIAL*)GEN_USERINTERFACE.Element_Get(__L("cpu_usage_radial"), UI_ELEMENT_TYPE_PROGRESSRADIAL);
+  UI_ELEMENT_PROGRESS_RADIAL* element_cpu = (UI_ELEMENT_PROGRESS_RADIAL*)GEN_USERINTERFACE.Element_Get(_L("cpu_usage_radial"), UI_ELEMENT_TYPE_PROGRESSRADIAL);
   if(element_cpu) element_cpu->SetLevel(cpuusagelevelnow);
 
   // Phase 2: push samples into the GEN statisticschart widget (throttled; main thread only).
   HistoryChart_Apply(false);
 
-  UI_ELEMENT_PROGRESS_RADIAL* element_radial = (UI_ELEMENT_PROGRESS_RADIAL*)GEN_USERINTERFACE.Element_Get(__L("ram_usage_radial"), UI_ELEMENT_TYPE_PROGRESSRADIAL);
+  UI_ELEMENT_PROGRESS_RADIAL* element_radial = (UI_ELEMENT_PROGRESS_RADIAL*)GEN_USERINTERFACE.Element_Get(_L("ram_usage_radial"), UI_ELEMENT_TYPE_PROGRESSRADIAL);
   if(element_radial) element_radial->SetLevel(ramusagelevelnow);
 
-  UI_ELEMENT_PROGRESSBAR* element_bar = (UI_ELEMENT_PROGRESSBAR*)GEN_USERINTERFACE.Element_Get(__L("ram_linear_bar"), UI_ELEMENT_TYPE_PROGRESSBAR);
+  UI_ELEMENT_PROGRESSBAR* element_bar = (UI_ELEMENT_PROGRESSBAR*)GEN_USERINTERFACE.Element_Get(_L("ram_linear_bar"), UI_ELEMENT_TYPE_PROGRESSBAR);
   if(element_bar) element_bar->SetLevel(ramusagelevelnow);
 
-  UI_ELEMENT_PROGRESS_RADIAL* element_diskradial = (UI_ELEMENT_PROGRESS_RADIAL*)GEN_USERINTERFACE.Element_Get(__L("disk_usage_radial"), UI_ELEMENT_TYPE_PROGRESSRADIAL);
+  UI_ELEMENT_PROGRESS_RADIAL* element_diskradial = (UI_ELEMENT_PROGRESS_RADIAL*)GEN_USERINTERFACE.Element_Get(_L("disk_usage_radial"), UI_ELEMENT_TYPE_PROGRESSRADIAL);
   if(element_diskradial) element_diskradial->SetLevel(diskusagelevelnow);
 
-  UI_ELEMENT_PROGRESSBAR* element_diskbar = (UI_ELEMENT_PROGRESSBAR*)GEN_USERINTERFACE.Element_Get(__L("disk_linear_bar"), UI_ELEMENT_TYPE_PROGRESSBAR);
+  UI_ELEMENT_PROGRESSBAR* element_diskbar = (UI_ELEMENT_PROGRESSBAR*)GEN_USERINTERFACE.Element_Get(_L("disk_linear_bar"), UI_ELEMENT_TYPE_PROGRESSBAR);
   if(element_diskbar) element_diskbar->SetLevel(diskusagelevelnow);
 
   //--------------------------------------------------------------------------------------
@@ -1211,29 +1211,29 @@ bool UI_SYSTEM::HardwareInfo_Apply()
   // rebuild the area, so switching to offline left an empty slot / missing badge_ko (BlueStacks).
   //--------------------------------------------------------------------------------------
 
-  UI_ELEMENT* element_iconok = GEN_USERINTERFACE.Element_Get(__L("connection_icon_ok"), UI_ELEMENT_TYPE_IMAGE);
+  UI_ELEMENT* element_iconok = GEN_USERINTERFACE.Element_Get(_L("connection_icon_ok"), UI_ELEMENT_TYPE_IMAGE);
   if(element_iconok)
     {
       element_iconok->SetVisible(isconnectednow);
       GEN_USERINTERFACE.Elements_SetToRedraw(element_iconok, false);
     }
 
-  UI_ELEMENT* element_iconko = GEN_USERINTERFACE.Element_Get(__L("connection_icon_ko"), UI_ELEMENT_TYPE_IMAGE);
+  UI_ELEMENT* element_iconko = GEN_USERINTERFACE.Element_Get(_L("connection_icon_ko"), UI_ELEMENT_TYPE_IMAGE);
   if(element_iconko)
     {
       element_iconko->SetVisible(!isconnectednow);
       GEN_USERINTERFACE.Elements_SetToRedraw(element_iconko, false);
     }
 
-  UI_ELEMENT* element_badgeslot = GEN_USERINTERFACE.Element_Get(__L("conn-badge-slot"), UI_ELEMENT_TYPE_FORM);
+  UI_ELEMENT* element_badgeslot = GEN_USERINTERFACE.Element_Get(_L("conn-badge-slot"), UI_ELEMENT_TYPE_FORM);
   if(element_badgeslot) GEN_USERINTERFACE.Elements_SetToRedraw(element_badgeslot, false);
 
   //--------------------------------------------------------------------------------------
   // The status line follows the same semantics: green when up, red when down.
   //--------------------------------------------------------------------------------------
 
-  UI_ELEMENT_TEXT* element_status = (UI_ELEMENT_TEXT*)GEN_USERINTERFACE.Element_Get(__L("connection_status_text"), UI_ELEMENT_TYPE_TEXT);
-  if(element_status) element_status->GetColor()->SetFromString(isconnectednow ? __L("63,185,80") : __L("248,81,73"));
+  UI_ELEMENT_TEXT* element_status = (UI_ELEMENT_TEXT*)GEN_USERINTERFACE.Element_Get(_L("connection_status_text"), UI_ELEMENT_TYPE_TEXT);
+  if(element_status) element_status->GetColor()->SetFromString(isconnectednow ? _L("63,185,80") : _L("248,81,73"));
 
   //--------------------------------------------------------------------------------------
   // Mark only the text leaves whose masks can have changed. The skin's rebuild-area transaction expands
@@ -1244,22 +1244,22 @@ bool UI_SYSTEM::HardwareInfo_Apply()
 
   static XCHAR* maskedtextelements[] =
     {
-      __L("footer_equipo_text")      ,
-      __L("footer_so_text")          ,
-      __L("footer_uptime_text")      ,
-      __L("cpu_temp_value")          ,
-      __L("ram_used")                ,
-      __L("ram_total")               ,
-      __L("disk_used")               ,
-      __L("disk_total")              ,
-      __L("disk_caption")            ,
-      __L("disk_index")              ,
-      __L("system_date")             ,
-      __L("system_time")             ,
-      __L("connection_status_text")  ,
-      __L("connection_quality")      ,
-      __L("connection_ip")           ,
-      __L("connection_public_ip")    ,
+      _L("footer_equipo_text")      ,
+      _L("footer_so_text")          ,
+      _L("footer_uptime_text")      ,
+      _L("cpu_temp_value")          ,
+      _L("ram_used")                ,
+      _L("ram_total")               ,
+      _L("disk_used")               ,
+      _L("disk_total")              ,
+      _L("disk_caption")            ,
+      _L("disk_index")              ,
+      _L("system_date")             ,
+      _L("system_time")             ,
+      _L("connection_status_text")  ,
+      _L("connection_quality")      ,
+      _L("connection_ip")           ,
+      _L("connection_public_ip")    ,
     };
 
   for(int c=0; c<(int)(sizeof(maskedtextelements)/sizeof(maskedtextelements[0])); c++)
@@ -1318,8 +1318,8 @@ bool UI_SYSTEM::DashboardSlot_ApplySection(UI_SYSTEM_SECTIONID sectionID)
                       (sectionID == UI_SYSTEM_SECTIONID_MEMORIA) ||
                       (sectionID == UI_SYSTEM_SECTIONID_DISCO));
 
-  UI_ELEMENT* element_datetime = GEN_USERINTERFACE.Element_Get(__L("card_datetime"), UI_ELEMENT_TYPE_FORM);
-  UI_ELEMENT* element_history  = GEN_USERINTERFACE.Element_Get(__L("card_cpu_history"), UI_ELEMENT_TYPE_FORM);
+  UI_ELEMENT* element_datetime = GEN_USERINTERFACE.Element_Get(_L("card_datetime"), UI_ELEMENT_TYPE_FORM);
+  UI_ELEMENT* element_history  = GEN_USERINTERFACE.Element_Get(_L("card_cpu_history"), UI_ELEMENT_TYPE_FORM);
 
   if(!element_datetime || !element_history) return false;
 
@@ -1350,8 +1350,8 @@ bool UI_SYSTEM::DashboardSlot_ApplySection(UI_SYSTEM_SECTIONID sectionID)
       element_datetime->SetMustReDraw(true);
       GEN_USERINTERFACE.Elements_SetToRedraw(element_datetime, true);
 
-      UI_ELEMENT* element_date = GEN_USERINTERFACE.Element_Get(__L("system_date"), UI_ELEMENT_TYPE_TEXT);
-      UI_ELEMENT* element_time = GEN_USERINTERFACE.Element_Get(__L("system_time"), UI_ELEMENT_TYPE_TEXT);
+      UI_ELEMENT* element_date = GEN_USERINTERFACE.Element_Get(_L("system_date"), UI_ELEMENT_TYPE_TEXT);
+      UI_ELEMENT* element_time = GEN_USERINTERFACE.Element_Get(_L("system_time"), UI_ELEMENT_TYPE_TEXT);
       if(element_date) GEN_USERINTERFACE.Elements_SetToRedraw(element_date, false);
       if(element_time) GEN_USERINTERFACE.Elements_SetToRedraw(element_time, false);
     }
@@ -1405,11 +1405,11 @@ bool UI_SYSTEM::HistoryChart_Apply(bool forced)
     chart_force_rebuild = false;
   hardwareinfomutex->UnLock();
 
-  UI_ELEMENT_STATISTICSCHART* element_chart = (UI_ELEMENT_STATISTICSCHART*)GEN_USERINTERFACE.Element_Get(__L("cpu_history_chart"), UI_ELEMENT_TYPE_STATISTICSCHART);
+  UI_ELEMENT_STATISTICSCHART* element_chart = (UI_ELEMENT_STATISTICSCHART*)GEN_USERINTERFACE.Element_Get(_L("cpu_history_chart"), UI_ELEMENT_TYPE_STATISTICSCHART);
   if(!element_chart) return false;
 
-  UI_ELEMENT_TEXT* element_hdr = (UI_ELEMENT_TEXT*)GEN_USERINTERFACE.Element_Get(__L("cpuhist_hdr_text"), UI_ELEMENT_TYPE_TEXT);
-  UI_ELEMENT*      element_empty = GEN_USERINTERFACE.Element_Get(__L("history_empty_text"), UI_ELEMENT_TYPE_TEXT);
+  UI_ELEMENT_TEXT* element_hdr = (UI_ELEMENT_TEXT*)GEN_USERINTERFACE.Element_Get(_L("cpuhist_hdr_text"), UI_ELEMENT_TYPE_TEXT);
+  UI_ELEMENT*      element_empty = GEN_USERINTERFACE.Element_Get(_L("history_empty_text"), UI_ELEMENT_TYPE_TEXT);
 
   float samples[UI_SYSTEM_CPUHISTORY_MAX];
   int   count = 0;
@@ -1420,11 +1420,11 @@ bool UI_SYSTEM::HistoryChart_Apply(bool forced)
     {
       case UI_SYSTEM_SECTIONID_MEMORIA :
         {
-          if(element_hdr) element_hdr->GetText()->Set(__L("Consumo de memoria"));
+          if(element_hdr) element_hdr->GetText()->Set(_L("Consumo de memoria"));
 
           element_chart->SetChartType(UI_ELEMENT_STATISTICSCHART_TYPE_AREA);
-          element_chart->SetTitle(__L("RAM %"));
-          if(element_chart->GetColor()) element_chart->GetColor()->SetFromString(__L("163,113,247"));
+          element_chart->SetTitle(_L("RAM %"));
+          if(element_chart->GetColor()) element_chart->GetColor()->SetFromString(_L("163,113,247"));
 
           hardwareinfomutex->Lock();
             count = ramhistory_count;
@@ -1440,7 +1440,7 @@ bool UI_SYSTEM::HistoryChart_Apply(bool forced)
           if(count >= 2)
             {
               isempty = false;
-              element_chart->SetSerieFromSamples(__L("RAM"), samples, count, 163, 113, 247);
+              element_chart->SetSerieFromSamples(_L("RAM"), samples, count, 163, 113, 247);
             }
            else
             {
@@ -1451,10 +1451,10 @@ bool UI_SYSTEM::HistoryChart_Apply(bool forced)
 
       case UI_SYSTEM_SECTIONID_DISCO :
         {
-          if(element_hdr) element_hdr->GetText()->Set(__L("Uso por volumen"));
+          if(element_hdr) element_hdr->GetText()->Set(_L("Uso por volumen"));
 
-          element_chart->SetTitle(__L("Disco %"));
-          if(element_chart->GetColor()) element_chart->GetColor()->SetFromString(__L("210,153,34"));
+          element_chart->SetTitle(_L("Disco %"));
+          if(element_chart->GetColor()) element_chart->GetColor()->SetFromString(_L("210,153,34"));
 
           XSTRING labelcopies[UI_SYSTEM_DISK_SLOT_MAX];
           XCHAR*  labels[UI_SYSTEM_DISK_SLOT_MAX];
@@ -1475,7 +1475,7 @@ bool UI_SYSTEM::HistoryChart_Apply(bool forced)
           if(nslots >= 1)
             {
               isempty = false;
-              element_chart->SetColumnsFromValues(__L("Disco"), labels, values, nslots, 210, 153, 34);
+              element_chart->SetColumnsFromValues(_L("Disco"), labels, values, nslots, 210, 153, 34);
             }
            else
             {
@@ -1487,11 +1487,11 @@ bool UI_SYSTEM::HistoryChart_Apply(bool forced)
       case UI_SYSTEM_SECTIONID_CPU :
       default :
         {
-          if(element_hdr) element_hdr->GetText()->Set(__L("Historico de CPU"));
+          if(element_hdr) element_hdr->GetText()->Set(_L("Historico de CPU"));
 
           element_chart->SetChartType(UI_ELEMENT_STATISTICSCHART_TYPE_LINES);
-          element_chart->SetTitle(__L("CPU %"));
-          if(element_chart->GetColor()) element_chart->GetColor()->SetFromString(__L("56,139,253"));
+          element_chart->SetTitle(_L("CPU %"));
+          if(element_chart->GetColor()) element_chart->GetColor()->SetFromString(_L("56,139,253"));
 
           hardwareinfomutex->Lock();
             count = cpuhistory_count;
@@ -1507,7 +1507,7 @@ bool UI_SYSTEM::HistoryChart_Apply(bool forced)
           if(count >= 2)
             {
               isempty = false;
-              element_chart->SetSerieFromSamples(__L("CPU"), samples, count, 56, 139, 253);
+              element_chart->SetSerieFromSamples(_L("CPU"), samples, count, 56, 139, 253);
             }
            else
             {
@@ -1596,14 +1596,14 @@ bool UI_SYSTEM::HardwareInfo_UpdateCPU(XSTRING& outtemperature, float& outtemper
 
   if(cputemperature > 0.0f)
     {
-      outtemperature.Format(__L("%d"), (int)(cputemperature + 0.5f));
+      outtemperature.Format(_L("%d"), (int)(cputemperature + 0.5f));
 
       outtemperaturelevel = cputemperature;
       if(outtemperaturelevel > 100.0f) outtemperaturelevel = 100.0f;
     }
    else
     {
-      outtemperature.Set(__L("--"));
+      outtemperature.Set(_L("--"));
     }
 
   //--------------------------------------------------------------------------------------
@@ -1645,35 +1645,35 @@ bool UI_SYSTEM::HardwareInfo_UpdateMemory(XSTRING& outusedtotal, XSTRING& outuse
     {
       XDWORD       used          = total - free;
       double       memorydivisor = 1.0;
-      const XCHAR* memoryunit    = __L("KB");
+      const XCHAR* memoryunit    = _L("KB");
 
       if(total >= (1024U * 1024U * 1024U))
         {
           memorydivisor = 1024.0 * 1024.0 * 1024.0;
-          memoryunit    = __L("TB");
+          memoryunit    = _L("TB");
         }
       else if(total >= (1024U * 1024U))
         {
           memorydivisor = 1024.0 * 1024.0;
-          memoryunit    = __L("GB");
+          memoryunit    = _L("GB");
         }
       else if(total >= 1024U)
         {
           memorydivisor = 1024.0;
-          memoryunit    = __L("MB");
+          memoryunit    = _L("MB");
         }
 
-      outused.Format(__L("%.1f %s"), (double)used / memorydivisor, memoryunit);
-      outtotal.Format(__L("/ %.1f %s"), (double)total / memorydivisor, memoryunit);
-      outusedtotal.Format(__L("%s %s"), outused.Get(), outtotal.Get());
+      outused.Format(_L("%.1f %s"), (double)used / memorydivisor, memoryunit);
+      outtotal.Format(_L("/ %.1f %s"), (double)total / memorydivisor, memoryunit);
+      outusedtotal.Format(_L("%s %s"), outused.Get(), outtotal.Get());
 
       outusagelevel = (float)(((double)used / (double)total) * 100.0);
     }
    else
     {
-      outused.Set(__L("--"));
-      outtotal.Set(__L("/ --"));
-      outusedtotal.Set(__L("-- / --"));
+      outused.Set(_L("--"));
+      outtotal.Set(_L("/ --"));
+      outusedtotal.Set(_L("-- / --"));
     }
 
   return true;
@@ -1700,8 +1700,8 @@ bool UI_SYSTEM::HardwareInfo_UpdateDateTime(XSTRING& outdate, XSTRING& outtime)
 
   xdatetime->Read();
 
-  outdate.Format(__L("%02d/%02d/%04d"), xdatetime->GetDay(), xdatetime->GetMonth(), xdatetime->GetYear());
-  outtime.Format(__L("%02d:%02d:%02d"), xdatetime->GetHours(), xdatetime->GetMinutes(), xdatetime->GetSeconds());
+  outdate.Format(_L("%02d/%02d/%04d"), xdatetime->GetDay(), xdatetime->GetMonth(), xdatetime->GetYear());
+  outtime.Format(_L("%02d:%02d:%02d"), xdatetime->GetHours(), xdatetime->GetMinutes(), xdatetime->GetSeconds());
 
   GEN_XFACTORY.DeleteDateTime(xdatetime);
 
@@ -1733,9 +1733,9 @@ bool UI_SYSTEM::HardwareInfo_UpdateVolumes(XSTRING* outname, XSTRING* outused, X
 
   for(int s=0; s<UI_SYSTEM_DISK_SLOT_MAX; s++)
     {
-      outname[s].Set(__L("--"));
-      outused[s].Set(__L("--"));
-      outtotal[s].Set(__L("/ --"));
+      outname[s].Set(_L("--"));
+      outused[s].Set(_L("--"));
+      outtotal[s].Set(_L("/ --"));
       outusagelevel[s] = 0.0f;
     }
 
@@ -1768,12 +1768,12 @@ bool UI_SYSTEM::HardwareInfo_UpdateVolumes(XSTRING* outname, XSTRING* outused, X
                            XSTRING* name = volume->GetName();
                            if(name && name->Get())
                              {
-                               if(!name->Compare(__L("/"), true)) accept = true;
+                               if(!name->Compare(_L("/"), true)) accept = true;
                                 else if(name->GetSize() >= 2)
                                  {
                                    XCHAR drive = name->Get()[0];
                                    XCHAR colon = name->Get()[1];
-                                   if((drive == __C('C') || drive == __C('c')) && colon == __C(':')) accept = true;
+                                   if((drive == _C('C') || drive == _C('c')) && colon == _C(':')) accept = true;
                                  }
                              }
                          }
@@ -1811,31 +1811,31 @@ bool UI_SYSTEM::HardwareInfo_UpdateVolumes(XSTRING* outname, XSTRING* outused, X
       XQWORD usedbytes  = volume->GetUsedBytes();
 
       double       divisor = 1.0;
-      const XCHAR* unit    = __L("B");
+      const XCHAR* unit    = _L("B");
 
       if(totalbytes >= (1024ULL * 1024ULL * 1024ULL * 1024ULL))
         {
           divisor = 1024.0 * 1024.0 * 1024.0 * 1024.0;
-          unit    = __L("TB");
+          unit    = _L("TB");
         }
       else if(totalbytes >= (1024ULL * 1024ULL * 1024ULL))
         {
           divisor = 1024.0 * 1024.0 * 1024.0;
-          unit    = __L("GB");
+          unit    = _L("GB");
         }
       else if(totalbytes >= (1024ULL * 1024ULL))
         {
           divisor = 1024.0 * 1024.0;
-          unit    = __L("MB");
+          unit    = _L("MB");
         }
       else if(totalbytes >= 1024ULL)
         {
           divisor = 1024.0;
-          unit    = __L("KB");
+          unit    = _L("KB");
         }
 
-      outused[c].Format(__L("%.1f %s"), (double)usedbytes / divisor, unit);
-      outtotal[c].Format(__L("/ %.1f %s"), (double)totalbytes / divisor, unit);
+      outused[c].Format(_L("%.1f %s"), (double)usedbytes / divisor, unit);
+      outtotal[c].Format(_L("/ %.1f %s"), (double)totalbytes / divisor, unit);
       outusagelevel[c] = volume->GetUsedPercent();
 
       XSTRING* name  = volume->GetName();
@@ -1843,12 +1843,12 @@ bool UI_SYSTEM::HardwareInfo_UpdateVolumes(XSTRING* outname, XSTRING* outused, X
 
       if(name && name->GetSize())
         {
-          if(label && label->GetSize()) outname[c].Format(__L("%s %s"), name->Get(), label->Get());
+          if(label && label->GetSize()) outname[c].Format(_L("%s %s"), name->Get(), label->Get());
            else                         outname[c].Set(name->Get());
         }
        else
         {
-          outname[c].Set(__L("Volumen"));
+          outname[c].Set(_L("Volumen"));
         }
 
       outcount++;
@@ -1875,10 +1875,10 @@ bool UI_SYSTEM::HardwareInfo_PublishDiskSlot()
   if(disk_slot_count <= 0)
     {
       disk_slot_index = 0;
-      disk_used_str.Set(__L("--"));
-      disk_total_str.Set(__L("/ --"));
-      disk_caption_str.Set(__L("Sin volumen"));
-      disk_index_str.Set(__L("0 / 0"));
+      disk_used_str.Set(_L("--"));
+      disk_total_str.Set(_L("/ --"));
+      disk_caption_str.Set(_L("Sin volumen"));
+      disk_index_str.Set(_L("0 / 0"));
       disk_usagelevel = 0.0f;
       return true;
     }
@@ -1889,7 +1889,7 @@ bool UI_SYSTEM::HardwareInfo_PublishDiskSlot()
   disk_total_str.Set(disk_slot_total[disk_slot_index].Get());
   disk_caption_str.Set(disk_slot_name[disk_slot_index].Get());
   disk_usagelevel = disk_slot_level[disk_slot_index];
-  disk_index_str.Format(__L("%d / %d"), disk_slot_index + 1, disk_slot_count);
+  disk_index_str.Format(_L("%d / %d"), disk_slot_index + 1, disk_slot_count);
 
   return true;
 }
@@ -1974,15 +1974,15 @@ bool UI_SYSTEM::HardwareInfo_UpdateConnection(bool& outisconnected, XSTRING& out
 
   if(outisconnected)
     {
-      outstatus.Set(__L("Conectado"));
-      outquality.Set(__L("Conexi\u00F3n estable"));
-      outmark.Set(__L("OK"));
+      outstatus.Set(_L("Conectado"));
+      outquality.Set(_L("Conexi\u00F3n estable"));
+      outmark.Set(_L("OK"));
     }
    else
     {
-      outstatus.Set(__L("Desconectado"));
-      outquality.Set(__L("Sin conexi\u00F3n"));
-      outmark.Set(__L("--"));
+      outstatus.Set(_L("Desconectado"));
+      outquality.Set(_L("Sin conexi\u00F3n"));
+      outmark.Set(_L("--"));
     }
 
   //--------------------------------------------------------------------------------------
@@ -1999,18 +1999,18 @@ bool UI_SYSTEM::HardwareInfo_UpdateConnection(bool& outisconnected, XSTRING& out
 
           device->GetIP()->GetXString(ipstring);
 
-          outip.Format(__L("IP: %s"), ipstring.Get());
+          outip.Format(_L("IP: %s"), ipstring.Get());
         }
        else
         {
-          outip.Set(__L("IP: --"));
+          outip.Set(_L("IP: --"));
         }
 
       GEN_DIOFACTORY.DeleteStreamEnumDevices(enumdevices);
     }
    else
     {
-      outip.Set(__L("IP: --"));
+      outip.Set(_L("IP: --"));
     }
 
   //--------------------------------------------------------------------------------------
@@ -2018,7 +2018,7 @@ bool UI_SYSTEM::HardwareInfo_UpdateConnection(bool& outisconnected, XSTRING& out
   // background poll does not re-hit HTTP on every HardwareInfo tick.
   //--------------------------------------------------------------------------------------
 
-  outpublicip.Set(__L("IP P\u00FAblica: --"));
+  outpublicip.Set(_L("IP P\u00FAblica: --"));
 
   #ifdef DIO_PUBLICINTERNETIP_ACTIVE
   {
@@ -2044,7 +2044,7 @@ bool UI_SYSTEM::HardwareInfo_UpdateConnection(bool& outisconnected, XSTRING& out
 
         if(havecachedpublicip)
           {
-            outpublicip.Format(__L("IP P\u00FAblica: %s"), cachedpublicip.Get());
+            outpublicip.Format(_L("IP P\u00FAblica: %s"), cachedpublicip.Get());
           }
       }
   }
@@ -2081,11 +2081,11 @@ bool UI_SYSTEM::HardwareInfo_UpdateFooter(XSTRING& outequipo, XSTRING& outso, XS
 
   if(GEN_XSYSTEM.GetUserAndDomain(user, domain) && (!domain.IsEmpty()))
     {
-      outequipo.Format(__L("Equipo: %s"), domain.Get());
+      outequipo.Format(_L("Equipo: %s"), domain.Get());
     }
    else
     {
-      outequipo.Set(__L("Equipo: --"));                    // TODO: add a real hostname source for this platform
+      outequipo.Set(_L("Equipo: --"));                    // TODO: add a real hostname source for this platform
     }
 
   //--------------------------------------------------------------------------------------
@@ -2097,14 +2097,14 @@ bool UI_SYSTEM::HardwareInfo_UpdateFooter(XSTRING& outequipo, XSTRING& outso, XS
       // Shorten live Windows strings ("Microsoft Windows 11 Pro Build 26200") so the footer can show
       // Equipo | SO | Uptime without the huge fixed gaps the mockup used for short Linux IDs.
       XSTRING soid = operativesystemID;
-      if(soid.Find(__L("Microsoft "), true) == 0) soid.DeleteCharacters(0, 10);
-      int buildat = soid.Find(__L(" Build"), true);
+      if(soid.Find(_L("Microsoft "), true) == 0) soid.DeleteCharacters(0, 10);
+      int buildat = soid.Find(_L(" Build"), true);
       if(buildat >= 0) soid.DeleteCharactersToEnd((XDWORD)buildat);
-      outso.Format(__L("SO: %s"), soid.Get());
+      outso.Format(_L("SO: %s"), soid.Get());
     }
    else
     {
-      outso.Set(__L("SO: --"));
+      outso.Set(_L("SO: --"));
     }
 
   //--------------------------------------------------------------------------------------
@@ -2116,8 +2116,8 @@ bool UI_SYSTEM::HardwareInfo_UpdateFooter(XSTRING& outequipo, XSTRING& outso, XS
       xtimer->GetMeasureString(measure, true);
 
       if(!measure.IsEmpty())
-            outuptime.Format(__L("Uptime del sistema: %s"), measure.Get());
-       else outuptime.Set(__L("Uptime del sistema: 0 segundos"));
+            outuptime.Format(_L("Uptime del sistema: %s"), measure.Get());
+       else outuptime.Set(_L("Uptime del sistema: 0 segundos"));
     }
 
   return true;
@@ -2143,7 +2143,7 @@ bool UI_SYSTEM::UserInterface_ElementSelected(UI_ELEMENT* element)
 
   elementname = element->GetName()->Get();
 
-  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("UI Element [%s]: Selected! "), element->GetName()->Get());
+  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("UI Element [%s]: Selected! "), element->GetName()->Get());
 
   // Chrome / window controls. Test IDs: ActionScriptQA/assets/scripts/Tests_UISystem_ListTest.json
   switch(element->GetChromeRole())
@@ -2154,7 +2154,7 @@ bool UI_SYSTEM::UserInterface_ElementSelected(UI_ELEMENT* element)
                                             break;
 
       case UI_ELEMENT_CHROMEROLE_MAXIMIZE : { // Toggle grow ↔ restore. Enable autofit so maximize uses the screen.
-                                              UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(__L("dashboard"));
+                                              UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(_L("dashboard"));
                                               if(dashboard && dashboard->IsUIScaleActive())
                                                 {
                                                   dashboard->SetUIScaleAutofit(true);
@@ -2179,56 +2179,56 @@ bool UI_SYSTEM::UserInterface_ElementSelected(UI_ELEMENT* element)
     }
 
   // Sidebar menu. Each branch emits TESTS_RESULT (id, 0=ok) then switches section.
-  if(!elementname.Compare(__L("nav-resumen-btn"), true))
+  if(!elementname.Compare(_L("nav-resumen-btn"), true))
     {
       // UI_System: nav Resumen selected
       XTRACE_PRINTMSGTESTS(1001, 0);
       UserInterface_SelectSection(UI_SYSTEM_SECTIONID_RESUMEN);
     }
 
-  if(!elementname.Compare(__L("nav-cpu-btn"), true))
+  if(!elementname.Compare(_L("nav-cpu-btn"), true))
     {
       // UI_System: nav CPU selected
       XTRACE_PRINTMSGTESTS(1002, 0);
       UserInterface_SelectSection(UI_SYSTEM_SECTIONID_CPU);
     }
 
-  if(!elementname.Compare(__L("nav-memoria-btn"), true))
+  if(!elementname.Compare(_L("nav-memoria-btn"), true))
     {
       // UI_System: nav Memoria selected
       XTRACE_PRINTMSGTESTS(1003, 0);
       UserInterface_SelectSection(UI_SYSTEM_SECTIONID_MEMORIA);
     }
 
-  if(!elementname.Compare(__L("nav-red-btn"), true))
+  if(!elementname.Compare(_L("nav-red-btn"), true))
     {
       // UI_System: nav Red selected
       XTRACE_PRINTMSGTESTS(1004, 0);
       UserInterface_SelectSection(UI_SYSTEM_SECTIONID_RED);
     }
 
-  if(!elementname.Compare(__L("nav-disco-btn"), true))
+  if(!elementname.Compare(_L("nav-disco-btn"), true))
     {
       // UI_System: nav Disco selected
       XTRACE_PRINTMSGTESTS(1005, 0);
       UserInterface_SelectSection(UI_SYSTEM_SECTIONID_DISCO);
     }
 
-  if(!elementname.Compare(__L("nav-procesos-btn"), true))
+  if(!elementname.Compare(_L("nav-procesos-btn"), true))
     {
       // UI_System: nav Procesos selected
       XTRACE_PRINTMSGTESTS(1006, 0);
       UserInterface_SelectSection(UI_SYSTEM_SECTIONID_PROCESOS);
     }
 
-  if(!elementname.Compare(__L("nav-alertas-btn"), true))
+  if(!elementname.Compare(_L("nav-alertas-btn"), true))
     {
       // UI_System: nav Alertas selected
       XTRACE_PRINTMSGTESTS(1007, 0);
       UserInterface_SelectSection(UI_SYSTEM_SECTIONID_ALERTAS);
     }
 
-  if(!elementname.Compare(__L("nav-configuracion-btn"), true))
+  if(!elementname.Compare(_L("nav-configuracion-btn"), true))
     {
       // UI_System: nav Configuracion selected
       XTRACE_PRINTMSGTESTS(1008, 0);
@@ -2236,13 +2236,13 @@ bool UI_SYSTEM::UserInterface_ElementSelected(UI_ELEMENT* element)
     }
 
   // Disk carousel buttons (empty hit targets over icons — same idea as nav-*-btn).
-  if(!elementname.Compare(__L("disk_prev_btn"), true))
+  if(!elementname.Compare(_L("disk_prev_btn"), true))
     {
       HardwareInfo_CycleDisk(-1);
       HardwareInfo_Apply();
     }
 
-  if(!elementname.Compare(__L("disk_next_btn"), true))
+  if(!elementname.Compare(_L("disk_next_btn"), true))
     {
       HardwareInfo_CycleDisk(+1);
       HardwareInfo_Apply();
@@ -2271,23 +2271,23 @@ bool UI_SYSTEM::UserInterface_SelectSection(UI_SYSTEM_SECTIONID sectionID)
   // Official selection path: SetSelected on the hit-target button (CSS :selected wash) and on the nav-row
   // so descendant rules like `form.nav-row:selected .nav-label` restyle the label without C++ color hacks.
   // Legacy nav-*-hl / nav-*-bar overlays are removed from the layout; stylesheet is the source of truth.
-  static XCHAR* navbtnnames[UI_SYSTEM_SECTIONID_MAX]    = { __L("nav-resumen-btn")       ,
-                                                             __L("nav-cpu-btn")           ,
-                                                             __L("nav-memoria-btn")       ,
-                                                             __L("nav-red-btn")           ,
-                                                             __L("nav-disco-btn")         ,
-                                                             __L("nav-procesos-btn")      ,
-                                                             __L("nav-alertas-btn")       ,
-                                                             __L("nav-configuracion-btn")  };
+  static XCHAR* navbtnnames[UI_SYSTEM_SECTIONID_MAX]    = { _L("nav-resumen-btn")       ,
+                                                             _L("nav-cpu-btn")           ,
+                                                             _L("nav-memoria-btn")       ,
+                                                             _L("nav-red-btn")           ,
+                                                             _L("nav-disco-btn")         ,
+                                                             _L("nav-procesos-btn")      ,
+                                                             _L("nav-alertas-btn")       ,
+                                                             _L("nav-configuracion-btn")  };
 
-  static XCHAR* navrownames[UI_SYSTEM_SECTIONID_MAX]    = { __L("nav-resumen-row")       ,
-                                                             __L("nav-cpu-row")           ,
-                                                             __L("nav-memoria-row")       ,
-                                                             __L("nav-red-row")           ,
-                                                             __L("nav-disco-row")         ,
-                                                             __L("nav-procesos-row")      ,
-                                                             __L("nav-alertas-row")       ,
-                                                             __L("nav-configuracion-row")  };
+  static XCHAR* navrownames[UI_SYSTEM_SECTIONID_MAX]    = { _L("nav-resumen-row")       ,
+                                                             _L("nav-cpu-row")           ,
+                                                             _L("nav-memoria-row")       ,
+                                                             _L("nav-red-row")           ,
+                                                             _L("nav-disco-row")         ,
+                                                             _L("nav-procesos-row")      ,
+                                                             _L("nav-alertas-row")       ,
+                                                             _L("nav-configuracion-row")  };
 
   for(int c=0; c<UI_SYSTEM_SECTIONID_MAX; c++)
     {
@@ -2329,7 +2329,7 @@ bool UI_SYSTEM::UserInterface_SelectSection(UI_SYSTEM_SECTIONID sectionID)
 *---------------------------------------------------------------------------------------------------------------------*/
 bool UI_SYSTEM::UserInterface_AdjustUIScale(double delta)
 {
-  UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(__L("dashboard"));
+  UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(_L("dashboard"));
   if(!dashboard) return false;
 
   double next = dashboard->GetUIScale() + delta;
@@ -2339,7 +2339,7 @@ bool UI_SYSTEM::UserInterface_AdjustUIScale(double delta)
   APPFLOW_CFG.SetUIScaleAutofit(false);
   APPFLOW_CFG.Save();
 
-  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("[UI_System] UIScale -> %.2f (manual)"), dashboard->GetUIScale());
+  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("[UI_System] UIScale -> %.2f (manual)"), dashboard->GetUIScale());
   return true;
 }
 
@@ -2363,9 +2363,9 @@ bool UI_SYSTEM::UserInterface_ChangeLiteralText(UI_ELEMENT_TEXT* element_text, X
   if(!maskvalue)      return false;
   if(!maskresolved)   return false;
 
-  if(!maskvalue->Compare(__L("APP_VERSION"), true))
+  if(!maskvalue->Compare(_L("APP_VERSION"), true))
     {
-      maskresolved->Format(__L("%d.%d.%d"), APPLICATION_VERSION, APPLICATION_SUBVERSION, APPLICATION_SUBVERSIONERR);
+      maskresolved->Format(_L("%d.%d.%d"), APPLICATION_VERSION, APPLICATION_SUBVERSION, APPLICATION_SUBVERSIONERR);
     }
 
   //--------------------------------------------------------------------------------------
@@ -2377,24 +2377,24 @@ bool UI_SYSTEM::UserInterface_ChangeLiteralText(UI_ELEMENT_TEXT* element_text, X
 
   if(hardwareinfomutex) hardwareinfomutex->Lock();
 
-  if(!maskvalue->Compare(__L("CPU_TEMPERATURE")   , true))  maskresolved->Set(cpu_temperature_str.Get());
-  if(!maskvalue->Compare(__L("RAM_USED_TOTAL")    , true))  maskresolved->Set(ram_used_total_str.Get());
-  if(!maskvalue->Compare(__L("RAM_USED")          , true))  maskresolved->Set(ram_used_str.Get());
-  if(!maskvalue->Compare(__L("RAM_TOTAL")         , true))  maskresolved->Set(ram_total_str.Get());
-  if(!maskvalue->Compare(__L("DISK_USED")         , true))  maskresolved->Set(disk_used_str.Get());
-  if(!maskvalue->Compare(__L("DISK_TOTAL")        , true))  maskresolved->Set(disk_total_str.Get());
-  if(!maskvalue->Compare(__L("DISK_CAPTION")      , true))  maskresolved->Set(disk_caption_str.Get());
-  if(!maskvalue->Compare(__L("DISK_INDEX")        , true))  maskresolved->Set(disk_index_str.Get());
-  if(!maskvalue->Compare(__L("SYSTEM_DATE")       , true))  maskresolved->Set(system_date_str.Get());
-  if(!maskvalue->Compare(__L("SYSTEM_TIME")       , true))  maskresolved->Set(system_time_str.Get());
-  if(!maskvalue->Compare(__L("CONNECTION_STATUS") , true))  maskresolved->Set(connection_status_str.Get());
-  if(!maskvalue->Compare(__L("CONNECTION_QUALITY"), true))  maskresolved->Set(connection_quality_str.Get());
-  if(!maskvalue->Compare(__L("CONNECTION_MARK")   , true))  maskresolved->Set(connection_mark_str.Get());
-  if(!maskvalue->Compare(__L("LOCAL_IP")          , true))  maskresolved->Set(local_ip_str.Get());
-  if(!maskvalue->Compare(__L("PUBLIC_IP")         , true))  maskresolved->Set(public_ip_str.Get());
-  if(!maskvalue->Compare(__L("FOOTER_EQUIPO")     , true))  maskresolved->Set(footer_equipo_str.Get());
-  if(!maskvalue->Compare(__L("FOOTER_SO")         , true))  maskresolved->Set(footer_so_str.Get());
-  if(!maskvalue->Compare(__L("FOOTER_UPTIME")     , true))  maskresolved->Set(footer_uptime_str.Get());
+  if(!maskvalue->Compare(_L("CPU_TEMPERATURE")   , true))  maskresolved->Set(cpu_temperature_str.Get());
+  if(!maskvalue->Compare(_L("RAM_USED_TOTAL")    , true))  maskresolved->Set(ram_used_total_str.Get());
+  if(!maskvalue->Compare(_L("RAM_USED")          , true))  maskresolved->Set(ram_used_str.Get());
+  if(!maskvalue->Compare(_L("RAM_TOTAL")         , true))  maskresolved->Set(ram_total_str.Get());
+  if(!maskvalue->Compare(_L("DISK_USED")         , true))  maskresolved->Set(disk_used_str.Get());
+  if(!maskvalue->Compare(_L("DISK_TOTAL")        , true))  maskresolved->Set(disk_total_str.Get());
+  if(!maskvalue->Compare(_L("DISK_CAPTION")      , true))  maskresolved->Set(disk_caption_str.Get());
+  if(!maskvalue->Compare(_L("DISK_INDEX")        , true))  maskresolved->Set(disk_index_str.Get());
+  if(!maskvalue->Compare(_L("SYSTEM_DATE")       , true))  maskresolved->Set(system_date_str.Get());
+  if(!maskvalue->Compare(_L("SYSTEM_TIME")       , true))  maskresolved->Set(system_time_str.Get());
+  if(!maskvalue->Compare(_L("CONNECTION_STATUS") , true))  maskresolved->Set(connection_status_str.Get());
+  if(!maskvalue->Compare(_L("CONNECTION_QUALITY"), true))  maskresolved->Set(connection_quality_str.Get());
+  if(!maskvalue->Compare(_L("CONNECTION_MARK")   , true))  maskresolved->Set(connection_mark_str.Get());
+  if(!maskvalue->Compare(_L("LOCAL_IP")          , true))  maskresolved->Set(local_ip_str.Get());
+  if(!maskvalue->Compare(_L("PUBLIC_IP")         , true))  maskresolved->Set(public_ip_str.Get());
+  if(!maskvalue->Compare(_L("FOOTER_EQUIPO")     , true))  maskresolved->Set(footer_equipo_str.Get());
+  if(!maskvalue->Compare(_L("FOOTER_SO")         , true))  maskresolved->Set(footer_so_str.Get());
+  if(!maskvalue->Compare(_L("FOOTER_UPTIME")     , true))  maskresolved->Set(footer_uptime_str.Get());
 
   if(hardwareinfomutex) hardwareinfomutex->UnLock();
 
@@ -2503,7 +2503,7 @@ void UI_SYSTEM::HandleEvent_Graphics(GRPXEVENT* event)
                                                 // paint here, WM_SIZE's UpdateViewports() presents black until the
                                                 // main loop runs again (mouse-up). Also: never Save() the ini on
                                                 // every size tick — that stalls the drag.
-                                                UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(__L("dashboard"));
+                                                UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(_L("dashboard"));
                                                 if(dashboard && dashboard->IsUIScaleActive())
                                                   {
                                                     #ifdef ANDROID
@@ -2520,7 +2520,7 @@ void UI_SYSTEM::HandleEvent_Graphics(GRPXEVENT* event)
                                                     dashboard->SetUIScaleForFit(UI_LAYOUT_UISCALE_DEFAULT);
                                                     GEN_USERINTERFACE.UIScale_PrepareLayout(dashboard);
                                                     GEN_USERINTERFACE.Update();
-                                                    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("[UI_System] Android config: keep design %dx%d UIScale=1.0"), dashboard->GetDesignWidth(), dashboard->GetDesignHeight());
+                                                    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("[UI_System] Android config: keep design %dx%d UIScale=1.0"), dashboard->GetDesignWidth(), dashboard->GetDesignHeight());
                                                     #else
                                                     if(dashboard->GetUIScaleAutofit())
                                                       {
@@ -2543,7 +2543,7 @@ void UI_SYSTEM::HandleEvent_Graphics(GRPXEVENT* event)
 
                                                     GEN_USERINTERFACE.Update();
 
-                                                    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("[UI_System] UIScale size -> %.2f autofit=%d (%dx%d)"), dashboard->GetUIScale(), dashboard->GetUIScaleAutofit() ? 1 : 0, screen->GetWidth(), screen->GetHeight());
+                                                    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("[UI_System] UIScale size -> %.2f autofit=%d (%dx%d)"), dashboard->GetUIScale(), dashboard->GetUIScaleAutofit() ? 1 : 0, screen->GetWidth(), screen->GetHeight());
                                                     #endif
                                                   }
                                               }

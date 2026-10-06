@@ -78,14 +78,14 @@ enum DATABASESTASKID
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 0
 
-#define APPLICATION_NAMEAPP                       __L("Databases")
-#define APPLICATION_NAMEFILE                      __L("databases")
+#define APPLICATION_NAMEAPP                       _L("Databases")
+#define APPLICATION_NAMEFILE                      _L("databases")
 
-#define APPLICATION_OWNER                         __L("EndoraSoft")
+#define APPLICATION_OWNER                         _L("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2018
 
-#define DATABASES_TABLE_TEST_NAME                 __L("TableTest")
+#define DATABASES_TABLE_TEST_NAME                 _L("TableTest")
 #define DATABASES_TABLE_MAXFIELDS                 16
 
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/

@@ -167,11 +167,11 @@ bool CANVAS2D_CFG::DoDefault()
   log_activesectionsID.Empty();
 
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_INITIATION;
-  log_activesectionsID                  += __L(",");
+  log_activesectionsID                  += _L(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_GENERIC;
-  log_activesectionsID                  += __L(",");
+  log_activesectionsID                  += _L(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_STATUSAPP;
-  log_activesectionsID                  += __L(",");
+  log_activesectionsID                  += _L(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_ENDING;
 
   log_levelmask                         = XLOGLEVEL_ALL;

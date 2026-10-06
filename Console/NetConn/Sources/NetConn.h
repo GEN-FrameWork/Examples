@@ -81,10 +81,10 @@ enum NETCONNTASKID
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 0
 
-#define APPLICATION_NAMEAPP                       __L("Net Conn")
-#define APPLICATION_NAMEFILE                      __L("netconn")
+#define APPLICATION_NAMEAPP                       _L("Net Conn")
+#define APPLICATION_NAMEFILE                      _L("netconn")
 
-#define APPLICATION_OWNER                         __L("EndoraSoft")
+#define APPLICATION_OWNER                         _L("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2024
 

@@ -34,13 +34,13 @@
 
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
-#define DATABASESCFG_SECTION_DATABASE                         __L("database")
-#define DATABASESCFG_DATABASE_URL                             __L("url")
-#define DATABASESCFG_DATABASE_PORT                            __L("port")
-#define DATABASESCFG_DATABASE_DATABASENAME                    __L("databasename")
-#define DATABASESCFG_DATABASE_USER                            __L("user")
-#define DATABASESCFG_DATABASE_PASSWORD                        __L("password")
-#define DATABASESCFG_DATABASE_TIMEOUTCONNECTION               __L("timeoutconnection")
+#define DATABASESCFG_SECTION_DATABASE                         _L("database")
+#define DATABASESCFG_DATABASE_URL                             _L("url")
+#define DATABASESCFG_DATABASE_PORT                            _L("port")
+#define DATABASESCFG_DATABASE_DATABASENAME                    _L("databasename")
+#define DATABASESCFG_DATABASE_USER                            _L("user")
+#define DATABASESCFG_DATABASE_PASSWORD                        _L("password")
+#define DATABASESCFG_DATABASE_TIMEOUTCONNECTION               _L("timeoutconnection")
 
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 

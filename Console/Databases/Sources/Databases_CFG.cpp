@@ -175,11 +175,11 @@ bool DATABASES_CFG::DoDefault()
   log_activesectionsID.Empty();
 
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_INITIATION;
-  log_activesectionsID                  += __L(",");
+  log_activesectionsID                  += _L(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_GENERIC;
-  log_activesectionsID                  += __L(",");
+  log_activesectionsID                  += _L(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_STATUSAPP;
-  log_activesectionsID                  += __L(",");
+  log_activesectionsID                  += _L(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_ENDING;
 
   log_levelmask                         = XLOGLEVEL_ALL;
@@ -188,11 +188,11 @@ bool DATABASES_CFG::DoDefault()
 
   //------------------------------------------------------------------------------
 
-  db_URL                                = __L("");
+  db_URL                                = _L("");
   db_port                               = 0;
-  db_databasename                       = __L("");
-  db_user                               = __L("");
-  db_password                           = __L("");
+  db_databasename                       = _L("");
+  db_user                               = _L("");
+  db_password                           = _L("");
   db_timeoutconnection                  = 30;
 
   //------------------------------------------------------------------------------

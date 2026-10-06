@@ -598,7 +598,7 @@ bool WINDOWCHROMES::Ini_Graphics(GRPSCREEN* screen)
   //screen->Styles_Set(GRPSCREENSTYLE_TRANSPARENT);
   //screen->Styles_Set(GRPSCREENSTYLE_FULLSCREEN);
   
-  screen->GetTitle()->Set(__L("Window Chromes"));  
+  screen->GetTitle()->Set(_L("Window Chromes"));  
   screen->SetDesktopScreenSelected(GRPSCREENTYPE_DESKTOP_MAIN);
 
   GetMainScreen()->CreateViewport(GRPVIEWPORT_ID_MAIN, 0.0f, 0.0f, (float)screen->GetWidth(), (float)screen->GetHeight(), 0, 0, (screen->GetWidth()), (screen->GetHeight()));
@@ -609,7 +609,7 @@ bool WINDOWCHROMES::Ini_Graphics(GRPSCREEN* screen)
  
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_GRAPHICS, pathvf);
   pathvf.Slash_Add();
-  pathvf.Add(__L("tiger.svg"));
+  pathvf.Add(_L("tiger.svg"));
   
   vectorfile = GRPVECTORFILE::CreateInstance(pathvf);
   if(vectorfile)
@@ -670,7 +670,7 @@ bool WINDOWCHROMES::Ini_UserInterface(bool on)
  
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS, xpath);
   xpath.Slash_Add();
-  xpath.Add(__L("example/example.xml"));
+  xpath.Add(_L("example/example.xml"));
     
   if(!GEN_USERINTERFACE.Load(xpath, screen, 0)) 
     {
@@ -863,12 +863,12 @@ bool WINDOWCHROMES::UserInterface_CFGChromes(GRPSCREEN* screen)
 
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS, xpath);
   xpath.Slash_Add();
-  xpath.Add(__L("chrome/chrome.xml"));
-  //xpath.Add(__L("chrome.zip"));
+  xpath.Add(_L("chrome/chrome.xml"));
+  //xpath.Add(_L("chrome.zip"));
 
 
   cfgchromes.SetCustomLayoutFile(xpath.Get());
-  cfgchromes.SetCustomLayoutName(__L("chrome"));
+  cfgchromes.SetCustomLayoutName(_L("chrome"));
   */
 
   cfgchromes.SetCustomAutoHide(1);

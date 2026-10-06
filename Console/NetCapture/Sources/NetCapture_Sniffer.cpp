@@ -235,18 +235,18 @@ bool NETCAPTURE_SNIFFER::Capture_Ini()
                 }
             }
             
-           XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("[%2d] %c %s, [%s]"), c, (indexnetinterface == c)?__C('*'):__C('-'), netinterface->GetName()->Get(), netinterface->GetDescription()->Get());						
+           XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("[%2d] %c %s, [%s]"), c, (indexnetinterface == c)?_C('*'):_C('-'), netinterface->GetName()->Get(), netinterface->GetDescription()->Get());						
         }
     }
 
   if(indexnetinterface != -1)
     {      
-      threadsniffer = CREATEXTHREAD((XTHREADGROUPID)NETCAPTURE_XTHREADGROUPID_SNIFFER, __L("NETCAPTURE_SNIFFER::CaptureIni"), ThreadRunFunctionSniffer, this);
+      threadsniffer = CREATEXTHREAD((XTHREADGROUPID)NETCAPTURE_XTHREADGROUPID_SNIFFER, _L("NETCAPTURE_SNIFFER::CaptureIni"), ThreadRunFunctionSniffer, this);
       status =  threadsniffer?true:false;
 
       if(status)
         {
-          threadmanager = CREATEXTHREAD((XTHREADGROUPID)NETCAPTURE_XTHREADGROUPID_SNIFFER, __L("NETCAPTURE_SNIFFER::CaptureIni2"), ThreadRunFunctionManager, this);
+          threadmanager = CREATEXTHREAD((XTHREADGROUPID)NETCAPTURE_XTHREADGROUPID_SNIFFER, _L("NETCAPTURE_SNIFFER::CaptureIni2"), ThreadRunFunctionManager, this);
           status =  threadmanager?true:false;
           
           if(status)
@@ -292,7 +292,7 @@ bool NETCAPTURE_SNIFFER::Capture_Manager()
               // XTRACE_PRINTDATABLOCKCOLOR((frame->IsSend()?XTRACE_COLOR_BLUE:XTRACE_COLOR_PURPLE), (*buffer));
               //if(!buffer->IsEmpty())
               //  {
-              //    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, __L("%02X"), buffer->Get()[0]);
+              //    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("%02X"), buffer->Get()[0]);
               //  }
             }
 
@@ -617,9 +617,9 @@ void NETCAPTURE_SNIFFER::ThreadRunFunctionSniffer(void* param)
               frame->GetTargetMAC()->GetXString(targetMAC);
               frame->GetTargetIP()->GetXString(targetIP);
              
-              XTRACE_PRINTCOLOR(XTRACE_COLOR_PURPLE, __L("----------------------------------------------------------------------------------------------------"));
+              XTRACE_PRINTCOLOR(XTRACE_COLOR_PURPLE, _L("----------------------------------------------------------------------------------------------------"));
 
-              XTRACE_PRINTCOLOR(XTRACE_COLOR_PURPLE, __L("%s [%s](%s) -> [%s](%s) port [%d]"), protocoltypestr.Get(), sourceMAC.Get(), sourceIP.Get(), targetMAC.Get(), targetIP.Get(), frame->GetSourcePort());
+              XTRACE_PRINTCOLOR(XTRACE_COLOR_PURPLE, _L("%s [%s](%s) -> [%s](%s) port [%d]"), protocoltypestr.Get(), sourceMAC.Get(), sourceIP.Get(), targetMAC.Get(), targetIP.Get(), frame->GetSourcePort());
 
               XTRACE_PRINTDATABLOCKCOLOR(XTRACE_COLOR_BLUE, frame->GetDataPayload(), frame->GetDataPayLoadSize()); 
             }       

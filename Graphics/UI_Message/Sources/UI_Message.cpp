@@ -581,7 +581,7 @@ bool UI_MESSAGE::Ini_Graphics(GRPSCREEN* screen)
   screen->Style_Add(GRPSCREENSTYLE_HEIGHTWITHOUTTASKBAR);
   screen->Style_Add(GRPSCREENSTYLE_NOICONTASKBAR);
 
-  screen->GetTitle()->Set(__L("Hola radiola"));  
+  screen->GetTitle()->Set(_L("Hola radiola"));  
 
   screen->SetDesktopScreenSelected(GRPSCREENTYPE_DESKTOP_MAIN);
 
@@ -670,7 +670,7 @@ bool UI_MESSAGE::Ini_UserInterface(bool on)
  
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS, xpath);
   xpath.Slash_Add();
-  xpath.Add(__L("message.zip"));
+  xpath.Add(_L("message.zip"));
     
 
   if(!GEN_USERINTERFACE.Load(xpath, screen, 0)) 
@@ -731,7 +731,7 @@ bool UI_MESSAGE::DrawFrame()
  
   canvas->ReleaseDrawFramerate();
 
-  GEN_USERINTERFACE.Elements_RebuildDrawAreas(__L("message"));  
+  GEN_USERINTERFACE.Elements_RebuildDrawAreas(_L("message"));  
   GEN_USERINTERFACE.Update();
 
   canvas->DrawFramerate(screen, 10, 30);
@@ -780,14 +780,14 @@ bool UI_MESSAGE::UserInterface_ChangeLiteralText(UI_ELEMENT_TEXT* element_text, 
   if(!maskvalue)      return false;
   if(!maskresolved)   return false;
 
-  if(!maskvalue->Compare(__L("TITLE"), true))
+  if(!maskvalue->Compare(_L("TITLE"), true))
     {
-      maskresolved->Set(__L("Esto es una prueba del titulo"));
+      maskresolved->Set(_L("Esto es una prueba del titulo"));
     }
 
-  if(!maskvalue->Compare(__L("MESSAGE"), true))
+  if(!maskvalue->Compare(_L("MESSAGE"), true))
     {
-      maskresolved->Set(__L("Este es un contenido para un ![COLOR red, 70]mensaje de prueba![END COLOR] y ver si se puede crear correctamente desde la configuracion"));      
+      maskresolved->Set(_L("Este es un contenido para un ![COLOR red, 70]mensaje de prueba![END COLOR] y ver si se puede crear correctamente desde la configuracion"));      
     }
 
   return true;
@@ -813,7 +813,7 @@ void UI_MESSAGE::HandleEvent_UserInterface(UI_XEVENT* event)
       case  UI_XEVENT_TYPE_OUTPUT_SELECTED        : { UI_ELEMENT* element = event->GetElement();
                                                       if(element) 
                                                         {
-                                                          if(!element->GetName()->Compare(__L("ok-btn"), true))
+                                                          if(!element->GetName()->Compare(_L("ok-btn"), true))
                                                             {                                                             
                                                               exitmessage = true;
                                                             }

@@ -134,9 +134,9 @@ bool NETCONN_CFG::DoVariableMapping()
   //-----------------------------------------------------
   // Connection
 
-  AddValue(XFILECFG_VALUETYPE_BOOLEAN, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_ISSERVER, &connection_isserver, __L("Is server active"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
-  AddValue(XFILECFG_VALUETYPE_STRING, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_TRANSPORTTYPE, &connection_transporttype, __L("Transport type"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
-  AddValue(XFILECFG_VALUETYPE_STRING, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_TRANSPORTCONFIG, &connection_transportconfig, __L("Transport config"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
+  AddValue(XFILECFG_VALUETYPE_BOOLEAN, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_ISSERVER, &connection_isserver, _L("Is server active"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
+  AddValue(XFILECFG_VALUETYPE_STRING, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_TRANSPORTTYPE, &connection_transporttype, _L("Transport type"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
+  AddValue(XFILECFG_VALUETYPE_STRING, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_TRANSPORTCONFIG, &connection_transportconfig, _L("Transport config"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
   
   return true;
 }
@@ -165,8 +165,8 @@ bool NETCONN_CFG::DoDefault()
   //------------------------------------------------------------------------------
 
   connection_isserver         = true;  
-  connection_transporttype    = __L("TCPIP");
-  connection_transportconfig  = __L("192.168.1.3:1234");
+  connection_transporttype    = _L("TCPIP");
+  connection_transportconfig  = _L("192.168.1.3:1234");
 
   //------------------------------------------------------------------------------
 
@@ -270,8 +270,8 @@ NETCONN_CFG::~NETCONN_CFG()
 void NETCONN_CFG::Clean()
 {
   connection_isserver         = false;  
-  connection_transporttype    = __L("");
-  connection_transportconfig  = __L("");
+  connection_transporttype    = _L("");
+  connection_transportconfig  = _L("");
 }
 
 

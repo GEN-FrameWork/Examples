@@ -156,8 +156,8 @@ bool BINCONNPRO_PROTOCOL_DEVICE::GetDeviceTypeInString(XSTRING& typestring)
 
   switch(type)
     {
-      case BINCONNPRO_PROTOCOL_DEVICETYPE_UNKNOWN : typestring = __L("Desconocido");     break;
-      case BINCONNPRO_PROTOCOL_DEVICETYPE_GENERIC : typestring = __L("Generic");         break;
+      case BINCONNPRO_PROTOCOL_DEVICETYPE_UNKNOWN : typestring = _L("Desconocido");     break;
+      case BINCONNPRO_PROTOCOL_DEVICETYPE_GENERIC : typestring = _L("Generic");         break;
                                         default   : return false;
     }
 

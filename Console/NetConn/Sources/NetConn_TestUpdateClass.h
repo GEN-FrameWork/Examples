@@ -35,8 +35,8 @@
 
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
-#define NETCONN_TESTUPDATECLASS_NUMBER_STR    __L("number") 
-#define NETCONN_TESTUPDATECLASS_STRING_STR    __L("string")
+#define NETCONN_TESTUPDATECLASS_NUMBER_STR    _L("number") 
+#define NETCONN_TESTUPDATECLASS_STRING_STR    _L("string")
 
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 

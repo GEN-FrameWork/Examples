@@ -103,10 +103,10 @@ enum STATICTICSCHARTS_BUTTONS
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 1
 
-#define APPLICATION_NAMEAPP                       __L("StaticticsCharts")
-#define APPLICATION_NAMEFILE                      __L("staticticscharts")
+#define APPLICATION_NAMEAPP                       _L("StaticticsCharts")
+#define APPLICATION_NAMEFILE                      _L("staticticscharts")
 
-#define APPLICATION_OWNER                         __L("EndoraSoft")
+#define APPLICATION_OWNER                         _L("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2018
 

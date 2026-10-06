@@ -100,16 +100,16 @@ enum UI_MESSAGE_BUTTONS
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 1
 
-#define APPLICATION_NAMEAPP                       __L("UI_Message")
-#define APPLICATION_NAMEFILE                      __L("ui_message")
+#define APPLICATION_NAMEAPP                       _L("UI_Message")
+#define APPLICATION_NAMEFILE                      _L("ui_message")
 
-#define APPLICATION_OWNER                         __L("EndoraSoft")
+#define APPLICATION_OWNER                         _L("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2018
 
 #define XTHREADGROUPID_UI_MESSAGE_DRAWFRAME       XTHREADGROUPID_APPOWNER + 100
 
-#define APPLICATION_GUI_MESSAGE_VIEWPORT_ID       __L("message_viewport")
+#define APPLICATION_GUI_MESSAGE_VIEWPORT_ID       _L("message_viewport")
 
 
 

@@ -286,10 +286,10 @@ bool MINIWEBSERVER::AppProc_FirstUpdate()
 
   if(APPFLOW_CFG.WebServer_GetPort())
     {
-      string2.Format(__L("Inicializando Web Server "));
+      string2.Format(_L("Inicializando Web Server "));
       
       #ifdef DIO_STREAMTLS_ACTIVE
-      string2.AddFormat(__L(" %s"), (APPFLOW_CFG.WebServer_IsTLS()?__L(" (TLS)"):__L("")));     
+      string2.AddFormat(_L(" %s"), (APPFLOW_CFG.WebServer_IsTLS()?NL(" (TLS)"):_L("")));     
       #endif
       
       string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, string2.Get());
@@ -301,7 +301,7 @@ bool MINIWEBSERVER::AppProc_FirstUpdate()
 
       if(status) status = appwebserver->Ini(&APPFLOW_CFG, true, false, false);
 
-      stringresult = (status)?__L("Ok."):__L("ERROR!");
+      stringresult = (status)?_L("Ok"):_L("Error");
       console->PrintMessage(stringresult.Get(), 0, false, true);
 
       if(status)
@@ -315,17 +315,17 @@ bool MINIWEBSERVER::AppProc_FirstUpdate()
           if(!apirest) return false;
         }
 
-      APPFLOW_LOG_ENTRY((status)?XLOGLEVEL_INFO:XLOGLEVEL_ERROR, APPFLOW_CFG_LOG_SECTIONID_INITIATION, false, __L("%s: %s") , string.Get(), stringresult.Get());
+      APPFLOW_LOG_ENTRY((status)?XLOGLEVEL_INFO:XLOGLEVEL_ERROR, APPFLOW_CFG_LOG_SECTIONID_INITIATION, false, _L("%s: %s") , string.Get(), stringresult.Get());
     }
 
   //--------------------------------------------------------------------------------------------------
 
   status = false;
 
-  string2.Format(__L("Inicializando Web Socket "));
+  string2.Format(_L("Inicializando Web Socket "));
       
   #ifdef DIO_STREAMTLS_ACTIVE
-  string2.AddFormat(__L(" %s"), (APPFLOW_CFG.WebServer_IsTLS()?__L(" (WSS)"):__L("")));     
+  string2.AddFormat(_L(" %s"), (APPFLOW_CFG.WebServer_IsTLS()?NL(" (WSS)"):_L("")));     
   #endif
 
   string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, string2.Get());
@@ -337,7 +337,7 @@ bool MINIWEBSERVER::AppProc_FirstUpdate()
 
   if(status) status = appwebsocket->Ini(&APPFLOW_CFG, 17009, APPFLOW_CFG.WebServer_GetTimeoutToServerPage(), APPFLOW_CFG.WebServer_GetLocalAddress());
 
-  stringresult = (status)?__L("Ok."):__L("ERROR!");
+  stringresult = (status)?_L("Ok"):_L("Error");
   console->PrintMessage(stringresult.Get(), 0, false, true);
 
   if(status)
@@ -350,10 +350,10 @@ bool MINIWEBSERVER::AppProc_FirstUpdate()
       SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_WEBSOCKET_DISCONNECTED , (XSUBJECT *)appwebsocket);
     }
 
-  APPFLOW_LOG_ENTRY((status)?XLOGLEVEL_INFO:XLOGLEVEL_ERROR, APPFLOW_CFG_LOG_SECTIONID_INITIATION, false, __L("%s: %s") , string.Get(), stringresult.Get());
+  APPFLOW_LOG_ENTRY((status)?XLOGLEVEL_INFO:XLOGLEVEL_ERROR, APPFLOW_CFG_LOG_SECTIONID_INITIATION, false, _L("%s: %s") , string.Get(), stringresult.Get());
 
-  console->PrintMessage(__L(" "), 0, false, true);
-  console->WaitKey(__L(" Pulsa una tecla para continuar... (%d)"), 1, false, 5);
+  console->PrintMessage(_L(" "), 0, false, true);
+  console->WaitKey(_L(" Pulsa una tecla para continuar... (%d)"), 1, false, 5);
 
   //--------------------------------------------------------------------------------------------------
 
@@ -460,7 +460,7 @@ bool MINIWEBSERVER::AppProc_End()
 
   if(appwebserver)
     {
-      string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, __L("Desactivando servidor web"));
+      string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, _L("Desactivando servidor web"));
       console->PrintMessage(string.Get(), 1, true, false);
 
       UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_REQUEST, (XSUBJECT *)appwebserver);
@@ -471,10 +471,10 @@ bool MINIWEBSERVER::AppProc_End()
       delete appwebserver;
       appwebserver = NULL;
 
-      stringresult = __L("Ok.");
+      stringresult = _L("Ok");
 
       console->PrintMessage(stringresult.Get(), 0, false, true);
-      XLOG::GetInstance().AddEntry(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_ENDING, false, __L("%s: %s") , string.Get(), stringresult.Get());
+      XLOG::GetInstance().AddEntry(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_ENDING, false, _L("%s: %s") , string.Get(), stringresult.Get());
     }
 
   if(apirest)
@@ -487,7 +487,7 @@ bool MINIWEBSERVER::AppProc_End()
 
   if(appwebsocket)
     {
-      string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, __L("Desactivando WebSocket"));
+      string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, _L("Desactivando WebSocket"));
       console->PrintMessage(string.Get(), 1, true, false);
 
       UnSubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_REQUEST, (XSUBJECT *)appwebsocket);
@@ -500,10 +500,10 @@ bool MINIWEBSERVER::AppProc_End()
       delete appwebsocket;
       appwebsocket = NULL;
 
-      stringresult = __L("Ok.");
+      stringresult = _L("Ok");
 
       console->PrintMessage(stringresult.Get(), 0, false, true);
-      XLOG::GetInstance().AddEntry(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_ENDING, false, __L("%s: %s") , string.Get(), stringresult.Get());
+      XLOG::GetInstance().AddEntry(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_ENDING, false, _L("%s: %s") , string.Get(), stringresult.Get());
     }
 
   //--------------------------------------------------------------------------------------
@@ -533,10 +533,10 @@ bool MINIWEBSERVER::KeyValidSecuences(int key)
 {
   XCHAR character = (XCHAR)key;
 
-  if((character<32) || (character>127)) character = __C('?');
-  APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, __L("Key pressed: 0x%02X [%c]"), key, character);
+  if((character<32) || (character>127)) character = _C('?');
+  APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, _L("Key pressed: 0x%02X [%c]"), key, character);
 
-  console->Printf(__L("\r \r"));
+  console->Printf(_L("\r \r"));
 
   switch(key)
     {
@@ -563,34 +563,34 @@ bool MINIWEBSERVER::Show_WebServerConfig()
   XSTRING string;
   XSTRING string2;
 
-  string.Format(__L("Web Server"));
+  string.Format(_L("Web Server"));
   string2.Empty();
   Show_Line(string, string2);
 
-  string.Format(__L("Port"));
-  string2.Format(__L("%d"), appwebserver->GetWebServer()->GetPort());
+  string.Format(_L("Port"));
+  string2.Format(NL("%d"), appwebserver->GetWebServer()->GetPort());
   Show_Line(string, string2);
 
-  string.Format(__L("Acceso Autenticado"));
-  string2.Format(__L("%s"), appwebserver->GetIsAuthenticatedAccess()?__L("Si"):__L("No"));
+  string.Format(_L("Acceso Autenticado"));
+  string2.Format(NL("%s"), appwebserver->GetIsAuthenticatedAccess()?_L("Si"):_L("No"));
   Show_Line(string, string2);
 
 
-  string.Format(__L("Plugin(s) Activo(s)"));
+  string.Format(_L("Plugin(s) Activo(s)"));
   XDWORD nplugins = appwebserver->GetWebServer()->GetPluginsManager()->Plugins_GetNPlugins();
-  string2.Format(__L("%d "), appwebserver->GetWebServer()->GetPluginsManager()->Plugins_GetNPlugins());
+  string2.Format(NL("%d "), appwebserver->GetWebServer()->GetPluginsManager()->Plugins_GetNPlugins());
 
   for(XDWORD c=0; c<nplugins; c++)
     {
       DIOWEBSERVER_PLUGIN* plugin = appwebserver->GetWebServer()->GetPluginsManager()->Plugins_Get(c);
-      if(plugin) string2.AddFormat(__L("[%s] "), plugin->GetName()->Get());
+      if(plugin) string2.AddFormat(NL("[%s] "), plugin->GetName()->Get());
     }
 
   Show_Line(string, string2);
 
 
-  string.Format(__L("Solo sirve API Rest"));
-  string2.Format(__L("%s"), appwebserver->GetIsApiRestOnly()?__L("Si"):__L("No"));
+  string.Format(_L("Solo sirve API Rest"));
+  string2.Format(NL("%s"), appwebserver->GetIsApiRestOnly()?_L("Si"):_L("No"));
   Show_Line(string, string2);
 
   return true;
@@ -614,12 +614,12 @@ bool MINIWEBSERVER::Show_WebSocketConfig()
   XSTRING string;
   XSTRING string2;
 
-  string.Format(__L("WebSocket"));
+  string.Format(NL("WebSocket"));
   string2.Empty();
   Show_Line(string, string2);
 
-  string.Format(__L("Port"));
-  string2.Format(__L("%d"), appwebsocket->GetWebServer()->GetPort());
+  string.Format(_L("Port"));
+  string2.Format(NL("%d"), appwebsocket->GetWebServer()->GetPort());
   Show_Line(string, string2);
 
 
@@ -634,8 +634,8 @@ bool MINIWEBSERVER::Show_WebSocketConfig()
       connection = appwebsocket->GetWebServer()->Websocket_GetNextConnection();
     }
 
-  string.Format(__L("Conexiones activas"));
-  string2.Format(__L("[%d]"), nconnections_active);
+  string.Format(_L("Conexiones activas"));
+  string2.Format(NL("[%d]"), nconnections_active);
   Show_Line(string, string2);
 
   if(nconnections_active)
@@ -644,7 +644,7 @@ bool MINIWEBSERVER::Show_WebSocketConfig()
       while(connection)
         {
           string.Empty();
-          string2.Format(__L("Ver. %2d - Protocol \"%s\" - [%s]"), connection->GetRequest()->WebSocket_GetVersion(), connection->GetRequest()->WebSocket_GetProtocol()->Get(), connection->GetRequest()->GetResource()->Get());
+          string2.Format(NL("Ver. %2d - Protocol \"%s\" - [%s]"), connection->GetRequest()->WebSocket_GetVersion(), connection->GetRequest()->WebSocket_GetProtocol()->Get(), connection->GetRequest()->GetResource()->Get());
           Show_Line(string, string2);
 
           connection = appwebsocket->GetWebServer()->Websocket_GetNextConnection();
@@ -672,8 +672,8 @@ bool MINIWEBSERVER::Show_AllStatus()
 
   APPFLOW_EXTENDED.ShowAll();
 
-  if(Show_WebServerConfig())       console->PrintMessage(__L(""), 0, false, true);
-  if(Show_WebSocketConfig())       console->PrintMessage(__L(""), 0, false, true);
+  if(Show_WebServerConfig())       console->PrintMessage(NL(""), 0, false, true);
+  if(Show_WebSocketConfig())       console->PrintMessage(NL(""), 0, false, true);
 
   if(xmutexshowallstatus) xmutexshowallstatus->UnLock();
 
@@ -715,8 +715,8 @@ void MINIWEBSERVER::HandleEvent_WebServer(DIOWEBSERVER_XEVENT* event)
                                                             event->SetStatus(true);
                                                             break;
 
-      case DIOWEBSERVER_XEVENT_TYPE_WEBSOCKET_READDATA    : { event->GetServer()->Websocket_Ping(__L("cucu..."));
-                                                              event->GetServer()->Websocket_Write(__L("Hello word!"));
+      case DIOWEBSERVER_XEVENT_TYPE_WEBSOCKET_READDATA    : { event->GetServer()->Websocket_Ping(NL("cucu..."));
+                                                              event->GetServer()->Websocket_Write(NL("Hello word!"));
                                                             }
                                                           break;
     }

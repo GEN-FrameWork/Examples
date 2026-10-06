@@ -74,10 +74,10 @@ enum BINCONNPROTASKID
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 0
 
-#define APPLICATION_NAMEAPP                       __L("Binary Connexion Protocol")
-#define APPLICATION_NAMEFILE                      __L("binconnpro")
+#define APPLICATION_NAMEAPP                       _L("Binary Connexion Protocol")
+#define APPLICATION_NAMEFILE                      _L("binconnpro")
 
-#define APPLICATION_OWNER                         __L("EndoraSoft")
+#define APPLICATION_OWNER                         _L("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2018
 

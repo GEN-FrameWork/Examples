@@ -113,10 +113,10 @@ enum UI_SYSTEM_BUTTONS
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 0
 
-#define APPLICATION_NAMEAPP                       __L("UI_System")
-#define APPLICATION_NAMEFILE                      __L("ui_system")
+#define APPLICATION_NAMEAPP                       _L("UI_System")
+#define APPLICATION_NAMEFILE                      _L("ui_system")
 
-#define APPLICATION_OWNER                         __L("EndoraSoft")
+#define APPLICATION_OWNER                         _L("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2026
 

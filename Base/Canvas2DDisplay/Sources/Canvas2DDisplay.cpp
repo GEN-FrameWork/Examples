@@ -131,7 +131,7 @@ bool CANVAS2DDISPLAY::AppProc_Ini()
     XTRACE_SETTARGET(0, XTRACE_TYPE_NET, GEN_XTRACE_NET_DEFAULT_01);
   #endif
 
-  XTRACE_PRINTCOLOR(1, __L("Start Application"));
+  XTRACE_PRINTCOLOR(1, _L("Start Application"));
 
   return true;
 }
@@ -205,11 +205,11 @@ bool CANVAS2DDISPLAY::Test_DIOStreamI2C()
 
   if(screenOLEDSSD1306->Ini(1, 0x78, 10))
     {
-      XTRACE_PRINTCOLOR(2, __L("Connect I2C device... Ok!"));
+      XTRACE_PRINTCOLOR(2, _L("Connect I2C device... Ok!"));
 
       screenOLEDSSD1306->End();
 
-    } else XTRACE_PRINTCOLOR(2,__L("Error to connect I2C device..."));
+    } else XTRACE_PRINTCOLOR(2,_L("Error to connect I2C device..."));
 
   */
 
@@ -248,25 +248,25 @@ bool CANVAS2DDISPLAY::Test_DIOStreamSPI()
               lcdscreen->SetResetPin(TEST_PINLCD_RESET);
 
               status  = lcdscreen->Ini(1, 0, 10);
-              XTRACE_PRINTCOLOR(1, __L("Send screen INI   : %s "), status?__L("Ok!"):__L("Error!"));
+              XTRACE_PRINTCOLOR(1, _L("Send screen INI   : %s "), status?_L("Ok!"):_L("Error!"));
               if(status)
                 {
 
                   //status = lcdscreen->Clear(DIOSPILCDSCREENPHILIPSPCF8833_RED);
-                  //XDEBUG_PRINTCOLOR(1, __L("Send screen Clean : %s "), status?__L("Ok!"):__L("Error!"));
+                  //XDEBUG_PRINTCOLOR(1, _L("Send screen Clean : %s "), status?_L("Ok!"):_L("Error!"));
 
                   //GEN_XSLEEP.Seconds(1);
                   if(status)
                     {
                       //status = lcdscreen->Clear(DIOSPILCDSCREENPHILIPSPCF8833_GREEN);
-                      //XDEBUG_PRINTCOLOR(1, __L("Send screen Clean : %s "), status?__L("Ok!"):__L("Error!"));
+                      //XDEBUG_PRINTCOLOR(1, _L("Send screen Clean : %s "), status?_L("Ok!"):_L("Error!"));
 
                       //GEN_XSLEEP.Seconds(1);
 
                       if(status)
                         {
                           //status = lcdscreen->Clear(DIOSPILCDSCREENPHILIPSPCF8833_BLUE);
-                          //XDEBUG_PRINTCOLOR(1, __L("Send screen Clean : %s "), status?__L("Ok!"):__L("Error!"));
+                          //XDEBUG_PRINTCOLOR(1, _L("Send screen Clean : %s "), status?_L("Ok!"):_L("Error!"));
 
                           //GEN_XSLEEP.Seconds(1);
                           XRAND*  rnd = GEN_XFACTORY.CreateRand();
@@ -290,12 +290,12 @@ bool CANVAS2DDISPLAY::Test_DIOStreamSPI()
 
                           if(rnd)
                             {
-                              XDEBUG_PRINTCOLOR(1, __L("Create Random..."));
+                              XDEBUG_PRINTCOLOR(1, _L("Create Random..."));
 
                               buffer = GEN_NEW XWORD[lcdscreen->GetNPixels()];
                               if(buffer)
                                 {
-                                  XDEBUG_PRINTCOLOR(1, __L("Create Buffer Random..."));
+                                  XDEBUG_PRINTCOLOR(1, _L("Create Buffer Random..."));
 
                                   int nframes = 0;
 
@@ -307,16 +307,16 @@ bool CANVAS2DDISPLAY::Test_DIOStreamSPI()
                                         }
 
                                       lcdscreen->Update((XBYTE*)buffer);
-                                      XDEBUG_PRINTCOLOR(1, __L("Send screen Update: %05d  %s    "), nframes,  status?__L("Ok!"):__L("Error!"));
+                                      XDEBUG_PRINTCOLOR(1, _L("Send screen Update: %05d  %s    "), nframes,  status?_L("Ok!"):_L("Error!"));
 
                                       nframes++;
                                    }
 
-                                } else XDEBUG_PRINTCOLOR(1, __L("Error Create Buffer Random..."));
+                                } else XDEBUG_PRINTCOLOR(1, _L("Error Create Buffer Random..."));
 
                               delete buffer;
 
-                           } else XDEBUG_PRINTCOLOR(1, __L("Error Create Random..."));
+                           } else XDEBUG_PRINTCOLOR(1, _L("Error Create Random..."));
 
                          GEN_XFACTORY.DeleteRand(rnd);
 
@@ -356,7 +356,7 @@ bool CANVAS2DDISPLAY::Test_DIOStreamSPI()
               oledscreenSSD1331->SetDCPin(SCREEN_PIN_DC, SCREEN_GRP_DC);
 
               status  =  oledscreenSSD1331->Ini(1, 0, 3);
-              XTRACE_PRINTCOLOR((status?1:4), __L("Send screen INI   : %s \n"), (status?__L("Ok!"):__L("Error!")));
+              XTRACE_PRINTCOLOR((status?1:4), _L("Send screen INI   : %s \n"), (status?_L("Ok!"):_L("Error!")));
               if(status)
                 {
                   while(1)

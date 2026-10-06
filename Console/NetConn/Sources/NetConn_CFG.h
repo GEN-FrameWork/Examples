@@ -34,12 +34,12 @@
 
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
-#define NETCONN_CFG_SECTION_GENERAL                           __L("general")
+#define NETCONN_CFG_SECTION_GENERAL                           _L("general")
 
-#define NETCONN_CFG_SECTION_CONNECTION                        __L("connection")
-#define NETCONN_CFG_CONNECTION_ISSERVER                       __L("isserver")
-#define NETCONN_CFG_CONNECTION_TRANSPORTTYPE                  __L("transporttype")
-#define NETCONN_CFG_CONNECTION_TRANSPORTCONFIG                __L("transportconfig")
+#define NETCONN_CFG_SECTION_CONNECTION                        _L("connection")
+#define NETCONN_CFG_CONNECTION_ISSERVER                       _L("isserver")
+#define NETCONN_CFG_CONNECTION_TRANSPORTTYPE                  _L("transporttype")
+#define NETCONN_CFG_CONNECTION_TRANSPORTCONFIG                _L("transportconfig")
 
 #define NETCONN_APPFLOW_CFG_DEFAULT_REMARK_COLUMN             98
 

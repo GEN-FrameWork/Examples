@@ -254,7 +254,7 @@ bool NETCAPTURE::AppProc_FirstUpdate()
   DIOPCAP_FILTERS* filters = sniffer->GetDIOPCap()->GetFilters();
   if(filters)
     {
-      // filters->Entrys_Add(__L("DNS"), DIOPCAPPROTOCOL_TYPE_UDP | DIOPCAPPROTOCOL_TYPE_TCP, 1, 53);
+      // filters->Entrys_Add(_L("DNS"), DIOPCAPPROTOCOL_TYPE_UDP | DIOPCAPPROTOCOL_TYPE_TCP, 1, 53);
     }
       
   //--------------------------------------------------------------------------------------
@@ -416,10 +416,10 @@ bool NETCAPTURE::KeyValidSecuences(int key)
 {
   XCHAR character = (XCHAR)key;
 
-  if((character<32) || (character>127)) character = __C('?');
-  APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, __L("Key pressed: 0x%02X [%c]"), key, character);
+  if((character<32) || (character>127)) character = _C('?');
+  APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, _L("Key pressed: 0x%02X [%c]"), key, character);
 
-  console->Printf(__L("\r \r"));
+  console->Printf(_L("\r \r"));
 
   switch(key)
     {

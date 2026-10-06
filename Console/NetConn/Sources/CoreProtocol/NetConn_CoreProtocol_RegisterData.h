@@ -34,8 +34,8 @@
 
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
-#define NETCONN_COREPROTOCOL_REGISTERDATA_HEADER_VAR_GROUP       __L("group")
-#define NETCONN_COREPROTOCOL_REGISTERDATA_HEADER_VAR_SUBGROUP    __L("subgroup")
+#define NETCONN_COREPROTOCOL_REGISTERDATA_HEADER_VAR_GROUP       _L("group")
+#define NETCONN_COREPROTOCOL_REGISTERDATA_HEADER_VAR_SUBGROUP    _L("subgroup")
 
 
 

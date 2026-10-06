@@ -644,7 +644,7 @@ bool STATICTICSCHARTS::Ini_StaticticCharts()
               GRPSTATISTICSCHARTCONFIG* config = chart->GetConfig();
               if(config)
                 {
-                  config->SetTitle(__L("Sales by quarter"));
+                  config->SetTitle(_L("Sales by quarter"));
 
                   config->SetShowValues(true);
          
@@ -668,12 +668,12 @@ bool STATICTICSCHARTS::Ini_StaticticCharts()
               GRPSTATISTICSCHARTDATA* data = chart->GetData();
               if(data)
                 {
-                  data->AddCategory(__L("Q1"));
-                  data->AddCategory(__L("Q2"));
-                  data->AddCategory(__L("Q3"));
-                  data->AddCategory(__L("Q4"));
+                  data->AddCategory(_L("Q1"));
+                  data->AddCategory(_L("Q2"));
+                  data->AddCategory(_L("Q3"));
+                  data->AddCategory(_L("Q4"));
                                 
-                  GRPSTATISTICSCHARTSERIE* serie2024 = data->AddSerie(__L("2024"));
+                  GRPSTATISTICSCHARTSERIE* serie2024 = data->AddSerie(_L("2024"));
                   if(serie2024)
                     {
                       for(int e=0; e<4; e++)  
@@ -683,7 +683,7 @@ bool STATICTICSCHARTS::Ini_StaticticCharts()
                         }                      
                     }
 
-                  GRPSTATISTICSCHARTSERIE* serie2025 = data->AddSerie(__L("2025"));
+                  GRPSTATISTICSCHARTSERIE* serie2025 = data->AddSerie(_L("2025"));
                   if(serie2025)
                     {
                       for(int e=0; e<4; e++)  
@@ -741,7 +741,7 @@ bool STATICTICSCHARTS::Ini_Graphics(GRPSCREEN* screen)
   screen->SetWidth((420*3)+(20*4));
   screen->SetHeight((420*2)+(20*3));
 
-  screen->GetTitle()->Set(__L("Statictics Chars Canvas"));  
+  screen->GetTitle()->Set(_L("Statictics Chars Canvas"));  
 
   GetMainScreen()->CreateViewport(GRPVIEWPORT_ID_MAIN, 0.0f, 0.0f, (float)screen->GetWidth(), (float)screen->GetHeight(), 0, 0, (screen->GetWidth()), (screen->GetHeight()));
 
@@ -768,7 +768,7 @@ bool STATICTICSCHARTS::Ini_Graphics(GRPSCREEN* screen)
 
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_GRAPHICS, xpath);
   xpath.Slash_Add();
-  xpath.Add(__L("background.jpg"));
+  xpath.Add(_L("background.jpg"));
 
   GRPBITMAPFILE   bitmapfile;
   
@@ -780,7 +780,7 @@ bool STATICTICSCHARTS::Ini_Graphics(GRPSCREEN* screen)
 
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_FONTS, pathfont);
   pathfont.Slash_Add();             
-  pathfont.Add(__L("Nunito-SemiBold.ttf"));
+  pathfont.Add(_L("Nunito-SemiBold.ttf"));
 
   canvas->VectorFont_Load(pathfont);
 

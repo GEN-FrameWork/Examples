@@ -34,11 +34,11 @@
 
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
-#define MINIWEBSERVER_CFG_SECTION_PROTOCOL                            __L("protocol")
-#define MINIWEBSERVER_CFG_PROTOCOL_ISACTIVE                           __L("isactive")
-#define MINIWEBSERVER_CFG_PROTOCOL_ISLOCALENUMACTIVE                  __L("islocalenumactive")
-#define MINIWEBSERVER_CFG_PROTOCOL_PORT                               __L("port")
-#define MINIWEBSERVER_CFG_PROTOCOL_TARGET                             __L("target")
+#define MINIWEBSERVER_CFG_SECTION_PROTOCOL                            NL("protocol")
+#define MINIWEBSERVER_CFG_PROTOCOL_ISACTIVE                           NL("isactive")
+#define MINIWEBSERVER_CFG_PROTOCOL_ISLOCALENUMACTIVE                  NL("islocalenumactive")
+#define MINIWEBSERVER_CFG_PROTOCOL_PORT                               NL("port")
+#define MINIWEBSERVER_CFG_PROTOCOL_TARGET                             NL("target")
 
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 

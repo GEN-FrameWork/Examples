@@ -79,10 +79,10 @@ enum INIBASETASKID
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 0
 
-#define APPLICATION_NAMEAPP                       __L("Ini Base")
-#define APPLICATION_NAMEFILE                      __L("inibase")
+#define APPLICATION_NAMEAPP                       _L("Ini Base")
+#define APPLICATION_NAMEFILE                      _L("inibase")
 
-#define APPLICATION_OWNER                         __L("EndoraSoft")
+#define APPLICATION_OWNER                         _L("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2024
 

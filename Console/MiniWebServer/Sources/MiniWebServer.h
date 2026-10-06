@@ -76,17 +76,14 @@ enum MINIWEBSERVERTASKID
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 0
 
-#define APPLICATION_NAMEAPP                       __L("Mini Web Server")
-#define APPLICATION_NAMEFILE                      __L("miniwebserver")
+#define APPLICATION_NAMEAPP                       NL("Mini Web Server")
+#define APPLICATION_NAMEFILE                      NL("miniwebserver")
 
-#define APPLICATION_OWNER                         __L("EndoraSoft")
+#define APPLICATION_OWNER                         NL("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2018
 
-#define APPLICATION_DIRECTORY_WEB                 __L("web")
 
-#define MINIWEBSERVER_TABLE_TEST_NAME             __L("TableTest")
-#define MINIWEBSERVER_TABLE_MAXFIELDS             16
 
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 

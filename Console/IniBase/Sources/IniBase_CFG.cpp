@@ -134,7 +134,7 @@ bool INIBASE_CFG::DoVariableMapping()
   //-----------------------------------------------------
   // Connection
 
-  //AddValue(XFILECFG_VALUETYPE_BOOLEAN   , INIBASE_CFG_SECTION_CONNECTION        , INIBASE_CFG_CONNECTION_ISSERVER                , &connection_isserver                                 , __L("Is server active")                                                                 , APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
+  //AddValue(XFILECFG_VALUETYPE_BOOLEAN   , INIBASE_CFG_SECTION_CONNECTION        , INIBASE_CFG_CONNECTION_ISSERVER                , &connection_isserver                                 , _L("Is server active")                                                                 , APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
   
   return true;
 }

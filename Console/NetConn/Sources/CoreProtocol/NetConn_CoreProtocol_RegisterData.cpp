@@ -104,8 +104,8 @@ bool NETCONN_COREPROTOCOL_REGISTERDATA::InitializeData(bool isserver)
 
   if(isserver)
     {      
-      group    = __L("Main Group");
-      subgroup = __L("Sub Group");
+      group    = _L("Main Group");
+      subgroup = _L("Sub Group");
     }
 
   return true;

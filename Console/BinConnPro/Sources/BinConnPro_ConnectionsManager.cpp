@@ -279,8 +279,8 @@ DIOPROTOCOL* BINCONNPRO_CONNECTIONSMANAGER::CreateProtocol()
 
 
               if(isserver)
-                      protocol->GetDescription()->Set(__L("EGM Protocol Server"));
-                else  protocol->GetDescription()->Set(__L("EGM Protocol Client"));
+                      protocol->GetDescription()->Set(_L("EGM Protocol Server"));
+                else  protocol->GetDescription()->Set(_L("EGM Protocol Client"));
 
               if(!applicationdata)
                 {
@@ -332,8 +332,8 @@ DIOPROTOCOL* BINCONNPRO_CONNECTIONSMANAGER::CreateProtocol()
           protocol->SetMaskID(BINCONNPRO_CONNECTIONSMANAGER_PROTOCOLMASKID | (isserver?DIOPROTOCOL_CMDTYPE_ISSERVER:0));
 
           if(isserver)
-                    protocol->GetDescription()->Set(__L("EGM Protocol Server"));
-              else  protocol->GetDescription()->Set(__L("EGM Protocol Client"));
+                    protocol->GetDescription()->Set(_L("EGM Protocol Server"));
+              else  protocol->GetDescription()->Set(_L("EGM Protocol Client"));
 
           if(!applicationdata)
               {
