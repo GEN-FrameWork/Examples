@@ -434,9 +434,9 @@ bool SCRIPTSEXAMPLE::KeyValidSecuences(int key)
   XCHAR character = (XCHAR)key;
 
   if((character<32) || (character>127)) character = _C('?');
-  APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, _L("Key pressed: 0x%02X [%c]"), key, character);
+  APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, TL(SCRIPTSEXAMPLE_TRANSLATEID_SCRIPTSEXAMPLE_KEY_PRESSED_0X), key, character);
 
-  console->Printf(_L("\r \r"));
+  console->Printf(NL("\r \r"));
 
   switch(key)
     {
@@ -446,65 +446,19 @@ bool SCRIPTSEXAMPLE::KeyValidSecuences(int key)
 
       case 'R'  : { if(xtimerscriptrun) xtimerscriptrun->Reset();
 
-                    console->Printf(_L("\r\n"));
+                    console->Printf(NL("\r\n"));
 
                     SCRIPT::LoadScriptAndRun(APPFLOW_CFG.Scripts_GetAll(), SCRIPTSEXAMPLE::AdjustLibraries);
 
                     XQWORD timereleapsed      =  xtimerscriptrun->GetMeasureMilliSeconds();
                     double timereleapsedfloat = ((double)timereleapsed/(double)1000);
 
-                    XTRACE_PRINTCOLOR(1, _L("Run exec in %d milliseconds (%.2f seconds)."), (XDWORD)timereleapsed, timereleapsedfloat);
+                    XTRACE_PRINTCOLOR(1, TL(SCRIPTSEXAMPLE_TRANSLATEID_SCRIPTSEXAMPLE_RUN_EXEC_IN_MILLISECONDS_SECONDS), (XDWORD)timereleapsed, timereleapsedfloat);
                   }
                   break;
 
       case 'S'  : break;
 
-    }
-
-  return true;
-}
-
-
-/**-------------------------------------------------------------------------------------------------------------------
-*
-* @fn         bool SCRIPTSEXAMPLE::Show_AppStatus()
-* @brief      Shows application status information.
-* @ingroup    EXAMPLES
-*
-* @return     bool : true if the operation is successful; otherwise false.
-*
-*---------------------------------------------------------------------------------------------------------------------*/
-bool SCRIPTSEXAMPLE::Show_AppStatus()
-{
-  XSTRING string;
-  XSTRING string2;
-
-  XDWORD  total;
-  XDWORD  free;
-
-  GEN_XSYSTEM.GetMemoryInfo(total, free);
-
-  string  = _L("Memoria total");
-  string2.Format(_L("%d Kb, libre %d Kb (el %d%%)"), total, free, GEN_XSYSTEM.GetFreeMemoryPercent());
-  Show_Line(string, string2);
-
-  XDATETIME* datetime = GEN_XFACTORY.CreateDateTime();
-  if(datetime)
-    {
-      datetime->Read();
-
-      string  = _L("Fecha ");
-      datetime->GetDateTimeToString(XDATETIME_FORMAT_STANDARD | XDATETIME_FORMAT_TEXTMONTH | XDATETIME_FORMAT_ADDDAYOFWEEK, string2);
-      Show_Line(string, string2);
-
-      GEN_XFACTORY.DeleteDateTime(datetime);
-    }
-
-  if(xtimerglobal)
-    {
-      string  = _L("Tiempo de funcionamiento");
-      xtimerglobal->GetMeasureString(string2, true);
-      Show_Line(string, string2);
     }
 
   return true;
@@ -572,10 +526,10 @@ void SCRIPTSEXAMPLE::HandleEvent_Script(SCRIPT_XEVENT* event)
   switch(event->GetEventType())
     {      
 
-      case SCRIPT_XEVENT_TYPE_ERROR    : XTRACE_PRINTCOLOR(4, _L("Script ERROR [%d]: %s line %d -> \"%s\""), event->GetError(), event->GetErrorText()->Get(), event->GetNLine(), event->GetCurrentToken()->Get());
+      case SCRIPT_XEVENT_TYPE_ERROR    : XTRACE_PRINTCOLOR(4, TL(SCRIPTSEXAMPLE_TRANSLATEID_SCRIPTSEXAMPLE_SCRIPT_ERROR_LINE), event->GetError(), event->GetErrorText()->Get(), event->GetNLine(), event->GetCurrentToken()->Get());
                                          break;
 
-      case SCRIPT_XEVENT_TYPE_BREAK    : XTRACE_PRINTCOLOR(4, _L("Script BREAK: line %d -> \"%s\""), event->GetNLine(), event->GetCurrentToken()->Get());
+      case SCRIPT_XEVENT_TYPE_BREAK    : XTRACE_PRINTCOLOR(4, TL(SCRIPTSEXAMPLE_TRANSLATEID_SCRIPTSEXAMPLE_SCRIPT_BREAK_LINE), event->GetNLine(), event->GetCurrentToken()->Get());
                                          break;
 
     }

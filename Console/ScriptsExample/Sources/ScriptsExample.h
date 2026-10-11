@@ -79,10 +79,10 @@ enum SCRIPTSEXAMPLETASKID
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 0
 
-#define APPLICATION_NAMEAPP                       _L("Scripts Example")
-#define APPLICATION_NAMEFILE                      _L("scriptsexample")
+#define APPLICATION_NAMEAPP                       NL("Scripts Example")
+#define APPLICATION_NAMEFILE                      NL("scriptsexample")
 
-#define APPLICATION_OWNER                         _L("EndoraSoft")
+#define APPLICATION_OWNER                         NL("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2018
 
@@ -119,8 +119,7 @@ class SCRIPTSEXAMPLE : public APPFLOWCONSOLE, public XFSMACHINE
     bool                            AppProc_End                             ();
 
     bool                            KeyValidSecuences                       (int key);
-   
-    bool                            Show_AppStatus                          ();
+       
     bool                            Show_AllStatus                          ();
 
   private:

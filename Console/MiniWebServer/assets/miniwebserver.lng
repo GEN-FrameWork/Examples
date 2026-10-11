@@ -1,0 +1,169 @@
+{
+  "languages"       : [ "Spanish" ,
+                        "English" ,
+                        "French"  ,
+                        "German"  ,
+                        "Chinese"
+                      ],
+
+  "translations"    : { "00001" : [ 0,
+                                    "app correcto" ,
+                                    "app ok"       ,
+                                    "app oui"      ,
+                                    "app korrekt"  ,
+                                    "app 正确"
+                                  ],
+
+                        "00002" : [ 0,
+                                    "app enviada"  ,
+                                    "app sent"     ,
+                                    "app envoyee"  ,
+                                    "app gesendet" ,
+                                    "app 已发送"
+                                  ],
+
+                        "00003" : [ 0,
+                                    "Inicializando Web Server " ,
+                                    "Initializing Web Server" ,
+                                    "Initialisation du serveur Web" ,
+                                    "Webserver wird initialisiert" ,
+                                    "初始化网络服务器"
+                                  ],
+
+                        "00004" : [ 0,
+                                    "De acuerdo" ,
+                                    "Ok" ,
+                                    "D'accord" ,
+                                    "OK" ,
+                                    "好的"
+                                  ],
+
+                        "00005" : [ 0,
+                                    "Error" ,
+                                    "Error" ,
+                                    "Erreur" ,
+                                    "Fehler" ,
+                                    "错误"
+                                  ],
+
+                        "00006" : [ 0,
+                                    "Inicializando Web Socket" ,
+                                    "Initializing Web Socket" ,
+                                    "Initialisation du socket Web" ,
+                                    "Web-Socket wird initialisiert" ,
+                                    "初始化网络套接字"
+                                  ],
+
+                        "00007" : [ 0,
+                                    "ID de generación %d: %s" ,
+                                    "GEN  ID %d : %s" ,
+                                    "Identifiant de génération %d : %s" ,
+                                    "GEN-ID %d: %s" ,
+                                    "GEN ID %d：%s"
+                                  ],
+
+                        "00008" : [ 0,
+                                    "ID DE APLICACIÓN %d: %s" ,
+                                    "APP  ID %d : %s" ,
+                                    "Identifiant de l'application %d : %s" ,
+                                    "APP-ID %d: %s" ,
+                                    "应用程序 ID %d : %s"
+                                  ],
+
+                        "00009" : [ 0,
+                                    " Pulsa una tecla para continuar... (%d)" ,
+                                    "Press a key to continue... (%d)" ,
+                                    "Appuyez sur une touche pour continuer... (%d)" ,
+                                    "Drücken Sie eine Taste, um fortzufahren... (%d)" ,
+                                    "按任意键继续... (%d)"
+                                  ],
+
+                        "00010" : [ 0,
+                                    "Desactivando servidor web" ,
+                                    "Deactivating web server" ,
+                                    "Désactivation du serveur Web" ,
+                                    "Webserver deaktivieren" ,
+                                    "停用网络服务器"
+                                  ],
+
+                        "00011" : [ 0,
+                                    "Deshabilitar WebSocket" ,
+                                    "Disabling WebSocket" ,
+                                    "Désactivation de WebSocket" ,
+                                    "WebSocket deaktivieren" ,
+                                    "禁用 WebSocket"
+                                  ],
+
+                        "00012" : [ 0,
+                                    "Tecla presionada: 0x%02X [%c]" ,
+                                    "Key pressed: 0x%02X [%c]" ,
+                                    "Touche enfoncée : 0x%02X [%c]" ,
+                                    "Taste gedrückt: 0x%02X [%c]" ,
+                                    "按下按键：0x%02X [%c]"
+                                  ],
+
+                        "00013" : [ 0,
+                                    "Servidor web" ,
+                                    "Web Server" ,
+                                    "Serveur Web" ,
+                                    "Webserver" ,
+                                    "网络服务器"
+                                  ],
+
+                        "00014" : [ 0,
+                                    "Puerto" ,
+                                    "Port" ,
+                                    "Port" ,
+                                    "Hafen" ,
+                                    "港口"
+                                  ],
+
+                        "00015" : [ 0,
+                                    "Acceso Autenticado" ,
+                                    "Authenticated Access" ,
+                                    "Accès authentifié" ,
+                                    "Authentifizierter Zugriff" ,
+                                    "认证访问"
+                                  ],
+
+                        "00016" : [ 0,
+                                    "Y" ,
+                                    "And" ,
+                                    "Et" ,
+                                    "Und" ,
+                                    "和"
+                                  ],
+
+                        "00017" : [ 0,
+                                    "No" ,
+                                    "No" ,
+                                    "Non" ,
+                                    "NEIN" ,
+                                    "不"
+                                  ],
+
+                        "00018" : [ 0,
+                                    "Plugin(s) Activo(s)" ,
+                                    "Active Plugin(s)" ,
+                                    "Plugins actifs" ,
+                                    "Aktive Plugin(s)" ,
+                                    "活动插件"
+                                  ],
+
+                        "00019" : [ 0,
+                                    "Solo sirve API Rest" ,
+                                    "Only serves API Rest" ,
+                                    "Ne sert que l'API Rest" ,
+                                    "Stellt nur API-Rest bereit" ,
+                                    "只提供Rest API服务"
+                                  ],
+
+                        "00020" : [ 0,
+                                    "Conexiones activas" ,
+                                    "Active connections" ,
+                                    "Connexions actives" ,
+                                    "Aktive Verbindungen" ,
+                                    "活跃连接数"
+                                  ]
+                      }
+}

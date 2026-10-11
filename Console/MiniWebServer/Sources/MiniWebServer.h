@@ -40,6 +40,7 @@
 #include "APPFlowConsole.h"
 
 #include "MiniWebServer_APIRest.h"
+#include "MiniWebServer_TranslateID.h"
 
 
 
@@ -78,6 +79,7 @@ enum MINIWEBSERVERTASKID
 
 #define APPLICATION_NAMEAPP                       NL("Mini Web Server")
 #define APPLICATION_NAMEFILE                      NL("miniwebserver")
+#define MINIWEBSERVER_LNG_NAMEFILE                NL("miniwebserver")
 
 #define APPLICATION_OWNER                         NL("EndoraSoft")
 
