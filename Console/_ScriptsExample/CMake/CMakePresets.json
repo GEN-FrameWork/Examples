@@ -1,0 +1,266 @@
+{
+  "version": 5,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 23,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "gen-base-debug-ninja",
+      "hidden": true,
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_BUILD_TYPE": "Debug",
+        "DEBUG_EXTCFG": "",
+        "USE_CLANG_EXTCFG": "",
+        "MEMORY_EXTCFG": "",
+        "TRACE_EXTCFG": "",
+        "FEEDBACK_EXTCFG": "",
+        "COVERAGE_CREATEINFO_EXTERNAL_CFG": "",
+        "CMAKE_CREATEDOCKERFILE_EXTERNAL_CFG": "NOTCREATEDOCKERFILE"
+      }
+    },
+    {
+      "name": "1-windows-intel32",
+      "displayName": "1 - Windows INTEL x32",
+      "description": "Equivalente al perfil 01 del CMakeSettings.json: Ninja, Debug, TARGET=INTEL32, entorno MSVC x86 sobre host x64. Seleccionar 'Local Machine' en el dropdown Target System.",
+      "inherits": "gen-base-debug-ninja",
+      "binaryDir": "${sourceDir}/Build/Windows/intel32",
+      "installDir": "${sourceDir}/Build/Windows/intel32",
+      "architecture": {
+        "value": "Win32",
+        "strategy": "external"
+      },
+      "toolset": {
+        "value": "host=x64",
+        "strategy": "external"
+      },
+      "cacheVariables": {
+        "TARGET": "INTEL32",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/Build/Windows/intel32"
+      },
+      "vendor": {
+        "microsoft.com/VisualStudioSettings/CMake/1.0": {
+          "hostOS": [ "Windows" ],
+          "inheritedEnvironments": [ "msvc_x86_x64" ],
+          "intelliSenseMode": "windows-msvc-x86"
+        }
+      }
+    },
+    {
+      "name": "2-windows-intel64",
+      "displayName": "2 - Windows INTEL x64",
+      "description": "Equivalente al perfil 02 del CMakeSettings.json: Ninja, Debug, TARGET=INTEL64, entorno MSVC x64 sobre host x64. Seleccionar 'Local Machine' en el dropdown Target System.",
+      "inherits": "gen-base-debug-ninja",
+      "binaryDir": "${sourceDir}/Build/Windows/intel64",
+      "installDir": "${sourceDir}/Build/Windows/intel64",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "toolset": {
+        "value": "host=x64",
+        "strategy": "external"
+      },
+      "cacheVariables": {
+        "TARGET": "INTEL64",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/Build/Windows/intel64"
+      },
+      "vendor": {
+        "microsoft.com/VisualStudioSettings/CMake/1.0": {
+          "hostOS": [ "Windows" ],
+          "inheritedEnvironments": [ "msvc_x64_x64" ],
+          "intelliSenseMode": "windows-msvc-x64"
+        }
+      }
+    },
+    {
+      "name": "3-linux-intel64",
+      "displayName": "3 - Linux INTEL x64",
+      "description": "Equivalente al perfil 03 del CMakeSettings.json (Ninja, Debug, TARGET=INTEL64). Seleccionar 'WSL: <distro>' en el dropdown Target System. forceWSL1Toolset evita la copia rsync para preservar la estructura de carpetas (incluida ../../../../Common/) accediendola via /mnt/.",
+      "inherits": "gen-base-debug-ninja",
+      "binaryDir": "${sourceDir}/Build/Linux/intel64",
+      "installDir": "${sourceDir}/Build/Linux/intel64",
+      "cacheVariables": {
+        "TARGET": "INTEL64",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/Build/Linux/intel64"
+      },
+      "vendor": {
+        "microsoft.com/VisualStudioSettings/CMake/1.0": {
+          "hostOS": [ "Linux" ],
+          "intelliSenseMode": "linux-gcc-x64"
+        },
+        "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
+          "forceWSL1Toolset": true
+        }
+      }
+    },
+    {
+      "name": "4-linux-arm64",
+      "displayName": "4 - Linux ARM x64",
+      "description": "Equivalente al perfil 04 del CMakeSettings.json (Ninja, Debug, TARGET=ARM64). Seleccionar 'WSL: <distro>' en el dropdown Target System. forceWSL1Toolset evita la copia rsync para preservar la estructura de carpetas accediendola via /mnt/.",
+      "inherits": "gen-base-debug-ninja",
+      "binaryDir": "${sourceDir}/Build/Linux/arm64",
+      "installDir": "${sourceDir}/Build/Linux/arm64",
+      "cacheVariables": {
+        "TARGET": "ARM64",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/Build/Linux/arm64"
+      },
+      "vendor": {
+        "microsoft.com/VisualStudioSettings/CMake/1.0": {
+          "hostOS": [ "Linux" ],
+          "intelliSenseMode": "linux-gcc-arm64"
+        },
+        "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
+          "forceWSL1Toolset": true
+        }
+      }
+    },
+    {
+      "name": "5-linux-arm",
+      "displayName": "5 - Linux ARM",
+      "description": "Equivalente al perfil 05 del CMakeSettings.json (Ninja, Debug, TARGET=ARM). Seleccionar 'WSL: <distro>' en el dropdown Target System. forceWSL1Toolset evita la copia rsync para preservar la estructura de carpetas accediendola via /mnt/.",
+      "inherits": "gen-base-debug-ninja",
+      "binaryDir": "${sourceDir}/Build/Linux/arm",
+      "installDir": "${sourceDir}/Build/Linux/arm",
+      "cacheVariables": {
+        "TARGET": "ARM",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/Build/Linux/arm"
+      },
+      "vendor": {
+        "microsoft.com/VisualStudioSettings/CMake/1.0": {
+          "hostOS": [ "Linux" ],
+          "intelliSenseMode": "linux-gcc-arm"
+        },
+        "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
+          "forceWSL1Toolset": true
+        }
+      }
+    },
+    {
+      "name": "6-linux-rpi32",
+      "displayName": "6 - Linux Raspberry Pi x32",
+      "description": "Equivalente al perfil 06 del CMakeSettings.json (Ninja, Debug, TARGET=RPI32). Depende de /usr/rpi/tools y /usr/rpi/sysroot dentro de WSL. Seleccionar 'WSL: <distro>' en el dropdown Target System. forceWSL1Toolset evita la copia rsync para preservar la estructura de carpetas accediendola via /mnt/.",
+      "inherits": "gen-base-debug-ninja",
+      "binaryDir": "${sourceDir}/Build/Linux/rpi32",
+      "installDir": "${sourceDir}/Build/Linux/rpi32",
+      "cacheVariables": {
+        "TARGET": "RPI32",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/Build/Linux/rpi32"
+      },
+      "vendor": {
+        "microsoft.com/VisualStudioSettings/CMake/1.0": {
+          "hostOS": [ "Linux" ],
+          "intelliSenseMode": "linux-gcc-arm"
+        },
+        "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
+          "forceWSL1Toolset": true
+        }
+      }
+    },
+    {
+      "name": "7-linux-rpi64",
+      "displayName": "7 - Linux Raspberry Pi x64",
+      "description": "Equivalente al perfil 07 del CMakeSettings.json (Ninja, Debug, TARGET=RPI64). Usa la logica ARM64 existente en GEN_Main_Compiler_Linux.cmake. Seleccionar 'WSL: <distro>' en el dropdown Target System. forceWSL1Toolset evita la copia rsync para preservar la estructura de carpetas accediendola via /mnt/.",
+      "inherits": "gen-base-debug-ninja",
+      "binaryDir": "${sourceDir}/Build/Linux/rpi64",
+      "installDir": "${sourceDir}/Build/Linux/rpi64",
+      "cacheVariables": {
+        "TARGET": "RPI64",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/Build/Linux/rpi64"
+      },
+      "vendor": {
+        "microsoft.com/VisualStudioSettings/CMake/1.0": {
+          "hostOS": [ "Linux" ],
+          "intelliSenseMode": "linux-gcc-arm"
+        },
+        "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
+          "forceWSL1Toolset": true
+        }
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "1-windows-intel32",
+      "displayName": "1 - Windows INTEL x32",
+      "configurePreset": "1-windows-intel32"
+    },
+    {
+      "name": "2-windows-intel64",
+      "displayName": "2 - Windows INTEL x64",
+      "configurePreset": "2-windows-intel64"
+    },
+    {
+      "name": "3-linux-intel64",
+      "displayName": "3 - Linux INTEL x64",
+      "configurePreset": "3-linux-intel64"
+    },
+    {
+      "name": "4-linux-arm64",
+      "displayName": "4 - Linux ARM x64",
+      "configurePreset": "4-linux-arm64"
+    },
+    {
+      "name": "5-linux-arm",
+      "displayName": "5 - Linux ARM",
+      "configurePreset": "5-linux-arm"
+    },
+    {
+      "name": "6-linux-rpi32",
+      "displayName": "6 - Linux Raspberry Pi x32",
+      "configurePreset": "6-linux-rpi32"
+    },
+    {
+      "name": "7-linux-rpi64",
+      "displayName": "7 - Linux Raspberry Pi x64",
+      "configurePreset": "7-linux-rpi64"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "1-windows-intel32",
+      "displayName": "1 - Windows INTEL x32",
+      "configurePreset": "1-windows-intel32",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "2-windows-intel64",
+      "displayName": "2 - Windows INTEL x64",
+      "configurePreset": "2-windows-intel64",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "3-linux-intel64",
+      "displayName": "3 - Linux INTEL x64",
+      "configurePreset": "3-linux-intel64",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "4-linux-arm64",
+      "displayName": "4 - Linux ARM x64",
+      "configurePreset": "4-linux-arm64",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "5-linux-arm",
+      "displayName": "5 - Linux ARM",
+      "configurePreset": "5-linux-arm",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "6-linux-rpi32",
+      "displayName": "6 - Linux Raspberry Pi x32",
+      "configurePreset": "6-linux-rpi32",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "7-linux-rpi64",
+      "displayName": "7 - Linux Raspberry Pi x64",
+      "configurePreset": "7-linux-rpi64",
+      "output": { "outputOnFailure": true }
+    }
+  ]
+}

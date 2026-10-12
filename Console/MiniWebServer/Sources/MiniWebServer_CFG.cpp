@@ -167,11 +167,11 @@ bool MINIWEBSERVER_CFG::DoDefault()
   log_activesectionsID.Empty();
 
   log_activesectionsID                             += APPFLOW_CFG_LOG_SECTIONID_INITIATION;
-  log_activesectionsID                             += _L(",");
+  log_activesectionsID                             += NL(",");
   log_activesectionsID                             += APPFLOW_CFG_LOG_SECTIONID_GENERIC;
-  log_activesectionsID                             += _L(",");
+  log_activesectionsID                             += NL(",");
   log_activesectionsID                             += APPFLOW_CFG_LOG_SECTIONID_STATUSAPP;
-  log_activesectionsID                             += _L(",");
+  log_activesectionsID                             += NL(",");
   log_activesectionsID                             += APPFLOW_CFG_LOG_SECTIONID_ENDING;
 
   log_levelmask                                     = XLOGLEVEL_ALL;
@@ -180,14 +180,14 @@ bool MINIWEBSERVER_CFG::DoDefault()
 
   //------------------------------------------------------------------------------------------------------
 
-  webserver_localaddr                               = _L("");
+  webserver_localaddr                               = NL("");
   webserver_port                                    = 8080;
   webserver_isauthenticatedaccess                   = false;
-  webserver_password                                = _L("");
-  webserver_path_resources                          = _L("");
+  webserver_password                                = NL("");
+  webserver_path_resources                          = NL("");
   #ifdef DIO_STREAMTLS_ACTIVE
-  webserver_path_privatekey                         = _L("");
-  webserver_path_certificate                        = _L("");
+  webserver_path_privatekey                         = NL("");
+  webserver_path_certificate                        = NL("");
   #endif
 
   //------------------------------------------------------------------------------

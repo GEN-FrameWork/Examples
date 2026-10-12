@@ -69,10 +69,10 @@ enum NETCAPTUREXFSMSTATES
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 0
 
-#define APPLICATION_NAMEAPP                       _L("Net Capture")
-#define APPLICATION_NAMEFILE                      _L("netcapture")
+#define APPLICATION_NAMEAPP                       NL("Net Capture")
+#define APPLICATION_NAMEFILE                      NL("netcapture")
 
-#define APPLICATION_OWNER                         _L("EndoraSoft")
+#define APPLICATION_OWNER                         NL("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2024
 

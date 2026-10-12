@@ -25,7 +25,7 @@ option(XPUBLISHER_FEATURE                                       "XPublisher"    
 option(APPMODE_LIBRARY_STATIC_FEATURE                           "Application Library Static  mode"                        ON )
 #option(APPMODE_LIBRARY_DINAMIC_FEATURE                          "Application Library Dinamic mode"                        ON )
     
-option(LINUX_VISUALSTUDIO_CP1252_FEATURE                       "Linux CodePage Editor Visual Studio CP1252"              ON )   
+option(LINUX_VISUALSTUDIO_CP1252_FEATURE                        "Linux CodePage Editor Visual Studio CP1252"              ON )   
                                 
 option(XLOG_FEATURE                                             "LOG File"                                                ON )  
 
@@ -46,7 +46,6 @@ list(APPEND GEN_INCLUDES_DIR_LIST ${APP_DIRECTORY_APPLICATION})
 # --------------------------------------------------------------------
 # Source code of the Application
 
-#list(APPEND GEN_SOURCES_MODULES_LIST "${APP_DIRECTORY_APPLICATION}/AppBaseExample.cpp")
  
 
 # --------------------------------------------------------------------

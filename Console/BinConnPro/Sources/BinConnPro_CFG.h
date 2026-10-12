@@ -34,11 +34,11 @@
 
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
-#define BINCONNPRO_CFG_SECTION_PROTOCOL                            _L("protocol")
-#define BINCONNPRO_CFG_PROTOCOL_ISACTIVE                           _L("isactive")
-#define BINCONNPRO_CFG_PROTOCOL_ISLOCALENUMACTIVE                  _L("islocalenumactive")
-#define BINCONNPRO_CFG_PROTOCOL_PORT                               _L("port")
-#define BINCONNPRO_CFG_PROTOCOL_TARGET                             _L("target")
+#define BINCONNPRO_CFG_SECTION_PROTOCOL                            NL("protocol")
+#define BINCONNPRO_CFG_PROTOCOL_ISACTIVE                           NL("isactive")
+#define BINCONNPRO_CFG_PROTOCOL_ISLOCALENUMACTIVE                  NL("islocalenumactive")
+#define BINCONNPRO_CFG_PROTOCOL_PORT                               NL("port")
+#define BINCONNPRO_CFG_PROTOCOL_TARGET                             NL("target")
 
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 

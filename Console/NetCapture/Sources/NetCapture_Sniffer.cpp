@@ -29,6 +29,7 @@
 /*---- PRECOMPILATION INCLUDES ---------------------------------------------------------------------------------------*/
 
 #include "GEN_Defines.h"
+#include "XTranslation.h"
 
 
 
@@ -45,6 +46,7 @@
 #include "XTrace.h"
 #include "XThreadCollected.h"
 
+#include "NetCapture_TranslateID.h"
 #include "NetCapture_ThreadCollectedEnum.h"
 
 
@@ -241,12 +243,12 @@ bool NETCAPTURE_SNIFFER::Capture_Ini()
 
   if(indexnetinterface != -1)
     {      
-      threadsniffer = CREATEXTHREAD((XTHREADGROUPID)NETCAPTURE_XTHREADGROUPID_SNIFFER, _L("NETCAPTURE_SNIFFER::CaptureIni"), ThreadRunFunctionSniffer, this);
+      threadsniffer = CREATEXTHREAD((XTHREADGROUPID)NETCAPTURE_XTHREADGROUPID_SNIFFER, NL("NETCAPTURE_SNIFFER::CaptureIni"), ThreadRunFunctionSniffer, this);
       status =  threadsniffer?true:false;
 
       if(status)
         {
-          threadmanager = CREATEXTHREAD((XTHREADGROUPID)NETCAPTURE_XTHREADGROUPID_SNIFFER, _L("NETCAPTURE_SNIFFER::CaptureIni2"), ThreadRunFunctionManager, this);
+          threadmanager = CREATEXTHREAD((XTHREADGROUPID)NETCAPTURE_XTHREADGROUPID_SNIFFER, NL("NETCAPTURE_SNIFFER::CaptureIni2"), ThreadRunFunctionManager, this);
           status =  threadmanager?true:false;
           
           if(status)
@@ -619,7 +621,7 @@ void NETCAPTURE_SNIFFER::ThreadRunFunctionSniffer(void* param)
              
               XTRACE_PRINTCOLOR(XTRACE_COLOR_PURPLE, _L("----------------------------------------------------------------------------------------------------"));
 
-              XTRACE_PRINTCOLOR(XTRACE_COLOR_PURPLE, _L("%s [%s](%s) -> [%s](%s) port [%d]"), protocoltypestr.Get(), sourceMAC.Get(), sourceIP.Get(), targetMAC.Get(), targetIP.Get(), frame->GetSourcePort());
+              XTRACE_PRINTCOLOR(XTRACE_COLOR_PURPLE, TL(NETCAPTURE_TRANSLATEID_NETCAPTURE_SNIFFER_PORT), protocoltypestr.Get(), sourceMAC.Get(), sourceIP.Get(), targetMAC.Get(), targetIP.Get(), frame->GetSourcePort());
 
               XTRACE_PRINTDATABLOCKCOLOR(XTRACE_COLOR_BLUE, frame->GetDataPayload(), frame->GetDataPayLoadSize()); 
             }       

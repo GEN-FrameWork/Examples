@@ -58,10 +58,8 @@
 #include "XFileXML.h"
 #include "XTranslation.h"
 #include "XTranslation_GEN.h"
-#include "XTranslation.h"
 #include "XScheduler.h"
 #include "XScheduler_XEvent.h"
-#include "XConsole.h"
 #include "XThread.h"
 #include "XTrace.h"
 #include "XObserver.h"
@@ -90,7 +88,10 @@
 #include "APPFlowLog.h"
 #include "APPFlowExtended.h"
 
+#include "Databases_TranslateID.h"
 #include "Databases_CFG.h"
+
+
 
 
 
@@ -229,19 +230,14 @@ bool DATABASES::AppProc_Ini()
   APPFLOW_CFG_SETAUTOMATICTRACETARGETS
 
   //--------------------------------------------------------------------------------------
-
-  /*
+  
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_ROOT, xpathsection);
-  xpath.Create(3 , xpathsection.Get(), DATABASES_LNG_NAMEFILE, XTRANSLATION_NAMEFILEEXT);
+  xpath.Create(3 , xpathsection.Get(), APPLICATION_NAMEFILE, XTRANSLATION_NAMEFILEEXT);
 
   if(!GEN_XTRANSLATION.Ini(xpath))
     {
       return false;
     }
-
-  */
-
-  GEN_XTRANSLATION.SetActual(XLANGUAGE_ISO_639_3_CODE_SPA);
 
   //--------------------------------------------------------------------------------------
 
@@ -405,7 +401,7 @@ bool DATABASES::KeyValidSecuences(int key)
   XCHAR character = (XCHAR)key;
 
   if((character<32) || (character>127)) character = _C('?');
-  APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, _L("Key pressed: 0x%02X [%c]"), key, character);
+  APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, TL(DATABASES_TRANSLATEID_DATABASES_KEY_PRESSED_0X), key, character);
 
   switch(key)
     {
@@ -479,84 +475,84 @@ bool DATABASES::Database_DoTest()
 
   connection  = database->CreateConnection();
 
-  string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, _L("Creando Conexion "));
+  string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_CREANDO_CONEXION));
   console->PrintMessage(string.Get(), 1, true, false);
 
-  stringresult = connection?_L("Ok."):_L("Error!");
+  stringresult = connection?TL(DATABASES_TRANSLATEID_DATABASES_OK):TL(DATABASES_TRANSLATEID_DATABASES_ERROR);
   console->PrintMessage(stringresult.Get(), 0, false, true);
-  APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, _L("%s: %s"), string.Get(), stringresult.Get());
+  APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, NL("%s: %s"), string.Get(), stringresult.Get());
 
   if(connection)
     {
       XSTRING str;
 
       if(APPFLOW_CFG.Database_GetURL()->IsEmpty())
-             connection->SetOption(_L("URL"), _L("127.0.0.1"));
-        else connection->SetOption(_L("URL"), APPFLOW_CFG.Database_GetURL()->Get());
+             connection->SetOption(NL("URL"), NL("127.0.0.1"));
+        else connection->SetOption(NL("URL"), APPFLOW_CFG.Database_GetURL()->Get());
 
-      connection->SetOption(_L("DATABASE") , APPFLOW_CFG.Database_DatabaseName()->Get());
+      connection->SetOption(NL("DATABASE") , APPFLOW_CFG.Database_DatabaseName()->Get());
 
       if(database->GetType() ==  DB_SQL_DATABASE_TYPE_SQLITE)
         {
           XPATH path;
 
           GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_DATABASES, path);
-          connection->SetOption(_L("PATH"), path.Get());
+          connection->SetOption(NL("PATH"), path.Get());
         }
        else
         {
           if(APPFLOW_CFG.Database_GetPort())
-                 str.Format(_L("%d") , APPFLOW_CFG.Database_GetPort());
-            else str.Format(_L("%d") , database->GetDefaultPort());
+                 str.Format(NL("%d") , APPFLOW_CFG.Database_GetPort());
+            else str.Format(NL("%d") , database->GetDefaultPort());
 
-          connection->SetOption(_L("PORT"), str.Get());
+          connection->SetOption(NL("PORT"), str.Get());
         }
 
-      connection->SetOption(_L("USER"), APPFLOW_CFG.Database_GetUser()->Get());
-      connection->SetOption(_L("PASSWORD") , APPFLOW_CFG.Database_GetPassword()->Get());
+      connection->SetOption(NL("USER"), APPFLOW_CFG.Database_GetUser()->Get());
+      connection->SetOption(NL("PASSWORD") , APPFLOW_CFG.Database_GetPassword()->Get());
 
-      str.Format(_L("%d"), APPFLOW_CFG.Database_GetTimeoutConnection());
-      connection->SetOption(_L("TIMEOUT"), str.Get());
+      str.Format(NL("%d"), APPFLOW_CFG.Database_GetTimeoutConnection());
+      connection->SetOption(NL("TIMEOUT"), str.Get());
 
 
-      string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, _L("Abriendo/conectando Base de datos"));
+      string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_ABRIENDO_CONECTANDO_BASE_DE_DATOS));
       console->PrintMessage(string.Get(), 1, true, false);
 
       status = database->Open();
 
-      stringresult.Format(_L("%s Thread Safe: %s"), (status?_L("Ok."):_L("Error!")), (database->IsThreadSafe()?_L("Si"):_L("No")));
+      stringresult.Format(TL(DATABASES_TRANSLATEID_DATABASES_THREAD_SAFE), (status?TL(DATABASES_TRANSLATEID_DATABASES_OK):TL(DATABASES_TRANSLATEID_DATABASES_ERROR)), (database->IsThreadSafe()?TL(DATABASES_TRANSLATEID_DATABASES_SI):TL(DATABASES_TRANSLATEID_DATABASES_NO)));
       console->PrintMessage(stringresult.Get(), 0, false, true);
-      APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, _L("%s: %s"), string.Get(), stringresult.Get());
+      APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, NL("%s: %s"), string.Get(), stringresult.Get());
 
       if(status)
         {
           /*--- ERASE TABLE -----------------------------------------------------------------------------------------------------*/
 
-          string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, _L("Borrando tabla"));
+          string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_BORRANDO_TABLA));
           console->PrintMessage(string.Get(), 1, true, false);
 
           status = database->Table_Delete(DATABASES_TABLE_TEST_NAME);
 
-          stringresult.Format((status?_L("Ok."):_L("Error!")));
+          stringresult.Format((status?TL(DATABASES_TRANSLATEID_DATABASES_OK):TL(DATABASES_TRANSLATEID_DATABASES_ERROR)));
           console->PrintMessage(stringresult.Get(), 0, false, true);
-          APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, _L("%s: %s"), string.Get(), stringresult.Get());
+          APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, NL("%s: %s"), string.Get(), stringresult.Get());
 
           /*--- CREATE TABLE ----------------------------------------------------------------------------------------------------*/
 
 
           bool isexist = false;
 
-          database->Table_IsThere(DATABASES_TABLE_TEST_NAME, _L("id"), isexist);
+          database->Table_IsThere(DATABASES_TABLE_TEST_NAME, NL("id"), isexist);
           if(!isexist)
             {
               XDWORD nfields = 0;
 
               switch(database->GetType())
                 {
-                  case DB_SQL_DATABASE_TYPE_SQLITE          : { XCHAR*  sqllite_fields[] = {  _L("id int PRIMARY KEY")     ,
-                                                                                              _L("name varchar(50)")       ,
-                                                                                              _L("value float")            ,
-                                                                                              _L("date DATETIME")
+                  case DB_SQL_DATABASE_TYPE_SQLITE          : { XCHAR*  sqllite_fields[] = {  NL("id int PRIMARY KEY")     ,
+                                                                                              NL("name varchar(50)")       ,
+                                                                                              NL("value float")            ,
+                                                                                              NL("date DATETIME")
                                                                                            };
 
                                                                 nfields = (sizeof(sqllite_fields)/sizeof(XCHAR*));
@@ -568,11 +564,11 @@ bool DATABASES::Database_DoTest()
                                                               }
                                                               break;
 
-                  case DB_SQL_DATABASE_TYPE_MYSQL           : { XCHAR*  mysql_fields[]  = {  _L("id int")                  ,
-                                                                                             _L("name varchar(50)")        ,
-                                                                                             _L("value float")             ,
-                                                                                             _L("date DATETIME")           ,
-                                                                                             _L("PRIMARY KEY(id)")
+                  case DB_SQL_DATABASE_TYPE_MYSQL           : { XCHAR*  mysql_fields[]  = {  NL("id int")                  ,
+                                                                                             NL("name varchar(50)")        ,
+                                                                                             NL("value float")             ,
+                                                                                             NL("date DATETIME")           ,
+                                                                                             NL("PRIMARY KEY(id)")
                                                                                            };
 
                                                                 nfields = (sizeof(mysql_fields)/sizeof(XCHAR*));
@@ -584,10 +580,10 @@ bool DATABASES::Database_DoTest()
                                                               }
                                                               break;
 
-                  case DB_SQL_DATABASE_TYPE_POSTGRESQL      : { XCHAR*  posgresql_fields[]  = { _L("id integer CONSTRAINT firstkey PRIMARY KEY") ,
-                                                                                                _L("name varchar(50)")                           ,
-                                                                                                _L("value float")                                ,
-                                                                                                _L("date timestamp")                             ,
+                  case DB_SQL_DATABASE_TYPE_POSTGRESQL      : { XCHAR*  posgresql_fields[]  = { NL("id integer CONSTRAINT firstkey PRIMARY KEY") ,
+                                                                                                NL("name varchar(50)")                           ,
+                                                                                                NL("value float")                                ,
+                                                                                                NL("date timestamp")                             ,
                                                                                               };
 
                                                                 nfields = (sizeof(posgresql_fields)/sizeof(XCHAR*));
@@ -602,14 +598,14 @@ bool DATABASES::Database_DoTest()
                                            default         : break;
                 }
 
-              string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, _L("Creando tabla"));
+              string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_CREANDO_TABLA));
               console->PrintMessage(string.Get(), 1, true, false);
 
               status = database->Table_Create(DATABASES_TABLE_TEST_NAME, fields, nfields);
 
-              stringresult.Format((status?_L("Ok."):_L("Error!")));
+              stringresult.Format((status?TL(DATABASES_TRANSLATEID_DATABASES_OK):TL(DATABASES_TRANSLATEID_DATABASES_ERROR)));
               console->PrintMessage(stringresult.Get(), 0, false, true);
-              APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, _L("%s: %s"), string.Get(), stringresult.Get());
+              APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, NL("%s: %s"), string.Get(), stringresult.Get());
 
             }
 
@@ -625,10 +621,10 @@ bool DATABASES::Database_DoTest()
 
                               } DATAREGISTRY;
 
-              DATAREGISTRY  registers[] = { { 1, _L("Sir Grah\xA0m")  ,  11.5f  },
-                                            { 2, _L("Lord Mortimer")  ,   3.3f  },
-                                            { 3, _L("Sir Lancelot")   ,   8.5f  },
-                                            { 4, _L("Sir Ivanhoe")    ,  35.9f  }
+              DATAREGISTRY  registers[] = { { 1, NL("Sir Grah\xA0m")  ,  11.5f  },
+                                            { 2, NL("Lord Mortimer")  ,   3.3f  },
+                                            { 3, NL("Sir Lancelot")   ,   8.5f  },
+                                            { 4, NL("Sir Ivanhoe")    ,  35.9f  }
                                           };
 
               query = database->CreateQuery();
@@ -643,8 +639,8 @@ bool DATABASES::Database_DoTest()
                   switch(database->GetType())
                     {
                       case DB_SQL_DATABASE_TYPE_MYSQL       :
-                      case DB_SQL_DATABASE_TYPE_SQLITE      : querystring.Format(_L("INSERT INTO %s (id,name,value,date) VALUES (?,?,?,?);"), DATABASES_TABLE_TEST_NAME);  break;
-                      case DB_SQL_DATABASE_TYPE_POSTGRESQL  : querystring.Format(_L("INSERT INTO %s (id,name,value,date) VALUES ($1,$2,$3,$4);"), DATABASES_TABLE_TEST_NAME);  break;
+                      case DB_SQL_DATABASE_TYPE_SQLITE      : querystring.Format(NL("INSERT INTO %s (id,name,value,date) VALUES (?,?,?,?);"), DATABASES_TABLE_TEST_NAME);  break;
+                      case DB_SQL_DATABASE_TYPE_POSTGRESQL  : querystring.Format(NL("INSERT INTO %s (id,name,value,date) VALUES ($1,$2,$3,$4);"), DATABASES_TABLE_TEST_NAME);  break;
                                             default         : break;
                     }
 
@@ -661,14 +657,14 @@ bool DATABASES::Database_DoTest()
                           query->Bind(2, registers[c].value);
                           query->Bind(3, (*datetime));
 
-                          string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, _L("Escribiendo registro"));
+                          string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_ESCRIBIENDO_REGISTRO));
                           console->PrintMessage(string.Get(), 1, true, false);
 
                           status = database->Execute(query);
 
-                          stringresult.Format(_L("name %s -> %s"), registers[c].name, (status?_L("Ok."):_L("Error!")));
+                          stringresult.Format(TL(DATABASES_TRANSLATEID_DATABASES_NAME), registers[c].name, (status?TL(DATABASES_TRANSLATEID_DATABASES_OK):TL(DATABASES_TRANSLATEID_DATABASES_ERROR)));
                           console->PrintMessage(stringresult.Get(), 0, false, true);
-                          APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, _L("%s: %s"), string.Get(), stringresult.Get());
+                          APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, NL("%s: %s"), string.Get(), stringresult.Get());
 
                           query->UnbindAll();
                         }
@@ -678,18 +674,22 @@ bool DATABASES::Database_DoTest()
                           datetime->Read();
 
                           query->Bind(0, (int)c);
-                          query->Bind(1, _L("dsfjlsjfdsjfdlk"));
+                          query->Bind(1, NL("dsfjlsjfdsjfdlk"));
                           query->Bind(2, 10.5f);
                           query->Bind(3, (*datetime));
 
-                          string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, _L("Escribiendo registro"));
+                          string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_ESCRIBIENDO_REGISTRO));
                           console->PrintMessage(string.Get(), 1, true, false);
 
                           status = database->Execute(query);
 
-                          stringresult.Format((status?_L("Ok.\r"):_L("Error!\n")));
+                          stringresult.Format((status?TL(DATABASES_TRANSLATEID_DATABASES_OK):TL(DATABASES_TRANSLATEID_DATABASES_ERROR)));
                           console->PrintMessage(stringresult.Get(), 0, false, false);
-                          APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, _L("%s: %s"), string.Get(), stringresult.Get());
+                          
+                          stringresult.Format((status?NL("\r"):NL("\n")));
+                          console->PrintMessage(stringresult.Get(), 0, false, false);
+
+                          APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, NL("%s: %s"), string.Get(), stringresult.Get());
 
                           query->UnbindAll();
                         }
@@ -699,30 +699,30 @@ bool DATABASES::Database_DoTest()
 
                   /*--- READ No REGISTERS -----------------------------------------------------------------------------------------------*/
 
-                  string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, _L("Numero registros tabla"));
+                  string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_NUMERO_REGISTROS_TABLA));
                   console->PrintMessage(string.Get(), 1, true, false);
 
                   XQWORD nrecords = 0;
                   database->Table_GetNRecords(DATABASES_TABLE_TEST_NAME, nrecords);
 
-                  stringresult.Format(_L("%d registro(s)"), nrecords);
+                  stringresult.Format(TL(DATABASES_TRANSLATEID_DATABASES_REGISTRO_S), nrecords);
                   console->PrintMessage(stringresult.Get(), 0, false, true);
-                  APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, _L("%s: %s"), string.Get(), stringresult.Get());
+                  APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, NL("%s: %s"), string.Get(), stringresult.Get());
 
 
                   /*--- READ REGISTER  --------------------------------------------------------------------------------------------------*/
 
-                  querystring.Format(_L("SELECT id,name,value,date FROM %s WHERE name=\'Sir Grah\xA0m\';"), DATABASES_TABLE_TEST_NAME);
+                  querystring.Format(NL("SELECT id,name,value,date FROM %s WHERE name=\'Sir Grah\xA0m\';"), DATABASES_TABLE_TEST_NAME);
                   query->Set(querystring.Get());
 
-                  string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, _L("Leyendo registro"));
+                  string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_LEYENDO_REGISTRO));
                   console->PrintMessage(string.Get(), 1, true, false);
 
                   status = database->Execute(query);
 
-                  stringresult.Format((status?_L("Ok."):_L("Error!")));
+                  stringresult.Format((status?TL(DATABASES_TRANSLATEID_DATABASES_OK):TL(DATABASES_TRANSLATEID_DATABASES_ERROR)));
                   console->PrintMessage(stringresult.Get(), 0, false, true);
-                  APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, _L("%s: %s"), string.Get(), stringresult.Get());
+                  APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, NL("%s: %s"), string.Get(), stringresult.Get());
 
                   if(status)
                     {
@@ -737,13 +737,13 @@ bool DATABASES::Database_DoTest()
                               DB_SQL_ROWHEADER* header  = result->GetHeader();
                               XVARIANT          variant;
 
-                              console->Printf(_L(" [%d]\n"), (int)result->GetCurrentRowIndex());
+                              console->Printf(NL(" [%d]\n"), (int)result->GetCurrentRowIndex());
 
                               for(XDWORD e=0; e<result->GetNumColumns(); e++)
                                 {
                                   XDWORD typerow = row->Get(e).GetType();
 
-                                  console->Printf(_L(" [%s] = "), header->Get(e)->Get());
+                                  console->Printf(NL(" [%s] = "), header->Get(e)->Get());
 
                                   switch(typerow)
                                     {
@@ -751,23 +751,23 @@ bool DATABASES::Database_DoTest()
                                                                               XSTRING         string;
 
                                                                               datetime.GetDateTimeToString(XDATETIME_FORMAT_STANDARD, string);
-                                                                              console->Printf(_L("%s"), string.Get());
+                                                                              console->Printf(NL("%s"), string.Get());
                                                                             }
                                                                             break;
 
-                                      case DB_SQL_VARIANT_TYPE_STRING     : console->Printf(_L("%s"), (XCHAR*)row->Get(e));
+                                      case DB_SQL_VARIANT_TYPE_STRING     : console->Printf(NL("%s"), (XCHAR*)row->Get(e));
                                                                             break;
 
-                                      case DB_SQL_VARIANT_TYPE_INTEGER    : console->Printf(_L("%d"), (int)row->Get(e));
+                                      case DB_SQL_VARIANT_TYPE_INTEGER    : console->Printf(NL("%d"), (int)row->Get(e));
                                                                             break;
 
-                                      case DB_SQL_VARIANT_TYPE_FLOAT      : console->Printf(_L("%f"), (float)(row->Get(e)));
+                                      case DB_SQL_VARIANT_TYPE_FLOAT      : console->Printf(NL("%f"), (float)(row->Get(e)));
                                                                             break;
 
                                                             default       : break;
                                     }
 
-                                  console->Printf(_L("\n"));
+                                  console->Printf(NL("\n"));
                                 }
 
                               result->Next();
@@ -777,8 +777,8 @@ bool DATABASES::Database_DoTest()
 
                   /*--- WAIT KEY --------------------------------------------------------------------------------------------------------*/
 
-                  console->PrintMessage(_L(" "), 0, false, true);
-                  console->WaitKey(_L(" Pulsa una tecla para continuar... (%d)"), 1, false, 5);
+                  console->PrintMessage(NL(" "), 0, false, true);
+                  console->WaitKey(TL(DATABASES_TRANSLATEID_DATABASES_PULSA_UNA_TECLA_PARA_CONTINUAR), 1, false, 5);
 
                   /*---------------------------------------------------------------------------------------------------------------------*/
 
@@ -802,54 +802,6 @@ bool DATABASES::Database_DoTest()
 
 /**-------------------------------------------------------------------------------------------------------------------
 *
-* @fn         bool DATABASES::Show_AppStatus()
-* @brief      Shows application status information.
-* @ingroup    EXAMPLES
-*
-* @return     bool : true if the operation is successful; otherwise false.
-*
-*---------------------------------------------------------------------------------------------------------------------*/
-bool DATABASES::Show_AppStatus()
-{
-  XSTRING string;
-  XSTRING string2;
-
-  XDWORD  total;
-  XDWORD  free;
-
-  GEN_XSYSTEM.GetMemoryInfo(total, free);
-
-  string  = _L("Memoria total");
-  string2.Format(_L("%d Kb, libre %d Kb (el %d%%%%)"), total, free, GEN_XSYSTEM.GetFreeMemoryPercent());
-  Show_Line(string, string2);
-
-
-  XDATETIME* datetime = GEN_XFACTORY.CreateDateTime();
-  if(datetime)
-    {
-      datetime->Read();
-
-      string  = _L("Fecha ");
-      datetime->GetDateTimeToString(XDATETIME_FORMAT_STANDARD | XDATETIME_FORMAT_TEXTMONTH | XDATETIME_FORMAT_ADDDAYOFWEEK, string2);
-      Show_Line(string, string2);
-
-      GEN_XFACTORY.DeleteDateTime(datetime);
-    }
-
-
-  if(xtimerglobal)
-    {
-      string  = _L("Tiempo de funcionamiento");
-      xtimerglobal->GetMeasureString(string2, true);
-      Show_Line(string, string2);
-    }
-
-  return true;
-}
-
-
-/**-------------------------------------------------------------------------------------------------------------------
-*
 * @fn         bool DATABASES::Show_DatabasesStatus()
 * @brief      Shows database status information.
 * @ingroup    EXAMPLES
@@ -862,8 +814,8 @@ bool DATABASES::Show_DatabasesStatus()
   XSTRING string;
   XSTRING string2;
 
-  string  = _L("Tipo Base de datos");
-  string2 = _L("N/A");
+  string  = TL(DATABASES_TRANSLATEID_DATABASES_TIPO_BASE_DE_DATOS);
+  string2 = TL(DATABASES_TRANSLATEID_DATABASES_N_A);
 
   if(database) string2 = database->GetTypeName();
 
@@ -890,7 +842,7 @@ bool DATABASES::Show_AllStatus()
  
   if(Show_DatabasesStatus())  
     {
-      console->PrintMessage(_L(""), 0, false, true);
+      console->PrintMessage(NL(""), 0, false, true);
     }
 
   if(xmutexshowallstatus) xmutexshowallstatus->UnLock();

@@ -38,10 +38,10 @@
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 0
 
-#define APPLICATION_NAMEAPP                       _L("Not App Example")
-#define APPLICATION_NAMEFILE                      _L("notappexample")
+#define APPLICATION_NAMEAPP                       NL("Not App Example")
+#define APPLICATION_NAMEFILE                      NL("notappexample")
 
-#define APPLICATION_OWNER                         _L("EndoraSoft")
+#define APPLICATION_OWNER                         NL("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2022
 

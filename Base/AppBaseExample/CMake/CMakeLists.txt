@@ -20,7 +20,7 @@ option(XFEEDBACK_CONTROL_FEATURE                                "XFeedback Contr
 
 option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON )
     
-option(LINUX_VISUALSTUDIO_CP1252_FEATURE                       "Linux CodePage Editor Visual Studio CP1252"              ON )   
+option(LINUX_VISUALSTUDIO_CP1252_FEATURE                        "Linux CodePage Editor Visual Studio CP1252"              ON )   
                                 
 option(APPFLOW_FEATURE                                          "Application Flow modules"                                ON )
 

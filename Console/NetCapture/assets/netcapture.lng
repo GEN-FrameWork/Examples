@@ -1,7 +1,9 @@
 {
-  "languages" 			: [ "Spanish"    ,
-                        "English"    ,
-                        "French"     
+  "languages"       : [ "Spanish" ,
+                        "English" ,
+                        "French"  ,
+                        "German"  ,
+                        "Chinese"
                       ],
                        
                      
@@ -15,6 +17,22 @@
                                     "mas mensage" 	                            			                                      ,
                                     "more message"                            				                                      ,
                                     "jau radiola"                             				
+                                  ],
+
+                        "00102" : [ 0,
+                                    "Tecla presionada: 0x%02X [%c]" ,
+                                    "Key pressed: 0x%02X [%c]" ,
+                                    "Touche enfoncée : 0x%02X [%c]" ,
+                                    "Taste gedrückt: 0x%02X [%c]" ,
+                                    "按下按键：0x%02X [%c]"
+                                  ],
+
+                        "00103" : [ 0,
+                                    "%s [%s](%s) -\\u003e [%s](%s) puerto [%d]" ,
+                                    "%s [%s](%s) -> [%s](%s) port [%d]" ,
+                                    "%s [%s](%s) -\\u003e [%s](%s) port [%d]" ,
+                                    "%s [%s](%s) -\\u003e [%s](%s) Port [%d]" ,
+                                    "%s [%s](%s) -\\u003e [%s](%s) 端口 [%d]"
                                   ]
                       }										
 }											 		

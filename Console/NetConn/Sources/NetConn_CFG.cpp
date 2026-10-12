@@ -29,6 +29,7 @@
 /*---- PRECOMPILATION INCLUDES ---------------------------------------------------------------------------------------*/
 
 #include "GEN_Defines.h"
+#include "XTranslation.h"
 
 
 
@@ -39,6 +40,7 @@
 #include "XLog.h"
 
 #include "NetConn.h"
+#include "NetConn_TranslateID.h"
 
 
 
@@ -134,9 +136,9 @@ bool NETCONN_CFG::DoVariableMapping()
   //-----------------------------------------------------
   // Connection
 
-  AddValue(XFILECFG_VALUETYPE_BOOLEAN, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_ISSERVER, &connection_isserver, _L("Is server active"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
-  AddValue(XFILECFG_VALUETYPE_STRING, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_TRANSPORTTYPE, &connection_transporttype, _L("Transport type"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
-  AddValue(XFILECFG_VALUETYPE_STRING, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_TRANSPORTCONFIG, &connection_transportconfig, _L("Transport config"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
+  AddValue(XFILECFG_VALUETYPE_BOOLEAN, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_ISSERVER, &connection_isserver, TL(NETCONN_TRANSLATEID_NETCONN_CFG_IS_SERVER_ACTIVE), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
+  AddValue(XFILECFG_VALUETYPE_STRING, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_TRANSPORTTYPE, &connection_transporttype, TL(NETCONN_TRANSLATEID_NETCONN_CFG_TRANSPORT_TYPE), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
+  AddValue(XFILECFG_VALUETYPE_STRING, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_TRANSPORTCONFIG, &connection_transportconfig, TL(NETCONN_TRANSLATEID_NETCONN_CFG_TRANSPORT_CONFIG), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
   
   return true;
 }
@@ -165,8 +167,8 @@ bool NETCONN_CFG::DoDefault()
   //------------------------------------------------------------------------------
 
   connection_isserver         = true;  
-  connection_transporttype    = _L("TCPIP");
-  connection_transportconfig  = _L("192.168.1.3:1234");
+  connection_transporttype    = NL("TCPIP");
+  connection_transportconfig  = NL("192.168.1.3:1234");
 
   //------------------------------------------------------------------------------
 
@@ -270,7 +272,7 @@ NETCONN_CFG::~NETCONN_CFG()
 void NETCONN_CFG::Clean()
 {
   connection_isserver         = false;  
-  connection_transporttype    = _L("");
+  connection_transporttype    = NL("");
   connection_transportconfig  = _L("");
 }
 

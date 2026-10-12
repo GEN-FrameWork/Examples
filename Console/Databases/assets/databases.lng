@@ -1,0 +1,155 @@
+{
+  "languages"       : [ "Spanish" ,
+                        "English" ,
+                        "French"  ,
+                        "German"  ,
+                        "Chinese"
+                      ],
+
+  "translations"    : {
+
+                        "00001" : [ 0,
+                                    "Tecla presionada: 0x%02X [%c]" ,
+                                    "Key pressed: 0x%02X [%c]" ,
+                                    "Touche enfoncée : 0x%02X [%c]" ,
+                                    "Taste gedrückt: 0x%02X [%c]" ,
+                                    "按下按键：0x%02X [%c]"
+                                  ],
+
+                        "00002" : [ 0,
+                                    "Creando Conexion " ,
+                                    "Creating Connection" ,
+                                    "Créer une connexion" ,
+                                    "Verbindung herstellen" ,
+                                    "创建连接"
+                                  ],
+
+                        "00003" : [ 0,
+                                    "De acuerdo" ,
+                                    "Ok" ,
+                                    "D'accord" ,
+                                    "OK" ,
+                                    "好的"
+                                  ],
+
+                        "00004" : [ 0,
+                                    "Error" ,
+                                    "Error" ,
+                                    "Erreur" ,
+                                    "Fehler" ,
+                                    "错误"
+                                  ],
+
+                        "00005" : [ 0,
+                                    "Abriendo/conectando Base de datos" ,
+                                    "Opening/connecting Database" ,
+                                    "Ouverture/connexion de la base de données" ,
+                                    "Datenbank öffnen/verbinden" ,
+                                    "打开/连接数据库"
+                                  ],
+
+                        "00006" : [ 0,
+                                    "%s Segura para subprocesos: %s" ,
+                                    "%s Thread Safe: %s" ,
+                                    "%s Thread Safe : %s" ,
+                                    "%s Thread-sicher: %s" ,
+                                    "%s 线程安全：%s"
+                                  ],
+
+                        "00007" : [ 0,
+                                    "Y" ,
+                                    "And" ,
+                                    "Et" ,
+                                    "Und" ,
+                                    "和"
+                                  ],
+
+                        "00008" : [ 0,
+                                    "No" ,
+                                    "No" ,
+                                    "Non" ,
+                                    "NEIN" ,
+                                    "不"
+                                  ],
+
+                        "00009" : [ 0,
+                                    "Borrando tabla" ,
+                                    "Deleting table" ,
+                                    "Suppression du tableau" ,
+                                    "Tabelle wird gelöscht" ,
+                                    "删除表"
+                                  ],
+
+                        "00010" : [ 0,
+                                    "Creando tabla" ,
+                                    "Creating table" ,
+                                    "Création d'un tableau" ,
+                                    "Tabelle erstellen" ,
+                                    "创建表"
+                                  ],
+
+                        "00011" : [ 0,
+                                    "Escribiendo registro" ,
+                                    "Writing record" ,
+                                    "Rédaction d'un dossier" ,
+                                    "Aufzeichnung schreiben" ,
+                                    "书写记录"
+                                  ],
+
+                        "00012" : [ 0,
+                                    "nombre %s -\\u003e %s" ,
+                                    "name %s -> %s" ,
+                                    "nom %s -\\u003e %s" ,
+                                    "Name %s -\\u003e %s" ,
+                                    "名称 %s -\\u003e %s"
+                                  ],
+
+                        "00013" : [ 0,
+                                    "Numero registros tabla" ,
+                                    "Number of table records" ,
+                                    "Nombre d'enregistrements de table" ,
+                                    "Anzahl der Tabellendatensätze" ,
+                                    "表记录数"
+                                  ],
+
+                        "00014" : [ 0,
+                                    "%d registro(s)" ,
+                                    "%d record(s)" ,
+                                    "%d enregistrement(s)" ,
+                                    "%d Datensatz(e)" ,
+                                    "%d 条记录"
+                                  ],
+
+                        "00015" : [ 0,
+                                    "Leyendo registro" ,
+                                    "Reading record" ,
+                                    "Enregistrement de lecture" ,
+                                    "Leseprotokoll" ,
+                                    "阅读记录"
+                                  ],
+
+                        "00016" : [ 0,
+                                    " Pulsa una tecla para continuar... (%d)" ,
+                                    "Press a key to continue... (%d)" ,
+                                    "Appuyez sur une touche pour continuer... (%d)" ,
+                                    "Drücken Sie eine Taste, um fortzufahren... (%d)" ,
+                                    "按任意键继续... (%d)"
+                                  ],
+
+                        "00017" : [ 0,
+                                    "Tipo Base de datos" ,
+                                    "Database Type" ,
+                                    "Type de base de données" ,
+                                    "Datenbanktyp" ,
+                                    "数据库类型"
+                                  ],
+
+                        "00018" : [ 0,
+                                    "N / A" ,
+                                    "N/A" ,
+                                    "N / A" ,
+                                    "N / A" ,
+                                    "不适用"
+                                  ]
+                      }
+}

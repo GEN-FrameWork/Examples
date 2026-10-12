@@ -38,10 +38,10 @@
 #define APPLICATION_SUBVERSION                0
 #define APPLICATION_SUBVERSIONERR             1
 
-#define APPLICATION_NAMEAPP                   _L("Memory Ctrl Example")
-#define APPLICATION_NAMEFILE                  _L("memctrlexample")
+#define APPLICATION_NAMEAPP                   NL("Memory Ctrl Example")
+#define APPLICATION_NAMEFILE                  NL("memctrlexample")
 
-#define APPLICATION_OWNER                     _L("GEN Framework")
+#define APPLICATION_OWNER                     NL("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION            2023
 

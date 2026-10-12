@@ -60,10 +60,8 @@
 #include "XFileJSON.h"
 #include "XTranslation.h"
 #include "XTranslation_GEN.h"
-#include "XTranslation.h"
 #include "XScheduler.h"
 #include "XScheduler_XEvent.h"
-#include "XConsole.h"
 #include "XThread.h"
 #include "XTrace.h"
 #include "XObserver.h"
@@ -243,11 +241,6 @@ bool MINIWEBSERVER::AppProc_Ini()
       return false;
     }
 
-  if(!GEN_XTRANSLATION.SetActual(XLANGUAGE_ISO_639_3_CODE_ENG))
-    {
-      return false;
-    }
-
   //--------------------------------------------------------------------------------------------------
 
   APPFLOW_EXTENDED.APPStart(&APPFLOW_CFG, this);
@@ -290,7 +283,7 @@ bool MINIWEBSERVER::AppProc_FirstUpdate()
       string2.Format(TL(MINIWEBSERVER_TRANSLATEID_MINIWEBSERVER_INICIALIZANDO_WEB_SERVER));
       
       #ifdef DIO_STREAMTLS_ACTIVE
-      string2.AddFormat(_L(" %s"), (APPFLOW_CFG.WebServer_IsTLS()?NL(" (TLS)"):_L("")));     
+      string2.AddFormat(NL(" %s"), (APPFLOW_CFG.WebServer_IsTLS()?NL(" (TLS)"):NL("")));     
       #endif
       
       string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, string2.Get());
@@ -316,7 +309,7 @@ bool MINIWEBSERVER::AppProc_FirstUpdate()
           if(!apirest) return false;
         }
 
-      APPFLOW_LOG_ENTRY((status)?XLOGLEVEL_INFO:XLOGLEVEL_ERROR, APPFLOW_CFG_LOG_SECTIONID_INITIATION, false, _L("%s: %s") , string.Get(), stringresult.Get());
+      APPFLOW_LOG_ENTRY((status)?XLOGLEVEL_INFO:XLOGLEVEL_ERROR, APPFLOW_CFG_LOG_SECTIONID_INITIATION, false, NL("%s: %s") , string.Get(), stringresult.Get());
     }
 
   //--------------------------------------------------------------------------------------------------
@@ -326,7 +319,7 @@ bool MINIWEBSERVER::AppProc_FirstUpdate()
   string2.Format(TL(MINIWEBSERVER_TRANSLATEID_MINIWEBSERVER_INICIALIZANDO_WEB_SOCKET));
       
   #ifdef DIO_STREAMTLS_ACTIVE
-  string2.AddFormat(_L(" %s"), (APPFLOW_CFG.WebServer_IsTLS()?NL(" (WSS)"):_L("")));     
+  string2.AddFormat(NL(" %s"), (APPFLOW_CFG.WebServer_IsTLS()?NL(" (WSS)"):NL("")));     
   #endif
 
   string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, string2.Get());
@@ -351,9 +344,9 @@ bool MINIWEBSERVER::AppProc_FirstUpdate()
       SubscribeEvent(DIOWEBSERVER_XEVENT_TYPE_WEBSOCKET_DISCONNECTED , (XSUBJECT *)appwebsocket);
     }
 
-  APPFLOW_LOG_ENTRY((status)?XLOGLEVEL_INFO:XLOGLEVEL_ERROR, APPFLOW_CFG_LOG_SECTIONID_INITIATION, false, _L("%s: %s") , string.Get(), stringresult.Get());
+  APPFLOW_LOG_ENTRY((status)?XLOGLEVEL_INFO:XLOGLEVEL_ERROR, APPFLOW_CFG_LOG_SECTIONID_INITIATION, false, NL("%s: %s") , string.Get(), stringresult.Get());
 
-  console->PrintMessage(_L(" "), 0, false, true);
+  console->PrintMessage(NL(" "), 0, false, true);
   console->WaitKey(TL(MINIWEBSERVER_TRANSLATEID_MINIWEBSERVER_PULSA_UNA_TECLA_PARA_CONTINUAR), 1, false, 5);
 
   //--------------------------------------------------------------------------------------------------
@@ -475,7 +468,7 @@ bool MINIWEBSERVER::AppProc_End()
       stringresult = TL(MINIWEBSERVER_TRANSLATEID_MINIWEBSERVER_OK);
 
       console->PrintMessage(stringresult.Get(), 0, false, true);
-      XLOG::GetInstance().AddEntry(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_ENDING, false, _L("%s: %s") , string.Get(), stringresult.Get());
+      XLOG::GetInstance().AddEntry(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_ENDING, false, NL("%s: %s") , string.Get(), stringresult.Get());
     }
 
   if(apirest)
@@ -504,7 +497,7 @@ bool MINIWEBSERVER::AppProc_End()
       stringresult = TL(MINIWEBSERVER_TRANSLATEID_MINIWEBSERVER_OK);
 
       console->PrintMessage(stringresult.Get(), 0, false, true);
-      XLOG::GetInstance().AddEntry(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_ENDING, false, _L("%s: %s") , string.Get(), stringresult.Get());
+      XLOG::GetInstance().AddEntry(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_ENDING, false, NL("%s: %s") , string.Get(), stringresult.Get());
     }
 
   //--------------------------------------------------------------------------------------
@@ -537,7 +530,7 @@ bool MINIWEBSERVER::KeyValidSecuences(int key)
   if((character<32) || (character>127)) character = _C('?');
   APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, TL(MINIWEBSERVER_TRANSLATEID_MINIWEBSERVER_KEY_PRESSED_0X), key, character);
 
-  console->Printf(_L("\r \r"));
+  console->Printf(NL("\r \r"));
 
   switch(key)
     {

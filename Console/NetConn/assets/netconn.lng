@@ -1,0 +1,195 @@
+{
+  "languages"       : [ "Spanish" ,
+                        "English" ,
+                        "French"  ,
+                        "German"  ,
+                        "Chinese"
+                      ],
+
+  "translations"    : {
+
+                        "00001" : [ 0,
+                                    "[Net Conn] Crear conexión" ,
+                                    "[Net Conn] Create connection" ,
+                                    "[Net Conn] Créer une connexion" ,
+                                    "[Net Conn] Verbindung herstellen" ,
+                                    "[Net Conn] 创建连接"
+                                  ],
+
+                        "00002" : [ 0,
+                                    "[Net Conn] Cambiar estado de conexión: %s --\\u003e %s" ,
+                                    "[Net Conn] Change connection status: %s --> %s" ,
+                                    "[Net Conn] Modifier l'état de la connexion : %s --\\u003e %s" ,
+                                    "[Net Conn] Verbindungsstatus ändern: %s --\\u003e %s" ,
+                                    "[Net Conn] 更改连接状态：%s --\\u003e %s"
+                                  ],
+
+                        "00003" : [ 0,
+                                    "  Pulsa una tecla para continuar... (%d)" ,
+                                    "Press a key to continue... (%d)" ,
+                                    "Appuyez sur une touche pour continuer... (%d)" ,
+                                    "Drücken Sie eine Taste, um fortzufahren... (%d)" ,
+                                    "按任意键继续... (%d)"
+                                  ],
+
+                        "00004" : [ 0,
+                                    "Tecla presionada: 0x%02X [%c]" ,
+                                    "Key pressed: 0x%02X [%c]" ,
+                                    "Touche enfoncée : 0x%02X [%c]" ,
+                                    "Taste gedrückt: 0x%02X [%c]" ,
+                                    "按下按键：0x%02X [%c]"
+                                  ],
+
+                        "00005" : [ 0,
+                                    "[Versión de obtención del comando NetConn] Resultado: \\\"%s\\\"" ,
+                                    "[NetConn Command Get version] Result: \"%s\"" ,
+                                    "[Commande NetConn Obtenir la version] Résultat : \\\"%s\\\"" ,
+                                    "[NetConn Command Get version] Ergebnis: „%s“" ,
+                                    "[NetConn 命令获取版本] 结果：“%s”"
+                                  ],
+
+                        "00006" : [ 0,
+                                    "Error" ,
+                                    "Error" ,
+                                    "Erreur" ,
+                                    "Fehler" ,
+                                    "错误"
+                                  ],
+
+                        "00007" : [ 0,
+                                    "[Comando NetConn Otro comando] Resultado: \\\"%s\\\"" ,
+                                    "[NetConn Command Other command] Result: \"%s\"" ,
+                                    "[NetConn Command Autre commande] Résultat : \\\"%s\\\"" ,
+                                    "[NetConn Command Anderer Befehl] Ergebnis: „%s“" ,
+                                    "[NetConn 命令其他命令] 结果：“%s”"
+                                  ],
+
+                        "00008" : [ 0,
+                                    "clase de actualización de prueba" ,
+                                    "testupdateclass" ,
+                                    "classe de mise à jour de test" ,
+                                    "testupdateclass" ,
+                                    "测试更新类"
+                                  ],
+
+                        "00009" : [ 0,
+                                    "[Clase de actualización de NetConn Clase de actualización de prueba Cliente-\\u003eServidor] Resultado: \\\"%s\\\"" ,
+                                    "[NetConn Update class Test Update Class Client->Server] Result: \"%s\"" ,
+                                    "[Classe de mise à jour NetConn Test de classe de mise à jour Client-\\u003eServeur] Résultat : \\\"%s\\\"" ,
+                                    "[NetConn Update class Test Update Class Client-\\u003eServer] Ergebnis: „%s“" ,
+                                    "[NetConn 更新类测试更新类客户端-\\u003e服务器] 结果：“%s”"
+                                  ],
+
+                        "00010" : [ 0,
+                                    "De acuerdo" ,
+                                    "Ok" ,
+                                    "D'accord" ,
+                                    "OK" ,
+                                    "好的"
+                                  ],
+
+                        "00011" : [ 0,
+                                    "[Clase de actualización de NetConn Prueba de clase de actualización Servidor Preguntar al cliente] Resultado: \\\"%s\\\"" ,
+                                    "[NetConn Update class Test Update Class Server Ask Client] Result: \"%s\"" ,
+                                    "[Classe de mise à jour NetConn Test de mise à jour de la classe Serveur Demander au client] Résultat : \\\"%s\\\"" ,
+                                    "[NetConn Update class Test Update Class Server Ask Client] Ergebnis: „%s“" ,
+                                    "[NetConn 更新类测试更新类服务器询问客户端] 结果：“%s”"
+                                  ],
+
+                        "00012" : [ 0,
+                                    "[Comando NetConn desconectado] Resultado: \\\"%s\\\"" ,
+                                    "[NetConn Command Disconnected] Result: \"%s\"" ,
+                                    "[Commande NetConn déconnectée] Résultat : \\\"%s\\\"" ,
+                                    "[NetConn-Befehl getrennt] Ergebnis: „%s“" ,
+                                    "[NetConn 命令已断开] 结果：“%s”"
+                                  ],
+
+                        "00013" : [ 0,
+                                    "Datos del cliente" ,
+                                    "Client Data" ,
+                                    "Données clients" ,
+                                    "Kundendaten" ,
+                                    "客户资料"
+                                  ],
+
+                        "00014" : [ 0,
+                                    "número %d" ,
+                                    "number %d" ,
+                                    "numéro %d" ,
+                                    "Nummer %d" ,
+                                    "号码 %d"
+                                  ],
+
+                        "00015" : [ 0,
+                                    "cadena \\\"%s\\\"" ,
+                                    "string \"%s\"" ,
+                                    "chaîne \\\"%s\\\"" ,
+                                    "Zeichenfolge „%s“" ,
+                                    "字符串“%s”"
+                                  ],
+
+                        "00016" : [ 0,
+                                    "Conexión de moda" ,
+                                    "Fashion connection" ,
+                                    "Connexion mode" ,
+                                    "Modeverbindung" ,
+                                    "时尚连接"
+                                  ],
+
+                        "00017" : [ 0,
+                                    "Servidor" ,
+                                    "Server" ,
+                                    "Serveur" ,
+                                    "Server" ,
+                                    "服务器"
+                                  ],
+
+                        "00018" : [ 0,
+                                    "Cliente" ,
+                                    "Client" ,
+                                    "Client" ,
+                                    "Kunde" ,
+                                    "客户"
+                                  ],
+
+                        "00019" : [ 0,
+                                    "[Error] Comando desconocido!!!" ,
+                                    "[Error] Unkown command !!!" ,
+                                    "[Erreur] Commande inconnue !!!" ,
+                                    "[Fehler] Unbekannter Befehl !!!" ,
+                                    "[错误]未知命令！！！"
+                                  ],
+
+                        "00020" : [ 0,
+                                    "[Error] ¡¡¡Clase desconocida!!!" ,
+                                    "[Error] Unkown class !!!" ,
+                                    "[Erreur] Classe inconnue !!!" ,
+                                    "[Fehler] Unbekannte Klasse !!!" ,
+                                    "[错误]未知类！"
+                                  ],
+
+                        "00021" : [ 0,
+                                    "¿Está el servidor activo?" ,
+                                    "Is server active" ,
+                                    "Le serveur est-il actif" ,
+                                    "Ist der Server aktiv?" ,
+                                    "服务器是否活跃"
+                                  ],
+
+                        "00022" : [ 0,
+                                    "Tipo de transporte" ,
+                                    "Transport type" ,
+                                    "Type de transport" ,
+                                    "Transportart" ,
+                                    "运输类型"
+                                  ],
+
+                        "00023" : [ 0,
+                                    "Configuración de transporte" ,
+                                    "Transport config" ,
+                                    "Configuration des transports" ,
+                                    "Transportkonfiguration" ,
+                                    "传输配置"
+                                  ]
+                      }
+}

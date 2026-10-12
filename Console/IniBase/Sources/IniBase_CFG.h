@@ -34,7 +34,7 @@
 
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
-#define INIBASE_CFG_SECTION_GENERAL                           _L("general")
+#define INIBASE_CFG_SECTION_GENERAL                           NL("general")
 
 #define INIBASE_APPFLOW_CFG_DEFAULT_REMARK_COLUMN             98
 

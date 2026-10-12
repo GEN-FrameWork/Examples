@@ -34,12 +34,12 @@
 
 /*---- INCLUDES ------------------------------------------------------------------------------------------------------*/
 
+#include "BinConnPro_CFG.h"
+
 #include "XLog.h"
 
 #include "BinConnPro_ConnectionsManager.h"
 #include "BinConnPro.h"
-
-#include "BinConnPro_CFG.h"
 
 #include "XMemory_Control.h"
 

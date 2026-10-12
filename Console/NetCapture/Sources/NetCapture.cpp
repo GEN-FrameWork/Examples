@@ -63,6 +63,7 @@
 #include "APPFlowLog.h"
 #include "APPFlowExtended.h"
 
+#include "NetCapture_TranslateID.h"
 #include "NetCapture_CFG.h"
 #include "NetCapture_Sniffer.h"
 
@@ -131,7 +132,6 @@ bool NETCAPTURE::InitFSMachine()
                 NETCAPTURE_XFSMEVENT_INI             , NETCAPTURE_XFSMSTATE_INI           ,
                 NETCAPTURE_XFSMEVENT_END             , NETCAPTURE_XFSMSTATE_END           ,
                 XFSMACHINESTATE_EVENTDEFEND)) return false;
-
 
   if(!AddState( NETCAPTURE_XFSMSTATE_INI             ,
                 NETCAPTURE_XFSMEVENT_UPDATE          , NETCAPTURE_XFSMSTATE_UPDATE        ,
@@ -202,7 +202,6 @@ bool NETCAPTURE::AppProc_Ini()
   
   //--------------------------------------------------------------------------------------
 
-    
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_ROOT, xpathsection);
   xpath.Create(3 , xpathsection.Get(), APPLICATION_NAMEFILE, XTRANSLATION_NAMEFILEEXT);
 
@@ -210,8 +209,6 @@ bool NETCAPTURE::AppProc_Ini()
     {
       return false;
     }
-    
-  GEN_XTRANSLATION.SetActual(XLANGUAGE_ISO_639_3_CODE_SPA);
   
   //--------------------------------------------------------------------------------------
 
@@ -254,7 +251,7 @@ bool NETCAPTURE::AppProc_FirstUpdate()
   DIOPCAP_FILTERS* filters = sniffer->GetDIOPCap()->GetFilters();
   if(filters)
     {
-      // filters->Entrys_Add(_L("DNS"), DIOPCAPPROTOCOL_TYPE_UDP | DIOPCAPPROTOCOL_TYPE_TCP, 1, 53);
+      // filters->Entrys_Add(NL("DNS"), DIOPCAPPROTOCOL_TYPE_UDP | DIOPCAPPROTOCOL_TYPE_TCP, 1, 53);
     }
       
   //--------------------------------------------------------------------------------------
@@ -417,9 +414,9 @@ bool NETCAPTURE::KeyValidSecuences(int key)
   XCHAR character = (XCHAR)key;
 
   if((character<32) || (character>127)) character = _C('?');
-  APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, _L("Key pressed: 0x%02X [%c]"), key, character);
+  APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, TL(NETCAPTURE_TRANSLATEID_NETCAPTURE_KEY_PRESSED_0X), key, character);
 
-  console->Printf(_L("\r \r"));
+  console->Printf(NL("\r \r"));
 
   switch(key)
     {

@@ -33,10 +33,10 @@
 
 /*---- INCLUDES ------------------------------------------------------------------------------------------------------*/
 
+#include "BinConnPro_Protocol.h"
+
 #include "XFactory.h"
 #include "XVariant.h"
-
-#include "BinConnPro_Protocol.h"
 
 #include "XMemory_Control.h"
 
@@ -58,9 +58,9 @@
 *---------------------------------------------------------------------------------------------------------------------*/
 BINCONNPRO_PROTOCOL::BINCONNPRO_PROTOCOL(DIOSTREAM* diostream) : DIOPROTOCOL(diostream)
 {
-  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETDEVICETYPEANDID, _L(""), _L("DD"), RCV_GetDeviceTypeAndID, _L("GetDeviceTypeAndID"));
-  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETCENTERNAME, _L(""), _L("S"), RCV_GetCenterName, _L("GetCenterName"));
-  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETLOCATION, _L(""), _L("SSSSD"), RCV_GetLocation, _L("GetLocation"));
+  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETDEVICETYPEANDID, NL(""), NL("DD"), RCV_GetDeviceTypeAndID, NL("GetDeviceTypeAndID"));
+  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETCENTERNAME, NL(""), NL("S"), RCV_GetCenterName, NL("GetCenterName"));
+  AddCommand(BINCONNPRO_PROTOCOL_CMDTYPE_GETLOCATION, NL(""), NL("SSSSD"), RCV_GetLocation, NL("GetLocation"));
 }
 
 

@@ -30,11 +30,11 @@
 
 /*---- INCLUDES ------------------------------------------------------------------------------------------------------*/
 
+#include "DIOProtocol_ApplicationData.h"
+
 #include "XBase.h"
 #include "XFactory.h"
 #include "DIOLocationAddress.h"
-
-#include "DIOProtocol_ApplicationData.h"
 
 #include "BinConnPro_Protocol_Device.h"
 

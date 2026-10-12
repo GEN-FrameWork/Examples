@@ -32,6 +32,8 @@
 
 #include "APPFlowCFG.h"
 
+
+
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
 
@@ -51,10 +53,10 @@ class SCRIPTSEXAMPLE_CFG : public APPFLOWCFG
 
   private:
                                     SCRIPTSEXAMPLE_CFG                      (XCHAR* namefile);
-                                    SCRIPTSEXAMPLE_CFG                      (SCRIPTSEXAMPLE_CFG const&);        
+                                    SCRIPTSEXAMPLE_CFG                      (SCRIPTSEXAMPLE_CFG const&);        // Don't implement
     virtual                        ~SCRIPTSEXAMPLE_CFG                      ();
 
-    void                            operator =                              (SCRIPTSEXAMPLE_CFG const&);        
+    void                            operator =                              (SCRIPTSEXAMPLE_CFG const&);        // Don't implement
 
     void                            Clean                                   ();
 

@@ -1,0 +1,267 @@
+{
+  "languages"       : [ "Spanish" ,
+                        "English" ,
+                        "French"  ,
+                        "German"  ,
+                        "Chinese"
+                      ],
+
+  "translations"    : {
+
+                        "00001" : [ 0,
+                                    "Activando conexion servidor" ,
+                                    "Activating server connection" ,
+                                    "Activation de la connexion au serveur" ,
+                                    "Serververbindung wird aktiviert" ,
+                                    "激活服务器连接"
+                                  ],
+
+                        "00002" : [ 0,
+                                    "Activando conexion cliente" ,
+                                    "Activating client connection" ,
+                                    "Activation de la connexion client" ,
+                                    "Client-Verbindung wird aktiviert" ,
+                                    "激活客户端连接"
+                                  ],
+
+                        "00003" : [ 0,
+                                    "De acuerdo" ,
+                                    "Ok" ,
+                                    "D'accord" ,
+                                    "OK" ,
+                                    "好的"
+                                  ],
+
+                        "00004" : [ 0,
+                                    "Error" ,
+                                    "Error" ,
+                                    "Erreur" ,
+                                    "Fehler" ,
+                                    "错误"
+                                  ],
+
+                        "00005" : [ 0,
+                                    " Pulsa una tecla para continuar... (%d)" ,
+                                    "Press a key to continue... (%d)" ,
+                                    "Appuyez sur une touche pour continuer... (%d)" ,
+                                    "Drücken Sie eine Taste, um fortzufahren... (%d)" ,
+                                    "按任意键继续... (%d)"
+                                  ],
+
+                        "00006" : [ 0,
+                                    "Desactivando conexion servidor" ,
+                                    "Deactivating server connection" ,
+                                    "Désactivation de la connexion au serveur" ,
+                                    "Serververbindung deaktivieren" ,
+                                    "停用服务器连接"
+                                  ],
+
+                        "00007" : [ 0,
+                                    "Desactivando conexion cliente" ,
+                                    "Deactivating client connection" ,
+                                    "Désactivation de la connexion client" ,
+                                    "Client-Verbindung deaktivieren" ,
+                                    "停用客户端连接"
+                                  ],
+
+                        "00008" : [ 0,
+                                    "De acuerdo." ,
+                                    "Ok." ,
+                                    "D'accord." ,
+                                    "OK." ,
+                                    "好的。"
+                                  ],
+
+                        "00009" : [ 0,
+                                    "Tecla presionada: 0x%02X [%c]" ,
+                                    "Key pressed: 0x%02X [%c]" ,
+                                    "Touche enfoncée : 0x%02X [%c]" ,
+                                    "Taste gedrückt: 0x%02X [%c]" ,
+                                    "按下按键：0x%02X [%c]"
+                                  ],
+
+                        "00010" : [ 0,
+                                    "Modo de protocolo" ,
+                                    "Protocol mode" ,
+                                    "Mode protocole" ,
+                                    "Protokollmodus" ,
+                                    "协议模式"
+                                  ],
+
+                        "00011" : [ 0,
+                                    "Servidor" ,
+                                    "Server" ,
+                                    "Serveur" ,
+                                    "Server" ,
+                                    "服务器"
+                                  ],
+
+                        "00012" : [ 0,
+                                    "Cliente" ,
+                                    "Customer" ,
+                                    "Client" ,
+                                    "Kunde" ,
+                                    "顾客"
+                                  ],
+
+                        "00013" : [ 0,
+                                    "Puerto [%d]" ,
+                                    "Puerto [%d] " ,
+                                    "Port [%d]" ,
+                                    "Puerto [%d]" ,
+                                    "波多黎各 [%d]"
+                                  ],
+
+                        "00014" : [ 0,
+                                    "Dispositivos conectados" ,
+                                    "Connected devices" ,
+                                    "Appareils connectés" ,
+                                    "Angeschlossene Geräte" ,
+                                    "连接设备"
+                                  ],
+
+                        "00015" : [ 0,
+                                    "Ninguno." ,
+                                    "None." ,
+                                    "Aucun." ,
+                                    "Keiner." ,
+                                    "没有任何。"
+                                  ],
+
+                        "00016" : [ 0,
+                                    "Estado dispositivo" ,
+                                    "Device status" ,
+                                    "État de l'appareil" ,
+                                    "Gerätestatus" ,
+                                    "设备状态"
+                                  ],
+
+                        "00017" : [ 0,
+                                    "Desconectado" ,
+                                    "Offline" ,
+                                    "Hors ligne" ,
+                                    "Offline" ,
+                                    "离线"
+                                  ],
+
+                        "00018" : [ 0,
+                                    "Conectado" ,
+                                    "Connected" ,
+                                    "Connecté" ,
+                                    "Verbunden" ,
+                                    "已连接"
+                                  ],
+
+                        "00019" : [ 0,
+                                    "Punto de prueba" ,
+                                    "Test Point" ,
+                                    "Point de test" ,
+                                    "Testpunkt" ,
+                                    "测试点"
+                                  ],
+
+                        "00020" : [ 0,
+                                    "Protocolo del servidor Ini de %s: no se obtiene la versión del protocolo." ,
+                                    "Ini Server protocol from %s: Not get version protocol." ,
+                                    "Protocole du serveur Ini de %s : pas d'obtention du protocole de version." ,
+                                    "Ini-Serverprotokoll von %s: Versionsprotokoll nicht abgerufen." ,
+                                    "来自 %s 的 Ini 服务器协议：未获取版本协议。"
+                                  ],
+
+                        "00021" : [ 0,
+                                    "Protocolo del servidor Ini de %s: versión del protocolo no válida." ,
+                                    "Ini Server protocol from %s: Not version protocol valid." ,
+                                    "Protocole du serveur Ini de %s : protocole de version non valide." ,
+                                    "Ini-Serverprotokoll von %s: Nicht gültige Protokollversion." ,
+                                    "来自 %s 的 Ini 服务器协议：版本协议无效。"
+                                  ],
+
+                        "00022" : [ 0,
+                                    "Protocolo del servidor Ini de %s: no se obtiene la versión de la aplicación." ,
+                                    "Ini Server protocol from %s: Not get application version." ,
+                                    "Protocole du serveur Ini de %s : ne récupère pas la version de l'application." ,
+                                    "Ini-Server-Protokoll von %s: Anwendungsversion nicht abgerufen." ,
+                                    "来自 %s 的 Ini 服务器协议：未获取应用程序版本。"
+                                  ],
+
+                        "00023" : [ 0,
+                                    "Protocolo del servidor Ini de %s: no se obtiene el nombre de la aplicación." ,
+                                    "Ini Server protocol from %s: Not get application name." ,
+                                    "Protocole du serveur Ini de %s : n'obtient pas le nom de l'application." ,
+                                    "INI-Serverprotokoll von %s: Anwendungsname nicht abgerufen." ,
+                                    "来自 %s 的 Ini 服务器协议：未获取应用程序名称。"
+                                  ],
+
+                        "00024" : [ 0,
+                                    "Protocolo del servidor Ini de %s: no se obtiene el ID de la máquina." ,
+                                    "Ini Server protocol from %s: Not get machine ID." ,
+                                    "Protocole du serveur Ini de %s : n'obtient pas l'ID de la machine." ,
+                                    "Ini-Serverprotokoll von %s: Maschinen-ID nicht erhalten." ,
+                                    "来自 %s 的 Ini 服务器协议：未获取计算机 ID。"
+                                  ],
+
+                        "00025" : [ 0,
+                                    "Protocolo de cliente Ini: no se obtiene la versión del protocolo." ,
+                                    "Ini Client protocol:  Not get version protocol." ,
+                                    "Protocole client Ini : ne pas obtenir le protocole de version." ,
+                                    "Ini-Client-Protokoll: Versionsprotokoll nicht abgerufen." ,
+                                    "Ini 客户端协议：未获取版本协议。"
+                                  ],
+
+                        "00026" : [ 0,
+                                    "Protocolo de cliente Ini: versión del protocolo no válida." ,
+                                    "Ini Client protocol:  Not version protocol valid." ,
+                                    "Protocole Ini Client : protocole de version non valide." ,
+                                    "Ini-Client-Protokoll: Nicht gültige Protokollversion." ,
+                                    "Ini 客户端协议：版本协议无效。"
+                                  ],
+
+                        "00027" : [ 0,
+                                    "Protocolo de cliente inicial: no se obtiene el nombre del centro." ,
+                                    "Ini Client protocol:  Not get center name." ,
+                                    "Protocole client Ini : n'obtient pas le nom du centre." ,
+                                    "Ini-Client-Protokoll: Center-Name nicht erhalten." ,
+                                    "Ini 客户端协议：未获取中心名称。"
+                                  ],
+
+                        "00028" : [ 0,
+                                    "Protocolo de cliente Ini: no se obtiene la ubicación." ,
+                                    "Ini Client protocol:  Not get location." ,
+                                    "Protocole client Ini : ne permet pas d'obtenir l'emplacement." ,
+                                    "Ini-Client-Protokoll: Standort kann nicht ermittelt werden." ,
+                                    "Ini 客户端协议：无法获取位置。"
+                                  ],
+
+                        "00029" : [ 0,
+                                    "Protocolo del servidor Ini: no protocolo de instancia." ,
+                                    "Ini Server protocol: Not instance protocol." ,
+                                    "Protocole du serveur Ini : pas de protocole d'instance." ,
+                                    "Ini-Server-Protokoll: Kein Instanzprotokoll." ,
+                                    "Ini Server 协议：不是实例协议。"
+                                  ],
+
+                        "00030" : [ 0,
+                                    "Protocolo del servidor Ini de %s: no datos del protocolo de instancia." ,
+                                    "Ini Server protocol from %s: Not instance protocol data." ,
+                                    "Protocole du serveur Ini de %s : pas de données de protocole d'instance." ,
+                                    "Ini-Serverprotokoll von %s: Keine Instanzprotokolldaten." ,
+                                    "来自 %s 的 Ini 服务器协议：不是实例协议数据。"
+                                  ],
+
+                        "00031" : [ 0,
+                                    "Servidor de protocolo EGM" ,
+                                    "EGM Protocol Server" ,
+                                    "Serveur de protocole EGM" ,
+                                    "EGM-Protokollserver" ,
+                                    "EGM协议服务器"
+                                  ],
+
+                        "00032" : [ 0,
+                                    "Cliente de protocolo EGM" ,
+                                    "EGM Protocol Client" ,
+                                    "Client de protocole EGM" ,
+                                    "EGM-Protokoll-Client" ,
+                                    "EGM 协议客户端"
+                                  ]
+                      }
+}

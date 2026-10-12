@@ -47,8 +47,6 @@
 
 #include "MainProc.h"
 
-//#pragma endregion
-
 
 /*---- PRECOMPILATION INCLUDES ---------------------------------------------------------------------------------------*/
 
@@ -134,7 +132,7 @@ bool Proc_Main_Ini(MAINPROC* main)
   XTRACE_CLEARSCREEN;
   XTRACE_CLEARMSGSSTATUS;
 
-  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("Application ROOT path: %s"), GEN_XPATHSMANAGER.GetPathSection(XPATHSMANAGERSECTIONTYPE_ROOT)->xpath->Get());
+  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, NL("Application ROOT path: %s"), GEN_XPATHSMANAGER.GetPathSection(XPATHSMANAGERSECTIONTYPE_ROOT)->xpath->Get());
 
   return true;
 }

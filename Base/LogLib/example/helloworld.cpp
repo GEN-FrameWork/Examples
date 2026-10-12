@@ -61,15 +61,15 @@ int main()
 
   LIBRARY_Ini();
 
-  status = GEN_XLOG.Ini(_L("helloword.log"), _L("helloword"), true);
+  status = GEN_XLOG.Ini(NL("helloword.log"), NL("helloword"), true);
   if(status)
     {       
   
       GEN_XLOG.SetLimit(XLOGTYPELIMIT_SIZE, 3000*1000, 10);
-      GEN_XLOG.SetFilters(_L("GENERIC"), 0x000F);
+      GEN_XLOG.SetFilters(NL("GENERIC"), 0x000F);
       GEN_XLOG.SetBackup(true, 10, true);       
   
-      GEN_XLOG.AddEntry(XLOGLEVEL_INFO, _L("GENERIC"), false, _L("Hello World!"));
+      GEN_XLOG.AddEntry(XLOGLEVEL_INFO, NL("GENERIC"), false, NL("Hello World!"));
         
       GEN_XLOG.End();
     }

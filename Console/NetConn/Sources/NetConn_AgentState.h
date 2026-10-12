@@ -34,8 +34,8 @@
 
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
-#define NETCONN_AGENTSTATE_TOTALMEMORY_STR    _L("total_memory") 
-#define NETCONN_AGENTSTATE_FREEMEMORY_STR     _L("free_memory")
+#define NETCONN_AGENTSTATE_TOTALMEMORY_STR    NL("total_memory") 
+#define NETCONN_AGENTSTATE_FREEMEMORY_STR     NL("free_memory")
 
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 

@@ -28,7 +28,6 @@ option(DIO_CHECKCONNECTIONS_FEATURE                             "Check Connectio
 option(DIO_NETWORKTIMEPROTOCOL_FEATURE                          "Network Time Protocol"                                   ON )
 option(DIO_DYNDNS_FEATURE                                       "DynDNS"                                                  ON )
 
-
 option(DIO_PROTOCOL_FEATURE                                     "Data Input/Output Protocol"                              ON )
     
 option(APPFLOW_FEATURE                                          "Application Flow modules"                                ON )
@@ -46,7 +45,10 @@ option(APPFLOW_CFG_LOG_FEATURE                                  "Application Flo
 option(APPFLOW_CFG_INTERNETSERVICES_FEATURE                     "Application Flow CFG Internet services"                  ON )      
 option(APPFLOW_CFG_CHECKRESOURCESHARDWARE_FEATURE               "Application Flow CFG Check Resorces HW"                  ON )  
 option(APPFLOW_CFG_DNSRESOLVER_FEATURE                          "Application Flow CFG DNS "                               ON )   
-option(APPFLOW_CFG_DIOLOCATION_FEATURE                          "Application Flow CFG DIO Location"                       ON )          
+option(APPFLOW_CFG_DIOLOCATION_FEATURE                          "Application Flow CFG DIO Location"                       ON )   
+
+
+
 
 # --------------------------------------------------------------------
 # Config Application Macro

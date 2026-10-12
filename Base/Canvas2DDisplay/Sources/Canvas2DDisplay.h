@@ -42,10 +42,10 @@
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 0
 
-#define APPLICATION_NAMEAPP                       _L("Canvas 2D Display")
-#define APPLICATION_NAMEFILE                      _L("canvas2ddisplay")
+#define APPLICATION_NAMEAPP                       NL("Canvas 2D Display")
+#define APPLICATION_NAMEFILE                      NL("canvas2ddisplay")
 
-#define APPLICATION_OWNER                         _L("EndoraSoft")
+#define APPLICATION_OWNER                         NL("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2022
 

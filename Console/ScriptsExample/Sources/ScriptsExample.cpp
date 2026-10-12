@@ -98,7 +98,7 @@
 #include "Script_Cache.h"
 #endif
 
-
+#include "ScriptsExample_TranslateID.h"
 #include "ScriptsExample_CFG.h"
 
 
@@ -241,17 +241,13 @@ bool SCRIPTSEXAMPLE::AppProc_Ini()
 
   //--------------------------------------------------------------------------------------------------
 
-  /*
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_ROOT, xpathsection);
-  xpath.Create(3 , xpathsection.Get(), BINCONNPRO_LNG_NAMEFILE, XTRANSLATION_NAMEFILEEXT);
+  xpath.Create(3 , xpathsection.Get(), APPLICATION_NAMEFILE, XTRANSLATION_NAMEFILEEXT);
 
   if(!GEN_XTRANSLATION.Ini(xpath))
     {
       return false;
     }
-  */
-
-  GEN_XTRANSLATION.SetActual(XLANGUAGE_ISO_639_3_CODE_SPA);
 
   //--------------------------------------------------------------------------------------------------
 
@@ -436,7 +432,7 @@ bool SCRIPTSEXAMPLE::KeyValidSecuences(int key)
   if((character<32) || (character>127)) character = _C('?');
   APPFLOW_LOG_ENTRY(XLOGLEVEL_WARNING, APPFLOW_CFG_LOG_SECTIONID_STATUSAPP, false, TL(SCRIPTSEXAMPLE_TRANSLATEID_SCRIPTSEXAMPLE_KEY_PRESSED_0X), key, character);
 
-  console->Printf(NL("\r \r"));
+  console->Printf(NL("\r    \r"));
 
   switch(key)
     {
@@ -445,8 +441,6 @@ bool SCRIPTSEXAMPLE::KeyValidSecuences(int key)
                   break;
 
       case 'R'  : { if(xtimerscriptrun) xtimerscriptrun->Reset();
-
-                    console->Printf(NL("\r\n"));
 
                     SCRIPT::LoadScriptAndRun(APPFLOW_CFG.Scripts_GetAll(), SCRIPTSEXAMPLE::AdjustLibraries);
 
@@ -526,10 +520,10 @@ void SCRIPTSEXAMPLE::HandleEvent_Script(SCRIPT_XEVENT* event)
   switch(event->GetEventType())
     {      
 
-      case SCRIPT_XEVENT_TYPE_ERROR    : XTRACE_PRINTCOLOR(4, TL(SCRIPTSEXAMPLE_TRANSLATEID_SCRIPTSEXAMPLE_SCRIPT_ERROR_LINE), event->GetError(), event->GetErrorText()->Get(), event->GetNLine(), event->GetCurrentToken()->Get());
+      case SCRIPT_XEVENT_TYPE_ERROR    : XTRACE_PRINTCOLOR(4,TL(SCRIPTSEXAMPLE_TRANSLATEID_SCRIPTSEXAMPLE_SCRIPT_ERROR_LINE), event->GetError(), event->GetErrorText()->Get(), event->GetNLine(), event->GetCurrentToken()->Get());
                                          break;
 
-      case SCRIPT_XEVENT_TYPE_BREAK    : XTRACE_PRINTCOLOR(4, TL(SCRIPTSEXAMPLE_TRANSLATEID_SCRIPTSEXAMPLE_SCRIPT_BREAK_LINE), event->GetNLine(), event->GetCurrentToken()->Get());
+      case SCRIPT_XEVENT_TYPE_BREAK    : XTRACE_PRINTCOLOR(4,TL(SCRIPTSEXAMPLE_TRANSLATEID_SCRIPTSEXAMPLE_SCRIPT_BREAK_LINE), event->GetNLine(), event->GetCurrentToken()->Get());
                                          break;
 
     }

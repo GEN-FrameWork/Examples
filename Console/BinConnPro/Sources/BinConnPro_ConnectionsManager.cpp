@@ -29,9 +29,13 @@
 /*---- PRECOMPILATION CONTROL ----------------------------------------------------------------------------------------*/
 
 #include "GEN_Defines.h"
+#include "XTranslation.h"
 
 
 /*---- INCLUDES ------------------------------------------------------------------------------------------------------*/
+
+#include "BinConnPro_ConnectionsManager.h"
+
 #include "XPublisher.h"
 
 #include "DIOFactory.h"
@@ -43,10 +47,9 @@
 #include "CipherAES.h"
 #include "CipherKeySymmetrical.h"
 
+#include "BinConnPro_TranslateID.h"
 #include "BinConnPro_ApplicationData.h"
 #include "BinConnPro_Protocol.h"
-
-#include "BinConnPro_ConnectionsManager.h"
 
 #include "XMemory_Control.h"
 
@@ -279,8 +282,8 @@ DIOPROTOCOL* BINCONNPRO_CONNECTIONSMANAGER::CreateProtocol()
 
 
               if(isserver)
-                      protocol->GetDescription()->Set(_L("EGM Protocol Server"));
-                else  protocol->GetDescription()->Set(_L("EGM Protocol Client"));
+                      protocol->GetDescription()->Set(TL(BINCONNPRO_TRANSLATEID_BINCONNPRO_CONNECTIONSMANAGER_EGM_PROTOCOL_SERVER));
+                else  protocol->GetDescription()->Set(TL(BINCONNPRO_TRANSLATEID_BINCONNPRO_CONNECTIONSMANAGER_EGM_PROTOCOL_CLIENT));
 
               if(!applicationdata)
                 {
@@ -332,8 +335,8 @@ DIOPROTOCOL* BINCONNPRO_CONNECTIONSMANAGER::CreateProtocol()
           protocol->SetMaskID(BINCONNPRO_CONNECTIONSMANAGER_PROTOCOLMASKID | (isserver?DIOPROTOCOL_CMDTYPE_ISSERVER:0));
 
           if(isserver)
-                    protocol->GetDescription()->Set(_L("EGM Protocol Server"));
-              else  protocol->GetDescription()->Set(_L("EGM Protocol Client"));
+                    protocol->GetDescription()->Set(TL(BINCONNPRO_TRANSLATEID_BINCONNPRO_CONNECTIONSMANAGER_EGM_PROTOCOL_SERVER));
+              else  protocol->GetDescription()->Set(TL(BINCONNPRO_TRANSLATEID_BINCONNPRO_CONNECTIONSMANAGER_EGM_PROTOCOL_CLIENT));
 
           if(!applicationdata)
               {

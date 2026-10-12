@@ -36,7 +36,7 @@
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
 #define BINCONNPRO_PROTOCOL_VERSION                       0
-#define BINCONNPRO_PROTOCOL_SUBVERSION                      1
+#define BINCONNPRO_PROTOCOL_SUBVERSION                    1
 #define BINCONNPRO_PROTOCOL_SUBVERSIONERR                 0
 
 #define BINCONNPRO_PROTOCOL_MAXMACHINESIDLIST             250

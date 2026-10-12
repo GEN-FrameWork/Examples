@@ -78,14 +78,14 @@ enum DATABASESTASKID
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 0
 
-#define APPLICATION_NAMEAPP                       _L("Databases")
-#define APPLICATION_NAMEFILE                      _L("databases")
+#define APPLICATION_NAMEAPP                       NL("Databases")
+#define APPLICATION_NAMEFILE                      NL("databases")
 
-#define APPLICATION_OWNER                         _L("EndoraSoft")
+#define APPLICATION_OWNER                         NL("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2018
 
-#define DATABASES_TABLE_TEST_NAME                 _L("TableTest")
+#define DATABASES_TABLE_TEST_NAME                 NL("TableTest")
 #define DATABASES_TABLE_MAXFIELDS                 16
 
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
@@ -121,7 +121,6 @@ class DATABASES : public APPFLOWCONSOLE, public XFSMACHINE
     bool                            DataBase_ChangeType                     (DB_SQL_DATABASE_TYPE type);
     bool                            Database_DoTest                         ();
 
-    bool                            Show_AppStatus                          ();
     bool                            Show_DatabasesStatus                    ();
     bool                            Show_AllStatus                          ();
 

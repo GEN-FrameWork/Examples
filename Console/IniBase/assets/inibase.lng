@@ -1,0 +1,27 @@
+{
+  "languages"       : [ "Spanish" ,
+                        "English" ,
+                        "French"  ,
+                        "German"  ,
+                        "Chinese"
+                      ],
+
+  "translations"    : {
+
+                        "00001" : [ 0,
+                                    "  Pulsa una tecla para continuar... (%d)" ,
+                                    "Press a key to continue... (%d)" ,
+                                    "Appuyez sur une touche pour continuer... (%d)" ,
+                                    "Drücken Sie eine Taste, um fortzufahren... (%d)" ,
+                                    "按任意键继续... (%d)"
+                                  ],
+
+                        "00002" : [ 0,
+                                    "Tecla presionada: 0x%02X [%c]" ,
+                                    "Key pressed: 0x%02X [%c]" ,
+                                    "Touche enfoncée : 0x%02X [%c]" ,
+                                    "Taste gedrückt: 0x%02X [%c]" ,
+                                    "按下按键：0x%02X [%c]"
+                                  ]
+                      }
+}
