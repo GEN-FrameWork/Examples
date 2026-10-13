@@ -94,6 +94,7 @@ enum UI_SYSTEM_BUTTONS
 {
   UI_SYSTEM_BUTTON_ESC                      = 0 ,
   UI_SYSTEM_BUTTON_F5                           ,
+  UI_SYSTEM_BUTTON_F12                          ,
   UI_SYSTEM_BUTTON_ZOOM_IN                      ,
   UI_SYSTEM_BUTTON_ZOOM_OUT                     ,
   UI_SYSTEM_BUTTON_ZOOM_OUT_MINUS               ,
@@ -113,10 +114,10 @@ enum UI_SYSTEM_BUTTONS
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 0
 
-#define APPLICATION_NAMEAPP                       _L("UI_System")
-#define APPLICATION_NAMEFILE                      _L("ui_system")
+#define APPLICATION_NAMEAPP                       NL("UI_System")
+#define APPLICATION_NAMEFILE                      NL("ui_system")
 
-#define APPLICATION_OWNER                         _L("EndoraSoft")
+#define APPLICATION_OWNER                         NL("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2026
 
@@ -197,7 +198,7 @@ class UI_SYSTEM : public APPFLOWGRAPHICS, public XFSMACHINE
     bool                            UserInterface_ElementSelected           (UI_ELEMENT* element);
     bool                            UserInterface_ChangeLiteralText         (UI_ELEMENT_TEXT* element_text, XSTRING* maskvalue, XSTRING* maskresult);
     bool                            UserInterface_CFGChromes                (GRPSCREEN* screen);    
-
+    
     bool                            UserInterface_SelectSection             (UI_SYSTEM_SECTIONID sectionID);
     bool                            UserInterface_AdjustUIScale             (double delta);
 

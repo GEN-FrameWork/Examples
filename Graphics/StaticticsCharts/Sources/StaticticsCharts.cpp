@@ -116,9 +116,7 @@
 #include "INPManager.h"
 #include "INPDevice.h"
 
-#include "UI_XEvent.h"
-#include "UI_Manager.h"
-
+#include "StaticticsCharts_TranslateID.h"
 #include "StaticticsCharts_CFG.h"
 
 
@@ -221,7 +219,9 @@ bool STATICTICSCHARTS::AppProc_Ini()
 
   Application_GetName()->Set(APPLICATION_NAMEAPP);
 
-  SetInitOptions(APPFLOWGRAPHICS_INIOPTION_CREATEMAINSCREEN | APPFLOWGRAPHICS_INIOPTION_SHOWMAINSCREEN | APPFLOWGRAPHICS_INIOPTION_INPUT);
+  SetInitOptions( APPFLOWGRAPHICS_INIOPTION_CREATEMAINSCREEN    |
+                  APPFLOWGRAPHICS_INIOPTION_SHOWMAINSCREEN      |
+                  APPFLOWGRAPHICS_INIOPTION_INPUT);
 
   //--------------------------------------------------------------------------------------------------
 
@@ -238,9 +238,9 @@ bool STATICTICSCHARTS::AppProc_Ini()
 
   GEN_XPATHSMANAGER.AdjustRootPathDefault(APPFLOW_DEFAULT_DIRECTORY_ROOT);
 
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_GRAPHICS, APPFLOW_DEFAULT_DIRECTORY_GRAPHICS);
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_FONTS, APPFLOW_DEFAULT_DIRECTORY_FONTS);
-  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS, APPFLOW_DEFAULT_DIRECTORY_UI_LAYOUTS);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_GRAPHICS      , APPFLOW_DEFAULT_DIRECTORY_GRAPHICS);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_FONTS         , APPFLOW_DEFAULT_DIRECTORY_FONTS);
+  GEN_XPATHSMANAGER.AddPathSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS    , APPFLOW_DEFAULT_DIRECTORY_UI_LAYOUTS);
 
 
   GEN_XPATHSMANAGER.CreateAllPathSectionOnDisk();
@@ -274,8 +274,6 @@ bool STATICTICSCHARTS::AppProc_Ini()
       {
         return false;
       }
-
-    GEN_XTRANSLATION.SetActual(XLANGUAGE_ISO_639_3_CODE_ENG);
   }
 
   //--------------------------------------------------------------------------------------
@@ -341,10 +339,6 @@ bool STATICTICSCHARTS::AppProc_FirstUpdate()
       button[STATICTICSCHARTS_BUTTON_TOUCHSCREEN] = inpdevice->GetButton(INPBUTTON_ID_TOUCHSCREEN);     
       cursor = inpdevice->GetCursor(0);
     }
-
-  //--------------------------------------------------------------------------------------
-
-  if(!Ini_UserInterface(true)) return false;
 
   //--------------------------------------------------------------------------------------
 
@@ -597,7 +591,7 @@ bool STATICTICSCHARTS::Ini_StaticticCharts()
 
   for(int d=0; d<48; d++)   
     {
-      values.Add((double)xrand->Between(10, 80));     
+      values.Add((double)xrand->Between(10,80));     
     }
 
   
@@ -644,7 +638,7 @@ bool STATICTICSCHARTS::Ini_StaticticCharts()
               GRPSTATISTICSCHARTCONFIG* config = chart->GetConfig();
               if(config)
                 {
-                  config->SetTitle(_L("Sales by quarter"));
+                  config->SetTitle(TL(STATICTICSCHARTS_TRANSLATEID_STATICTICSCHARTS_SALES_BY_QUARTER));
 
                   config->SetShowValues(true);
          
@@ -668,12 +662,12 @@ bool STATICTICSCHARTS::Ini_StaticticCharts()
               GRPSTATISTICSCHARTDATA* data = chart->GetData();
               if(data)
                 {
-                  data->AddCategory(_L("Q1"));
-                  data->AddCategory(_L("Q2"));
-                  data->AddCategory(_L("Q3"));
-                  data->AddCategory(_L("Q4"));
+                  data->AddCategory(NL("Q1"));
+                  data->AddCategory(NL("Q2"));
+                  data->AddCategory(NL("Q3"));
+                  data->AddCategory(NL("Q4"));
                                 
-                  GRPSTATISTICSCHARTSERIE* serie2024 = data->AddSerie(_L("2024"));
+                  GRPSTATISTICSCHARTSERIE* serie2024 = data->AddSerie(NL("2024"));
                   if(serie2024)
                     {
                       for(int e=0; e<4; e++)  
@@ -683,7 +677,7 @@ bool STATICTICSCHARTS::Ini_StaticticCharts()
                         }                      
                     }
 
-                  GRPSTATISTICSCHARTSERIE* serie2025 = data->AddSerie(_L("2025"));
+                  GRPSTATISTICSCHARTSERIE* serie2025 = data->AddSerie(NL("2025"));
                   if(serie2025)
                     {
                       for(int e=0; e<4; e++)  
@@ -741,9 +735,9 @@ bool STATICTICSCHARTS::Ini_Graphics(GRPSCREEN* screen)
   screen->SetWidth((420*3)+(20*4));
   screen->SetHeight((420*2)+(20*3));
 
-  screen->GetTitle()->Set(_L("Statictics Chars Canvas"));  
+  screen->GetTitle()->Set(TL(STATICTICSCHARTS_TRANSLATEID_STATICTICSCHARTS_STATICTICS_CHARS_CANVAS));  
 
-  GetMainScreen()->CreateViewport(GRPVIEWPORT_ID_MAIN, 0.0f, 0.0f, (float)screen->GetWidth(), (float)screen->GetHeight(), 0, 0, (screen->GetWidth()), (screen->GetHeight()));
+  GetMainScreen()->CreateViewport(GRPVIEWPORT_ID_MAIN , 0.0f, 0.0f, (float)screen->GetWidth()   , (float)screen->GetHeight(), 0, 0, (screen->GetWidth()), (screen->GetHeight()));
 
   //--------------------------------------------------------------------------------------
 
@@ -764,93 +758,36 @@ bool STATICTICSCHARTS::Ini_Graphics(GRPSCREEN* screen)
       return false;
     }
 
+  //--------------------------------------------------------------------------------------
+
   XPATH xpath;
 
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_GRAPHICS, xpath);
   xpath.Slash_Add();
-  xpath.Add(_L("background.jpg"));
+  xpath.Add(NL("background.jpg"));
 
   GRPBITMAPFILE   bitmapfile;
   
   backgroundbmp = bitmapfile.Load(xpath, GetMainScreen()->GetMode());
   if(!backgroundbmp) return false;
 
+  //--------------------------------------------------------------------------------------
   
   XPATH pathfont;
 
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_FONTS, pathfont);
   pathfont.Slash_Add();             
-  pathfont.Add(_L("Nunito-SemiBold.ttf"));
+  pathfont.Add(NL("Nunito-SemiBold.ttf"));
 
   canvas->VectorFont_Load(pathfont);
+
+  //--------------------------------------------------------------------------------------
 
   Ini_StaticticCharts();
 
   return true;
 }
 
-
-/**-------------------------------------------------------------------------------------------------------------------
-* 
-* @fn         bool STATICTICSCHARTS::Ini_UserInterface(bool on)
-* @brief      ini  user interface
-* @ingroup    
-* 
-* @param[in]  on : 
-* 
-* @return     bool : true if is succesful. 
-* 
-* --------------------------------------------------------------------------------------------------------------------*/
-bool STATICTICSCHARTS::Ini_UserInterface(bool on)
-{  
-  if(!on)
-    { 
-      GEN_USERINTERFACE.SubscribeOutputEvents(false, this, &GEN_USERINTERFACE.GetInstance());
-      GEN_USERINTERFACE.SubscribeInputEvents(false);
-      GEN_USERINTERFACE.DelInstance();
-   
-      return true;
-    }
-
-  //--------------------------------------------------------------------------------------
-
-  GRPSCREEN*    screen    = NULL;
-  GRPVIEWPORT*  viewport  = NULL;
-  GRP2DCANVAS*  canvas    = NULL;
-  XPATH         xpath;
-  
-  screen = GetMainScreen();
-  if(!screen)   
-    {
-      return false;
-    } 
-
-  viewport = screen->GetViewport(0);
-  if(!viewport) 
-    {
-      return false;
-    }
-
-  canvas = viewport->GetCanvas();
-  if(!canvas)   
-    {
-      return false;
-    }
- 
-  
-  //--------------------------------------------------------------------------------------
-  
-  UserInterface_CFGChromes(screen); 
-
-  //--------------------------------------------------------------------------------------
-
-  GEN_USERINTERFACE.SubscribeInputEvents(true);
-  GEN_USERINTERFACE.SubscribeOutputEvents(true, this, &GEN_USERINTERFACE.GetInstance());   
-
-  GEN_USERINTERFACE.Elements_SetToRedraw();
-        
-  return true;
-}
 
 
 /**-------------------------------------------------------------------------------------------------------------------
@@ -932,75 +869,7 @@ bool STATICTICSCHARTS::DrawFrame()
 
   //--------------------------------------------------------------------------------------
 
-  GEN_USERINTERFACE.Elements_RebuildDrawAreas();
-  
-  GEN_USERINTERFACE.Update(); 
-
-  //--------------------------------------------------------------------------------------
-
-
   return true;
-}
-
-
-/**-------------------------------------------------------------------------------------------------------------------
-* 
-* @fn         bool STATICTICSCHARTS::UserInterface_CFGChromes(GRPSCREEN* screen)
-* @brief      user interface  CFGchromes
-* @ingroup    
-* 
-* @param[in]  screen : 
-* 
-* @return     bool : true if is succesful. 
-* 
-* --------------------------------------------------------------------------------------------------------------------*/
-bool STATICTICSCHARTS::UserInterface_CFGChromes(GRPSCREEN* screen)
-{
-  GRPSCREENCFGCHROMES cfgchromes;
-
-  #ifdef GRP_SCREEN_CUSTOMCHROMES_ACTIVE
-
-  //cfgchromes.SetCustomAutoHide(500);
-
-  #else
-
-  cfgchromes.SetNativeCaptionActive(true);
-  cfgchromes.SetNativeIconActive(false);
-  cfgchromes.SetNativeTitleActive(true); 
-  cfgchromes.SetNativeMinimizeActive(true);
-  cfgchromes.SetNativeMaximizeActive(false);
-  cfgchromes.SetNativeCloseActive(true);  
-
-  #endif
-
-  cfgchromes.SetResizeActive(false);
-
-  screen->SetCFGChromes(cfgchromes);
-
-  return true;
-}
-
-
-/**-------------------------------------------------------------------------------------------------------------------
-* 
-* @fn         void STATICTICSCHARTS::HandleEvent_UserInterface(UI_XEVENT* event)
-* @brief      Handle Event for the observer manager of this class
-* @ingroup    
-* @note       INTERNAL
-* 
-* @param[in]  event : 
-* 
-* --------------------------------------------------------------------------------------------------------------------*/
-void STATICTICSCHARTS::HandleEvent_UserInterface(UI_XEVENT* event)
-{
-  switch(event->GetEventType())
-    {
-      case  UI_XEVENT_TYPE_OUTPUT_SELECTED        : break;
-
-      case UI_XEVENT_TYPE_OUTPUT_TEXTTOCHANGE     : break;
-
-      case UI_XEVENT_TYPE_OUTPUT_CHANGECONTENTS   : break;      
-    }
 }
 
 
@@ -1050,13 +919,6 @@ void STATICTICSCHARTS::HandleEvent(XEVENT* xevent)
                                           if(!event) return;
 
                                           HandleEvent_Graphics(event);
-                                        }
-                                        break;
-
-      case XEVENT_TYPE_USERINTERFACE  : { UI_XEVENT* event = (UI_XEVENT*)xevent;
-                                          if(!event) return;
-
-                                          HandleEvent_UserInterface(event);
                                         }
                                         break;
     }

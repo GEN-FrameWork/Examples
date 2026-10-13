@@ -568,7 +568,7 @@ bool NETCONN::KeyValidSecuences(int key)
                         }
 
                       status = connection->UpdateClass_Do(TL(NETCONN_TRANSLATEID_NETCONN_TESTUPDATECLASS), connection->GetTestUpdateClass(), 10);                                            
-                      XTRACE_PRINTCOLOR((status?XTRACE_COLOR_BLUE:XTRACE_COLOR_RED), TL(NETCONN_TRANSLATEID_NETCONN_NETCONN_UPDATE_CLASS_TEST_UPDATE_CLASS_CLIENT_SE), status?TL(NETCONN_TRANSLATEID_NETCONN_OK):TL(NETCONN_TRANSLATEID_NETCONN_ERROR));
+                      XTRACE_PRINTCOLOR((status?XTRACE_COLOR_BLUE:XTRACE_COLOR_RED), TL(NETCONN_TRANSLATEID_NETCONN_NETCONN_UPDATE_CLASS_TEST_UPDATE_CLASS_CLIENT_TO_SERVER), status?TL(NETCONN_TRANSLATEID_NETCONN_OK):TL(NETCONN_TRANSLATEID_NETCONN_ERROR));
                     }
                   break;
 
@@ -583,7 +583,7 @@ bool NETCONN::KeyValidSecuences(int key)
                         }
                         
                       status = connection->UpdateClass_DoAsk(TL(NETCONN_TRANSLATEID_NETCONN_TESTUPDATECLASS), connection->GetTestUpdateClass(), 10);                                            
-                      XTRACE_PRINTCOLOR((status?XTRACE_COLOR_BLUE:XTRACE_COLOR_RED), TL(NETCONN_TRANSLATEID_NETCONN_NETCONN_UPDATE_CLASS_TEST_UPDATE_CLASS_SERVER_AS), status?TL(NETCONN_TRANSLATEID_NETCONN_OK):TL(NETCONN_TRANSLATEID_NETCONN_ERROR));
+                      XTRACE_PRINTCOLOR((status?XTRACE_COLOR_BLUE:XTRACE_COLOR_RED), TL(NETCONN_TRANSLATEID_NETCONN_NETCONN_UPDATE_CLASS_TEST_UPDATE_CLASS_SERVER_ASK_CLIENT), status?TL(NETCONN_TRANSLATEID_NETCONN_OK):TL(NETCONN_TRANSLATEID_NETCONN_ERROR));
                     }
                   break;
 
@@ -599,7 +599,7 @@ bool NETCONN::KeyValidSecuences(int key)
                         }
 
                       status = connection->GetTestUpdateClass()->Update();                                            
-                      XTRACE_PRINTCOLOR((status?XTRACE_COLOR_BLUE:XTRACE_COLOR_RED), TL(NETCONN_TRANSLATEID_NETCONN_NETCONN_UPDATE_CLASS_TEST_UPDATE_CLASS_CLIENT_SE), status?TL(NETCONN_TRANSLATEID_NETCONN_OK):TL(NETCONN_TRANSLATEID_NETCONN_ERROR));
+                      XTRACE_PRINTCOLOR((status?XTRACE_COLOR_BLUE:XTRACE_COLOR_RED), TL(NETCONN_TRANSLATEID_NETCONN_NETCONN_UPDATE_CLASS_TEST_UPDATE_CLASS_CLIENT_TO_SERVER), status?TL(NETCONN_TRANSLATEID_NETCONN_OK):TL(NETCONN_TRANSLATEID_NETCONN_ERROR));
                     }
                   break;
 
@@ -720,7 +720,7 @@ bool NETCONN::Show_ConnectionsStatus()
       return false;
     }
 
-  string  = TL(NETCONN_TRANSLATEID_NETCONN_FASHION_CONNECTION);
+  string  = TL(NETCONN_TRANSLATEID_NETCONN_CONNECTION_MODE);
   string2.Format(NL("%s - %s : %s"), protocolCFG->GetIsServer()?TL(NETCONN_TRANSLATEID_NETCONN_SERVER):TL(NETCONN_TRANSLATEID_NETCONN_CLIENT), APPFLOW_CFG.Connection_GetTransportType()->Get(), APPFLOW_CFG.Connection_GetTransportConfig()->Get());
 
   Show_Line(string, string2);

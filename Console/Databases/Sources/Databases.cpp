@@ -475,7 +475,7 @@ bool DATABASES::Database_DoTest()
 
   connection  = database->CreateConnection();
 
-  string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_CREANDO_CONEXION));
+  string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_CREATING_CONNECTION));
   console->PrintMessage(string.Get(), 1, true, false);
 
   stringresult = connection?TL(DATABASES_TRANSLATEID_DATABASES_OK):TL(DATABASES_TRANSLATEID_DATABASES_ERROR);
@@ -515,12 +515,12 @@ bool DATABASES::Database_DoTest()
       connection->SetOption(NL("TIMEOUT"), str.Get());
 
 
-      string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_ABRIENDO_CONECTANDO_BASE_DE_DATOS));
+      string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_OPENING_CONNECTING_DATABASE));
       console->PrintMessage(string.Get(), 1, true, false);
 
       status = database->Open();
 
-      stringresult.Format(TL(DATABASES_TRANSLATEID_DATABASES_THREAD_SAFE), (status?TL(DATABASES_TRANSLATEID_DATABASES_OK):TL(DATABASES_TRANSLATEID_DATABASES_ERROR)), (database->IsThreadSafe()?TL(DATABASES_TRANSLATEID_DATABASES_SI):TL(DATABASES_TRANSLATEID_DATABASES_NO)));
+      stringresult.Format(TL(DATABASES_TRANSLATEID_DATABASES_THREAD_SAFE), (status?TL(DATABASES_TRANSLATEID_DATABASES_OK):TL(DATABASES_TRANSLATEID_DATABASES_ERROR)), (database->IsThreadSafe()?TL(DATABASES_TRANSLATEID_DATABASES_YES):TL(DATABASES_TRANSLATEID_DATABASES_NO)));
       console->PrintMessage(stringresult.Get(), 0, false, true);
       APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, NL("%s: %s"), string.Get(), stringresult.Get());
 
@@ -528,7 +528,7 @@ bool DATABASES::Database_DoTest()
         {
           /*--- ERASE TABLE -----------------------------------------------------------------------------------------------------*/
 
-          string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_BORRANDO_TABLA));
+          string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_DELETING_TABLE));
           console->PrintMessage(string.Get(), 1, true, false);
 
           status = database->Table_Delete(DATABASES_TABLE_TEST_NAME);
@@ -598,7 +598,7 @@ bool DATABASES::Database_DoTest()
                                            default         : break;
                 }
 
-              string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_CREANDO_TABLA));
+              string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_CREATING_TABLE));
               console->PrintMessage(string.Get(), 1, true, false);
 
               status = database->Table_Create(DATABASES_TABLE_TEST_NAME, fields, nfields);
@@ -657,7 +657,7 @@ bool DATABASES::Database_DoTest()
                           query->Bind(2, registers[c].value);
                           query->Bind(3, (*datetime));
 
-                          string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_ESCRIBIENDO_REGISTRO));
+                          string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_WRITING_RECORD));
                           console->PrintMessage(string.Get(), 1, true, false);
 
                           status = database->Execute(query);
@@ -678,7 +678,7 @@ bool DATABASES::Database_DoTest()
                           query->Bind(2, 10.5f);
                           query->Bind(3, (*datetime));
 
-                          string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_ESCRIBIENDO_REGISTRO));
+                          string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_WRITING_RECORD));
                           console->PrintMessage(string.Get(), 1, true, false);
 
                           status = database->Execute(query);
@@ -699,13 +699,13 @@ bool DATABASES::Database_DoTest()
 
                   /*--- READ No REGISTERS -----------------------------------------------------------------------------------------------*/
 
-                  string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_NUMERO_REGISTROS_TABLA));
+                  string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_NUMBER_OF_TABLE_RECORDS));
                   console->PrintMessage(string.Get(), 1, true, false);
 
                   XQWORD nrecords = 0;
                   database->Table_GetNRecords(DATABASES_TABLE_TEST_NAME, nrecords);
 
-                  stringresult.Format(TL(DATABASES_TRANSLATEID_DATABASES_REGISTRO_S), nrecords);
+                  stringresult.Format(TL(DATABASES_TRANSLATEID_DATABASES_RECORD_S), nrecords);
                   console->PrintMessage(stringresult.Get(), 0, false, true);
                   APPFLOW_LOG_ENTRY(XLOGLEVEL_INFO, APPFLOW_CFG_LOG_SECTIONID_GENERIC, false, NL("%s: %s"), string.Get(), stringresult.Get());
 
@@ -715,7 +715,7 @@ bool DATABASES::Database_DoTest()
                   querystring.Format(NL("SELECT id,name,value,date FROM %s WHERE name=\'Sir Grah\xA0m\';"), DATABASES_TABLE_TEST_NAME);
                   query->Set(querystring.Get());
 
-                  string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_LEYENDO_REGISTRO));
+                  string.Format(APPFLOWCONSOLE_DEFAULT_MESSAGEMASK, TL(DATABASES_TRANSLATEID_DATABASES_READING_RECORD));
                   console->PrintMessage(string.Get(), 1, true, false);
 
                   status = database->Execute(query);
@@ -778,7 +778,7 @@ bool DATABASES::Database_DoTest()
                   /*--- WAIT KEY --------------------------------------------------------------------------------------------------------*/
 
                   console->PrintMessage(NL(" "), 0, false, true);
-                  console->WaitKey(TL(DATABASES_TRANSLATEID_DATABASES_PULSA_UNA_TECLA_PARA_CONTINUAR), 1, false, 5);
+                  console->WaitKey(TL(DATABASES_TRANSLATEID_DATABASES_PRESS_A_KEY_TO_CONTINUE), 1, false, 5);
 
                   /*---------------------------------------------------------------------------------------------------------------------*/
 
@@ -814,7 +814,7 @@ bool DATABASES::Show_DatabasesStatus()
   XSTRING string;
   XSTRING string2;
 
-  string  = TL(DATABASES_TRANSLATEID_DATABASES_TIPO_BASE_DE_DATOS);
+  string  = TL(DATABASES_TRANSLATEID_DATABASES_DATABASE_TYPE);
   string2 = TL(DATABASES_TRANSLATEID_DATABASES_N_A);
 
   if(database) string2 = database->GetTypeName();

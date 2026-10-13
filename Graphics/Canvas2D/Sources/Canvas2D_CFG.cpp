@@ -40,9 +40,6 @@
 
 #include "Canvas2D.h"
 
-#include "Canvas2D_CFG.h"
-
-
 
 /*---- PRECOMPILATION INCLUDES ---------------------------------------------------------------------------------------*/
 
@@ -167,11 +164,11 @@ bool CANVAS2D_CFG::DoDefault()
   log_activesectionsID.Empty();
 
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_INITIATION;
-  log_activesectionsID                  += _L(",");
+  log_activesectionsID                  += NL(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_GENERIC;
-  log_activesectionsID                  += _L(",");
+  log_activesectionsID                  += NL(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_STATUSAPP;
-  log_activesectionsID                  += _L(",");
+  log_activesectionsID                  += NL(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_ENDING;
 
   log_levelmask                         = XLOGLEVEL_ALL;

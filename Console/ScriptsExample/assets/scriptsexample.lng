@@ -3,20 +3,27 @@
                         "English" ,
                         "French"  ,
                         "German"  ,
-                        "Chinese"
+                        "Chinese" ,
+                        "Basque"
                       ],
                        
                      
   "translations" 		: { "00100" : [ 0,
-                                    "hola radiola"                             			                                        ,
-                                    "hi radiola"                             				                                        ,
-                                    "jau radiola"                             				
+                                    "hola radiola" ,
+                                    "hi radiola" ,
+                                    "salut radiola" ,
+                                    "hallo radiola" ,
+                                    "你好 radiola" ,
+                                    "kaixo radiola"
                                   ],
                         
                         "00101" : [ 70,
-                                    "mas mensage" 	                            			                                      ,
-                                    "more message"                            				                                      ,
-                                    "jau radiola"                             				
+                                    "mas mensage" ,
+                                    "more message" ,
+                                    "plus de message" ,
+                                    "mehr Nachricht" ,
+                                    "更多消息" ,
+                                    "mezu gehiago"
                                   ],
 
                         "00102" : [ 0,
@@ -24,7 +31,8 @@
                                     "Key pressed: 0x%02X [%c]" ,
                                     "Touche enfoncée : 0x%02X [%c]" ,
                                     "Taste gedrückt: 0x%02X [%c]" ,
-                                    "按下按键：0x%02X [%c]"
+                                    "按下按键：0x%02X [%c]" ,
+                                    "Tekla sakatuta: 0x%02X [%c]"
                                   ],
 
                         "00103" : [ 0,
@@ -32,7 +40,8 @@
                                     "Run exec in %d milliseconds (%.2f seconds)." ,
                                     "Exécutez exec dans %d millisecondes (%.2f secondes)." ,
                                     "Führen Sie exec in %d Millisekunden (%.2f Sekunden) aus." ,
-                                    "在 %d 毫秒（%.2f 秒）内运行 exec。"
+                                    "在 %d 毫秒（%.2f 秒）内运行 exec。" ,
+                                    "Exekutatu exec %d milisegundotan (%.2f segundotan)."
                                   ],
 
                         "00104" : [ 0,
@@ -40,7 +49,8 @@
                                     "Script ERROR [%d]: %s line %d -> \"%s\"" ,
                                     "ERREUR de script [%d] : %s ligne %d -\\u003e \\\"%s\\\"" ,
                                     "Skriptfehler [%d]: %s Zeile %d -\\u003e „%s“" ,
-                                    "脚本错误 [%d]：%s 行 %d -\\u003e“%s”"
+                                    "脚本错误 [%d]：%s 行 %d -\\u003e“%s”" ,
+                                    "Script ERROREA [%d]: %s lerroa %d -\\u003e \\\"%s\\\""
                                   ],
 
                         "00105" : [ 0,
@@ -48,7 +58,8 @@
                                     "Script BREAK: line %d -> \"%s\"" ,
                                     "Script BREAK : ligne %d -\\u003e \\\"%s\\\"" ,
                                     "Skriptunterbrechung: Zeile %d -\\u003e „%s“" ,
-                                    "脚本 BREAK：第 %d 行 -\\u003e“%s”"
+                                    "脚本 BREAK：第 %d 行 -\\u003e“%s”" ,
+                                    "Script BREAK: lerroa %d -\\u003e \\\"%s\\\""
                                   ]
                       }										
-}											 		
+}											 	

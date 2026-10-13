@@ -1,8 +1,8 @@
 /**-------------------------------------------------------------------------------------------------------------------
 *
-* @file       ScriptsExample_TranslateID.h
+* @file       StaticticsCharts_TranslateID.h
 *
-* @brief      Identifiers of the ScriptsExample translation sentences
+* @brief      Identifiers of the StaticticsCharts translation sentences
 * @ingroup    APPLICATION
 *
 * --------------------------------------------------------------------------------------------------------------------*/
@@ -15,15 +15,13 @@
 
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
-enum SCRIPTSEXAMPLE_TRANSLATEID
+enum STATICTICSCHARTS_TRANSLATEID
 {
-  SCRIPTSEXAMPLE_TRANSLATEID_UNKNOWN                                         = 0 ,
+  STATICTICSCHARTS_TRANSLATEID_UNKNOWN                                         = 0 ,
 
-  SCRIPTSEXAMPLE_TRANSLATEID_SCRIPTSEXAMPLE_KEY_PRESSED_0X = 102 ,
-  SCRIPTSEXAMPLE_TRANSLATEID_SCRIPTSEXAMPLE_RUN_EXEC_IN_MILLISECONDS_SECONDS ,
-  SCRIPTSEXAMPLE_TRANSLATEID_SCRIPTSEXAMPLE_SCRIPT_ERROR_LINE ,
-  SCRIPTSEXAMPLE_TRANSLATEID_SCRIPTSEXAMPLE_SCRIPT_BREAK_LINE ,
-  SCRIPTSEXAMPLE_TRANSLATEID_LAST
+  STATICTICSCHARTS_TRANSLATEID_STATICTICSCHARTS_SALES_BY_QUARTER ,
+  STATICTICSCHARTS_TRANSLATEID_STATICTICSCHARTS_STATICTICS_CHARS_CANVAS ,
+  STATICTICSCHARTS_TRANSLATEID_LAST
 };
 
 

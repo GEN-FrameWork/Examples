@@ -1,10 +1,331 @@
 {
-  "languages" 			: [ "Spanish"    ,
-                        "English"    ,
-                        "French"     
+  "languages"       : [ "Spanish" ,
+                        "English" ,
+                        "French"  ,
+                        "German"  ,
+                        "Chinese"
                       ],
 
 
   "translations": {
+                        "00100" : [ 0,
+                                    "Resumen" ,
+                                    "Summary" ,
+                                    "Résumé" ,
+                                    "Übersicht" ,
+                                    "摘要"
+                                  ],
+
+                        "00101" : [ 0,
+                                    "CPU" ,
+                                    "CPU" ,
+                                    "CPU" ,
+                                    "CPU" ,
+                                    "CPU"
+                                  ],
+
+                        "00102" : [ 0,
+                                    "Memoria" ,
+                                    "Memory" ,
+                                    "Mémoire" ,
+                                    "Speicher" ,
+                                    "内存"
+                                  ],
+
+                        "00103" : [ 0,
+                                    "Red" ,
+                                    "Network" ,
+                                    "Réseau" ,
+                                    "Netzwerk" ,
+                                    "网络"
+                                  ],
+
+                        "00104" : [ 0,
+                                    "Disco" ,
+                                    "Disk" ,
+                                    "Disque" ,
+                                    "Datenträger" ,
+                                    "磁盘"
+                                  ],
+
+                        "00105" : [ 0,
+                                    "Procesos" ,
+                                    "Processes" ,
+                                    "Processus" ,
+                                    "Prozesse" ,
+                                    "进程"
+                                  ],
+
+                        "00106" : [ 0,
+                                    "Alertas" ,
+                                    "Alerts" ,
+                                    "Alertes" ,
+                                    "Warnungen" ,
+                                    "警报"
+                                  ],
+
+                        "00107" : [ 0,
+                                    "Configuracion" ,
+                                    "Configuration" ,
+                                    "Configuration" ,
+                                    "Konfiguration" ,
+                                    "配置"
+                                  ],
+
+                        "00108" : [ 0,
+                                    "Temperatura CPU" ,
+                                    "CPU Temperature" ,
+                                    "Température CPU" ,
+                                    "CPU-Temperatur" ,
+                                    "CPU 温度"
+                                  ],
+
+                        "00109" : [ 0,
+                                    "Temperatura actual" ,
+                                    "Current temperature" ,
+                                    "Température actuelle" ,
+                                    "Aktuelle Temperatur" ,
+                                    "当前温度"
+                                  ],
+
+                        "00110" : [ 0,
+                                    "Uso actual de CPU" ,
+                                    "Current CPU usage" ,
+                                    "Utilisation actuelle du CPU" ,
+                                    "Aktuelle CPU-Auslastung" ,
+                                    "当前 CPU 使用率"
+                                  ],
+
+                        "00111" : [ 0,
+                                    "Uso actual" ,
+                                    "Current usage" ,
+                                    "Utilisation actuelle" ,
+                                    "Aktuelle Auslastung" ,
+                                    "当前使用率"
+                                  ],
+
+                        "00112" : [ 0,
+                                    "Consumo de memoria RAM" ,
+                                    "RAM memory usage" ,
+                                    "Consommation de mémoire RAM" ,
+                                    "RAM-Speicherverbrauch" ,
+                                    "RAM 内存使用"
+                                  ],
+
+                        "00113" : [ 0,
+                                    "En uso / Total" ,
+                                    "Used / Total" ,
+                                    "Utilisé / Total" ,
+                                    "Belegt / Gesamt" ,
+                                    "已用 / 总计"
+                                  ],
+
+                        "00114" : [ 0,
+                                    "Fecha y hora del sistema" ,
+                                    "System date and time" ,
+                                    "Date et heure du système" ,
+                                    "Systemdatum und -zeit" ,
+                                    "系统日期和时间"
+                                  ],
+
+                        "00115" : [ 0,
+                                    "Hora local del sistema" ,
+                                    "Local system time" ,
+                                    "Heure locale du système" ,
+                                    "Lokale Systemzeit" ,
+                                    "本地系统时间"
+                                  ],
+
+                        "00116" : [ 0,
+                                    "Historico de CPU" ,
+                                    "CPU history" ,
+                                    "Historique du CPU" ,
+                                    "CPU-Verlauf" ,
+                                    "CPU 历史"
+                                  ],
+
+                        "00117" : [ 0,
+                                    "Almacenamiento del sistema" ,
+                                    "System storage" ,
+                                    "Stockage du système" ,
+                                    "Systemspeicher" ,
+                                    "系统存储"
+                                  ],
+
+                        "00118" : [ 0,
+                                    "Estado de la conexion a internet" ,
+                                    "Internet connection status" ,
+                                    "État de la connexion Internet" ,
+                                    "Internetverbindungsstatus" ,
+                                    "互联网连接状态"
+                                  ],
+
+                        "00119" : [ 0,
+                                    "Sistema" ,
+                                    "System" ,
+                                    "Système" ,
+                                    "System" ,
+                                    "系统"
+                                  ],
+
+                        "00120" : [ 0,
+                                    "Monitor del Sistema" ,
+                                    "System Monitor" ,
+                                    "Moniteur système" ,
+                                    "Systemmonitor" ,
+                                    "系统监控器"
+                                  ],
+
+                        "00121" : [ 0,
+                                    "Consumo de memoria" ,
+                                    "Memory consumption" ,
+                                    "Consommation de mémoire" ,
+                                    "Speicherverbrauch" ,
+                                    "内存消耗"
+                                  ],
+
+                        "00122" : [ 0,
+                                    "Uso por volumen" ,
+                                    "Volume usage" ,
+                                    "Utilisation du volume" ,
+                                    "Volumennutzung" ,
+                                    "体积使用量"
+                                  ],
+
+                        "00123" : [ 0,
+                                    "Discoteca %" ,
+                                    "Disco %" ,
+                                    "Disco %" ,
+                                    "Disco %" ,
+                                    "迪斯科 %"
+                                  ],
+
+                        "00124" : [ 0,
+                                    "Volumen" ,
+                                    "Volume" ,
+                                    "Volume" ,
+                                    "Volumen" ,
+                                    "体积"
+                                  ],
+
+                        "00125" : [ 0,
+                                    "Su volumen" ,
+                                    "Its volume" ,
+                                    "Son volume" ,
+                                    "Sein Volumen" ,
+                                    "它的体积"
+                                  ],
+
+                        "00126" : [ 0,
+                                    "Conectado" ,
+                                    "Connected" ,
+                                    "Connecté" ,
+                                    "Verbunden" ,
+                                    "已连接"
+                                  ],
+
+                        "00127" : [ 0,
+                                    "Conexion estable" ,
+                                    "Stable connection" ,
+                                    "Connexion stable" ,
+                                    "Stabile Verbindung" ,
+                                    "连接稳定"
+                                  ],
+
+                        "00128" : [ 0,
+                                    "Desconectado" ,
+                                    "Offline" ,
+                                    "Hors ligne" ,
+                                    "Offline" ,
+                                    "离线"
+                                  ],
+
+                        "00129" : [ 0,
+                                    "Sin conexión_n" ,
+                                    "Without connection_n" ,
+                                    "Sans connexion_n" ,
+                                    "Ohne Verbindung_n" ,
+                                    "没有连接_n"
+                                  ],
+
+                        "00130" : [ 0,
+                                    "IP pública: --" ,
+                                    "Public IP: --" ,
+                                    "IP publique : --" ,
+                                    "Öffentliche IP: --" ,
+                                    "公共IP：--"
+                                  ],
+
+                        "00131" : [ 0,
+                                    "IP pública: %s" ,
+                                    "Public IP: %s" ,
+                                    "IP publique : %s" ,
+                                    "Öffentliche IP: %s" ,
+                                    "公共 IP：%s"
+                                  ],
+
+                        "00132" : [ 0,
+                                    "Equipo: %s" ,
+                                    "Team: %s" ,
+                                    "Équipe : %s" ,
+                                    "Team: %s" ,
+                                    "团队：%s"
+                                  ],
+
+                        "00133" : [ 0,
+                                    "Equipo: --" ,
+                                    "Equipment: --" ,
+                                    "Équipement: --" ,
+                                    "Ausrüstung: --" ,
+                                    "设备：  - "
+                                  ],
+
+                        "00134" : [ 0,
+                                    "Tiempo de actividad: %s" ,
+                                    "Uptime: %s" ,
+                                    "Temps de disponibilité : %s" ,
+                                    "Betriebszeit: %s" ,
+                                    "正常运行时间：%s"
+                                  ],
+
+                        "00135" : [ 0,
+                                    "Tiempo de actividad: 0 segundos" ,
+                                    "Activity time: 0 seconds" ,
+                                    "Temps d'activité : 0 seconde" ,
+                                    "Aktivitätszeit: 0 Sekunden" ,
+                                    "活动时间：0秒"
+                                  ],
+
+                        "00136" : [ 0,
+                                    "Escala/zoom de la interfaz de usuario (0,75 .. 2,0)" ,
+                                    "UI scale / zoom (0.75 .. 2.0)" ,
+                                    "Échelle / zoom de l'interface utilisateur (0,75 .. 2,0)" ,
+                                    "UI-Skalierung/Zoom (0,75 .. 2,0)" ,
+                                    "UI 比例/缩放 (0.75 .. 2.0)"
+                                  ],
+
+                        "00137" : [ 0,
+                                    "Escalar automáticamente la interfaz de usuario a la ventana (Fase 5)" ,
+                                    "Autofit UI scale to window (Fase 5)" ,
+                                    "Ajuster automatiquement l'échelle de l'interface utilisateur à la fenêtre (phase 5)" ,
+                                    "UI-Skalierung automatisch an Fenster anpassen (Phase 5)" ,
+                                    "自动调整 UI 比例以适应窗口 (Fase 5)"
+                                  ],
+
+                        "00138" : [ 0,
+                                    "Título" ,
+                                    "Title" ,
+                                    "Titre" ,
+                                    "Titel" ,
+                                    "标题"
+                                  ],
+
+                        "00139" : [ 0,
+                                    "_DO" ,
+                                    "°C" ,
+                                    "_C" ,
+                                    "_C" ,
+                                    "_C"
+                                  ]
   }										
 }											 		

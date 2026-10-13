@@ -94,14 +94,14 @@ enum CANVAS2D_BUTTONS
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 0
 
-#define APPLICATION_NAMEAPP                       _L("Canvas2D")
-#define APPLICATION_NAMEFILE                      _L("canvas2d")
+#define APPLICATION_NAMEAPP                       NL("Canvas2D")
+#define APPLICATION_NAMEFILE                      NL("canvas2d")
 
-#define APPLICATION_OWNER                         _L("EndoraSoft")
+#define APPLICATION_OWNER                         NL("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2018
 
-#define APPLICATION_GUI_MAIN_VIEWPORT_ID          _L("main_viewport")
+#define APPLICATION_GUI_MAIN_VIEWPORT_ID          NL("main_viewport")
 
 
 

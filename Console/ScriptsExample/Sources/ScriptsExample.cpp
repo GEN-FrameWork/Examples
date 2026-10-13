@@ -249,6 +249,11 @@ bool SCRIPTSEXAMPLE::AppProc_Ini()
       return false;
     }
 
+  if(!GEN_XTRANSLATION.SetActual(XLANGUAGE_ISO_639_3_CODE_BAQ))
+    {
+      return false;
+    }
+
   //--------------------------------------------------------------------------------------------------
 
   APPFLOW_EXTENDED.APPStart(&APPFLOW_CFG, this);

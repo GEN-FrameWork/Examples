@@ -62,6 +62,7 @@ bool STATICTICSCHARTS_CFG::GetIsInstanced()
 }
 
 
+
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         STATICTICSCHARTS_CFG& STATICTICSCHARTS_CFG::GetInstance(bool ini)
@@ -102,6 +103,8 @@ bool STATICTICSCHARTS_CFG::DelInstance()
 
   return false;
 }
+
+
 
 
 /**-------------------------------------------------------------------------------------------------------------------
@@ -154,11 +157,11 @@ bool STATICTICSCHARTS_CFG::DoDefault()
   log_activesectionsID.Empty();
 
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_INITIATION;
-  log_activesectionsID                  += _L(",");
+  log_activesectionsID                  += NL(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_GENERIC;
-  log_activesectionsID                  += _L(",");
+  log_activesectionsID                  += NL(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_STATUSAPP;
-  log_activesectionsID                  += _L(",");
+  log_activesectionsID                  += NL(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_ENDING;
 
   log_levelmask                         = XLOGLEVEL_ALL;
@@ -207,6 +210,7 @@ STATICTICSCHARTS_CFG::~STATICTICSCHARTS_CFG()
 {
   Clean();
 }
+
 
 
 /**-------------------------------------------------------------------------------------------------------------------

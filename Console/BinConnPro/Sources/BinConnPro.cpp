@@ -526,11 +526,11 @@ bool BINCONNPRO::Show_ConnectionsStatus()
   string  = TL(BINCONNPRO_TRANSLATEID_BINCONNPRO_PROTOCOL_MODE);
   if(modeserver)
           string2.Format(TL(BINCONNPRO_TRANSLATEID_BINCONNPRO_SERVER));
-    else  string2.Format(TL(BINCONNPRO_TRANSLATEID_BINCONNPRO_CUSTOMER));
+    else  string2.Format(TL(BINCONNPRO_TRANSLATEID_BINCONNPRO_CLIENT));
   Show_Line(string, string2);
 
   string.Empty();
-  string2.Format(TL(BINCONNPRO_TRANSLATEID_BINCONNPRO_PUERTO), APPFLOW_CFG.Protocol_GetPort());
+  string2.Format(TL(BINCONNPRO_TRANSLATEID_BINCONNPRO_PORT), APPFLOW_CFG.Protocol_GetPort());
   Show_Line(string, string2);
 
   return true;

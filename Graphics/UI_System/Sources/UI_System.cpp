@@ -58,9 +58,9 @@
 #include "XFileXML.h"
 #include "XTranslation.h"
 #include "XTranslation_GEN.h"
+#include "XLanguage_ISO_639_3.h"
 #include "XThread.h"
 #include "XTrace.h"
-#include "XDiagLog.h"                        // TEMPORARY diagnostic-only, see XDiagLog.h -- remove with it
 
 #include "DIOFactory.h"
 #include "DIOStreamDeviceIP.h"
@@ -93,6 +93,7 @@
 #include "APPFlowLog.h"
 #include "APPFlowExtended.h"
 
+#include "UI_System_TranslateID.h"   
 #include "UI_System_CFG.h"
 
 
@@ -225,18 +226,6 @@ bool UI_SYSTEM::AppProc_Ini()
 
   xtimer->Reset();
 
-  //--------------------------------------------------------------------------------------
-  // NOTE: GEN does not currently expose the real Operating System boot uptime (there is no
-  //       "GetSystemUpTime()" in XSYSTEM), so "xtimer" is used as the running clock for the
-  //       "Tiempo de funcionamiento del sistema" card: it measures the time elapsed since this
-  //       monitor application started. Swap it for a real OS uptime source (e.g. reading
-  //       /proc/uptime on Linux) for the footer FOOTER_UPTIME path when one is available.
-  //--------------------------------------------------------------------------------------
-
-  // On Android a blocking Wait inside this ctor (up to N seconds of DNS probes) runs on the
-  // NativeActivity start path before the window is ready. Real devices are stricter than
-  // BlueStacks about when network/DNS is usable; HardwareInfo already re-checks on its
-  // background thread, so skip the sync wait (second ctor arg = false).
   diocheckinternetconnection = GEN_NEW DIOCHECKINTERNETCONNECTION(5, false);
 
   //--------------------------------------------------------------------------------------
@@ -244,29 +233,11 @@ bool UI_SYSTEM::AppProc_Ini()
   currentsectionID               = UI_SYSTEM_SECTIONID_RESUMEN;
   lastupdatehardwareinfo_second  = 0;
 
-  //--------------------------------------------------------------------------------------
-  // Background hardware-info thread: HardwareInfo_Compute() (see its own note in UI_System.h)
-  // is what used to run straight inside AppProc_Update(), in the middle of the render loop --
-  // most notably HardwareInfo_UpdateConnection(), which can block on a real network check. It
-  // now runs here instead, on its own XTHREAD, so a slow/stalled network check can never delay
-  // a rendered frame: AppProc_Update() only ever calls the cheap, non-blocking HardwareInfo_Apply().
-  //
-  // Created/started only AFTER every field it (or HardwareInfo_Compute()) touches is already in
-  // its final initial state above -- lastupdatehardwareinfo_second in particular, since
-  // hardwareinfothread->Ini() below can have the background thread calling HardwareInfo_Compute()
-  // before this function returns, and that field is read/written under hardwareinfomutex from
-  // then on, never again from this (main) thread directly.
-  //
-  // waityield is set short (200ms) so a HardwareInfo_RequestForced() call (F5) or shutdown is
-  // noticed quickly -- HardwareInfo_Compute() still self-throttles to once every
-  // UI_SYSTEM_HARDWAREINFO_UPDATEPERIOD_SECONDS internally, exactly as before, so this does not
-  // make the actual hardware reads any more frequent than they already were.
-  //--------------------------------------------------------------------------------------
 
   hardwareinfomutex = GEN_XFACTORY.Create_Mutex();
   if(!hardwareinfomutex) return false;
 
-  hardwareinfothread = GEN_XFACTORY.CreateThread(XTHREADGROUPID_UI_SYSTEM_HARDWAREINFO, _L("UI_SYSTEM::HardwareInfo"), ThreadFunction_UpdateHardwareInfo, this);
+  hardwareinfothread = GEN_XFACTORY.CreateThread(XTHREADGROUPID_UI_SYSTEM_HARDWAREINFO, NL("UI_SYSTEM::HardwareInfo"), ThreadFunction_UpdateHardwareInfo, this);
   if(!hardwareinfothread) return false;
 
   hardwareinfothread->SetWaitYield(200);
@@ -281,17 +252,12 @@ bool UI_SYSTEM::AppProc_Ini()
     xpath.Add(APPLICATION_NAMEFILE);
     xpath.Add(XTRANSLATION_NAMEFILEEXT);    
 
-    // Missing/unextracted .lng must not abort the whole NativeActivity: on Android assets land
-    // under getFilesDir()/assets only after OverturnAssets, and a failed Ini() here used to
-    // cascade into CreateMainScreenProcess never running → OnStep STATUS_KO → silent finish.
+   
     if(!GEN_XTRANSLATION.Ini(xpath))
       {
-        XTRACE_PRINTCOLOR(XTRACE_COLOR_RED, _L("[UI_System] Translation file not loaded: %s"), xpath.Get());
+        XTRACE_PRINTCOLOR(XTRACE_COLOR_RED, NL("[UI_System] Translation file not loaded: %s"), xpath.Get());
       }
-     else
-      {
-        GEN_XTRANSLATION.SetActual(XLANGUAGE_ISO_639_3_CODE_SPA);
-      }
+ 
   }
 
   //--------------------------------------------------------------------------------------------------
@@ -330,6 +296,7 @@ bool UI_SYSTEM::AppProc_FirstUpdate()
     {
       button[UI_SYSTEM_BUTTON_ESC]            = inpdevice->GetButton(INPBUTTON_ID_ESCAPE);
       button[UI_SYSTEM_BUTTON_F5]             = inpdevice->GetButton(INPBUTTON_ID_F5);
+      button[UI_SYSTEM_BUTTON_F12]            = inpdevice->GetButton(INPBUTTON_ID_F12);
       button[UI_SYSTEM_BUTTON_ZOOM_IN]        = inpdevice->GetButton(INPBUTTON_ID_ADD);
       button[UI_SYSTEM_BUTTON_ZOOM_OUT]       = inpdevice->GetButton(INPBUTTON_ID_SUBTRACT);
       button[UI_SYSTEM_BUTTON_ZOOM_OUT_MINUS] = inpdevice->GetButton(INPBUTTON_ID_MINUS);
@@ -351,21 +318,13 @@ bool UI_SYSTEM::AppProc_FirstUpdate()
       cursor = inpdevice->GetCursor(0);
     }
 
-  //--------------------------------------------------------------------------------------
-  // The normal path: Ini_Graphics() already loaded the dashboard, before the window was ever shown
-  // (see the note there). This is now just the fallback/retry for a platform where that early attempt
-  // did not run or did not succeed -- same failure handling as the original single call site, an app
-  // that cannot load its own UI aborts here instead of continuing into a silently blank window.
-  //--------------------------------------------------------------------------------------
-
+ 
   if(!dashboardloaded)
     {
-      // Same soft-fail idea as translation: aborting FirstUpdate finishes the Android activity
-      // with no dialog. Retry once; if assets are still missing keep running with placeholders
-      // so logcat can show the real Load() failure instead of a silent exit.
+     
       if(!Ini_UserInterface(true))
         {
-          XTRACE_PRINTCOLOR(XTRACE_COLOR_RED, _L("[UI_System] Dashboard load failed in FirstUpdate"));
+          XTRACE_PRINTCOLOR(XTRACE_COLOR_RED, NL("[UI_System] Dashboard load failed in FirstUpdate"));
           dashboardloaded = false;
         }
        else
@@ -373,18 +332,6 @@ bool UI_SYSTEM::AppProc_FirstUpdate()
           dashboardloaded = true;
         }
     }
-
-  //--------------------------------------------------------------------------------------
-  // First hardware info population. This used to be a synchronous, forced UpdateHardwareInfo(true)
-  // call right here -- deliberately kept out of Ini_Graphics() and left this late specifically
-  // because HardwareInfo_UpdateConnection() can block on a real network check (see the note that
-  // used to be here, and still applies -- it just moved, see Ini_Graphics()). Now that hardware
-  // info runs on its own background thread (started in AppProc_Ini(), already running by the time
-  // this executes), that concern is gone: this just raises a flag for it to pick up on its very
-  // next tick instead of running the read itself. The dashboard's first rendered frame still shows
-  // its authored placeholder values for one or two frames until that first background pass
-  // publishes -- same as before, just no longer at the cost of a synchronous block here.
-  //--------------------------------------------------------------------------------------
 
   HardwareInfo_RequestForced();
 
@@ -453,16 +400,6 @@ bool UI_SYSTEM::AppProc_Update()
 *---------------------------------------------------------------------------------------------------------------------*/
 bool UI_SYSTEM::AppProc_End()
 {
-  //--------------------------------------------------------------------------------------
-  // Stop the background hardware-info thread FIRST, before anything below it reads (xtimer,
-  // diocheckinternetconnection) gets deleted, and before Ini_UserInterface(false) tears down
-  // GEN_USERINTERFACE. hardwareinfoexiting is a fast-path guard so a thread tick that fires
-  // between this flag being set and End() actually stopping it returns immediately instead of
-  // starting one more (unlockable) compute pass; End() itself blocks (via WaitToEnd()) until any
-  // pass already in flight has finished, so by the time this block returns the background thread
-  // is guaranteed to no longer be touching xtimer/diocheckinternetconnection/hardwareinfomutex.
-  //--------------------------------------------------------------------------------------
-
   hardwareinfoexiting = true;
 
   if(hardwareinfothread)
@@ -595,23 +532,36 @@ bool UI_SYSTEM::UpdateInput()
             {
               switch(c)
                 {
-                  case UI_SYSTEM_BUTTON_F5    : Ini_UserInterface(false);
-                                                Ini_UserInterface(true);
-                                                HardwareInfo_RequestForced();
-                                                break;
+                  case UI_SYSTEM_BUTTON_F5              : Ini_UserInterface(false);
+                                                          Ini_UserInterface(true);
+                                                          HardwareInfo_RequestForced();
+                                                          break;
 
-                  case UI_SYSTEM_BUTTON_ZOOM_IN        :
-                  case UI_SYSTEM_BUTTON_ZOOM_OUT       :
-                  case UI_SYSTEM_BUTTON_ZOOM_OUT_MINUS :
-                                                {
-                                                  double delta = UI_LAYOUT_UISCALE_STEP;
-                                                  if(c != UI_SYSTEM_BUTTON_ZOOM_IN) delta = -UI_LAYOUT_UISCALE_STEP;
-                                                  UserInterface_AdjustUIScale(delta);
-                                                }
-                                                break;
+                  case UI_SYSTEM_BUTTON_F12             : if(GEN_XTRANSLATION.IsInitialized() && GEN_XTRANSLATION.SetActual_Next())
+                                                          {
+                                                            XLANGUAGE_ISO_639_3 iso;
+                                                            XSTRING             langname;
 
-                  case UI_SYSTEM_BUTTON_ESC   : SetExitType(APPFLOWBASE_EXITTYPE_BY_USER);
-                                                break;
+                                                            if(!iso.EnglishName_GetByCode(GEN_XTRANSLATION.GetActual(), langname) || langname.IsEmpty())
+                                                              {
+                                                                langname.Format(NL("%d"), GEN_XTRANSLATION.GetActual());
+                                                              }
+
+                                                            XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, NL("[UI_System] Language -> %s"), langname.Get());
+                                                          }
+                                                          break;
+
+                  case UI_SYSTEM_BUTTON_ZOOM_IN         :
+                  case UI_SYSTEM_BUTTON_ZOOM_OUT        :
+                  case UI_SYSTEM_BUTTON_ZOOM_OUT_MINUS  : {
+                                                            double delta = UI_LAYOUT_UISCALE_STEP;
+                                                            if(c != UI_SYSTEM_BUTTON_ZOOM_IN) delta = -UI_LAYOUT_UISCALE_STEP;
+                                                            UserInterface_AdjustUIScale(delta);
+                                                          }
+                                                          break;
+
+                  case UI_SYSTEM_BUTTON_ESC             : SetExitType(APPFLOWBASE_EXITTYPE_BY_USER);
+                                                          break;
                 }
             }
         }
@@ -640,7 +590,7 @@ bool UI_SYSTEM::Ini_Graphics(GRPSCREEN* screen)
   screen->SetWidth(1440);
   screen->SetHeight(900);
 
-  screen->GetTitle()->Set(_L("Monitor del Sistema"));  
+  screen->GetTitle()->Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_SYSTEM_MONITOR));  
   screen->SetDesktopScreenSelected(GRPSCREENTYPE_DESKTOP_MAIN);
 
   //--------------------------------------------------------------------------------------
@@ -650,41 +600,12 @@ bool UI_SYSTEM::Ini_Graphics(GRPSCREEN* screen)
   //--------------------------------------------------------------------------------------
 
   GetMainScreen()->CreateViewport(GRPVIEWPORT_ID_MAIN, 0.0f, 0.0f, (float)screen->GetWidth(), (float)screen->GetHeight(), 0, 0, (screen->GetWidth()), (screen->GetHeight()));
-
-  // Fase 5: allow window growth beyond design for autofit/pillarbox demos (WM_GETMINMAXINFO uses viewport max).
+  
   {
     GRPVIEWPORT* mainvp = GetMainScreen()->GetViewport(0);
     if(mainvp) mainvp->SetMaxSize(3840.0f, 2160.0f);
   }
-
-  //--------------------------------------------------------------------------------------
-  // Load the dashboard as early as possible: SCREEN_CREATING (which is what is being handled right
-  // now, all the way up the call chain to HandleEvent_Graphics()) fires BEFORE CreateMainScreenProcess()
-  // goes on to call mainscreen->Create(show) -- the call that actually maps the native window and makes
-  // it visible. Ini_UserInterface() used to run from AppProc_FirstUpdate() instead, which is the first
-  // tick of the app's main loop -- by construction AFTER the window was already on screen. Whatever the
-  // OS painted in between (an empty/zeroed canvas -- see the GRP2DCANVAS::Buffer_Create() fix -- or,
-  // before that fix, whatever was left in the freshly allocated buffer) was visible to the user for the
-  // whole time dashboard.xml and its ~30 SVG icons were being parsed and decoded. Doing that same work
-  // HERE instead removes essentially all of it from the window the user could watch it happen in: the
-  // viewport/canvas this needs already exist (CreateViewport() just above), and nothing else this touches
-  // depends on the native window itself.
-  //
-  // Hardware info population deliberately stays OUT of this early call, and is still requested from
-  // AppProc_FirstUpdate() instead (now via HardwareInfo_RequestForced(), no longer a synchronous call --
-  // see AppProc_Ini()/AppProc_FirstUpdate()). HardwareInfo_UpdateConnection() can block on a real network
-  // check; that used to matter here because the call was synchronous and this runs before the window
-  // exists at all. It runs on its own background thread now, so it would technically be safe to request
-  // it this early too -- left at AppProc_FirstUpdate() anyway, since nothing here depends on hardware info
-  // being ready any sooner and moving it would not change when the first real values actually appear on
-  // screen (that is gated by the background thread's own first pass, not by when it is asked to start).
-  // The dashboard's first frame simply shows its authored placeholder values for a frame or two, same as
-  // it always could between any two periodic refreshes.
-  //
-  // dashboardloaded records whether this attempt succeeded, so AppProc_FirstUpdate() below does not load
-  // it a second time on the normal path, but still retries -- and still aborts startup on failure exactly
-  // like the original single call site did -- if this one did not run or did not succeed (a platform whose
-  // canvas creation is genuinely deferred past this point would hit that fallback, not a silent blank UI).
+  
   //--------------------------------------------------------------------------------------
 
   dashboardloaded = Ini_UserInterface(true);
@@ -745,22 +666,15 @@ bool UI_SYSTEM::Ini_UserInterface(bool on)
  
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS, xpath);
   xpath.Slash_Add();
-  xpath.Add(_L("ui_system/dashboard.xml"));
+  xpath.Add(NL("ui_system/dashboard.xml"));
     
   if(!GEN_USERINTERFACE.Load(xpath, screen, 0)) 
     {
       return false;
     }
 
-  // Fase 1/3/4/5/6 UIScale: design canvas = dashboard authoring size.
-  // Priority: GEN_UI_SCALE env (test override, disables autofit) → autofit from window → manual ini scale.
-  // Fase 6: min hit-target 44 design px (expand IsWithin only; paint AABB unchanged).
-  //
-  // Track P / Fase 5.3 Android: keep canvas at design size (Ini_Graphics SetWidth/Height). Fit to the
-  // native surface is GLES letterbox + MapWindowToCanvas — NOT UIScale Present. Force scale=1.0 so
-  // Windows-style Present stays identity and we never double-letterbox.
   {
-    UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(_L("dashboard"));
+    UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(NL("dashboard"));
     if(dashboard)
       {
         dashboard->SetDesignSize(1440, 900);
@@ -793,7 +707,7 @@ bool UI_SYSTEM::Ini_UserInterface(bool on)
         GEN_USERINTERFACE.UIScale_PrepareLayout(dashboard);
         if(screen)
           {
-            XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("[UI_System] Android UIScale=1.0 design=%dx%d (GLES letterbox fits device)"), dashboard->GetDesignWidth(), dashboard->GetDesignHeight());
+            XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, NL("[UI_System] Android UIScale=1.0 design=%dx%d (GLES letterbox fits device)"), dashboard->GetDesignWidth(), dashboard->GetDesignHeight());
           }
         #else
         if(doautofit && !useenv)
@@ -816,10 +730,6 @@ bool UI_SYSTEM::Ini_UserInterface(bool on)
   GEN_USERINTERFACE.Layout_PutBackground();
 
   GEN_USERINTERFACE.Elements_SetToRedraw();
-
-  //--------------------------------------------------------------------------------------
-  // Reflect the currently selected sidebar section (survives a F5 layout reload).
-  //--------------------------------------------------------------------------------------
 
   UserInterface_SelectSection(currentsectionID);
 
@@ -860,85 +770,13 @@ bool UI_SYSTEM::DrawFrame()
       return false;
     }
  
-  //--------------------------------------------------------------------------------------
-  // TEMPORARY DIAGNOSTIC INSTRUMENTATION (2026-09) -- see XDiagLog.h. Root-causing a multi-second full-dashboard
-  // blank-freeze reported on real hardware/VMs (Windows and Linux) that a sandboxed reconstruction did not fully
-  // explain. Times each of the 3 frame phases against XDiagLog's shared wall clock (a real platform XTIMER, NOT
-  // clock()/CPU time -- a genuine block/wait must show up here, unlike CPU time, which would hide it). Logs a
-  // [SLOWFRAME] line only when this single frame took over 20ms (past a 16.6ms/60fps budget) and a [HEARTBEAT]
-  // line once a second regardless, so a stall INSIDE DrawFrame (heartbeats keep coming, frames are just slow) can
-  // be told apart from the whole main loop not being called at all (heartbeats themselves stop appearing).
-  //--------------------------------------------------------------------------------------
-
-  static XQWORD diag_framecounter    = 0;
-  static XQWORD diag_hb_windowstart  = XDIAGLOG_NOWUS();
-  static XQWORD diag_hb_frames       = 0;
-  static XQWORD diag_hb_maxus        = 0;
-
-  // TEMPORARY diagnostics -- counters defined in UI_Skin.cpp, incremented on every UI_SKIN::Draw() call this
-  // frame (recursive: covers every top-level element AND every descendant visited via Draw_Form()/Draw_Menu()
-  // etc). Tells us the ACTUAL size of the tree walked per frame and how much of it was visible/dirty, since the
-  // existing "update=" timing alone cannot distinguish "few elements, each expensive" from "many elements,
-  // walked normally" -- both would show the same total. Extern-declared here rather than in a header since
-  // this is throwaway.
-  extern XDWORD diagskin_visits;
-  extern XDWORD diagskin_visible;
-  extern XDWORD diagskin_dirty;
-  extern XQWORD diagskin_shadowus;         // UI_SkinCanvas.cpp -- accumulated us inside soft-shadow build+composite
-  extern XDWORD diagskin_shadowcalls;      // UI_SkinCanvas.cpp -- how many soft-shadow draws happened this frame
-  extern XDWORD diagskin_shadowcachehits;  // UI_SkinCanvas.cpp -- of those, how many reused the cached bitmap (Draw_Form path only)
-  extern XDWORD diagskin_shadowcachemiss;  // UI_SkinCanvas.cpp -- of those, how many had to rebuild it
-
-  diagskin_visits          = 0;
-  diagskin_visible         = 0;
-  diagskin_dirty           = 0;
-  diagskin_shadowus         = 0;
-  diagskin_shadowcalls      = 0;
-  diagskin_shadowcachehits  = 0;
-  diagskin_shadowcachemiss  = 0;
-
-  XQWORD diag_t0 = XDIAGLOG_NOWUS();
-
-  //--------------------------------------------------------------------------------------
-
   canvas->ReleaseDrawFramerate();
 
   canvas->RebuildAllAreas();
 
-  XQWORD diag_t1 = XDIAGLOG_NOWUS();
-
-  //--------------------------------------------------------------------------------------
-
   GEN_USERINTERFACE.Elements_RebuildDrawAreas();
 
-  XQWORD diag_t2 = XDIAGLOG_NOWUS();
-
   GEN_USERINTERFACE.Update();
-
-  XQWORD diag_t3 = XDIAGLOG_NOWUS();
-
-  //--------------------------------------------------------------------------------------
-  // Diagnostic bookkeeping -- see note above.
-  //--------------------------------------------------------------------------------------
-
-  diag_framecounter++;
-  diag_hb_frames++;
-  if((diag_t3 - diag_t0) > diag_hb_maxus) diag_hb_maxus = diag_t3 - diag_t0;
-
-  if((diag_t3 - diag_t0) > 20000)
-    {
-      XDIAGLOG_WRITE("SLOWFRAME", "n=%llu total=%lluus canvasrebuild=%lluus elementsrebuild=%lluus update=%lluus skinvisits=%u skinvisible=%u skindirty=%u shadowcalls=%u shadowus=%llu shadowhits=%u shadowmiss=%u", (unsigned long long)diag_framecounter, (unsigned long long)(diag_t3-diag_t0), (unsigned long long)(diag_t1-diag_t0), (unsigned long long)(diag_t2-diag_t1), (unsigned long long)(diag_t3-diag_t2), (unsigned int)diagskin_visits, (unsigned int)diagskin_visible, (unsigned int)diagskin_dirty, (unsigned int)diagskin_shadowcalls, (unsigned long long)diagskin_shadowus, (unsigned int)diagskin_shadowcachehits, (unsigned int)diagskin_shadowcachemiss);
-    }
-
-  if((XDIAGLOG_NOWUS() - diag_hb_windowstart) > 1000000ULL)
-    {
-      XDIAGLOG_WRITE("HEARTBEAT", "frames_in_window=%llu maxframe=%lluus", (unsigned long long)diag_hb_frames, (unsigned long long)diag_hb_maxus);
-      diag_hb_frames      = 0;
-      diag_hb_maxus       = 0;
-      diag_hb_windowstart = XDIAGLOG_NOWUS();
-    }
-
-  //--------------------------------------------------------------------------------------
 
   return true;
 }
@@ -958,6 +796,7 @@ bool UI_SYSTEM::DrawFrame()
 void UI_SYSTEM::ThreadFunction_UpdateHardwareInfo(void* param)
 {
   UI_SYSTEM* uisystem = (UI_SYSTEM*)param;
+
   if(!uisystem)                      return;
   if(uisystem->hardwareinfoexiting)  return;
 
@@ -1001,117 +840,80 @@ bool UI_SYSTEM::HardwareInfo_Compute(bool forced)
 
   if(!duetorun) return true;
 
-  //--------------------------------------------------------------------------------------
-  // Everything below runs UNLOCKED, into local (this call's own stack, background-thread-only)
-  // variables: this is exactly the work that used to run straight inside AppProc_Update() and
-  // could stall rendering -- most notably HardwareInfo_UpdateConnection(), which can block on a
-  // real network check. It is now free to take as long as it needs without the render loop (or
-  // HardwareInfo_Apply(), which only ever takes the mutex for the short "publish" block further
-  // down) ever waiting on it.
-  //--------------------------------------------------------------------------------------
-
   XSTRING temperaturestr, usedtotalstr, usedstr, totalstr, datestr, timestr;
   XSTRING diskname[UI_SYSTEM_DISK_SLOT_MAX];
   XSTRING diskused[UI_SYSTEM_DISK_SLOT_MAX];
   XSTRING disktotal[UI_SYSTEM_DISK_SLOT_MAX];
   float   disklevel[UI_SYSTEM_DISK_SLOT_MAX];
-  int     diskcount = 0;
+  int     diskcount        = 0;
   XSTRING statusstr, qualitystr, markstr, ipstr, publicipstr;
   XSTRING equipostr, sostr, uptimestr;
 
-  float temperaturelevel = 0.0f;
-  float cpuusagelevelnow = 0.0f;
-  float ramusagelevelnow = 0.0f;
-  bool  isconnectednow   = false;
+  float   temperaturelevel = 0.0f;
+  float   cpuusagelevelnow = 0.0f;
+  float   ramusagelevelnow = 0.0f;
+  bool    isconnectednow   = false;
 
   for(int s=0; s<UI_SYSTEM_DISK_SLOT_MAX; s++)
     {
       disklevel[s] = 0.0f;
     }
 
-  // TEMPORARY diagnostic-only (see XDiagLog.h): times each source and the mutex re-acquire below, to check
-  // empirically whether HardwareInfo_UpdateConnection() (the one documented as able to block on a real network
-  // check) or mutex contention with the render thread is actually overlapping with the multi-second blank-freeze
-  // under investigation, rather than trusting the "this can never stall rendering" design intent unverified.
-  XQWORD diagh_t0 = XDIAGLOG_NOWUS();
   HardwareInfo_UpdateCPU(temperaturestr, temperaturelevel, cpuusagelevelnow);
-  XQWORD diagh_t1 = XDIAGLOG_NOWUS();
   HardwareInfo_UpdateMemory(usedtotalstr, usedstr, totalstr, ramusagelevelnow);
-  XQWORD diagh_t2 = XDIAGLOG_NOWUS();
   HardwareInfo_UpdateDateTime(datestr, timestr);
-  XQWORD diagh_t3 = XDIAGLOG_NOWUS();
   HardwareInfo_UpdateVolumes(diskname, diskused, disktotal, disklevel, diskcount);
-  XQWORD diagh_t4 = XDIAGLOG_NOWUS();
   HardwareInfo_UpdateConnection(isconnectednow, statusstr, qualitystr, markstr, ipstr, publicipstr);
-  XQWORD diagh_t5 = XDIAGLOG_NOWUS();
   HardwareInfo_UpdateFooter(equipostr, sostr, uptimestr);
-  XQWORD diagh_t6 = XDIAGLOG_NOWUS();
 
-  if((diagh_t6 - diagh_t0) > 5000)   // this whole unlocked block took over 5ms
+  hardwareinfomutex->Lock();
+
+  cpu_temperature_str.Set(temperaturestr.Get());
+  ram_used_total_str.Set(usedtotalstr.Get());
+  ram_used_str.Set(usedstr.Get());
+  ram_total_str.Set(totalstr.Get());
+
+  for(int s=0; s<UI_SYSTEM_DISK_SLOT_MAX; s++)
     {
-      XDIAGLOG_WRITE("HWINFO", "cpu=%lluus mem=%lluus datetime=%lluus volumes=%lluus connection=%lluus footer=%lluus total=%lluus", (unsigned long long)(diagh_t1-diagh_t0), (unsigned long long)(diagh_t2-diagh_t1), (unsigned long long)(diagh_t3-diagh_t2), (unsigned long long)(diagh_t4-diagh_t3), (unsigned long long)(diagh_t5-diagh_t4), (unsigned long long)(diagh_t6-diagh_t5), (unsigned long long)(diagh_t6-diagh_t0));
+      disk_slot_name[s].Set(diskname[s].Get());
+      disk_slot_used[s].Set(diskused[s].Get());
+      disk_slot_total[s].Set(disktotal[s].Get());
+
+      disk_slot_level[s] = disklevel[s];
     }
 
-  //--------------------------------------------------------------------------------------
-  // Publish: the only point where this thread touches the fields the main thread reads
-  // (directly in HardwareInfo_Apply(), or via UserInterface_ChangeLiteralText() when
-  // GEN_USERINTERFACE resolves a #[MASK] literal during its own redraw). Held just long enough
-  // to copy already-computed values -- never around any of the work above.
-  //--------------------------------------------------------------------------------------
+  disk_slot_count = diskcount;
+  if(disk_slot_count <= 0)                          disk_slot_index = 0;
+   else if(disk_slot_index >= disk_slot_count)      disk_slot_index = 0;
 
-  { XQWORD diagh_lockwaitstart = XDIAGLOG_NOWUS();
-    hardwareinfomutex->Lock();
-    XQWORD diagh_lockwaitelapsed = XDIAGLOG_NOWUS() - diagh_lockwaitstart;
-    if(diagh_lockwaitelapsed > 5000)   // acquiring the "publish" lock itself took over 5ms -- contention
-      {
-        XDIAGLOG_WRITE("HWINFO", "publish-lock WAIT elapsed=%lluus (contended by the render thread?)", (unsigned long long)diagh_lockwaitelapsed);
-      }
-  }
+  HardwareInfo_PublishDiskSlot();
 
-    cpu_temperature_str.Set(temperaturestr.Get());
-    ram_used_total_str.Set(usedtotalstr.Get());
-    ram_used_str.Set(usedstr.Get());
-    ram_total_str.Set(totalstr.Get());
-    for(int s=0; s<UI_SYSTEM_DISK_SLOT_MAX; s++)
-      {
-        disk_slot_name[s].Set(diskname[s].Get());
-        disk_slot_used[s].Set(diskused[s].Get());
-        disk_slot_total[s].Set(disktotal[s].Get());
-        disk_slot_level[s] = disklevel[s];
-      }
-    disk_slot_count = diskcount;
-    if(disk_slot_count <= 0)                          disk_slot_index = 0;
-     else if(disk_slot_index >= disk_slot_count)      disk_slot_index = 0;
-    HardwareInfo_PublishDiskSlot();
-    system_date_str.Set(datestr.Get());
-    system_time_str.Set(timestr.Get());
-    connection_status_str.Set(statusstr.Get());
-    connection_quality_str.Set(qualitystr.Get());
-    connection_mark_str.Set(markstr.Get());
-    local_ip_str.Set(ipstr.Get());
-    public_ip_str.Set(publicipstr.Get());
-    footer_equipo_str.Set(equipostr.Get());
-    footer_so_str.Set(sostr.Get());
-    footer_uptime_str.Set(uptimestr.Get());
+  system_date_str.Set(datestr.Get());
+  system_time_str.Set(timestr.Get());
+  connection_status_str.Set(statusstr.Get());
+  connection_quality_str.Set(qualitystr.Get());
+  connection_mark_str.Set(markstr.Get());
+  local_ip_str.Set(ipstr.Get());
+  public_ip_str.Set(publicipstr.Get());
+  footer_equipo_str.Set(equipostr.Get());
+  footer_so_str.Set(sostr.Get());
+  footer_uptime_str.Set(uptimestr.Get());
 
-    cpu_temperaturelevel = temperaturelevel;
-    cpu_usagelevel       = cpuusagelevelnow;
-    ram_usagelevel       = ramusagelevelnow;
-    isconnected          = isconnectednow;
+  cpu_temperaturelevel = temperaturelevel;
+  cpu_usagelevel       = cpuusagelevelnow;
+  ram_usagelevel       = ramusagelevelnow;
+  isconnected          = isconnectednow;
 
-    // Phase 2 StatisticsChart: keep rings of recent CPU / RAM % for the history card.
-    // Mutex is already held for the publish block; do not call CpuHistoryChart_PushSample() here
-    // (that helper locks again).
-    cpuhistory_samples[cpuhistory_write] = cpuusagelevelnow;
-    cpuhistory_write = (cpuhistory_write + 1) % UI_SYSTEM_CPUHISTORY_MAX;
-    if(cpuhistory_count < UI_SYSTEM_CPUHISTORY_MAX) cpuhistory_count++;
+  cpuhistory_samples[cpuhistory_write] = cpuusagelevelnow;
+  cpuhistory_write = (cpuhistory_write + 1) % UI_SYSTEM_CPUHISTORY_MAX;
+  if(cpuhistory_count < UI_SYSTEM_CPUHISTORY_MAX) cpuhistory_count++;
 
-    ramhistory_samples[ramhistory_write] = ramusagelevelnow;
-    ramhistory_write = (ramhistory_write + 1) % UI_SYSTEM_RAMHISTORY_MAX;
-    if(ramhistory_count < UI_SYSTEM_RAMHISTORY_MAX) ramhistory_count++;
+  ramhistory_samples[ramhistory_write] = ramusagelevelnow;
+  ramhistory_write = (ramhistory_write + 1) % UI_SYSTEM_RAMHISTORY_MAX;
+  if(ramhistory_count < UI_SYSTEM_RAMHISTORY_MAX) ramhistory_count++;
 
-    lastupdatehardwareinfo_second = actualsecond;
-    hardwareinfo_haspending       = true;
+  lastupdatehardwareinfo_second = actualsecond;
+  hardwareinfo_haspending       = true;
 
   hardwareinfomutex->UnLock();
 
@@ -1143,19 +945,7 @@ bool UI_SYSTEM::HardwareInfo_Apply()
   float diskusagelevelnow = 0.0f;
   bool  isconnectednow   = false;
 
-  // TEMPORARY diagnostic-only (see XDiagLog.h): this runs on the MAIN (render) thread -- if acquiring this lock
-  // ever takes a long time, that is direct proof of the background hardware-info thread stalling the render
-  // loop, regardless of what the design intent says.
-  XQWORD diaga_lockwaitstart = XDIAGLOG_NOWUS();
-
   hardwareinfomutex->Lock();
-
-    { XQWORD diaga_lockwaitelapsed = XDIAGLOG_NOWUS() - diaga_lockwaitstart;
-      if(diaga_lockwaitelapsed > 5000)
-        {
-          XDIAGLOG_WRITE("HWINFO", "MAIN THREAD apply-lock WAIT elapsed=%lluus (render thread stalled by background thread)", (unsigned long long)diaga_lockwaitelapsed);
-        }
-    }
 
     haspending = hardwareinfo_haspending;
 
@@ -1174,92 +964,68 @@ bool UI_SYSTEM::HardwareInfo_Apply()
 
   if(!haspending) return true;                            // nothing new since the last frame
 
-  //--------------------------------------------------------------------------------------
-  // From here on this is exactly what UpdateHardwareInfo(false)'s HardwareInfo_UpdateCPU() /
-  // _UpdateMemory() / _UpdateConnection() used to do inline, just fed from the values the
-  // background thread already computed instead of computing them here. No mutex needed below:
-  // this function only ever runs on the main thread.
-  //--------------------------------------------------------------------------------------
 
-  UI_ELEMENT_PROGRESS_IMAGE* element_temp = (UI_ELEMENT_PROGRESS_IMAGE*)GEN_USERINTERFACE.Element_Get(_L("cpu_temp_bar"), UI_ELEMENT_TYPE_PROGRESSIMAGE);
+  UI_ELEMENT_PROGRESS_IMAGE* element_temp = (UI_ELEMENT_PROGRESS_IMAGE*)GEN_USERINTERFACE.Element_Get(NL("cpu_temp_bar"), UI_ELEMENT_TYPE_PROGRESSIMAGE);
   if(element_temp) element_temp->SetLevel(temperaturelevel);
 
-  UI_ELEMENT_PROGRESS_RADIAL* element_cpu = (UI_ELEMENT_PROGRESS_RADIAL*)GEN_USERINTERFACE.Element_Get(_L("cpu_usage_radial"), UI_ELEMENT_TYPE_PROGRESSRADIAL);
+  UI_ELEMENT_PROGRESS_RADIAL* element_cpu = (UI_ELEMENT_PROGRESS_RADIAL*)GEN_USERINTERFACE.Element_Get(NL("cpu_usage_radial"), UI_ELEMENT_TYPE_PROGRESSRADIAL);
   if(element_cpu) element_cpu->SetLevel(cpuusagelevelnow);
 
   // Phase 2: push samples into the GEN statisticschart widget (throttled; main thread only).
   HistoryChart_Apply(false);
 
-  UI_ELEMENT_PROGRESS_RADIAL* element_radial = (UI_ELEMENT_PROGRESS_RADIAL*)GEN_USERINTERFACE.Element_Get(_L("ram_usage_radial"), UI_ELEMENT_TYPE_PROGRESSRADIAL);
+  UI_ELEMENT_PROGRESS_RADIAL* element_radial = (UI_ELEMENT_PROGRESS_RADIAL*)GEN_USERINTERFACE.Element_Get(NL("ram_usage_radial"), UI_ELEMENT_TYPE_PROGRESSRADIAL);
   if(element_radial) element_radial->SetLevel(ramusagelevelnow);
 
-  UI_ELEMENT_PROGRESSBAR* element_bar = (UI_ELEMENT_PROGRESSBAR*)GEN_USERINTERFACE.Element_Get(_L("ram_linear_bar"), UI_ELEMENT_TYPE_PROGRESSBAR);
+  UI_ELEMENT_PROGRESSBAR* element_bar = (UI_ELEMENT_PROGRESSBAR*)GEN_USERINTERFACE.Element_Get(NL("ram_linear_bar"), UI_ELEMENT_TYPE_PROGRESSBAR);
   if(element_bar) element_bar->SetLevel(ramusagelevelnow);
 
-  UI_ELEMENT_PROGRESS_RADIAL* element_diskradial = (UI_ELEMENT_PROGRESS_RADIAL*)GEN_USERINTERFACE.Element_Get(_L("disk_usage_radial"), UI_ELEMENT_TYPE_PROGRESSRADIAL);
+  UI_ELEMENT_PROGRESS_RADIAL* element_diskradial = (UI_ELEMENT_PROGRESS_RADIAL*)GEN_USERINTERFACE.Element_Get(NL("disk_usage_radial"), UI_ELEMENT_TYPE_PROGRESSRADIAL);
   if(element_diskradial) element_diskradial->SetLevel(diskusagelevelnow);
 
-  UI_ELEMENT_PROGRESSBAR* element_diskbar = (UI_ELEMENT_PROGRESSBAR*)GEN_USERINTERFACE.Element_Get(_L("disk_linear_bar"), UI_ELEMENT_TYPE_PROGRESSBAR);
+  UI_ELEMENT_PROGRESSBAR* element_diskbar = (UI_ELEMENT_PROGRESSBAR*)GEN_USERINTERFACE.Element_Get(NL("disk_linear_bar"), UI_ELEMENT_TYPE_PROGRESSBAR);
   if(element_diskbar) element_diskbar->SetLevel(diskusagelevelnow);
 
-  //--------------------------------------------------------------------------------------
-  // Status glyph. Two images sit stacked at the same spot in the layout (a green disc with a
-  // tick, and a red disc with a cross); only one of them is ever visible. This replaces the
-  // previous "recolour a round form" approach, which stopped being visible once Draw_Form
-  // started preferring background-color over color for its fill.
-  // Must dirty both images (and the badge slot) on every apply: SetVisible alone does not
-  // rebuild the area, so switching to offline left an empty slot / missing badge_ko (BlueStacks).
-  //--------------------------------------------------------------------------------------
-
-  UI_ELEMENT* element_iconok = GEN_USERINTERFACE.Element_Get(_L("connection_icon_ok"), UI_ELEMENT_TYPE_IMAGE);
+  UI_ELEMENT* element_iconok = GEN_USERINTERFACE.Element_Get(NL("connection_icon_ok"), UI_ELEMENT_TYPE_IMAGE);
   if(element_iconok)
     {
       element_iconok->SetVisible(isconnectednow);
       GEN_USERINTERFACE.Elements_SetToRedraw(element_iconok, false);
     }
 
-  UI_ELEMENT* element_iconko = GEN_USERINTERFACE.Element_Get(_L("connection_icon_ko"), UI_ELEMENT_TYPE_IMAGE);
+  UI_ELEMENT* element_iconko = GEN_USERINTERFACE.Element_Get(NL("connection_icon_ko"), UI_ELEMENT_TYPE_IMAGE);
   if(element_iconko)
     {
       element_iconko->SetVisible(!isconnectednow);
       GEN_USERINTERFACE.Elements_SetToRedraw(element_iconko, false);
     }
 
-  UI_ELEMENT* element_badgeslot = GEN_USERINTERFACE.Element_Get(_L("conn-badge-slot"), UI_ELEMENT_TYPE_FORM);
+  UI_ELEMENT* element_badgeslot = GEN_USERINTERFACE.Element_Get(NL("conn-badge-slot"), UI_ELEMENT_TYPE_FORM);
   if(element_badgeslot) GEN_USERINTERFACE.Elements_SetToRedraw(element_badgeslot, false);
 
-  //--------------------------------------------------------------------------------------
-  // The status line follows the same semantics: green when up, red when down.
-  //--------------------------------------------------------------------------------------
+ 
 
-  UI_ELEMENT_TEXT* element_status = (UI_ELEMENT_TEXT*)GEN_USERINTERFACE.Element_Get(_L("connection_status_text"), UI_ELEMENT_TYPE_TEXT);
-  if(element_status) element_status->GetColor()->SetFromString(isconnectednow ? _L("63,185,80") : _L("248,81,73"));
-
-  //--------------------------------------------------------------------------------------
-  // Mark only the text leaves whose masks can have changed. The skin's rebuild-area transaction expands
-  // this set to every overlapping surface/element before restoring pixels, so the example does not need to
-  // know which card happens to be behind each value. Keeping that dependency in the renderer is essential:
-  // a future CSS layout can move or restack these elements without changing application code.
-  //--------------------------------------------------------------------------------------
+  UI_ELEMENT_TEXT* element_status = (UI_ELEMENT_TEXT*)GEN_USERINTERFACE.Element_Get(NL("connection_status_text"), UI_ELEMENT_TYPE_TEXT);
+  if(element_status) element_status->GetColor()->SetFromString(isconnectednow ? NL("63,185,80") : NL("248,81,73"));
 
   static XCHAR* maskedtextelements[] =
     {
-      _L("footer_equipo_text")      ,
-      _L("footer_so_text")          ,
-      _L("footer_uptime_text")      ,
-      _L("cpu_temp_value")          ,
-      _L("ram_used")                ,
-      _L("ram_total")               ,
-      _L("disk_used")               ,
-      _L("disk_total")              ,
-      _L("disk_caption")            ,
-      _L("disk_index")              ,
-      _L("system_date")             ,
-      _L("system_time")             ,
-      _L("connection_status_text")  ,
-      _L("connection_quality")      ,
-      _L("connection_ip")           ,
-      _L("connection_public_ip")    ,
+      NL("footer_equipo_text")      ,
+      NL("footer_so_text")          ,
+      NL("footer_uptime_text")      ,
+      NL("cpu_temp_value")          ,
+      NL("ram_used")                ,
+      NL("ram_total")               ,
+      NL("disk_used")               ,
+      NL("disk_total")              ,
+      NL("disk_caption")            ,
+      NL("disk_index")              ,
+      NL("system_date")             ,
+      NL("system_time")             ,
+      NL("connection_status_text")  ,
+      NL("connection_quality")      ,
+      NL("connection_ip")           ,
+      NL("connection_public_ip")    ,
     };
 
   for(int c=0; c<(int)(sizeof(maskedtextelements)/sizeof(maskedtextelements[0])); c++)
@@ -1318,8 +1084,8 @@ bool UI_SYSTEM::DashboardSlot_ApplySection(UI_SYSTEM_SECTIONID sectionID)
                       (sectionID == UI_SYSTEM_SECTIONID_MEMORIA) ||
                       (sectionID == UI_SYSTEM_SECTIONID_DISCO));
 
-  UI_ELEMENT* element_datetime = GEN_USERINTERFACE.Element_Get(_L("card_datetime"), UI_ELEMENT_TYPE_FORM);
-  UI_ELEMENT* element_history  = GEN_USERINTERFACE.Element_Get(_L("card_cpu_history"), UI_ELEMENT_TYPE_FORM);
+  UI_ELEMENT* element_datetime = GEN_USERINTERFACE.Element_Get(NL("card_datetime"), UI_ELEMENT_TYPE_FORM);
+  UI_ELEMENT* element_history  = GEN_USERINTERFACE.Element_Get(NL("card_cpu_history"), UI_ELEMENT_TYPE_FORM);
 
   if(!element_datetime || !element_history) return false;
 
@@ -1344,14 +1110,16 @@ bool UI_SYSTEM::DashboardSlot_ApplySection(UI_SYSTEM_SECTIONID sectionID)
         {
           element_history->SetVisible(false);
         }
+
       element_history->SetMustReDraw(false);
       element_history->SetTransitionStateShow(UI_ELEMENT_TRANSITION_STATE_SHOW_NONE);
 
       element_datetime->SetMustReDraw(true);
       GEN_USERINTERFACE.Elements_SetToRedraw(element_datetime, true);
 
-      UI_ELEMENT* element_date = GEN_USERINTERFACE.Element_Get(_L("system_date"), UI_ELEMENT_TYPE_TEXT);
-      UI_ELEMENT* element_time = GEN_USERINTERFACE.Element_Get(_L("system_time"), UI_ELEMENT_TYPE_TEXT);
+      UI_ELEMENT* element_date = GEN_USERINTERFACE.Element_Get(NL("system_date"), UI_ELEMENT_TYPE_TEXT);
+      UI_ELEMENT* element_time = GEN_USERINTERFACE.Element_Get(NL("system_time"), UI_ELEMENT_TYPE_TEXT);
+
       if(element_date) GEN_USERINTERFACE.Elements_SetToRedraw(element_date, false);
       if(element_time) GEN_USERINTERFACE.Elements_SetToRedraw(element_time, false);
     }
@@ -1405,11 +1173,11 @@ bool UI_SYSTEM::HistoryChart_Apply(bool forced)
     chart_force_rebuild = false;
   hardwareinfomutex->UnLock();
 
-  UI_ELEMENT_STATISTICSCHART* element_chart = (UI_ELEMENT_STATISTICSCHART*)GEN_USERINTERFACE.Element_Get(_L("cpu_history_chart"), UI_ELEMENT_TYPE_STATISTICSCHART);
+  UI_ELEMENT_STATISTICSCHART* element_chart = (UI_ELEMENT_STATISTICSCHART*)GEN_USERINTERFACE.Element_Get(NL("cpu_history_chart"), UI_ELEMENT_TYPE_STATISTICSCHART);
   if(!element_chart) return false;
 
-  UI_ELEMENT_TEXT* element_hdr = (UI_ELEMENT_TEXT*)GEN_USERINTERFACE.Element_Get(_L("cpuhist_hdr_text"), UI_ELEMENT_TYPE_TEXT);
-  UI_ELEMENT*      element_empty = GEN_USERINTERFACE.Element_Get(_L("history_empty_text"), UI_ELEMENT_TYPE_TEXT);
+  UI_ELEMENT_TEXT* element_hdr = (UI_ELEMENT_TEXT*)GEN_USERINTERFACE.Element_Get(NL("cpuhist_hdr_text"), UI_ELEMENT_TYPE_TEXT);
+  UI_ELEMENT*      element_empty = GEN_USERINTERFACE.Element_Get(NL("history_empty_text"), UI_ELEMENT_TYPE_TEXT);
 
   float samples[UI_SYSTEM_CPUHISTORY_MAX];
   int   count = 0;
@@ -1420,11 +1188,11 @@ bool UI_SYSTEM::HistoryChart_Apply(bool forced)
     {
       case UI_SYSTEM_SECTIONID_MEMORIA :
         {
-          if(element_hdr) element_hdr->GetText()->Set(_L("Consumo de memoria"));
+          if(element_hdr) element_hdr->GetText()->Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_MEMORY_CONSUMPTION));
 
           element_chart->SetChartType(UI_ELEMENT_STATISTICSCHART_TYPE_AREA);
-          element_chart->SetTitle(_L("RAM %"));
-          if(element_chart->GetColor()) element_chart->GetColor()->SetFromString(_L("163,113,247"));
+          element_chart->SetTitle(NL("RAM %"));
+          if(element_chart->GetColor()) element_chart->GetColor()->SetFromString(NL("163,113,247"));
 
           hardwareinfomutex->Lock();
             count = ramhistory_count;
@@ -1440,7 +1208,7 @@ bool UI_SYSTEM::HistoryChart_Apply(bool forced)
           if(count >= 2)
             {
               isempty = false;
-              element_chart->SetSerieFromSamples(_L("RAM"), samples, count, 163, 113, 247);
+              element_chart->SetSerieFromSamples(NL("RAM"), samples, count, 163, 113, 247);
             }
            else
             {
@@ -1451,10 +1219,10 @@ bool UI_SYSTEM::HistoryChart_Apply(bool forced)
 
       case UI_SYSTEM_SECTIONID_DISCO :
         {
-          if(element_hdr) element_hdr->GetText()->Set(_L("Uso por volumen"));
+          if(element_hdr) element_hdr->GetText()->Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_VOLUME_USAGE));
 
-          element_chart->SetTitle(_L("Disco %"));
-          if(element_chart->GetColor()) element_chart->GetColor()->SetFromString(_L("210,153,34"));
+          element_chart->SetTitle(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_DISCO));
+          if(element_chart->GetColor()) element_chart->GetColor()->SetFromString(NL("210,153,34"));
 
           XSTRING labelcopies[UI_SYSTEM_DISK_SLOT_MAX];
           XCHAR*  labels[UI_SYSTEM_DISK_SLOT_MAX];
@@ -1475,7 +1243,7 @@ bool UI_SYSTEM::HistoryChart_Apply(bool forced)
           if(nslots >= 1)
             {
               isempty = false;
-              element_chart->SetColumnsFromValues(_L("Disco"), labels, values, nslots, 210, 153, 34);
+              element_chart->SetColumnsFromValues(TL(UI_SYSTEM_TRANSLATEID_NAV_DISK), labels, values, nslots, 210, 153, 34);
             }
            else
             {
@@ -1487,11 +1255,11 @@ bool UI_SYSTEM::HistoryChart_Apply(bool forced)
       case UI_SYSTEM_SECTIONID_CPU :
       default :
         {
-          if(element_hdr) element_hdr->GetText()->Set(_L("Historico de CPU"));
+          if(element_hdr) element_hdr->GetText()->Set(TL(UI_SYSTEM_TRANSLATEID_CARD_CPU_HISTORY));
 
           element_chart->SetChartType(UI_ELEMENT_STATISTICSCHART_TYPE_LINES);
-          element_chart->SetTitle(_L("CPU %"));
-          if(element_chart->GetColor()) element_chart->GetColor()->SetFromString(_L("56,139,253"));
+          element_chart->SetTitle(NL("CPU %"));
+          if(element_chart->GetColor()) element_chart->GetColor()->SetFromString(NL("56,139,253"));
 
           hardwareinfomutex->Lock();
             count = cpuhistory_count;
@@ -1507,7 +1275,7 @@ bool UI_SYSTEM::HistoryChart_Apply(bool forced)
           if(count >= 2)
             {
               isempty = false;
-              element_chart->SetSerieFromSamples(_L("CPU"), samples, count, 56, 139, 253);
+              element_chart->SetSerieFromSamples(NL("CPU"), samples, count, 56, 139, 253);
             }
            else
             {
@@ -1529,7 +1297,9 @@ bool UI_SYSTEM::HistoryChart_Apply(bool forced)
   GEN_USERINTERFACE.Elements_SetToRedraw(element_chart, false);
 
   hardwareinfomutex->Lock();
-    lastchartrebuild_second = actualsecond;
+
+  lastchartrebuild_second = actualsecond;
+
   hardwareinfomutex->UnLock();
 
   return true;
@@ -1555,7 +1325,9 @@ bool UI_SYSTEM::HardwareInfo_RequestForced()
   if(!hardwareinfomutex) return false;
 
   hardwareinfomutex->Lock();
-    hardwareinfo_forcenext = true;
+
+  hardwareinfo_forcenext = true;
+
   hardwareinfomutex->UnLock();
 
   return true;
@@ -1581,34 +1353,21 @@ bool UI_SYSTEM::HardwareInfo_RequestForced()
 *---------------------------------------------------------------------------------------------------------------------*/
 bool UI_SYSTEM::HardwareInfo_UpdateCPU(XSTRING& outtemperature, float& outtemperaturelevel, float& outusagelevel)
 {
-  //--------------------------------------------------------------------------------------
-  // CPU Temperature: a real sensor reading on Windows (WMI), Linux (thermal sysfs), and Android
-  // (same sysfs interface -- XANDROIDSYSTEM inherits XLINUXSYSTEM's implementation). Some boards/
-  // OEM builds still expose no readable thermal zone at all, and microcontroller platforms
-  // (ESP32/STM32) have no CPU temperature sensor to read in the first place; GEN_XSYSTEM.
-  // GetCPUTemperature() returns 0.0f in every one of those cases, so the value is left as a "--"
-  // placeholder instead of showing a fake number.
-  //--------------------------------------------------------------------------------------
-
   float cputemperature = GEN_XSYSTEM.GetCPUTemperature();
 
   outtemperaturelevel = 0.0f;
 
   if(cputemperature > 0.0f)
     {
-      outtemperature.Format(_L("%d"), (int)(cputemperature + 0.5f));
+      outtemperature.Format(NL("%d"), (int)(cputemperature + 0.5f));
 
       outtemperaturelevel = cputemperature;
       if(outtemperaturelevel > 100.0f) outtemperaturelevel = 100.0f;
     }
    else
     {
-      outtemperature.Set(_L("--"));
+      outtemperature.Set(NL("--"));
     }
-
-  //--------------------------------------------------------------------------------------
-  // CPU Usage (total, real value read from the OS: /proc/stat on Linux, WMI on Windows, ...)
-  //--------------------------------------------------------------------------------------
 
   int cpuusage = GEN_XSYSTEM.GetCPUUsageTotal();
 
@@ -1645,35 +1404,35 @@ bool UI_SYSTEM::HardwareInfo_UpdateMemory(XSTRING& outusedtotal, XSTRING& outuse
     {
       XDWORD       used          = total - free;
       double       memorydivisor = 1.0;
-      const XCHAR* memoryunit    = _L("KB");
+      const XCHAR* memoryunit    = NL("KB");
 
       if(total >= (1024U * 1024U * 1024U))
         {
           memorydivisor = 1024.0 * 1024.0 * 1024.0;
-          memoryunit    = _L("TB");
+          memoryunit    = NL("TB");
         }
       else if(total >= (1024U * 1024U))
         {
           memorydivisor = 1024.0 * 1024.0;
-          memoryunit    = _L("GB");
+          memoryunit    = NL("GB");
         }
       else if(total >= 1024U)
         {
           memorydivisor = 1024.0;
-          memoryunit    = _L("MB");
+          memoryunit    = NL("MB");
         }
 
-      outused.Format(_L("%.1f %s"), (double)used / memorydivisor, memoryunit);
-      outtotal.Format(_L("/ %.1f %s"), (double)total / memorydivisor, memoryunit);
-      outusedtotal.Format(_L("%s %s"), outused.Get(), outtotal.Get());
+      outused.Format(NL("%.1f %s"), (double)used / memorydivisor, memoryunit);
+      outtotal.Format(NL("/ %.1f %s"), (double)total / memorydivisor, memoryunit);
+      outusedtotal.Format(NL("%s %s"), outused.Get(), outtotal.Get());
 
       outusagelevel = (float)(((double)used / (double)total) * 100.0);
     }
    else
     {
-      outused.Set(_L("--"));
-      outtotal.Set(_L("/ --"));
-      outusedtotal.Set(_L("-- / --"));
+      outused.Set(NL("--"));
+      outtotal.Set(NL("/ --"));
+      outusedtotal.Set(NL("-- / --"));
     }
 
   return true;
@@ -1700,8 +1459,8 @@ bool UI_SYSTEM::HardwareInfo_UpdateDateTime(XSTRING& outdate, XSTRING& outtime)
 
   xdatetime->Read();
 
-  outdate.Format(_L("%02d/%02d/%04d"), xdatetime->GetDay(), xdatetime->GetMonth(), xdatetime->GetYear());
-  outtime.Format(_L("%02d:%02d:%02d"), xdatetime->GetHours(), xdatetime->GetMinutes(), xdatetime->GetSeconds());
+  outdate.Format(NL("%02d/%02d/%04d"), xdatetime->GetDay(), xdatetime->GetMonth(), xdatetime->GetYear());
+  outtime.Format(NL("%02d:%02d:%02d"), xdatetime->GetHours(), xdatetime->GetMinutes(), xdatetime->GetSeconds());
 
   GEN_XFACTORY.DeleteDateTime(xdatetime);
 
@@ -1733,9 +1492,9 @@ bool UI_SYSTEM::HardwareInfo_UpdateVolumes(XSTRING* outname, XSTRING* outused, X
 
   for(int s=0; s<UI_SYSTEM_DISK_SLOT_MAX; s++)
     {
-      outname[s].Set(_L("--"));
-      outused[s].Set(_L("--"));
-      outtotal[s].Set(_L("/ --"));
+      outname[s].Set(NL("--"));
+      outused[s].Set(NL("--"));
+      outtotal[s].Set(NL("/ --"));
       outusagelevel[s] = 0.0f;
     }
 
@@ -1768,7 +1527,7 @@ bool UI_SYSTEM::HardwareInfo_UpdateVolumes(XSTRING* outname, XSTRING* outused, X
                            XSTRING* name = volume->GetName();
                            if(name && name->Get())
                              {
-                               if(!name->Compare(_L("/"), true)) accept = true;
+                               if(!name->Compare(NL("/"), true)) accept = true;
                                 else if(name->GetSize() >= 2)
                                  {
                                    XCHAR drive = name->Get()[0];
@@ -1811,31 +1570,31 @@ bool UI_SYSTEM::HardwareInfo_UpdateVolumes(XSTRING* outname, XSTRING* outused, X
       XQWORD usedbytes  = volume->GetUsedBytes();
 
       double       divisor = 1.0;
-      const XCHAR* unit    = _L("B");
+      const XCHAR* unit    = NL("B");
 
       if(totalbytes >= (1024ULL * 1024ULL * 1024ULL * 1024ULL))
         {
           divisor = 1024.0 * 1024.0 * 1024.0 * 1024.0;
-          unit    = _L("TB");
+          unit    = NL("TB");
         }
       else if(totalbytes >= (1024ULL * 1024ULL * 1024ULL))
         {
           divisor = 1024.0 * 1024.0 * 1024.0;
-          unit    = _L("GB");
+          unit    = NL("GB");
         }
       else if(totalbytes >= (1024ULL * 1024ULL))
         {
           divisor = 1024.0 * 1024.0;
-          unit    = _L("MB");
+          unit    = NL("MB");
         }
       else if(totalbytes >= 1024ULL)
         {
           divisor = 1024.0;
-          unit    = _L("KB");
+          unit    = NL("KB");
         }
 
-      outused[c].Format(_L("%.1f %s"), (double)usedbytes / divisor, unit);
-      outtotal[c].Format(_L("/ %.1f %s"), (double)totalbytes / divisor, unit);
+      outused[c].Format(NL("%.1f %s"), (double)usedbytes / divisor, unit);
+      outtotal[c].Format(NL("/ %.1f %s"), (double)totalbytes / divisor, unit);
       outusagelevel[c] = volume->GetUsedPercent();
 
       XSTRING* name  = volume->GetName();
@@ -1843,12 +1602,12 @@ bool UI_SYSTEM::HardwareInfo_UpdateVolumes(XSTRING* outname, XSTRING* outused, X
 
       if(name && name->GetSize())
         {
-          if(label && label->GetSize()) outname[c].Format(_L("%s %s"), name->Get(), label->Get());
+          if(label && label->GetSize()) outname[c].Format(NL("%s %s"), name->Get(), label->Get());
            else                         outname[c].Set(name->Get());
         }
        else
         {
-          outname[c].Set(_L("Volumen"));
+          outname[c].Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_VOLUME));
         }
 
       outcount++;
@@ -1875,10 +1634,10 @@ bool UI_SYSTEM::HardwareInfo_PublishDiskSlot()
   if(disk_slot_count <= 0)
     {
       disk_slot_index = 0;
-      disk_used_str.Set(_L("--"));
-      disk_total_str.Set(_L("/ --"));
-      disk_caption_str.Set(_L("Sin volumen"));
-      disk_index_str.Set(_L("0 / 0"));
+      disk_used_str.Set(NL("--"));
+      disk_total_str.Set(NL("/ --"));
+      disk_caption_str.Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_ITS_VOLUME));
+      disk_index_str.Set(NL("0 / 0"));
       disk_usagelevel = 0.0f;
       return true;
     }
@@ -1889,7 +1648,7 @@ bool UI_SYSTEM::HardwareInfo_PublishDiskSlot()
   disk_total_str.Set(disk_slot_total[disk_slot_index].Get());
   disk_caption_str.Set(disk_slot_name[disk_slot_index].Get());
   disk_usagelevel = disk_slot_level[disk_slot_index];
-  disk_index_str.Format(_L("%d / %d"), disk_slot_index + 1, disk_slot_count);
+  disk_index_str.Format(NL("%d / %d"), disk_slot_index + 1, disk_slot_count);
 
   return true;
 }
@@ -1963,8 +1722,6 @@ bool UI_SYSTEM::HardwareInfo_UpdateConnection(bool& outisconnected, XSTRING& out
       outisconnected = diocheckinternetconnection->Check();
     }
 
-  // Set to 1 to force the offline card (badge_ko + "Desconectado") on a machine that has WAN,
-  // e.g. to match BlueStacks layout. Leave 0 for real DIOCHECKINTERNETCONNECTION results.
   #ifndef UI_SYSTEM_SIMULATE_OFFLINE
   #define UI_SYSTEM_SIMULATE_OFFLINE 0
   #endif
@@ -1974,15 +1731,15 @@ bool UI_SYSTEM::HardwareInfo_UpdateConnection(bool& outisconnected, XSTRING& out
 
   if(outisconnected)
     {
-      outstatus.Set(_L("Conectado"));
-      outquality.Set(_L("Conexi\u00F3n estable"));
-      outmark.Set(_L("OK"));
+      outstatus.Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_CONNECTED));
+      outquality.Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_STABLE_CONNECTION));
+      outmark.Set(NL("OK"));
     }
    else
     {
-      outstatus.Set(_L("Desconectado"));
-      outquality.Set(_L("Sin conexi\u00F3n"));
-      outmark.Set(_L("--"));
+      outstatus.Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_OFFLINE));
+      outquality.Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_WITHOUT_CONNECTION_N));
+      outmark.Set(NL("KO"));
     }
 
   //--------------------------------------------------------------------------------------
@@ -1999,18 +1756,18 @@ bool UI_SYSTEM::HardwareInfo_UpdateConnection(bool& outisconnected, XSTRING& out
 
           device->GetIP()->GetXString(ipstring);
 
-          outip.Format(_L("IP: %s"), ipstring.Get());
+          outip.Format(NL("IP: %s"), ipstring.Get());
         }
        else
         {
-          outip.Set(_L("IP: --"));
+          outip.Set(NL("IP: --"));
         }
 
       GEN_DIOFACTORY.DeleteStreamEnumDevices(enumdevices);
     }
    else
     {
-      outip.Set(_L("IP: --"));
+      outip.Set(NL("IP: --"));
     }
 
   //--------------------------------------------------------------------------------------
@@ -2018,7 +1775,7 @@ bool UI_SYSTEM::HardwareInfo_UpdateConnection(bool& outisconnected, XSTRING& out
   // background poll does not re-hit HTTP on every HardwareInfo tick.
   //--------------------------------------------------------------------------------------
 
-  outpublicip.Set(_L("IP P\u00FAblica: --"));
+  outpublicip.Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_PUBLIC_IP));
 
   #ifdef DIO_PUBLICINTERNETIP_ACTIVE
   {
@@ -2044,7 +1801,7 @@ bool UI_SYSTEM::HardwareInfo_UpdateConnection(bool& outisconnected, XSTRING& out
 
         if(havecachedpublicip)
           {
-            outpublicip.Format(_L("IP P\u00FAblica: %s"), cachedpublicip.Get());
+            outpublicip.Format(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_PUBLIC_IP_2), cachedpublicip.Get());
           }
       }
   }
@@ -2070,22 +1827,16 @@ bool UI_SYSTEM::HardwareInfo_UpdateConnection(bool& outisconnected, XSTRING& out
 *---------------------------------------------------------------------------------------------------------------------*/
 bool UI_SYSTEM::HardwareInfo_UpdateFooter(XSTRING& outequipo, XSTRING& outso, XSTRING& outuptime)
 {
-  //--------------------------------------------------------------------------------------
-  // Equipment name: GEN does not expose the machine hostname on every platform (it is
-  // intentionally left out of XSYSTEM::GetOperativeSystemID()), so GetUserAndDomain() is used
-  // as a best-effort source and, if it is not available, the field is left as a placeholder.
-  //--------------------------------------------------------------------------------------
-
   XSTRING user;
   XSTRING domain;
 
   if(GEN_XSYSTEM.GetUserAndDomain(user, domain) && (!domain.IsEmpty()))
     {
-      outequipo.Format(_L("Equipo: %s"), domain.Get());
+      outequipo.Format(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_TEAM), domain.Get());
     }
    else
     {
-      outequipo.Set(_L("Equipo: --"));                    // TODO: add a real hostname source for this platform
+      outequipo.Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_EQUIPMENT));                    // TODO: add a real hostname source for this platform
     }
 
   //--------------------------------------------------------------------------------------
@@ -2094,17 +1845,19 @@ bool UI_SYSTEM::HardwareInfo_UpdateFooter(XSTRING& outequipo, XSTRING& outso, XS
 
   if(GEN_XSYSTEM.GetOperativeSystemID(operativesystemID) && (!operativesystemID.IsEmpty()))
     {
-      // Shorten live Windows strings ("Microsoft Windows 11 Pro Build 26200") so the footer can show
-      // Equipo | SO | Uptime without the huge fixed gaps the mockup used for short Linux IDs.
       XSTRING soid = operativesystemID;
-      if(soid.Find(_L("Microsoft "), true) == 0) soid.DeleteCharacters(0, 10);
-      int buildat = soid.Find(_L(" Build"), true);
+
+      if(soid.Find(NL("Microsoft "), true) == 0) soid.DeleteCharacters(0, 10);
+
+      int buildat = soid.Find(NL(" Build"), true);
+
       if(buildat >= 0) soid.DeleteCharactersToEnd((XDWORD)buildat);
-      outso.Format(_L("SO: %s"), soid.Get());
+
+      outso.Format(NL("SO: %s"), soid.Get());
     }
    else
     {
-      outso.Set(_L("SO: --"));
+      outso.Set(NL("SO: --"));
     }
 
   //--------------------------------------------------------------------------------------
@@ -2116,8 +1869,8 @@ bool UI_SYSTEM::HardwareInfo_UpdateFooter(XSTRING& outequipo, XSTRING& outso, XS
       xtimer->GetMeasureString(measure, true);
 
       if(!measure.IsEmpty())
-            outuptime.Format(_L("Uptime del sistema: %s"), measure.Get());
-       else outuptime.Set(_L("Uptime del sistema: 0 segundos"));
+            outuptime.Format(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_UPTIME), measure.Get());
+       else outuptime.Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_ACTIVITY_TIME_0_SECONDS));
     }
 
   return true;
@@ -2143,7 +1896,7 @@ bool UI_SYSTEM::UserInterface_ElementSelected(UI_ELEMENT* element)
 
   elementname = element->GetName()->Get();
 
-  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("UI Element [%s]: Selected! "), element->GetName()->Get());
+  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, NL("UI Element [%s]: Selected! "), element->GetName()->Get());
 
   // Chrome / window controls. Test IDs: ActionScriptQA/assets/scripts/Tests_UISystem_ListTest.json
   switch(element->GetChromeRole())
@@ -2153,8 +1906,8 @@ bool UI_SYSTEM::UserInterface_ElementSelected(UI_ELEMENT* element)
       case UI_ELEMENT_CHROMEROLE_MINIMIZE : if(GetMainScreen()) GetMainScreen()->Minimize(true);
                                             break;
 
-      case UI_ELEMENT_CHROMEROLE_MAXIMIZE : { // Toggle grow ↔ restore. Enable autofit so maximize uses the screen.
-                                              UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(_L("dashboard"));
+      case UI_ELEMENT_CHROMEROLE_MAXIMIZE : { // Toggle grow _ restore. Enable autofit so maximize uses the screen.
+                                              UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(NL("dashboard"));
                                               if(dashboard && dashboard->IsUIScaleActive())
                                                 {
                                                   dashboard->SetUIScaleAutofit(true);
@@ -2179,70 +1932,70 @@ bool UI_SYSTEM::UserInterface_ElementSelected(UI_ELEMENT* element)
     }
 
   // Sidebar menu. Each branch emits TESTS_RESULT (id, 0=ok) then switches section.
-  if(!elementname.Compare(_L("nav-resumen-btn"), true))
+  if(!elementname.Compare(NL("nav-resumen-btn"), true))
     {
       // UI_System: nav Resumen selected
       XTRACE_PRINTMSGTESTS(1001, 0);
       UserInterface_SelectSection(UI_SYSTEM_SECTIONID_RESUMEN);
     }
 
-  if(!elementname.Compare(_L("nav-cpu-btn"), true))
+  if(!elementname.Compare(NL("nav-cpu-btn"), true))
     {
       // UI_System: nav CPU selected
       XTRACE_PRINTMSGTESTS(1002, 0);
       UserInterface_SelectSection(UI_SYSTEM_SECTIONID_CPU);
     }
 
-  if(!elementname.Compare(_L("nav-memoria-btn"), true))
+  if(!elementname.Compare(NL("nav-memoria-btn"), true))
     {
       // UI_System: nav Memoria selected
       XTRACE_PRINTMSGTESTS(1003, 0);
       UserInterface_SelectSection(UI_SYSTEM_SECTIONID_MEMORIA);
     }
 
-  if(!elementname.Compare(_L("nav-red-btn"), true))
+  if(!elementname.Compare(NL("nav-red-btn"), true))
     {
       // UI_System: nav Red selected
       XTRACE_PRINTMSGTESTS(1004, 0);
       UserInterface_SelectSection(UI_SYSTEM_SECTIONID_RED);
     }
 
-  if(!elementname.Compare(_L("nav-disco-btn"), true))
+  if(!elementname.Compare(NL("nav-disco-btn"), true))
     {
       // UI_System: nav Disco selected
       XTRACE_PRINTMSGTESTS(1005, 0);
       UserInterface_SelectSection(UI_SYSTEM_SECTIONID_DISCO);
     }
 
-  if(!elementname.Compare(_L("nav-procesos-btn"), true))
+  if(!elementname.Compare(NL("nav-procesos-btn"), true))
     {
       // UI_System: nav Procesos selected
       XTRACE_PRINTMSGTESTS(1006, 0);
       UserInterface_SelectSection(UI_SYSTEM_SECTIONID_PROCESOS);
     }
 
-  if(!elementname.Compare(_L("nav-alertas-btn"), true))
+  if(!elementname.Compare(NL("nav-alertas-btn"), true))
     {
       // UI_System: nav Alertas selected
       XTRACE_PRINTMSGTESTS(1007, 0);
       UserInterface_SelectSection(UI_SYSTEM_SECTIONID_ALERTAS);
     }
 
-  if(!elementname.Compare(_L("nav-configuracion-btn"), true))
+  if(!elementname.Compare(NL("nav-configuracion-btn"), true))
     {
       // UI_System: nav Configuracion selected
       XTRACE_PRINTMSGTESTS(1008, 0);
       UserInterface_SelectSection(UI_SYSTEM_SECTIONID_CONFIGURACION);
     }
 
-  // Disk carousel buttons (empty hit targets over icons — same idea as nav-*-btn).
-  if(!elementname.Compare(_L("disk_prev_btn"), true))
+  // Disk carousel buttons (empty hit targets over icons _ same idea as nav-*-btn).
+  if(!elementname.Compare(NL("disk_prev_btn"), true))
     {
       HardwareInfo_CycleDisk(-1);
       HardwareInfo_Apply();
     }
 
-  if(!elementname.Compare(_L("disk_next_btn"), true))
+  if(!elementname.Compare(NL("disk_next_btn"), true))
     {
       HardwareInfo_CycleDisk(+1);
       HardwareInfo_Apply();
@@ -2268,26 +2021,25 @@ bool UI_SYSTEM::UserInterface_ElementSelected(UI_ELEMENT* element)
 *---------------------------------------------------------------------------------------------------------------------*/
 bool UI_SYSTEM::UserInterface_SelectSection(UI_SYSTEM_SECTIONID sectionID)
 {
-  // Official selection path: SetSelected on the hit-target button (CSS :selected wash) and on the nav-row
-  // so descendant rules like `form.nav-row:selected .nav-label` restyle the label without C++ color hacks.
-  // Legacy nav-*-hl / nav-*-bar overlays are removed from the layout; stylesheet is the source of truth.
-  static XCHAR* navbtnnames[UI_SYSTEM_SECTIONID_MAX]    = { _L("nav-resumen-btn")       ,
-                                                             _L("nav-cpu-btn")           ,
-                                                             _L("nav-memoria-btn")       ,
-                                                             _L("nav-red-btn")           ,
-                                                             _L("nav-disco-btn")         ,
-                                                             _L("nav-procesos-btn")      ,
-                                                             _L("nav-alertas-btn")       ,
-                                                             _L("nav-configuracion-btn")  };
+  static XCHAR* navbtnnames[UI_SYSTEM_SECTIONID_MAX]    = { NL("nav-resumen-btn")       ,
+                                                            NL("nav-cpu-btn")           ,
+                                                            NL("nav-memoria-btn")       ,
+                                                            NL("nav-red-btn")           ,
+                                                            NL("nav-disco-btn")         ,
+                                                            NL("nav-procesos-btn")      ,
+                                                            NL("nav-alertas-btn")       ,
+                                                            NL("nav-configuracion-btn")  
+                                                          };
 
-  static XCHAR* navrownames[UI_SYSTEM_SECTIONID_MAX]    = { _L("nav-resumen-row")       ,
-                                                             _L("nav-cpu-row")           ,
-                                                             _L("nav-memoria-row")       ,
-                                                             _L("nav-red-row")           ,
-                                                             _L("nav-disco-row")         ,
-                                                             _L("nav-procesos-row")      ,
-                                                             _L("nav-alertas-row")       ,
-                                                             _L("nav-configuracion-row")  };
+  static XCHAR* navrownames[UI_SYSTEM_SECTIONID_MAX]    = { NL("nav-resumen-row")       ,
+                                                            NL("nav-cpu-row")           ,
+                                                            NL("nav-memoria-row")       ,
+                                                            NL("nav-red-row")           ,
+                                                            NL("nav-disco-row")         ,
+                                                            NL("nav-procesos-row")      ,
+                                                            NL("nav-alertas-row")       ,
+                                                            NL("nav-configuracion-row")  
+                                                          };
 
   for(int c=0; c<UI_SYSTEM_SECTIONID_MAX; c++)
     {
@@ -2300,9 +2052,7 @@ bool UI_SYSTEM::UserInterface_SelectSection(UI_SYSTEM_SECTIONID sectionID)
       if(element_row)
         {
           element_row->SetSelected(isactive);
-          // Redraw the row (accent + label) only -- not the overlay nav-*-btn. Forcing the buttons to
-          // redraw at Ini/SelectSection made them OptionBackdrop-capture before/without nav ink and then
-          // keep restoring a blank strip (video: sidebar empty until click).
+        
           GEN_USERINTERFACE.Elements_SetToRedraw(element_row, true);
         }
     }
@@ -2319,17 +2069,17 @@ bool UI_SYSTEM::UserInterface_SelectSection(UI_SYSTEM_SECTIONID sectionID)
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         bool UI_SYSTEM::UserInterface_AdjustUIScale(double delta)
-* @brief      Fase 4: runtime zoom (+/−). Clamps, reclama paint, persists to ui_system.ini.
+* @brief      Fase 4: runtime zoom (+/_). Clamps, reclama paint, persists to ui_system.ini.
 * @ingroup    EXAMPLES
 *
-* @param[in]  delta : Scale step (typically ±UI_LAYOUT_UISCALE_STEP).
+* @param[in]  delta : Scale step (typically _UI_LAYOUT_UISCALE_STEP).
 *
 * @return     bool : true if applied.
 *
 *---------------------------------------------------------------------------------------------------------------------*/
 bool UI_SYSTEM::UserInterface_AdjustUIScale(double delta)
 {
-  UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(_L("dashboard"));
+  UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(NL("dashboard"));
   if(!dashboard) return false;
 
   double next = dashboard->GetUIScale() + delta;
@@ -2339,7 +2089,7 @@ bool UI_SYSTEM::UserInterface_AdjustUIScale(double delta)
   APPFLOW_CFG.SetUIScaleAutofit(false);
   APPFLOW_CFG.Save();
 
-  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("[UI_System] UIScale -> %.2f (manual)"), dashboard->GetUIScale());
+  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, NL("[UI_System] UIScale -> %.2f (manual)"), dashboard->GetUIScale());
   return true;
 }
 
@@ -2363,38 +2113,31 @@ bool UI_SYSTEM::UserInterface_ChangeLiteralText(UI_ELEMENT_TEXT* element_text, X
   if(!maskvalue)      return false;
   if(!maskresolved)   return false;
 
-  if(!maskvalue->Compare(_L("APP_VERSION"), true))
+  if(!maskvalue->Compare(NL("APP_VERSION"), true))
     {
-      maskresolved->Format(_L("%d.%d.%d"), APPLICATION_VERSION, APPLICATION_SUBVERSION, APPLICATION_SUBVERSIONERR);
+      maskresolved->Format(NL("%d.%d.%d"), APPLICATION_VERSION, APPLICATION_SUBVERSION, APPLICATION_SUBVERSIONERR);
     }
-
-  //--------------------------------------------------------------------------------------
-  // Every field read below is also written by HardwareInfo_Compute(), on the background
-  // thread (see the note in UI_System.h) -- this runs on the main thread (called from inside
-  // GEN_USERINTERFACE.Update(), during DrawFrame()'s redraw), so it needs the same mutex to
-  // avoid reading a string the background thread is mid-Set()/Format() on.
-  //--------------------------------------------------------------------------------------
 
   if(hardwareinfomutex) hardwareinfomutex->Lock();
 
-  if(!maskvalue->Compare(_L("CPU_TEMPERATURE")   , true))  maskresolved->Set(cpu_temperature_str.Get());
-  if(!maskvalue->Compare(_L("RAM_USED_TOTAL")    , true))  maskresolved->Set(ram_used_total_str.Get());
-  if(!maskvalue->Compare(_L("RAM_USED")          , true))  maskresolved->Set(ram_used_str.Get());
-  if(!maskvalue->Compare(_L("RAM_TOTAL")         , true))  maskresolved->Set(ram_total_str.Get());
-  if(!maskvalue->Compare(_L("DISK_USED")         , true))  maskresolved->Set(disk_used_str.Get());
-  if(!maskvalue->Compare(_L("DISK_TOTAL")        , true))  maskresolved->Set(disk_total_str.Get());
-  if(!maskvalue->Compare(_L("DISK_CAPTION")      , true))  maskresolved->Set(disk_caption_str.Get());
-  if(!maskvalue->Compare(_L("DISK_INDEX")        , true))  maskresolved->Set(disk_index_str.Get());
-  if(!maskvalue->Compare(_L("SYSTEM_DATE")       , true))  maskresolved->Set(system_date_str.Get());
-  if(!maskvalue->Compare(_L("SYSTEM_TIME")       , true))  maskresolved->Set(system_time_str.Get());
-  if(!maskvalue->Compare(_L("CONNECTION_STATUS") , true))  maskresolved->Set(connection_status_str.Get());
-  if(!maskvalue->Compare(_L("CONNECTION_QUALITY"), true))  maskresolved->Set(connection_quality_str.Get());
-  if(!maskvalue->Compare(_L("CONNECTION_MARK")   , true))  maskresolved->Set(connection_mark_str.Get());
-  if(!maskvalue->Compare(_L("LOCAL_IP")          , true))  maskresolved->Set(local_ip_str.Get());
-  if(!maskvalue->Compare(_L("PUBLIC_IP")         , true))  maskresolved->Set(public_ip_str.Get());
-  if(!maskvalue->Compare(_L("FOOTER_EQUIPO")     , true))  maskresolved->Set(footer_equipo_str.Get());
-  if(!maskvalue->Compare(_L("FOOTER_SO")         , true))  maskresolved->Set(footer_so_str.Get());
-  if(!maskvalue->Compare(_L("FOOTER_UPTIME")     , true))  maskresolved->Set(footer_uptime_str.Get());
+  if(!maskvalue->Compare(NL("CPU_TEMPERATURE")   , true))  maskresolved->Set(cpu_temperature_str.Get());
+  if(!maskvalue->Compare(NL("RAM_USED_TOTAL")    , true))  maskresolved->Set(ram_used_total_str.Get());
+  if(!maskvalue->Compare(NL("RAM_USED")          , true))  maskresolved->Set(ram_used_str.Get());
+  if(!maskvalue->Compare(NL("RAM_TOTAL")         , true))  maskresolved->Set(ram_total_str.Get());
+  if(!maskvalue->Compare(NL("DISK_USED")         , true))  maskresolved->Set(disk_used_str.Get());
+  if(!maskvalue->Compare(NL("DISK_TOTAL")        , true))  maskresolved->Set(disk_total_str.Get());
+  if(!maskvalue->Compare(NL("DISK_CAPTION")      , true))  maskresolved->Set(disk_caption_str.Get());
+  if(!maskvalue->Compare(NL("DISK_INDEX")        , true))  maskresolved->Set(disk_index_str.Get());
+  if(!maskvalue->Compare(NL("SYSTEM_DATE")       , true))  maskresolved->Set(system_date_str.Get());
+  if(!maskvalue->Compare(NL("SYSTEM_TIME")       , true))  maskresolved->Set(system_time_str.Get());
+  if(!maskvalue->Compare(NL("CONNECTION_STATUS") , true))  maskresolved->Set(connection_status_str.Get());
+  if(!maskvalue->Compare(NL("CONNECTION_QUALITY"), true))  maskresolved->Set(connection_quality_str.Get());
+  if(!maskvalue->Compare(NL("CONNECTION_MARK")   , true))  maskresolved->Set(connection_mark_str.Get());
+  if(!maskvalue->Compare(NL("LOCAL_IP")          , true))  maskresolved->Set(local_ip_str.Get());
+  if(!maskvalue->Compare(NL("PUBLIC_IP")         , true))  maskresolved->Set(public_ip_str.Get());
+  if(!maskvalue->Compare(NL("FOOTER_EQUIPO")     , true))  maskresolved->Set(footer_equipo_str.Get());
+  if(!maskvalue->Compare(NL("FOOTER_SO")         , true))  maskresolved->Set(footer_so_str.Get());
+  if(!maskvalue->Compare(NL("FOOTER_UPTIME")     , true))  maskresolved->Set(footer_uptime_str.Get());
 
   if(hardwareinfomutex) hardwareinfomutex->UnLock();
 
@@ -2498,18 +2241,12 @@ void UI_SYSTEM::HandleEvent_Graphics(GRPXEVENT* event)
       case GRPXEVENT_TYPE_SCREEN_CHANGESIZE : { GRPSCREEN* screen = event->GetScreen();
                                                 if(!screen) break;
 
-                                                // Live resize runs inside Windows' modal drag loop: UpdateSize has
-                                                // already recreated empty canvas buffers. Without an immediate UI
-                                                // paint here, WM_SIZE's UpdateViewports() presents black until the
-                                                // main loop runs again (mouse-up). Also: never Save() the ini on
-                                                // every size tick — that stalls the drag.
-                                                UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(_L("dashboard"));
+                                                
+                                                UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(NL("dashboard"));
                                                 if(dashboard && dashboard->IsUIScaleActive())
                                                   {
                                                     #ifdef ANDROID
-                                                    // Track P: keep design canvas; GLES letterbox follows the new
-                                                    // native surface. Do not ApplyFitUIScale against a resized
-                                                    // framebuffer (would fight platform present + MapWindowToCanvas).
+                                                    
                                                     if(screen->GetWidth() != dashboard->GetDesignWidth() ||
                                                        screen->GetHeight() != dashboard->GetDesignHeight())
                                                       {
@@ -2520,8 +2257,10 @@ void UI_SYSTEM::HandleEvent_Graphics(GRPXEVENT* event)
                                                     dashboard->SetUIScaleForFit(UI_LAYOUT_UISCALE_DEFAULT);
                                                     GEN_USERINTERFACE.UIScale_PrepareLayout(dashboard);
                                                     GEN_USERINTERFACE.Update();
-                                                    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("[UI_System] Android config: keep design %dx%d UIScale=1.0"), dashboard->GetDesignWidth(), dashboard->GetDesignHeight());
+                                                    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, NL("[UI_System] Android config: keep design %dx%d UIScale=1.0"), dashboard->GetDesignWidth(), dashboard->GetDesignHeight());
+
                                                     #else
+
                                                     if(dashboard->GetUIScaleAutofit())
                                                       {
                                                         GEN_USERINTERFACE.Layouts_ApplyFitUIScale(dashboard);
@@ -2529,21 +2268,14 @@ void UI_SYSTEM::HandleEvent_Graphics(GRPXEVENT* event)
                                                         APPFLOW_CFG.SetUIScaleAutofit(true);
                                                       }
                                                      else
-                                                      {
-                                                        // Manual zoom: still refresh present offsets for the new
-                                                        // framebuffer size (letterbox/pillarbox).
+                                                      {                                                    
                                                         GEN_USERINTERFACE.UIScale_PrepareLayout(dashboard);
                                                       }
-
-                                                    // L.4 re-resolve is NOT called on every size tick: fixed design
-                                                    // + autofit means vw/% do not change with the window; calling
-                                                    // Layouts_ReresolveStyleLengths here corrupted flex/% positions
-                                                    // (progress scale labels, card grid). Use Layouts_SetDesignSize
-                                                    // when the authoring viewport itself changes.
-
+                                                   
                                                     GEN_USERINTERFACE.Update();
 
-                                                    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("[UI_System] UIScale size -> %.2f autofit=%d (%dx%d)"), dashboard->GetUIScale(), dashboard->GetUIScaleAutofit() ? 1 : 0, screen->GetWidth(), screen->GetHeight());
+                                                    XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, NL("[UI_System] UIScale size -> %.2f autofit=%d (%dx%d)"), dashboard->GetUIScale(), dashboard->GetUIScaleAutofit() ? 1 : 0, screen->GetWidth(), screen->GetHeight());
+
                                                     #endif
                                                   }
                                               }

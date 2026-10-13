@@ -1,0 +1,27 @@
+{
+  "languages"       : [ "Spanish" ,
+                        "English" ,
+                        "French"  ,
+                        "German"  ,
+                        "Chinese"
+                      ],
+
+  "translations"    : {
+
+                        "00001" : [ 0,
+                                    "Érase una vez," ,
+                                    "Once upon a time," ,
+                                    "Il était une fois," ,
+                                    "Es war einmal," ,
+                                    "曾几何时，"
+                                  ],
+
+                        "00002" : [ 0,
+                                    "en un reino muy, muy lejano..." ,
+                                    "in a kingdom far, far away... " ,
+                                    "dans un royaume lointain, très lointain..." ,
+                                    "In einem weit, weit entfernten Königreich ..." ,
+                                    "在一个遥远的王国里……"
+                                  ]
+                      }
+}

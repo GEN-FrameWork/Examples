@@ -14,7 +14,7 @@ option(DEBUG_FEATURE                                            "Debug mode"    
 option(XTRACE_FEATURE                                           "XTrace"                                                  ON )
 #option(XTRACE_NOINTERNET_FEATURE                                "No need for trace dependencies with Internet"            ON )
 option(XTHREADCOLLECTED_FEATURE                                 "Thread Collected"                                        ON )
-#option(XMEMORY_CONTROL_FEATURE                                  "XMemory Control"                                         ON )
+option(XMEMORY_CONTROL_FEATURE                                  "XMemory Control"                                         ON )
 
 option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON )
 

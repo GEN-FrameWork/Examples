@@ -1,23 +1,27 @@
 {
-  "languages" 			: [ "Spanish"    ,
-                        "English"    ,
-                        "French"     
+  "languages"       : [ "Spanish" ,
+                        "English" ,
+                        "French"  ,
+                        "German"  ,
+                        "Chinese"
                       ],
 
+  "translations"    : {
 
-  "translations": {
-    "00100": [
-      0,     
-      "![IMAGE E.png]n un lugar de la Mancha, de cuyo nombre no quiero acordarme #[TEST_TEXT], ![COLOR black, 100]no ha mucho tiempo ![END COLOR] que vivía un hidalgo ![IMAGE gigolord_walk0]de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor.", 
-      "![IMAGE E.png]n un lugar de la Mancha, de cuyo nombre no quiero acordarme #[TEST_TEXT], ![COLOR black, 100]no ha mucho tiempo ![END COLOR] que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor.", 
-      "![IMAGE E.png]n un lugar de la Mancha, de cuyo nombre no quiero acordarme #[TEST_TEXT], ![COLOR black, 100]no ha mucho tiempo ![END COLOR] que vivía un hidalgo ![IMAGE gigolord_walk0]de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor.", 
-    ],
+                        "00001" : [ 0,
+                                    "Ventas por trimestre" ,
+                                    "Sales by quarter" ,
+                                    "Ventes par trimestre" ,
+                                    "Umsatz pro Quartal" ,
+                                    "按季度销售"
+                                  ],
 
-    "00101": [
-      70,
-      "Fecha y hora",
-      "Date & Time",
-      "Date et heure"
-    ]
-  }										
-}											 		
+                        "00002" : [ 0,
+                                    "Lienzo de caracteres estáticos" ,
+                                    "Statictics Chars Canvas" ,
+                                    "Toile de caractères statiques" ,
+                                    "Statikzeichen-Leinwand" ,
+                                    "静态字符画布"
+                                  ]
+                      }
+}

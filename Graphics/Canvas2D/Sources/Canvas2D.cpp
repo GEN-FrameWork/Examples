@@ -102,6 +102,7 @@
 #include "APPFlowLog.h"
 #include "APPFlowExtended.h"
 
+#include "Canvas2D_TranslateID.h"
 #include "Canvas2D_CFG.h"
 
 
@@ -250,17 +251,16 @@ bool CANVAS2D::AppProc_Ini()
 
   //--------------------------------------------------------------------------------------
 
-  /*
+  XPATH xpath;  
+  XPATH xpathsection;  
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_ROOT, xpathsection);
-  xpath.Create(3 , xpathsection.Get(), SCRIPTS_LNG_NAMEFILE, XTRANSLATION_NAMEFILEEXT);
+  xpath.Create(3 , xpathsection.Get(), APPLICATION_NAMEFILE, XTRANSLATION_NAMEFILEEXT);
 
   if(!GEN_XTRANSLATION.Ini(xpath))
     {
       return false;
     }
-  */
-
-  GEN_XTRANSLATION.SetActual(XLANGUAGE_ISO_639_3_CODE_SPA);
+  
 
   //--------------------------------------------------------------------------------------
 
@@ -336,11 +336,11 @@ bool CANVAS2D::AppProc_FirstUpdate()
           canvas->PutBitmapNoAlpha(0, -(backgroundbmp->GetHeight() - 768.0f), backgroundbmp);
         }
 
-      canvas->RasterFont_Select(_L("verdana18"));
+      canvas->RasterFont_Select(NL("verdana18"));
 
       GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_FONTS, xpath);   
       xpath.Slash_Add();
-      xpath.Add(_L("Augusta.ttf"));
+      xpath.Add(NL("Augusta.ttf"));
      
       canvas->Vectorfont_GetConfig()->SetHeight(40.0f);
       canvas->VectorFont_Load(xpath);
@@ -356,7 +356,7 @@ bool CANVAS2D::AppProc_FirstUpdate()
     xpathsounds.Slash_Add();
 
     xpath = xpathsounds;
-    xpath.Add(_L("greensleeves.ogg"));
+    xpath.Add(NL("greensleeves.ogg"));
 
     backgroundsound = GEN_SNDFACTORY.CreateItem(xpath);
     if(backgroundsound)
@@ -366,11 +366,11 @@ bool CANVAS2D::AppProc_FirstUpdate()
       }
 
     xpath = xpathsounds;
-    xpath.Add(_L("armour-walking1.ogg"));
+    xpath.Add(NL("armour-walking1.ogg"));
     armorwalkingsounds[0] = GEN_SNDFACTORY.CreateItem(xpath);
    
     xpath = xpathsounds;
-    xpath.Add(_L("armour-walking2.ogg"));
+    xpath.Add(NL("armour-walking2.ogg"));
     armorwalkingsounds[1] = GEN_SNDFACTORY.CreateItem(xpath);
      
     SubscribeEvent(SNDFACTORY_XEVENT_TYPE_SOUND_INI, &GEN_SNDFACTORY.GetInstance());
@@ -537,19 +537,19 @@ bool CANVAS2D::UpdateInput()
               switch(motiondir)
                 {
                   case INPCURSORMOTION_DIR_DOWN       :
-                  case INPCURSORMOTION_DIR_RIGHTUP    : makeaction = _L("WALK NORTH");
+                  case INPCURSORMOTION_DIR_RIGHTUP    : makeaction = NL("WALK NORTH");
                                                         break;
 
                   case INPCURSORMOTION_DIR_RIGHT      :
-                  case INPCURSORMOTION_DIR_LEFTUP     : makeaction = _L("WALK WEST" );
+                  case INPCURSORMOTION_DIR_LEFTUP     : makeaction = NL("WALK WEST" );
                                                         break;
 
                   case INPCURSORMOTION_DIR_LEFT       :
-                  case INPCURSORMOTION_DIR_RIGHTDOWN  : makeaction = _L("WALK EAST" );
+                  case INPCURSORMOTION_DIR_RIGHTDOWN  : makeaction = NL("WALK EAST" );
                                                         break;
 
                   case INPCURSORMOTION_DIR_UP         :
-                  case INPCURSORMOTION_DIR_LEFTDOWN   : makeaction = _L("WALK SOUTH");
+                  case INPCURSORMOTION_DIR_LEFTDOWN   : makeaction = NL("WALK SOUTH");
                                                         break;
 
                                           default     : break;
@@ -578,10 +578,10 @@ bool CANVAS2D::UpdateInput()
             {
               switch(c)
                 {
-                  case CANVAS2D_BUTTON_UP     : makeaction = _L("WALK NORTH");   break;
-                  case CANVAS2D_BUTTON_DOWN   : makeaction = _L("WALK SOUTH");   break;
-                  case CANVAS2D_BUTTON_LEFT   : makeaction = _L("WALK WEST" );   break;
-                  case CANVAS2D_BUTTON_RIGHT  : makeaction = _L("WALK EAST" );   break;
+                  case CANVAS2D_BUTTON_UP     : makeaction = NL("WALK NORTH");   break;
+                  case CANVAS2D_BUTTON_DOWN   : makeaction = NL("WALK SOUTH");   break;
+                  case CANVAS2D_BUTTON_LEFT   : makeaction = NL("WALK WEST" );   break;
+                  case CANVAS2D_BUTTON_RIGHT  : makeaction = NL("WALK EAST" );   break;
 
                   case CANVAS2D_BUTTON_SPACE  : break;
                 }
@@ -624,7 +624,7 @@ bool CANVAS2D::Ini_Graphics(GRPSCREEN* screen)
     {
       GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_GRAPHICS, xpath);
       xpath.Slash_Add();
-      xpath.Add(_L("background.jpg"));
+      xpath.Add(NL("background.jpg"));
 
       backgroundbmp = bitmapfile->Load(xpath, GetMainScreen()->GetMode());
       if(!backgroundbmp) return false;
@@ -636,11 +636,11 @@ bool CANVAS2D::Ini_Graphics(GRPSCREEN* screen)
     {
       GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_GRAPHICS, xpath);
       xpath.Slash_Add();
-      xpath.Add(_L("gigolord_walk0"));
+      xpath.Add(NL("gigolord_walk0"));
 
       bitmapfile->SetPath(xpath);
 
-      charactersecuence[0] = bitmapfile->LoadSequence(_L("LF-WxWalk_01%02d.png"), 1);
+      charactersecuence[0] = bitmapfile->LoadSequence(NL("LF-WxWalk_01%02d.png"), 1);
       charactersecuence[1] = charactersecuence[0]->Copy();
 
       charactersecuence[1]->Flip(true);
@@ -660,14 +660,14 @@ bool CANVAS2D::Ini_Graphics(GRPSCREEN* screen)
 
   //--------------------------------------------------------------------------------------
 
-  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("Main Screen: Width %d, height %d"), screen->GetWidth(), screen->GetHeight());
+  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, NL("Main Screen: Width %d, height %d"), screen->GetWidth(), screen->GetHeight());
 
   
   screen->SetPosition(GRPPROPERTYMODE_SCREEN_CENTER, GRPPROPERTYMODE_SCREEN_CENTER);
   screen->SetWidth(1024);
   screen->SetHeight(768);
   
-  screen->GetTitle()->Set(_L("Canvas 2D"));
+  screen->GetTitle()->Set(NL("Canvas 2D"));
   
   screen->SetDesktopScreenSelected(GRPSCREENTYPE_DESKTOP_SCREEN1);
 
@@ -815,12 +815,12 @@ bool CANVAS2D::DrawFrame()
 
   canvas->ReleaseDrawFramerate();       
   
-  if(makeaction.Compare(_L("WALK WEST" ), true))   
+  if(makeaction.Compare(NL("WALK WEST" ), true))   
     { 
       scrollposx++; 
     }
 
-  if(makeaction.Compare(_L("WALK EAST" ), true))   
+  if(makeaction.Compare(NL("WALK EAST" ), true))   
     { 
       scrollposx--;
     }
@@ -916,8 +916,8 @@ bool CANVAS2D::DrawFrame()
   canvas->RoundRect(scrollposx + pos_signboard, 50, scrollposx + pos_signboard + 570, 150, 20, true);
 
   canvas->Vectorfont_GetConfig()->SetColor(&coloryellow);
-  canvas->VectorFont_Printf(scrollposx + pos_signboard + 20, 90, _L("Once upon a time,"));
-  canvas->VectorFont_Printf(scrollposx + pos_signboard + 90, 130, _L("in a kingdom far, far away... "));
+  canvas->VectorFont_Printf(scrollposx + pos_signboard + 20, 90, TL(CANVAS2D_TRANSLATEID_CANVAS2D_ONCE_UPON_A_TIME));
+  canvas->VectorFont_Printf(scrollposx + pos_signboard + 90, 130, TL(CANVAS2D_TRANSLATEID_CANVAS2D_IN_A_KINGDOM_FAR_FAR_AWAY));
   
   canvas->DrawFramerate(GetMainScreen(), scrollposx + 10, 30);
 
@@ -1020,7 +1020,7 @@ void CANVAS2D::HandleEvent_Sound(SNDFACTORY_XEVENT* event)
                                                     event->GetItem()->GetStatus(statusstr);
                                                     ID = event->GetItem()->GetID();      
 
-                                                    //XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("[Sound] [%08X] %s (%s) -> %s"), event->GetItem(), typestr.Get(), ID->Get(), statusstr.Get());    
+                                                    //XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, NL("[Sound] [%08X] %s (%s) -> %s"), event->GetItem(), typestr.Get(), ID->Get(), statusstr.Get());    
                                                   } 
                                                   break;
     } 

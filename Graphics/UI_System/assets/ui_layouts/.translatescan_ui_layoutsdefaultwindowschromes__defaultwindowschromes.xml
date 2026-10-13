@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layouts>
+  <skin name="" drawmode="canvas" rasterfont="verdana18" vectorfont="Nunito-SemiBold.ttf" > </skin>
+
+  <color name="colortext">yellow</color>
+  <color name="colormenuline">red</color>
+  <color name="colormenu">black,50</color>
+
+
+  <layout name="chrome">
+
+    <element name="caption" type="form" role="caption" xpos="0" ypos="46" height="46"  color="black,25"> 
+     
+     
+      <element type="button" name="btn_chrome_icon" role="icon" xpos="left" ypos="center" margin="12,0,0,0" >
+        <element type="animation">
+          <image width="40" height="40">icon_app.svg</image>
+        </element>
+      </element>
+
+
+      <element type="text"  name="txt_chrome_title" role="title" xpos="left"  ypos="center" sizefont="20"  margin="65,0,0,0" color="#FFFFFFFF">#[TRANSLATE_138]</element>
+            
+      
+      <element name="btn_chrome_minimize" role="minimize" type="multioption" xpos="right" margin="0,78,0,0" ypos="center">
+
+        <element type="button" name="btn_chrome_minimize" role="minimize" selectablestatus="active">
+          <element type="animation" >
+            <image width="32" height="32">icon_minimized_activated.svg</image>
+          </element>
+        </element>
+
+        <element type="button" name="btn_chrome_minimize" role="minimize" selectablestatus="preselect">
+          <element type="animation">
+            <image width="32" height="32">icon_minimized_preselected.svg</image>
+          </element>
+        </element>
+
+        <element type="button" name="btn_chrome_minimize" role="minimize" selectablestatus="selected">
+          <element type="animation">
+            <image width="32" height="32">icon_minimized_activated.svg</image>
+          </element>
+        </element>
+
+        <element type="button" name="btn_chrome_minimize" role="minimize" selectablestatus="deactive">
+          <element type="animation">
+            <image width="32" height="32">icon_minimized_deactivated.svg</image>
+          </element>
+        </element>
+
+      </element>
+
+
+      <element name="btn_chrome_maximize" role="maximize" type="multioption" xpos="right"  ypos="center" margin="0,42,0,0">
+
+        <element type="button" name="btn_chrome_maximize" role="maximize" selectablestatus="active">
+          <element type="animation">
+            <image width="32" height="32">icon_maximized_activated.svg</image>
+          </element>
+        </element>
+
+        <element type="button" name="btn_chrome_maximize" role="maximize" selectablestatus="preselect">
+          <element type="animation">
+            <image width="32" height="32">icon_maximized_preselected.svg</image>
+          </element>
+        </element>
+
+        <element type="button" name="btn_chrome_maximize" role="maximize" selectablestatus="selected">
+          <element type="animation">
+            <image width="32" height="32">icon_maximized_activated.svg</image>
+          </element>
+        </element>
+
+        <element type="button" name="btn_chrome_maximize" role="maximize" selectablestatus="deactive">
+          <element type="animation">
+            <image width="32" height="32">icon_maximized_deactivated.svg</image>
+          </element>
+        </element>
+
+      </element>
+
+
+      <element name="btn_chrome_close" role="close" type="multioption" xpos="right" ypos="center" xpos="right" margin="0,6,0,0">
+
+        <element type="button" name="btn_chrome_close" role="close" selectablestatus="active">
+          <element type="animation">
+            <image width="32" height="32">icon_close_activated.svg</image>
+          </element>
+        </element>
+
+        <element type="button" name="btn_chrome_close" role="close" selectablestatus="preselect">
+          <element type="animation">
+            <image width="32" height="32">icon_close_preselected.svg</image>
+          </element>
+        </element>
+
+        <element type="button" name="btn_chrome_close" role="close" selectablestatus="selected" >
+          <element type="animation">
+            <image width="24" height="24">icon_close_activated.svg</image>
+          </element>
+        </element>
+
+        <element type="button" name="btn_chrome_close" role="close" selectablestatus="deactive">
+          <element type="animation">
+            <image width="32" height="32">icon_close_deactivated.svg</image>
+          </element>
+        </element>
+
+      </element>
+      
+    </element>    
+
+  </layout>
+
+
+</layouts>
+

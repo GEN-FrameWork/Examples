@@ -103,10 +103,10 @@ enum STATICTICSCHARTS_BUTTONS
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 1
 
-#define APPLICATION_NAMEAPP                       _L("StaticticsCharts")
-#define APPLICATION_NAMEFILE                      _L("staticticscharts")
-
-#define APPLICATION_OWNER                         _L("EndoraSoft")
+#define APPLICATION_NAMEAPP                       NL("StaticticsCharts")
+#define APPLICATION_NAMEFILE                      NL("staticticscharts")
+                                                  
+#define APPLICATION_OWNER                         NL("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2018
 
@@ -140,6 +140,7 @@ class UI_ELEMENT;
 class UI_ELEMENT_TEXT;
 class STATICTICSCHARTS_CFG;
 
+
 class STATICTICSCHARTS : public APPFLOWGRAPHICS, public XFSMACHINE
 {
   public:
@@ -159,14 +160,10 @@ class STATICTICSCHARTS : public APPFLOWGRAPHICS, public XFSMACHINE
 
     bool                            Ini_StaticticCharts                     ();   
     bool                            Ini_Graphics                            (GRPSCREEN* screen);
-    bool                            Ini_UserInterface                       (bool on);  
 
 
     bool                            DrawFrame                               ();
 
-    bool                            UserInterface_CFGChromes                (GRPSCREEN* screen);
-
-    void                            HandleEvent_UserInterface               (UI_XEVENT* event);
     void                            HandleEvent_Graphics                    (GRPXEVENT* event);
     void                            HandleEvent                             (XEVENT* xevent);
     

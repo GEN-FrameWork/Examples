@@ -29,14 +29,16 @@
 /*---- PRECOMPILATION CONTROL ----------------------------------------------------------------------------------------*/
 
 #include "GEN_Defines.h"
+#include "XTranslation.h"
 
 /*---- INCLUDES ------------------------------------------------------------------------------------------------------*/
 
+#include "UI_System_CFG.h"
+
 #include "XLog.h"
 
+#include "UI_System_TranslateID.h"   
 #include "UI_System.h"
-
-#include "UI_System_CFG.h"
 
 #include "XMemory_Control.h"
 
@@ -120,8 +122,8 @@ bool UI_SYSTEM_CFG::DoVariableMapping()
       return false;
     }
 
-  AddValue(XFILECFG_VALUETYPE_FLOAT, UI_SYSTEMCFG_SECTIONGENERAL, UI_SYSTEMCFG_UISCALE, &uiscale, _L("UI scale / zoom (0.75 .. 2.0)"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
-  AddValue(XFILECFG_VALUETYPE_BOOLEAN, UI_SYSTEMCFG_SECTIONGENERAL, UI_SYSTEMCFG_UISCALE_AUTOFIT, &uiscale_autofit, _L("Autofit UI scale to window (Fase 5)"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
+  AddValue(XFILECFG_VALUETYPE_FLOAT, UI_SYSTEMCFG_SECTIONGENERAL, UI_SYSTEMCFG_UISCALE, &uiscale, TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_CFG_UI_SCALE_ZOOM_0_75_2_0), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
+  AddValue(XFILECFG_VALUETYPE_BOOLEAN, UI_SYSTEMCFG_SECTIONGENERAL, UI_SYSTEMCFG_UISCALE_AUTOFIT, &uiscale_autofit, TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_CFG_AUTOFIT_UI_SCALE_TO_WINDOW_FASE_5), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
 
   return true;
 }
