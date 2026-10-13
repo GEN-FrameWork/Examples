@@ -1853,6 +1853,19 @@ bool UI_SYSTEM::HardwareInfo_UpdateFooter(XSTRING& outequipo, XSTRING& outso, XS
 
       if(buildat >= 0) soid.DeleteCharactersToEnd((XDWORD)buildat);
 
+      // Linux uname "version" (or a leftover full stamp) often starts at " #1 SMP...".
+      int hashat = soid.Find(NL(" #"), true);
+      if(hashat >= 0) soid.DeleteCharactersToEnd((XDWORD)hashat);
+
+      // Footer is a single flex row (Equipo | SO | Uptime). Cap width so a long
+      // kernel/release string cannot crowd Uptime on the right.
+      const XDWORD soid_max = 36;
+      if(soid.GetSize() > soid_max)
+        {
+          soid.DeleteCharactersToEnd(soid_max);
+          soid += NL("...");
+        }
+
       outso.Format(NL("SO: %s"), soid.Get());
     }
    else

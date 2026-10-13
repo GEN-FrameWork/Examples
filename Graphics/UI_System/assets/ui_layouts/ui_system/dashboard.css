@@ -83,10 +83,22 @@ form.footer {
   border-color:     var(--sidebar-line);
   border-width:     1;
   border-radius:    0;
-  /* Sidebar is 210 wide; keep Equipo|SO|Uptime in the content column, not under the brand. */
-  padding:          0 0 0 210;
+  /* Full-width bar. Equipo/SO chips sit flush-left under the sidebar brand; spacer pushes Uptime right. */
+  padding:          0;
   display:          flex;
   align-items:      center;
+}
+
+/* Rounded icon+label chips in the footer (Equipo / SO). */
+form.footer-chip {
+  background-color: var(--card-bg);
+  border-color:     var(--sidebar-line);
+  border-width:     1;
+  border-radius:    16;
+  padding:          0 4 0 4;
+  display:          flex;
+  align-items:      center;
+  flex-shrink:      0;
 }
 
 
@@ -110,12 +122,33 @@ form.sidebar-nav {
   border-width:     0;
   display:          flex;
   flex-direction:   column;
+  /* Grow so brand_block is pushed to the sidebar bottom (column flex on form.sidebar). */
+  flex-grow:        1;
   /* Track L.2: rem gap (0.5rem = 8px at --root-font-size 16). Same visual as former row-gap: 8. */
   row-gap:          0.5rem;
   /* padding-top must stay 0: nav-*-btn hit overlays are absolute (ypos 118/174/...). First row
      offset is only nav-resumen-row margin-top:24 from sidebar top (y=46) -> row top 70 = btn top.
      A non-zero padding-top shifts every flex row down while the hover/selected wash stays on the
      buttons, so the band reads "a few pixels too high" relative to icon+label (2026-10 regression). */
+}
+
+/* Brand row at the bottom of the sidebar (icon + Sistema / version). Must be a sidebar_bg child so
+   FormBackdrop restore force-dirties it with the sidebar (root-sibling brand_* vanished after live UI updates). */
+form.sidebar-brand {
+  background-color: 0,0,0,0;
+  border-width:     0;
+  display:          flex;
+  align-items:      center;
+  flex-shrink:      0;
+}
+
+form.sidebar-brand-text {
+  background-color: 0,0,0,0;
+  border-width:     0;
+  display:          flex;
+  flex-direction:   column;
+  justify-content:  center;
+  flex-shrink:      0;
 }
 
 form.nav-row {

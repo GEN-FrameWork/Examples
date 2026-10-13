@@ -108,19 +108,36 @@
         <element name="nav-configuracion-text" type="text" class="nav-label" style="margin: 0,0,0,14;">#[TRANSLATE_107]</element>
       </element>
       </element>
+
+      <!-- Brand INSIDE sidebar_bg (same FormBackdrop fix as sidebar_nav): root siblings were wiped when
+           the sidebar restored and stayed blank after live footer/mask updates. sidebar-nav flex-grows;
+           this block sits at the bottom as a row (icon | text column). -->
+      <element name="brand_block" type="form" class="sidebar-brand" width="210" height="72">
+        <element name="brand_icon" type="image" style="margin: 0,0,0,26; flex-shrink: 0;" width="52" height="52">icons/brand_system.svg</element>
+        <element name="brand_textcol" type="form" class="sidebar-brand-text" style="margin: 0,0,0,10;" width="120" height="52">
+          <element name="brand_text" type="text" class="brand" sizefont="15">#[TRANSLATE_119]</element>
+          <element name="brand_version" type="text" class="brand-dim" style="color: 88,166,255; margin-top: 4;" sizefont="13">v#[APP_VERSION]</element>
+        </element>
+      </element>
     </element>
 
     
     <element name="footer_bg" type="form" class="footer" xpos="0" ypos="900" width="1440" height="44">
-      <element name="footer_equipo_icon" type="image" style="margin: 0,0,0,24; flex-shrink: 0;"   width="36" height="36">icons/foot_computer.svg</element>
-      <element name="footer_equipo_text" type="text"  class="foot" style="margin: 0,0,0,16; flex-shrink: 0;">#[FOOTER_EQUIPO]</element>
-      <element name="footer_so_icon"     type="image" style="margin: 0,0,0,28; flex-shrink: 0;"  width="36" height="36">icons/foot_gear.svg</element>
-      <element name="footer_so_text"     type="text"  class="foot" style="margin: 0,0,0,16; flex-shrink: 0;">#[FOOTER_SO]</element>
-      <element name="footer_divider_2"   type="form"  class="hr-line" style="margin: 0,0,0,28; flex-shrink: 0;" width="1" height="24"></element>
-      <!-- Invisible spacer pushes Uptime flush right; padding-left:210 on form.footer keeps Equipo clear of the sidebar. -->
+      <!-- Equipo + SO flush left under the sidebar brand (margin-left matches brand_icon ~26). -->
+      <element name="footer_equipo_chip" type="form" class="footer-chip" style="margin: 0,0,0,26; flex-shrink: 0;" width="200" height="32">
+        <element name="footer_equipo_icon" type="image" style="margin: 0,0,0,8; flex-shrink: 0;" width="22" height="22">icons/foot_computer.svg</element>
+        <element name="footer_equipo_text" type="text"  class="foot" style="margin: 0,10,0,6; flex-shrink: 0;">#[FOOTER_EQUIPO]</element>
+      </element>
+      <element name="footer_so_chip" type="form" class="footer-chip" style="margin: 0,0,0,10; flex-shrink: 0;" width="260" height="32">
+        <element name="footer_so_icon"     type="image" style="margin: 0,0,0,8; flex-shrink: 0;" width="22" height="22">icons/foot_gear.svg</element>
+        <element name="footer_so_text"     type="text"  class="foot" style="margin: 0,10,0,6; flex-shrink: 0;">#[FOOTER_SO]</element>
+      </element>
+      <!-- Invisible spacer pushes Uptime chip flush right. -->
       <element name="footer_spacer"      type="form"  style="flex-grow: 1; background-color: 0,0,0,0; border-width: 0;" width="0" height="0"></element>
-      <element name="footer_uptime_icon" type="image" style="margin: 0,0,0,0; flex-shrink: 0;"  width="36" height="36">icons/foot_clock.svg</element>
-      <element name="footer_uptime_text" type="text"  class="foot" style="margin: 0,24,0,16; flex-shrink: 0;">#[FOOTER_UPTIME]</element>
+      <element name="footer_uptime_chip" type="form" class="footer-chip" style="margin: 0,24,0,0; flex-shrink: 0;" width="320" height="32">
+        <element name="footer_uptime_icon" type="image" style="margin: 0,0,0,8; flex-shrink: 0;" width="22" height="22">icons/foot_clock.svg</element>
+        <element name="footer_uptime_text" type="text"  class="foot" style="margin: 0,10,0,6; flex-shrink: 0;">#[FOOTER_UPTIME]</element>
+      </element>
     </element>
 
    
@@ -303,7 +320,7 @@
     </element>
 
     <!-- ==========================================================================================
-         SIDEBAR hit targets + brand (nav rows live nested under sidebar_bg above)
+         SIDEBAR hit targets (nav rows + brand live nested under sidebar_bg above)
          ========================================================================================== -->
 
     <!-- Hit targets. They carry an explicit width/height and no sub-elements, so
@@ -322,13 +339,6 @@
          946,766_985,805). Root ypos = bottom edge (hit test uses y - height). -->
     <element name="disk_prev_btn" type="button" class="disk-nav-hit" xpos="662" ypos="806" width="40" height="40" roundrect="20"></element>
     <element name="disk_next_btn" type="button" class="disk-nav-hit" xpos="946" ypos="806" width="40" height="40" roundrect="20"></element>
-
-    <element name="brand_icon"    type="image" xpos="26" ypos="831" width="52" height="52">icons/brand_system.svg</element>
-    <element name="brand_text"    type="text"  class="brand"     xpos="88" ypos="808" sizefont="15">#[TRANSLATE_119]</element>
-    <!-- "style=" is Step 6's inline override (see dashboard.css SCOPE comment): wins over ".brand-dim" without a
-         one-off class, exactly like HTML. Demonstrated here by nudging the version tag to the same accent blue
-         used elsewhere in the sidebar, instead of the class's default muted grey. -->
-    <element name="brand_version" type="text"  class="brand-dim" style="color: 88,166,255;" xpos="88" ypos="830" sizefont="13">v#[APP_VERSION]</element>
 
 
     <!-- CARD bodies are nested under each card_* element above. -->
