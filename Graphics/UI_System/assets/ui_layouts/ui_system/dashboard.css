@@ -25,7 +25,8 @@
        painted   : border fill/stroke + radius: Draw_Form (y menús que delegan). box-shadow: form;
                    image/animation (DrawElementBoxShadow); progressradial = halo anular.
                    padding = solo inset de layout para hijos (no marco pintado).
-                   text-align: Draw_Text. font-family: un vector por skin (no hay switch por elemento).
+                   text-align: Draw_Text. font-family stack (Phase 5): cjk, ui — fallback por glifo.
+                   languagefonts (Phase 3): idioma → face en #[TRANSLATE_N] sin font-family explícito.
        units     : % / em / rem / vw / vh / calc en xpos/ypos/width/height/padding/margin/gap/
                    row-gap/column-gap/flex-basis cuando hay stylesheet (Fase 8 + Track L.2).
                    Resolución en CARGA (no resize).
@@ -344,7 +345,9 @@ button.nav-hit:selected:hover {
 .nav-label   { color: var(--text-muted); font-size: 16; }
 form.nav-row:selected .nav-label { color: var(--accent-blue); }
 
-.brand       { color: var(--text-normal);  }
+/* Phase 5 demo: stack skips unknown "nosuch_face", paints with catalog "alt" (Inter-Black). */
+/* languagefonts appends cjk after default so Latin digits/symbols keep Nunito in Chinese. */
+.brand       { color: var(--text-normal); font-family: nosuch_face, alt; }
 .brand-dim   { color: var(--text-muted);   }
 
 
@@ -353,7 +356,8 @@ form.nav-row:selected .nav-label { color: var(--accent-blue); }
 .card-title-lg  { font-size: 19; }
 .card-title-sm  { font-size: 16; }
 
-.value-temp    { color: var(--accent-red);    }
+/* Keep ASCII metrics (Nunito) for the big temp readout — Noto SC at 50px sits lower and clips the chip icon. */
+.value-temp    { color: var(--accent-red); font-family: default; }
 .value-ram     { color: var(--accent-purple); }
 .value-disk    { color: var(--accent-amber);  }
 .value-date    { color: var(--text-strong); text-align: center; }

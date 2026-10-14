@@ -56,6 +56,8 @@
 #include "XLog.h"
 #include "XConsole.h"
 #include "XFileXML.h"
+#include "XFile.h"
+#include "XBuffer.h"
 #include "XTranslation.h"
 #include "XTranslation_GEN.h"
 #include "XLanguage_ISO_639_3.h"
@@ -296,7 +298,14 @@ bool UI_SYSTEM::AppProc_FirstUpdate()
     {
       button[UI_SYSTEM_BUTTON_ESC]            = inpdevice->GetButton(INPBUTTON_ID_ESCAPE);
       button[UI_SYSTEM_BUTTON_F5]             = inpdevice->GetButton(INPBUTTON_ID_F5);
+      // Language cycle: F12 outside the debugger. Under a native debugger (VS), Windows treats
+      // F12 as UserDebuggerHotKey and injects DbgBreakPoint into the debuggee (ntdll) — that is
+      // the "Breakpoint Instruction Executed" dialog, not a FreeType/app bug. Use F6 while DEBUG.
+      #ifdef DEBUG_ACTIVE
+      button[UI_SYSTEM_BUTTON_F12]            = inpdevice->GetButton(INPBUTTON_ID_F6);
+      #else
       button[UI_SYSTEM_BUTTON_F12]            = inpdevice->GetButton(INPBUTTON_ID_F12);
+      #endif
       button[UI_SYSTEM_BUTTON_ZOOM_IN]        = inpdevice->GetButton(INPBUTTON_ID_ADD);
       button[UI_SYSTEM_BUTTON_ZOOM_OUT]       = inpdevice->GetButton(INPBUTTON_ID_SUBTRACT);
       button[UI_SYSTEM_BUTTON_ZOOM_OUT_MINUS] = inpdevice->GetButton(INPBUTTON_ID_MINUS);
@@ -547,7 +556,15 @@ bool UI_SYSTEM::UpdateInput()
                                                                 langname.Format(NL("%d"), GEN_XTRANSLATION.GetActual());
                                                               }
 
+                                                            #ifdef DEBUG_ACTIVE
+                                                            XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, NL("[UI_System] Language -> %s (key F6; F12 is debugger break under VS)"), langname.Get());
+                                                            #else
                                                             XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, NL("[UI_System] Language -> %s"), langname.Get());
+                                                            #endif
+                                                            // Apply all layout strings + full-screen dirty before the next paint
+                                                            // so chrome title and dashboard texts stay in the same language.
+                                                            GEN_USERINTERFACE.Layouts_ApplyTranslations();
+                                                            UserInterface_UpdateWindowTitle();
                                                           }
                                                           break;
 
@@ -590,7 +607,8 @@ bool UI_SYSTEM::Ini_Graphics(GRPSCREEN* screen)
   screen->SetWidth(1440);
   screen->SetHeight(900);
 
-  screen->GetTitle()->Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_SYSTEM_MONITOR));  
+  // Seed title before chrome/native caption load; refreshed again after UI init.
+  screen->GetTitle()->Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_SYSTEM_MONITOR));
   screen->SetDesktopScreenSelected(GRPSCREENTYPE_DESKTOP_MAIN);
 
   //--------------------------------------------------------------------------------------
@@ -609,6 +627,9 @@ bool UI_SYSTEM::Ini_Graphics(GRPSCREEN* screen)
   //--------------------------------------------------------------------------------------
 
   dashboardloaded = Ini_UserInterface(true);
+
+  // Title after UI/chrome load so custom caption gets the translated string + CJK face.
+  UserInterface_UpdateWindowTitle();
 
   //--------------------------------------------------------------------------------------
 
@@ -664,6 +685,9 @@ bool UI_SYSTEM::Ini_UserInterface(bool on)
       return false;
     }
  
+  // Layout-stable zeros BEFORE Load: empty masks collapse flex (temp "°C"/chip, blank date card).
+  HardwareInfo_SeedZeros();
+
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS, xpath);
   xpath.Slash_Add();
   xpath.Add(NL("ui_system/dashboard.xml"));
@@ -729,9 +753,110 @@ bool UI_SYSTEM::Ini_UserInterface(bool on)
 
   GEN_USERINTERFACE.Layout_PutBackground();
 
+  // Push seeded zeros into progress levels / connection badge before the first paint.
+  HardwareInfo_Apply();
+
   GEN_USERINTERFACE.Elements_SetToRedraw();
 
   UserInterface_SelectSection(currentsectionID);
+
+  //--------------------------------------------------------------------------------------
+  // Phase 5 validation: font-family stack + per-glyph fallback (nosuch_face, alt → alt widths).
+  // Writes assets/phase5_glyph_fallback_probe.txt.
+  {
+    const XCHAR* probe     = NL("Sistema Monitor");
+    bool         ok        = false;
+    double       w_alt     = 0.0;
+    double       w_stack   = 0.0;
+    XSTRING      detail;
+    XDWORD       stack_n   = 0;
+    XSTRING      stack0;
+    XSTRING      stack1;
+    bool         stack_ok  = false;
+    bool         has_a     = false;
+    bool         chi_ok    = false;
+    bool         cjk_ok    = false;
+    XSTRING      face_chi;
+
+    UI_LAYOUT* dash = GEN_USERINTERFACE.Layouts_Get(NL("dashboard"));
+    if(dash && dash->GetSkin())
+      {
+        chi_ok = dash->GetSkin()->FontForLanguage(XLANGUAGE_ISO_639_3_CODE_CHI, face_chi)
+                 && !face_chi.Compare(NL("cjk"), true);
+
+        UI_ELEMENT* brand = dash->Elements_Get(NL("brand_text"), UI_ELEMENT_TYPE_TEXT);
+        if(brand)
+          {
+            UI_ELEMENT_TEXT* brand_text = (UI_ELEMENT_TEXT*)brand;
+            stack_n = brand_text->GetFontFaceStackCount();
+            if(stack_n >= 2)
+              {
+                if(brand_text->GetFontFaceStackEntry(0)) stack0 = brand_text->GetFontFaceStackEntry(0)->Get();
+                if(brand_text->GetFontFaceStackEntry(1)) stack1 = brand_text->GetFontFaceStackEntry(1)->Get();
+                stack_ok = !stack0.Compare(NL("nosuch_face"), true) && !stack1.Compare(NL("alt"), true);
+              }
+          }
+      }
+
+    canvas->Vectorfont_GetConfig()->SetSize(15.0);
+
+    if(canvas->VectorFont_Select(NL("alt")))
+      {
+        w_alt = canvas->VectorFont_GetWidth((XCHAR*)probe);
+        has_a = canvas->VectorFont_HasChar((XDWORD)_C('A'));
+
+        XCHAR* faces[2] = { (XCHAR*)NL("nosuch_face"), (XCHAR*)NL("alt") };
+        w_stack = canvas->VectorFont_GetWidthStack(faces, 2, (XCHAR*)probe);
+
+        // Noto Sans SC: U+7CFB (系) must exist and measure with real advance (not ASCII→0).
+        XCHAR   chi_one[2] = { (XCHAR)0x7CFB, 0 };
+        double  w_cjk      = 0.0;
+
+        cjk_ok = canvas->VectorFont_Select(NL("cjk"))
+                 && canvas->VectorFont_HasChar((XDWORD)0x7CFB);
+        if(cjk_ok)
+          {
+            w_cjk  = canvas->VectorFont_GetWidth(chi_one);
+            cjk_ok = (w_cjk > 1.0);
+          }
+
+        ok = stack_ok && chi_ok && has_a && cjk_ok
+             && (w_alt > 0.0) && (fabs(w_alt - w_stack) < 0.5);
+      }
+
+    canvas->VectorFont_Select(GRP2DCANVAS_VECTORFONT_DEFAULT);
+
+    detail.Format(NL("[UI_System][Phase5] glyph stack probe: stack='%s','%s' n=%u w_alt=%.2f w_stack=%.2f hasA=%d cjk=%d %s"),
+                  stack0.Get(), stack1.Get(), (unsigned)stack_n, w_alt, w_stack, has_a ? 1 : 0, cjk_ok ? 1 : 0,
+                  ok ? NL("PASS") : NL("FAIL"));
+
+    XTRACE_PRINTCOLOR(ok ? XTRACE_COLOR_GREEN : XTRACE_COLOR_RED, NL("%s"), detail.Get());
+
+    {
+      XPATH outpath;
+      GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_ROOT, outpath);
+      outpath.Slash_Add();
+      outpath.Add(NL("phase5_glyph_fallback_probe.txt"));
+
+      XFILE* file = GEN_XFACTORY.Create_File();
+      if(file)
+        {
+          if(file->Exist(outpath.Get())) file->Erase(outpath.Get());
+
+          if(file->Create(outpath.Get()))
+            {
+              XBUFFER lineascii;
+              detail.ConvertToASCII(lineascii);
+              file->Write(lineascii);
+              file->Write((XBYTE*)"\n", 1);
+              file->Close();
+            }
+          GEN_XFACTORY.Delete_File(file);
+        }
+    }
+
+    if(!ok) canvas->VectorFont_Select(GRP2DCANVAS_VECTORFONT_DEFAULT);
+  }
 
   return true;
 }
@@ -1329,6 +1454,89 @@ bool UI_SYSTEM::HardwareInfo_RequestForced()
   hardwareinfo_forcenext = true;
 
   hardwareinfomutex->UnLock();
+
+  return true;
+}
+
+
+/**-------------------------------------------------------------------------------------------------------------------
+*
+* @fn         bool UI_SYSTEM::HardwareInfo_SeedZeros()
+* @brief      Fills every dashboard mask with layout-stable "zero" placeholders so the first frame
+*             (and F5 reload) measures flex boxes correctly while HardwareInfo_Compute is still
+*             pending. Formats match HardwareInfo_Update* output shapes ("0", "0.0 GB", "00:00:00", …).
+* @note       MAIN THREAD. Safe before GEN_USERINTERFACE.Load (ChangeLiteralText reads these strings).
+* @ingroup    EXAMPLES
+*
+* @return     bool : true if the operation is successful; otherwise false.
+*
+*---------------------------------------------------------------------------------------------------------------------*/
+bool UI_SYSTEM::HardwareInfo_SeedZeros()
+{
+  cpu_temperaturelevel = 0.0f;
+  cpu_usagelevel       = 0.0f;
+  ram_usagelevel       = 0.0f;
+  disk_usagelevel      = 0.0f;
+  isconnected          = false;
+
+  cpu_temperature_str.Set(NL("0"));
+
+  ram_used_str.Set(NL("0.0 GB"));
+  ram_total_str.Set(NL("/ 0.0 GB"));
+  ram_used_total_str.Set(NL("0.0 GB / 0.0 GB"));
+
+  disk_used_str.Set(NL("0.0 GB"));
+  disk_total_str.Set(NL("/ 0.0 GB"));
+  disk_caption_str.Set(NL("--"));
+  disk_index_str.Set(NL("0 / 0"));
+
+  {
+    XSTRING datestr;
+    XSTRING timestr;
+
+    if(HardwareInfo_UpdateDateTime(datestr, timestr))
+      {
+        system_date_str.Set(datestr.Get());
+        system_time_str.Set(timestr.Get());
+      }
+     else
+      {
+        system_date_str.Set(NL("00/00/0000"));
+        system_time_str.Set(NL("00:00:00"));
+      }
+  }
+
+  if(GEN_XTRANSLATION.IsInitialized())
+    {
+      connection_status_str.Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_OFFLINE));
+      connection_quality_str.Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_WITHOUT_CONNECTION_N));
+      public_ip_str.Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_PUBLIC_IP));
+      footer_equipo_str.Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_EQUIPMENT));
+      footer_uptime_str.Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_ACTIVITY_TIME_0_SECONDS));
+    }
+   else
+    {
+      connection_status_str.Set(NL("--"));
+      connection_quality_str.Set(NL("--"));
+      public_ip_str.Set(NL("--"));
+      footer_equipo_str.Set(NL("--"));
+      footer_uptime_str.Set(NL("0"));
+    }
+
+  connection_mark_str.Set(NL("KO"));
+  local_ip_str.Set(NL("IP: --"));
+  footer_so_str.Set(NL("SO: --"));
+
+  if(hardwareinfomutex)
+    {
+      hardwareinfomutex->Lock();
+      hardwareinfo_haspending = true;
+      hardwareinfomutex->UnLock();
+    }
+   else
+    {
+      hardwareinfo_haspending = true;
+    }
 
   return true;
 }
@@ -2191,6 +2399,83 @@ bool UI_SYSTEM::UserInterface_CFGChromes(GRPSCREEN* screen)
   cfgchromes.SetResizeActive(true);
 
   screen->SetCFGChromes(cfgchromes);
+
+  return true;
+}
+
+
+/**-------------------------------------------------------------------------------------------------------------------
+*
+* @fn         bool UI_SYSTEM::UserInterface_UpdateWindowTitle()
+* @brief      Refresh OS/custom chrome title from the active language (SYSTEM_MONITOR).
+* @ingroup    EXAMPLES
+*
+*---------------------------------------------------------------------------------------------------------------------*/
+bool UI_SYSTEM::UserInterface_UpdateWindowTitle()
+{
+  GRPSCREEN* screen = GetMainScreen();
+  if(!screen) return false;
+
+  XSTRING newtitle;
+  newtitle = TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_SYSTEM_MONITOR);
+  screen->GetTitle()->Set(newtitle.Get());
+
+  #ifdef GRP_SCREEN_CUSTOMCHROMES_ACTIVE
+  UI_LAYOUT* chromelayout = screen->GetCFGChromesLayout();
+  if(chromelayout)
+    {
+      UI_ELEMENT* titleelement = chromelayout->Elements_Get(UI_ELEMENT_CHROMEROLE_TITLE);
+      if(titleelement && (titleelement->GetType() == UI_ELEMENT_TYPE_TEXT))
+        {
+          UI_ELEMENT_TEXT* titletext = (UI_ELEMENT_TEXT*)titleelement;
+
+          if(chromelayout->GetSkin() && chromelayout->GetSkin()->GetDrawMode() == UI_SKIN_DRAWMODE_CANVAS)
+            {
+              UI_SKINCANVAS* ui_skincanvas = (UI_SKINCANVAS*)chromelayout->GetSkin();
+              UI_ELEMENT*    father        = titleelement->GetFather();
+              double         width         = 0.0f;
+              double         height        = 0.0f;
+
+              // Erase current glyph ink (e.g. 系统监控器) WHILE the old TextBackdrop/geometry still
+              // match what is on screen — must run before Set() / remasure. Restores caption FormBackdrop
+              // so CJK overhang outside the text box is cleared too (translucent black,25 does not).
+              ui_skincanvas->PrepareTextContentChange(titleelement);
+
+              titletext->GetText()->Set(newtitle.Get());
+
+              if(father)
+                {
+                  width  = father->GetBoundaryLine()->width;
+                  height = father->GetBoundaryLine()->height;
+                }
+               else if(ui_skincanvas->GetCanvas())
+                {
+                  width  = ui_skincanvas->GetCanvas()->GetWidth();
+                  height = ui_skincanvas->GetCanvas()->GetHeight();
+                }
+
+              titleelement->GetBoundaryLine()->height = 0;
+              titleelement->GetBoundaryLine()->width  = 0;
+
+              ui_skincanvas->CalculeBoundaryLine_AllElements(titleelement, false);
+              ui_skincanvas->CalculePosition(titleelement, width, height);
+
+              if(father) chromelayout->Elements_SetToRedraw(father, true);
+               else      chromelayout->Elements_SetToRedraw(titleelement, true);
+            }
+           else
+            {
+              titletext->GetText()->Set(newtitle.Get());
+              titleelement->SetMustReDraw(true);
+              chromelayout->Elements_SetToRedraw();
+            }
+        }
+       else
+        {
+          chromelayout->Elements_SetToRedraw();
+        }
+    }
+  #endif
 
   return true;
 }

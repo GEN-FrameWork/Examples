@@ -181,6 +181,7 @@ class UI_SYSTEM : public APPFLOWGRAPHICS, public XFSMACHINE
     bool                            HardwareInfo_Compute                    (bool forced);
     bool                            HardwareInfo_Apply                      ();
     bool                            HardwareInfo_RequestForced              ();
+    bool                            HardwareInfo_SeedZeros                  ();
 
     bool                            HardwareInfo_UpdateCPU                  (XSTRING& outtemperature, float& outtemperaturelevel, float& outusagelevel);
     bool                            HardwareInfo_UpdateMemory               (XSTRING& outusedtotal, XSTRING& outused, XSTRING& outtotal, float& outusagelevel);
@@ -197,7 +198,8 @@ class UI_SYSTEM : public APPFLOWGRAPHICS, public XFSMACHINE
 
     bool                            UserInterface_ElementSelected           (UI_ELEMENT* element);
     bool                            UserInterface_ChangeLiteralText         (UI_ELEMENT_TEXT* element_text, XSTRING* maskvalue, XSTRING* maskresult);
-    bool                            UserInterface_CFGChromes                (GRPSCREEN* screen);    
+    bool                            UserInterface_CFGChromes                (GRPSCREEN* screen);
+    bool                            UserInterface_UpdateWindowTitle         ();
     
     bool                            UserInterface_SelectSection             (UI_SYSTEM_SECTIONID sectionID);
     bool                            UserInterface_AdjustUIScale             (double delta);

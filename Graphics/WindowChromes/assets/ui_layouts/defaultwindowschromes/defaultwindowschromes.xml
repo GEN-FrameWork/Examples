@@ -2,27 +2,45 @@
 <layouts>
   <skin name="" drawmode="canvas" rasterfont="verdana18" vectorfont="Nunito-SemiBold.ttf" > </skin>
 
+  <!-- GEN XML: start tags without attributes need a space before '>'. -->
+  <fonts >
+    <font name="default" file="Nunito-SemiBold.ttf"></font>
+    <font name="cjk" file="NotoSansSC-Regular.otf"></font>
+  </fonts>
+
+  <languagefonts >
+    <map language="chi" font="cjk"></map>
+  </languagefonts>
+
   <color name="colortext">yellow</color>
   <color name="colormenuline">red</color>
   <color name="colormenu">black,50</color>
 
+  <!--
+    Default GEN custom window chrome (defaultwindowschromes.zip).
 
+    Reusable by any app size: do NOT hardcode caption width. role="caption" resolves to the live canvas
+    width in UI_SKINCANVAS::CalculateBoundaryLine_Form so xpos="right" min/max/close stay on the real
+    right edge (WindowChromes 1024, UI_System 1440, etc.).
+
+    Button margins are left,right,up,down — right margins keep 32px icons + ~4px gaps from the right edge:
+      close    right=6
+      maximize right=42  (6+32+4)
+      minimize right=78  (6+32+4+32+4)
+  -->
   <layout name="chrome">
 
-    <element name="caption" type="form" role="caption" xpos="0" ypos="46" width="1024" height="46"  color="black,25"> 
-     
-     
+    <element name="caption" type="form" role="caption" xpos="0" ypos="46" height="46" color="black,25">
+
       <element type="button" name="btn_chrome_icon" role="icon" xpos="left" ypos="center" margin="12,0,0,0" >
         <element type="animation">
           <image width="40" height="40">icon_app.svg</image>
         </element>
       </element>
 
+      <element type="text" name="txt_chrome_title" role="title" xpos="left" ypos="center" sizefont="20" margin="65,0,0,0" color="#FFFFFFFF">Title</element>
 
-      <element type="text"  name="txt_chrome_title" role="title" xpos="left"  ypos="center" sizefont="20"  margin="65,0,0,0" color="#FFFFFFFF">Title</element>
-            
-      
-      <element name="btn_chrome_minimize" role="minimize" type="multioption" xpos="right" margin="0,78,0,0" ypos="center">
+      <element name="btn_chrome_minimize" role="minimize" type="multioption" xpos="right" ypos="center" margin="0,78,0,0">
 
         <element type="button" name="btn_chrome_minimize" role="minimize" selectablestatus="active">
           <element type="animation" >
@@ -50,8 +68,7 @@
 
       </element>
 
-
-      <element name="btn_chrome_maximize" role="maximize" type="multioption" xpos="right"  ypos="center" margin="0,42,0,0">
+      <element name="btn_chrome_maximize" role="maximize" type="multioption" xpos="right" ypos="center" margin="0,42,0,0">
 
         <element type="button" name="btn_chrome_maximize" role="maximize" selectablestatus="active">
           <element type="animation">
@@ -79,8 +96,7 @@
 
       </element>
 
-
-      <element name="btn_chrome_close" role="close" type="multioption" xpos="right" ypos="center" xpos="right" margin="0,6,0,0">
+      <element name="btn_chrome_close" role="close" type="multioption" xpos="right" ypos="center" margin="0,6,0,0">
 
         <element type="button" name="btn_chrome_close" role="close" selectablestatus="active">
           <element type="animation">
@@ -94,9 +110,9 @@
           </element>
         </element>
 
-        <element type="button" name="btn_chrome_close" role="close" selectablestatus="selected" >
+        <element type="button" name="btn_chrome_close" role="close" selectablestatus="selected">
           <element type="animation">
-            <image width="24" height="24">icon_close_activated.svg</image>
+            <image width="32" height="32">icon_close_activated.svg</image>
           </element>
         </element>
 
@@ -107,11 +123,9 @@
         </element>
 
       </element>
-      
-    </element>    
+
+    </element>
 
   </layout>
 
-
 </layouts>
-
