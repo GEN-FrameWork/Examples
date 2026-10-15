@@ -1003,6 +1003,13 @@ bool UI_OPTIONS::DrawFrame()
   width  = screen->GetWidth();
   height = screen->GetHeight();
 
+  // Minimized / WM_SIZE recreate leaves a 1x1 (or empty) buffer — skip the frame so ReleaseDrawFramerate
+  // and UI paint do not run against a half-rebuilt AGG canvas (raster glyph m_font was NULL → AV).
+  if((width < 32) || (height < 32))
+    {
+      return true;
+    }
+
   canvas->ReleaseDrawFramerate();  
  
   canvas->RebuildAllAreas();
@@ -1026,7 +1033,7 @@ bool UI_OPTIONS::DrawFrame()
 
   //--------------------------------------------------------------------------------------
 
-  canvas->DrawFramerate(screen, 4, 790);
+  canvas->DrawFramerate(screen, 4, (double)(screen->GetHeight() - 10));
 
   //--------------------------------------------------------------------------------------
 

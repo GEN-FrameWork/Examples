@@ -200,6 +200,7 @@ class UI_SYSTEM : public APPFLOWGRAPHICS, public XFSMACHINE
     bool                            UserInterface_ChangeLiteralText         (UI_ELEMENT_TEXT* element_text, XSTRING* maskvalue, XSTRING* maskresult);
     bool                            UserInterface_CFGChromes                (GRPSCREEN* screen);
     bool                            UserInterface_UpdateWindowTitle         ();
+    bool                            UserInterface_CycleLanguage             ();
     
     bool                            UserInterface_SelectSection             (UI_SYSTEM_SECTIONID sectionID);
     bool                            UserInterface_AdjustUIScale             (double delta);

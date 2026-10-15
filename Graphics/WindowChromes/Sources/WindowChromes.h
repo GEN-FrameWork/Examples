@@ -102,10 +102,10 @@ enum WINDOWCHROMES_BUTTONS
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 1
 
-#define APPLICATION_NAMEAPP                       _L("WindowChromes")
-#define APPLICATION_NAMEFILE                      _L("windowchromes")
+#define APPLICATION_NAMEAPP                       NL("WindowChromes")
+#define APPLICATION_NAMEFILE                      NL("windowchromes")
 
-#define APPLICATION_OWNER                         _L("EndoraSoft")
+#define APPLICATION_OWNER                         NL("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2018
 

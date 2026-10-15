@@ -546,26 +546,7 @@ bool UI_SYSTEM::UpdateInput()
                                                           HardwareInfo_RequestForced();
                                                           break;
 
-                  case UI_SYSTEM_BUTTON_F12             : if(GEN_XTRANSLATION.IsInitialized() && GEN_XTRANSLATION.SetActual_Next())
-                                                          {
-                                                            XLANGUAGE_ISO_639_3 iso;
-                                                            XSTRING             langname;
-
-                                                            if(!iso.EnglishName_GetByCode(GEN_XTRANSLATION.GetActual(), langname) || langname.IsEmpty())
-                                                              {
-                                                                langname.Format(NL("%d"), GEN_XTRANSLATION.GetActual());
-                                                              }
-
-                                                            #ifdef DEBUG_ACTIVE
-                                                            XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, NL("[UI_System] Language -> %s (key F6; F12 is debugger break under VS)"), langname.Get());
-                                                            #else
-                                                            XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, NL("[UI_System] Language -> %s"), langname.Get());
-                                                            #endif
-                                                            // Apply all layout strings + full-screen dirty before the next paint
-                                                            // so chrome title and dashboard texts stay in the same language.
-                                                            GEN_USERINTERFACE.Layouts_ApplyTranslations();
-                                                            UserInterface_UpdateWindowTitle();
-                                                          }
+                  case UI_SYSTEM_BUTTON_F12             : UserInterface_CycleLanguage();
                                                           break;
 
                   case UI_SYSTEM_BUTTON_ZOOM_IN         :
@@ -2127,6 +2108,12 @@ bool UI_SYSTEM::UserInterface_ElementSelected(UI_ELEMENT* element)
       case UI_ELEMENT_CHROMEROLE_MINIMIZE : if(GetMainScreen()) GetMainScreen()->Minimize(true);
                                             break;
 
+      case UI_ELEMENT_CHROMEROLE_LANGUAGE :
+                                            #ifdef XTRANSLATION_ACTIVE
+                                            UserInterface_CycleLanguage();
+                                            #endif
+                                            break;
+
       case UI_ELEMENT_CHROMEROLE_MAXIMIZE : { // Toggle grow _ restore. Enable autofit so maximize uses the screen.
                                               UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(NL("dashboard"));
                                               if(dashboard && dashboard->IsUIScaleActive())
@@ -2401,6 +2388,55 @@ bool UI_SYSTEM::UserInterface_CFGChromes(GRPSCREEN* screen)
   screen->SetCFGChromes(cfgchromes);
 
   return true;
+}
+
+
+/**-------------------------------------------------------------------------------------------------------------------
+*
+* @fn         bool UI_SYSTEM::UserInterface_CycleLanguage()
+* @brief      Advance to the next loaded language (F6 / chrome language button) and refresh the whole UI.
+* @ingroup    EXAMPLES
+*
+*---------------------------------------------------------------------------------------------------------------------*/
+bool UI_SYSTEM::UserInterface_CycleLanguage()
+{
+  #ifndef XTRANSLATION_ACTIVE
+  return false;
+  #else
+  if(!GEN_XTRANSLATION.IsInitialized()) return false;
+  if(!GEN_XTRANSLATION.SetActual_Next()) return false;
+
+  XLANGUAGE_ISO_639_3 iso;
+  XSTRING             langname;
+
+  if(!iso.EnglishName_GetByCode(GEN_XTRANSLATION.GetActual(), langname) || langname.IsEmpty())
+    {
+      langname.Format(NL("%d"), GEN_XTRANSLATION.GetActual());
+    }
+
+  #ifdef DEBUG_ACTIVE
+  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, NL("[UI_System] Language -> %s (F6 / chrome language; F12 is debugger break under VS)"), langname.Get());
+  #else
+  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, NL("[UI_System] Language -> %s"), langname.Get());
+  #endif
+
+  // Apply all layout strings + full-screen dirty before the next paint so chrome title and
+  // dashboard texts stay in the same language.
+  GEN_USERINTERFACE.Layouts_ApplyTranslations();
+  UserInterface_UpdateWindowTitle();
+
+  #ifdef APPFLOW_CFG_GENERAL_ACTIVE
+  if(!APPFLOW_CFG.Language_PersistActual())
+    {
+      XSTRING* code = APPFLOW_CFG.GetDefaultLanguage();
+      XTRACE_PRINTCOLOR(XTRACE_COLOR_RED, NL("[UI_System] Failed to persist language '%s' (CFG defaultlanguage=%s)"),
+                        langname.Get(),
+                        (code && !code->IsEmpty()) ? code->Get() : NL("(empty)"));
+    }
+  #endif
+
+  return true;
+  #endif
 }
 
 

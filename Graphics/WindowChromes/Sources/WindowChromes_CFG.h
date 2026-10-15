@@ -34,7 +34,7 @@
 
 /*---- DEFINES & ENUMS  ----------------------------------------------------------------------------------------------*/
 
-#define WINDOWCHROMESCFG_SECTIONGENERAL    _L("general")
+#define WINDOWCHROMESCFG_SECTIONGENERAL    NL("general")
 
 /*---- CLASS ---------------------------------------------------------------------------------------------------------*/
 
@@ -43,7 +43,7 @@ class WINDOWCHROMES_CFG : public APPFLOWCFG
   public:
 
     static bool                     GetIsInstanced                          ();
-    static WINDOWCHROMES_CFG&          GetInstance                             (bool ini = true);
+    static WINDOWCHROMES_CFG&       GetInstance                             (bool ini = true);
     static bool                     DelInstance                             ();
 
     bool                            DoVariableMapping                       (); 
@@ -51,15 +51,15 @@ class WINDOWCHROMES_CFG : public APPFLOWCFG
 
   private:
 
-                                    WINDOWCHROMES_CFG                          (XCHAR* namefile);
-                                    WINDOWCHROMES_CFG                          (WINDOWCHROMES_CFG const&);       
-    virtual                        ~WINDOWCHROMES_CFG                          ();
+                                    WINDOWCHROMES_CFG                       (XCHAR* namefile);
+                                    WINDOWCHROMES_CFG                       (WINDOWCHROMES_CFG const&);       
+    virtual                        ~WINDOWCHROMES_CFG                       ();
 
     void                            operator =                              (WINDOWCHROMES_CFG const&);       
 
     void                            Clean                                   ();
 
-    static WINDOWCHROMES_CFG*          instance;
+    static WINDOWCHROMES_CFG*       instance;
 };
 
 
