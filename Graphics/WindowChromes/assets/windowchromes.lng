@@ -11,15 +11,19 @@
     "00100": [
       0,     
       "![IMAGE E.png]n un lugar de la Mancha, de cuyo nombre no quiero acordarme #[TEST_TEXT], ![COLOR black, 100]no ha mucho tiempo ![END COLOR] que vivía un hidalgo ![IMAGE gigolord_walk0]de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor.", 
-      "![IMAGE E.png]n un lugar de la Mancha, de cuyo nombre no quiero acordarme #[TEST_TEXT], ![COLOR black, 100]no ha mucho tiempo ![END COLOR] que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor.", 
-      "![IMAGE E.png]n un lugar de la Mancha, de cuyo nombre no quiero acordarme #[TEST_TEXT], ![COLOR black, 100]no ha mucho tiempo ![END COLOR] que vivía un hidalgo ![IMAGE gigolord_walk0]de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor.", 
+      "![IMAGE E.png]n a place in La Mancha, whose name I do not care to remember #[TEST_TEXT], ![COLOR black, 100]not long ago ![END COLOR] there lived a gentleman ![IMAGE gigolord_walk0]of those with a lance in the rack, an old shield, a lean nag and a greyhound for coursing.", 
+      "![IMAGE E.png]n un lieu de la Manche, dont je ne veux pas me rappeler le nom #[TEST_TEXT], ![COLOR black, 100]il n'y a pas longtemps ![END COLOR] vivait un hidalgo ![IMAGE gigolord_walk0]de ceux à lance au râtelier, vieille adarga, rossinant maigre et lévrier de course.", 
+      "![IMAGE E.png]n einem Ort in La Mancha, dessen Namen ich nicht nennen will #[TEST_TEXT], ![COLOR black, 100]vor nicht langer Zeit ![END COLOR] lebte ein Hidalgo ![IMAGE gigolord_walk0]von denen mit Lanze im Gestell, altem Schild, magerem Gaul und Windhund.", 
+      "![IMAGE E.png]n 曼查的某个地方，我不想记住它的名字 #[TEST_TEXT]，![COLOR black, 100]不久前 ![END COLOR] 住着一位绅士 ![IMAGE gigolord_walk0]，枪架上有长矛，旧盾牌，瘦马和猎犬。"
     ],
 
     "00101": [
       70,
       "Fecha y hora",
       "Date & Time",
-      "Date et heure"
+      "Date et heure",
+      "Datum und Uhrzeit",
+      "日期和时间"
     ]
   }										
 }											 		

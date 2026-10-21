@@ -1,23 +1,515 @@
 {
-  "languages" 			: [ "Spanish"    ,
-                        "English"    ,
-                        "French"     
+  "languages"       : [ "Spanish" ,
+                        "English" ,
+                        "French"  ,
+                        "German"  ,
+                        "Chinese"
                       ],
 
 
   "translations": {
     "00100": [
-      0,     
-      "![IMAGE E.png]n un lugar de la Mancha, de cuyo nombre no quiero acordarme #[TEST_TEXT], ![COLOR black, 100]no ha mucho tiempo ![END COLOR] que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor.", 
-      "![IMAGE E.png]n un lugar de la Mancha, de cuyo nombre no quiero acordarme #[TEST_TEXT], ![COLOR black, 100]no ha mucho tiempo ![END COLOR] que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor.", 
-      "![IMAGE E.png]n un lugar de la Mancha, de cuyo nombre no quiero acordarme #[TEST_TEXT], ![COLOR black, 100]no ha mucho tiempo ![END COLOR] que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor.", 
+      0,
+      "GEN XML Galeria",
+      "GEN XML Gallery",
+      "GEN XML Gallery",
+      "GEN XML Gallery",
+      "GEN XML Gallery"
     ],
 
     "00101": [
-      70,
-      "Fecha y hora",
-      "Date & Time",
-      "Date et heure"
+      0,
+      "GENERADOR DE GALERIAS XML",
+      "XML GALLERY GENERATOR",
+      "GENERATEUR DE GALLERYS XML",
+      "XML-GALLERY-GENERATOR",
+      "XML Gallery 生成器"
+    ],
+
+    "00102": [
+      0,
+      "GALERIAS EXISTENTES (5)",
+      "EXISTING GALLERIES (5)",
+      "GALLERYS EXISTANTES (5)",
+      "VORHANDENE GALLERYS (5)",
+      "已有 Gallery (5)"
+    ],
+
+    "00103": [
+      0,
+      "EDITOR DE GALERIA",
+      "GALLERY EDITOR",
+      "EDITEUR DE GALLERY",
+      "GALLERY-EDITOR",
+      "Gallery 编辑器"
+    ],
+
+    "00104": [
+      0,
+      "NOMBRE DEL GALERIA",
+      "GALLERY NAME",
+      "NOM DU GALLERY",
+      "GALLERY-NAME",
+      "Gallery 名称"
+    ],
+
+    "00105": [
+      0,
+      "TITULO",
+      "TITLE",
+      "TITRE",
+      "TITEL",
+      "标题"
+    ],
+
+    "00106": [
+      0,
+      "Responsable",
+      "Owner",
+      "Responsable",
+      "Verantwortlich",
+      "负责人"
+    ],
+
+    "00107": [
+      0,
+      "Registro habilitado",
+      "Record enabled",
+      "Enregistrement actif",
+      "Datensatz aktiv",
+      "记录已启用"
+    ],
+
+    "00108": [
+      0,
+      "CATEGORIA",
+      "CATEGORY",
+      "CATEGORIE",
+      "KATEGORIE",
+      "类别"
+    ],
+
+    "00109": [
+      0,
+      "DESCRIPCION",
+      "DESCRIPTION",
+      "DESCRIPTION",
+      "BESCHREIBUNG",
+      "描述"
+    ],
+
+    "00110": [
+      0,
+      "Nuevo",
+      "New",
+      "Nouveau",
+      "Neu",
+      "新建"
+    ],
+
+    "00111": [
+      0,
+      "Guardar",
+      "Save",
+      "Enregistrer",
+      "Speichern",
+      "保存"
+    ],
+
+    "00112": [
+      0,
+      "Ejecutar",
+      "Run",
+      "Executer",
+      "Ausfuhren",
+      "运行"
+    ],
+
+    "00113": [
+      0,
+      "Exportar XML",
+      "Export XML",
+      "Exporter XML",
+      "XML exportieren",
+      "导出 XML"
+    ],
+
+    "00114": [
+      0,
+      "Primaria",
+      "Primary",
+      "Primaire",
+      "Primar",
+      "主要"
+    ],
+
+    "00115": [
+      0,
+      "Secundaria",
+      "Secondary",
+      "Secondaire",
+      "Sekundar",
+      "次要"
+    ],
+
+    "00120": [
+      0,
+      "Galeria de productos destacados para el escaparate digital. Incluye metadatos, idioma y estructura XML lista para empaquetado.",
+      "Featured products gallery for the digital storefront. Includes metadata, language and XML structure ready for packaging.",
+      "Galerie de produits mis en avant pour la vitrine digitale. Inclut metadonnees, langue et structure XML prete a empaqueter.",
+      "Galerie hervorgehobener Produkte fur den digitalen Schaufenster. Enthalt Metadaten, Sprache und XML-Struktur.",
+      "数字橱窗精选产品 Gallery。包含元数据、语言与可打包的 XML 结构。"
+    ],
+
+    "00121": [
+      0,
+      "Barra de progreso",
+      "Progress bar",
+      "Barre de progression",
+      "Fortschrittsbalken",
+      "进度条"
+    ],
+
+    "00122": [
+      0,
+      "CALIDAD XML",
+      "XML QUALITY",
+      "QUALITE XML",
+      "XML-QUALITAT",
+      "XML 质量"
+    ],
+
+    "00123": [
+      0,
+      "MEMORIA / RECURSOS",
+      "MEMORY / RESOURCES",
+      "MEMOIRE / RESSOURCES",
+      "SPEICHER / RESSOURCEN",
+      "内存 / 资源"
+    ],
+
+    "00124": [
+      0,
+      "Ciclo continuo",
+      "Continuous cycle",
+      "Cycle continu",
+      "Dauerschleife",
+      "连续循环"
+    ],
+
+    "00125": [
+      0,
+      "ACTIVIDAD RECIENTE",
+      "RECENT ACTIVITY",
+      "ACTIVITE RECENTE",
+      "LETZTE AKTIVITAT",
+      "最近活动"
+    ],
+
+    "00126": [
+      0,
+      "Estado de botones",
+      "Button states",
+      "Etats des boutons",
+      "Schaltflachen-Status",
+      "按钮状态"
+    ],
+
+    "00127": [
+      0,
+      "Default",
+      "Default",
+      "Defaut",
+      "Standard",
+      "默认"
+    ],
+
+    "00128": [
+      0,
+      "Focus",
+      "Focus",
+      "Focus",
+      "Fokus",
+      "焦点"
+    ],
+
+    "00129": [
+      0,
+      "Pressed",
+      "Pressed",
+      "Presse",
+      "Gedruckt",
+      "按下"
+    ],
+
+    "00130": [
+      0,
+      "Disabled",
+      "Disabled",
+      "Desactive",
+      "Deaktiviert",
+      "禁用"
+    ],
+
+    "00131": [
+      0,
+      "cambia idioma en el chrome",
+      "change language in the chrome",
+      "changez la langue dans le chrome",
+      "Sprache in der Titelleiste andern",
+      "在标题栏切换语言"
+    ],
+
+    "00132": [
+      0,
+      "Guardar como...",
+      "Save as...",
+      "Enregistrer sous...",
+      "Speichern unter...",
+      "另存为..."
+    ],
+
+    "00133": [
+      0,
+      "Validar XML",
+      "Validate XML",
+      "Valider XML",
+      "XML validieren",
+      "验证 XML"
+    ],
+
+    "00134": [
+      0,
+      "Generar XML",
+      "Generate XML",
+      "Generer XML",
+      "XML erzeugen",
+      "生成 XML"
+    ],
+
+    "00135": [
+      0,
+      "Vista XML",
+      "XML view",
+      "Vue XML",
+      "XML-Ansicht",
+      "XML 视图"
+    ],
+
+    "00136": [
+      0,
+      "Cerrar",
+      "Close",
+      "Fermer",
+      "Schliessen",
+      "关闭"
+    ],
+
+    "00137": [
+      0,
+      "v1.2.0 · 24/05/2024 10:42",
+      "v1.2.0 · 24/05/2024 10:42",
+      "v1.2.0 · 24/05/2024 10:42",
+      "v1.2.0 · 24/05/2024 10:42",
+      "v1.2.0 · 24/05/2024 10:42"
+    ],
+
+    "00159": [
+      0,
+      "Usuario: Tecnico · Perfil: Editor",
+      "User: Technician · Profile: Editor",
+      "Utilisateur: Technicien · Profil: Editeur",
+      "Benutzer: Techniker · Profil: Editor",
+      "用户: 技术员 · 角色: 编辑"
+    ],
+
+    "00138": [
+      0,
+      "NAVEGACION",
+      "NAVIGATION",
+      "NAVIGATION",
+      "NAVIGATION",
+      "导航"
+    ],
+
+    "00139": [
+      0,
+      "5 elementos · Orden: Nombre",
+      "5 items · Sort: Name",
+      "5 elements · Tri: Nom",
+      "5 Elemente · Sortierung: Name",
+      "5 项 · 排序: 名称"
+    ],
+
+    "00140": [
+      0,
+      "IDIOMA",
+      "LANGUAGE",
+      "LANGUE",
+      "SPRACHE",
+      "语言"
+    ],
+
+    "00141": [
+      0,
+      "VISTA PREVIA · ESTRUCTURA XML",
+      "PREVIEW · XML STRUCTURE",
+      "APERCU · STRUCTURE XML",
+      "VORSCHAU · XML-STRUKTUR",
+      "预览 · XML 结构"
+    ],
+
+    "00142": [
+      0,
+      "<gallery id=\"productos\" lang=\"es\">\n  <meta title=\"Productos Destacados\"/>\n  <items count=\"12\">\n    <item id=\"001\"/>\n  </items>\n</gallery>",
+      "<gallery id=\"productos\" lang=\"es\">\n  <meta title=\"Productos Destacados\"/>\n  <items count=\"12\">\n    <item id=\"001\"/>\n  </items>\n</gallery>",
+      "<gallery id=\"productos\" lang=\"es\">\n  <meta title=\"Productos Destacados\"/>\n  <items count=\"12\">\n    <item id=\"001\"/>\n  </items>\n</gallery>",
+      "<gallery id=\"productos\" lang=\"es\">\n  <meta title=\"Productos Destacados\"/>\n  <items count=\"12\">\n    <item id=\"001\"/>\n  </items>\n</gallery>",
+      "<gallery id=\"productos\" lang=\"es\">\n  <meta title=\"Productos Destacados\"/>\n  <items count=\"12\">\n    <item id=\"001\"/>\n  </items>\n</gallery>"
+    ],
+
+    "00143": [
+      0,
+      "Arrastre elementos desde la paleta lateral para construir la estructura.",
+      "Drag elements from the side palette to build the structure.",
+      "Faites glisser des elements depuis la palette laterale pour construire la structure.",
+      "Ziehen Sie Elemente aus der Seitenpalette, um die Struktur aufzubauen.",
+      "从侧栏拖放元素以构建结构。"
+    ],
+
+    "00144": [
+      0,
+      "MONITOREO Y PROCESAMIENTO",
+      "MONITORING AND PROCESSING",
+      "SURVEILLANCE ET TRAITEMENT",
+      "UBERWACHUNG UND VERARBEITUNG",
+      "监控与处理"
+    ],
+
+    "00145": [
+      0,
+      "PROGRESO GENERAL",
+      "OVERALL PROGRESS",
+      "PROGRES GENERAL",
+      "GESAMTFORTSCHRITT",
+      "总体进度"
+    ],
+
+    "00146": [
+      0,
+      "Validacion  100%",
+      "Validation  100%",
+      "Validation  100%",
+      "Validierung  100%",
+      "验证  100%"
+    ],
+
+    "00147": [
+      0,
+      "Generacion XML  75%",
+      "XML generation  75%",
+      "Generation XML  75%",
+      "XML-Erzeugung  75%",
+      "生成 XML  75%"
+    ],
+
+    "00148": [
+      0,
+      "Empaquetado  45%",
+      "Packaging  45%",
+      "Emballage  45%",
+      "Paketierung  45%",
+      "打包  45%"
+    ],
+
+    "00149": [
+      0,
+      "Excelente",
+      "Excellent",
+      "Excellent",
+      "Ausgezeichnet",
+      "优秀"
+    ],
+
+    "00150": [
+      0,
+      "Err: 0 · Adv: 1",
+      "Err: 0 · Warn: 1",
+      "Err: 0 · Av: 1",
+      "Err: 0 · Warn: 1",
+      "错: 0 · 警: 1"
+    ],
+
+    "00151": [
+      0,
+      "48%   256 / 512 MB",
+      "48%   256 / 512 MB",
+      "48%   256 / 512 MB",
+      "48%   256 / 512 MB",
+      "48%   256 / 512 MB"
+    ],
+
+    "00152": [
+      0,
+      "Ultima accion: Estructura guardada correctamente.",
+      "Last action: Structure saved successfully.",
+      "Derniere action: Structure enregistree correctement.",
+      "Letzte Aktion: Struktur erfolgreich gespeichert.",
+      "上次操作: 结构已成功保存。"
+    ],
+
+    "00153": [
+      0,
+      "MANUAL TECNICO · GEN XML GALERIA · HOJA 3/8",
+      "TECHNICAL MANUAL · GEN XML GALLERY · PAGE 3/8",
+      "MANUEL TECHNIQUE · GEN XML GALLERY · PAGE 3/8",
+      "TECHNISCHES HANDBUCH · GEN XML GALLERY · SEITE 3/8",
+      "技术手册 · GEN XML GALLERY · 第 3/8 页"
+    ],
+
+    "00154": [
+      0,
+      "[gallery]  id=\"productos\"  lang=\"es\"",
+      "[gallery]  id=\"productos\"  lang=\"es\"",
+      "[gallery]  id=\"productos\"  lang=\"es\"",
+      "[gallery]  id=\"productos\"  lang=\"es\"",
+      "[gallery]  id=\"productos\"  lang=\"es\""
+    ],
+
+    "00155": [
+      0,
+      "  [meta]  title=\"Productos Destacados\"",
+      "  [meta]  title=\"Productos Destacados\"",
+      "  [meta]  title=\"Productos Destacados\"",
+      "  [meta]  title=\"Productos Destacados\"",
+      "  [meta]  title=\"Productos Destacados\""
+    ],
+
+    "00156": [
+      0,
+      "  [items]  count=\"12\"",
+      "  [items]  count=\"12\"",
+      "  [items]  count=\"12\"",
+      "  [items]  count=\"12\"",
+      "  [items]  count=\"12\""
+    ],
+
+    "00157": [
+      0,
+      "    [item]  id=\"001\" /",
+      "    [item]  id=\"001\" /",
+      "    [item]  id=\"001\" /",
+      "    [item]  id=\"001\" /",
+      "    [item]  id=\"001\" /"
+    ],
+
+    "00158": [
+      0,
+      "[/gallery]",
+      "[/gallery]",
+      "[/gallery]",
+      "[/gallery]",
+      "[/gallery]"
     ]
-  }										
-}											 		
+  }
+}

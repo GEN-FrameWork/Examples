@@ -1,123 +1,273 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  GEN XML Gallery — Manual Técnico 1024x576.
+  Top-level ypos = bottom edge (larger ypos = lower on screen).
+  Nested child ypos = offset UP from parent bottom (larger = closer to parent top).
+  Section titles/icons are declared AFTER their frames so they paint above FormBackdrop restores.
+
+  Vertical rhythm:
+    title → frame top = 14px
+    header icon = frame_left+2, text = frame_left+24, icon ypos = text ypos+6
+    frame inner top/bottom pad ≈ 6–8px
+    section gap (frame bottom → next title) ≈ 16px
+-->
 <layouts>
-  <skin name="" drawmode="canvas" rasterfont="verdana18" vectorfont="timesi.ttf" backgroundimg="background.jpg" > </skin>
+  <skin name="" drawmode="canvas" rasterfont="verdana18" vectorfont="Nunito-SemiBold.ttf" backgroundimg="background_manual.jpg"> </skin>
 
-  <color name="colortext">yellow</color>   
-  <color name="colormenuline">red</color>   
-  <color name="colormenu">black,50</color>
+  <color name="color_ink">32,42,52,255</color>
+  <color name="color_muted">110,120,128,255</color>
+  <color name="color_line">120,135,145,255</color>
+  <color name="color_panel">255,255,255,255</color>
+  <color name="color_soft">236,240,242,255</color>
+  <!-- Selection wash: ~25% lighter than prior 220,228,232, tinted light blue (not red ring). -->
+  <color name="color_select">220,236,250,255</color>
+  <color name="color_edit_bg">255,255,255,255</color>
+  <color name="color_bar">96,125,139,255</color>
+  <color name="color_bar_bg">220,226,230,255</color>
+  <color name="color_div">190,198,204,255</color>
 
-  <text name="button_text">#[TEST_TEXT]</text>
- 
-  <animation name="gigolord_walk0">gigolord_walk0/LF-WxWalk_01#[02].png</animation>
+  <text name="btn_guardar">#[TRANSLATE_111]</text>
+  <text name="btn_guardar_como">#[TRANSLATE_132]</text>
+  <text name="btn_validar">#[TRANSLATE_133]</text>
+  <text name="btn_generar">#[TRANSLATE_134]</text>
+  <text name="btn_vista">#[TRANSLATE_135]</text>
+  <text name="btn_cerrar">#[TRANSLATE_136]</text>
 
-  <layout name="example"> 
-    
-    <element name="text01" type="text" xpos="Center" ypos="740" sizefont="22" color="black" >Change tests in sentence: #[TEST_TEXT2]</element>    s
+  <layout name="example">
 
-    <element name="textbox01" type="textbox"  xpos="550" ypos="475" width="400" height="350" textalignment="center" wordclipping="yes" linespacing="5" sizefont="18" color="red,50">
-      <animation name="gigolord_walk1">gigolord_walk0/LF-WxWalk_02#[02].png</animation>
-      <text>#[TRANSLATE_100]</text>
-      <text>Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados,</text>
-      <text>lantejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda.</text>  
-      <text>El resto della concluían sayo de velarte, calzas de velludo para las fiestas , con sus pantuflos de lo mesmo, y los días de  entresemana se honraba con su vellorí de lo más fino.</text>      
-    </element>    
-    
-  
-    <element name="ListBoxMenuID" type="menu"  xpos="50" ypos="250" width="175" height="225" roundrect="15" linecolor="colormenuline" color="colormenu">
+    <!-- HEADER title clears GEN FRAMEWORK mark in background_manual.jpg (logo is in the bg). -->
+    <element name="hdr_title" type="text" xpos="220" ypos="48" sizefont="12" color="color_ink">#[TRANSLATE_101]</element>
+
+    <!-- LISTO: optical center; ~8px pad. Raised exactly 5px (70→65). Transparent caption allows overlap. -->
+    <element name="status_box" type="form" xpos="720" ypos="65" width="280" height="56"
+             roundrect="0" linecolor="color_line" color="color_panel">
+      <element name="ic_ready" type="animation" xpos="14" ypos="29"><image>icon_ready_sm.png</image></element>
+      <element name="status_text" type="text" xpos="42" ypos="35" sizefont="13" color="color_ink">#[STATUS]</element>
+      <element name="meta_ver" type="text" xpos="42" ypos="19" sizefont="9" color="color_muted">#[TRANSLATE_137]</element>
+      <element name="meta_user" type="text" xpos="42" ypos="8" sizefont="9" color="color_muted">#[TRANSLATE_159]</element>
     </element>
-    
-    
-        
-    <element type="progressbar" name="progressbar0" xpos="50" ypos="300" width="175" height="22" allocationtext="right" direction="horizontal" roundcap="yes"  linecolor="60,60,60" bckgrdcolor="32,40,48" color="150,90,230"progressrect="0,0,0,0" level="15">
-     <element type="text" name="text0"  xpos="center" ypos="5" sizefont="18" color="black,100" >#[PROGRESSBAR_PERCENT]</element>
-    </element>
-  
-    <element type="progressradial" name="progressbar1" xpos="50" ypos="475" width="150" height="150" level="15" thickness="18" roundcap="yes" startangle="-90" sweepangle="360" bckgrdcolor="32,40,48" color="30,90,255" linecolor="25,224,255">
-      <element type="text" name="text1" xpos="center" ypos="center" sizefont="35" color="255,255,255">#[PROGRESSBAR_PERCENT]</element>
-    </element> 
-    
-    
-    <element  type="progressbar" name="progressbar2" xpos="220" ypos="375"  allocationtext="down" direction="horizontal"  progressrect="0,0,200,15" continuouscycle="33,10,10"  linecolor="black,60"  color="blue,30"  bckgrdcolor="white" level="15">       
-    </element>
-    
-    <element type="progressbar" name="progressbar3" xpos="220" ypos="450"  allocationtext="down" direction="horizontal"  progressrect="0,0,175,30" linecolor="black,60"  color="blue,30"  bckgrdcolor="white"  level="15">
-      <element type="text" name="text4"  xpos="center"  sizefont="18" color="black,100" >#[PROGRESSBAR_PERCENT]</element>
-    </element>
-    
-    
-    <element type="progressbar" name="progressbar4" xpos="350" ypos="300"  allocationtext="right" direction="vertical"  progressrect="0,0,30,175" linecolor="black,60"  color="blue,30"  bckgrdcolor="white"  level="15">
-      <element type="text" name="text5" xpos="10" ypos="center"  sizefont="18" color="black,100" >#[PROGRESSBAR_PERCENT]</element>
-    </element>
-    
-    <element type="progressimage" name="temp_bar" xpos="450" ypos="500"   allocationtext="right" direction="vertical" offsetstart="67" offsetend="33" level="15" imageempty="thermo_empty.png" imagefull="thermo_full.png">        
-    <element type="text" name="text6" xpos="10" ypos="center"  sizefont="38" color="black,100" >#[PROGRESSBAR_PERCENT]</element>
-    </element>
-   
 
-    <element name="form" type="form"  xpos="550" ypos="100" width="275" height="75" roundrect="15" linecolor="colormenuline" color="colormenu">
-      <element name="ID Edit" type="edittext" maxsizetext="10" xpos="20" ypos="20" sizefont="22" roundrect="15" bckgrdcolor="159,131,87,100" color="yellow" >0000000</element>
-    </element>    
-    
-    <element name="menu_horz" type="form"  xpos="60" ypos="690"  visiblerect = "0,0,550,70" roundrect="15" linecolor="white,100" color="60,60,60, 70">
+    <element name="div_l" type="form" xpos="276" ypos="512" width="1" height="440" roundrect="0" linecolor="color_div" color="color_div"></element>
+    <element name="div_r" type="form" xpos="700" ypos="512" width="1" height="440" roundrect="0" linecolor="color_div" color="color_div"></element>
 
-      <element name="chromeall-btn" type="multioption" xpos="80" ypos="20">
-
-        <element name="chrome-btn" type="button" selectablestatus="active" allocationtext="down" sizefont="18">
-          <element name="animation01" type="animation" xpos="center" ypos="-10" state="play" timedelay="35">
-            <image>gigolord_walk0</image>
-          </element>
-          <element name="text01" type="text" xpos="center" sizefont="18" color="white,100" >button_text</element>
-        </element>
-
-        <element name="chrome-btn" type="button" selectablestatus="preselect"  allocationtext="down" sizefont="18">
-          <element name="animation01" type="animation" xpos="center" ypos="-10" state="play" timedelay="35">
-            <image>gigolord_walk0</image>
-          </element>
-          <element name="text01" type="text" xpos="center" sizefont="18" color="yellow,100" >button_text</element>
-        </element>
-
-        <element name="chrome-btn" type="button" selectablestatus="selected" allocationtext="down" sizefont="18">
-          <element name="animation01" type="animation" xpos="center" ypos="10" state="play" timedelay="35">
-            <image>gigolord_walk0</image>
-          </element>
-          <element name="text01" type="text" xpos="center" sizefont="18" color="yellow,100" >button_text</element>
-        </element>
-
-        <element name="chrome-btn" type="button" selectablestatus="deactive" allocationtext="down" sizefont="18">
-          <element name="animation01" type="animation" xpos="center" ypos="-10" state="play" timedelay="35">
-            <image>gigolord_walk0</image>
-          </element>
-          <element name="text01" type="text" xpos="center" sizefont="18" color="white,100" >button_text</element>
-        </element>
-
+    <!-- ===== LEFT NAV ===== -->
+    <!-- Aligned with EDITOR: title@86 → frame top=100 (gap 14). bottom=254; clear of GALLERYS. -->
+    <element name="frame_nav" type="form" xpos="48" ypos="254" width="220" height="154"
+             roundrect="0" linecolor="color_line" color="color_panel">
+      <!-- 6×25 + 2px pads; pitch 25 -->
+      <element name="nav_1" type="button" xpos="6" ypos="127" width="208" height="25" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="0" color="color_ink">
+        <element name="ic" type="animation" xpos="6" ypos="4"><image>icon_home_sm.png</image></element>
+        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">1. Inicio</element>
       </element>
-
-      <element name="email-btn" type="button" xpos="260" ypos="20" visiblelimit="active,preselect,select,deactive" allocationtext="down" sizefont="18" visible="yes">
-        <element name="animation02" type="animation">
-          <image>gmail-logo.png</image>
-        </element>
-        <element name="text01" type="text" xpos="center" sizefont="18" color="white,100" >Email</element>
+      <element name="nav_2" type="button" xpos="6" ypos="102" width="208" height="25" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="0" color="color_ink">
+        <element name="ic" type="animation" xpos="6" ypos="4"><image>icon_plus_manual_sm.png</image></element>
+        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">2. Nuevo Galeria</element>
       </element>
-
-      <element name="youtube-btn" type="button" xpos="420" ypos="20" visiblelimit="active,preselect,select,deactive" allocationtext="down" sizefont="18">
-        <element name="animation03" type="animation">
-          <image>youtube-logo.png</image>
-        </element>
-        <element name="text01" type="text" xpos="center" sizefont="18" color="white,100" >Youtube</element>
+      <element name="nav_3" type="button" xpos="6" ypos="77" width="208" height="25" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="0" color="color_ink">
+        <element name="ic" type="animation" xpos="6" ypos="4"><image>icon_folder_sm.png</image></element>
+        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">3. Abrir Galeria</element>
       </element>
-
-    </element>
-    
-    <element name="menu-btn" type="button" xpos="5" ypos="704" >
-      <element name="animation00" type="animation">
-        <image>menu_button.png</image>
+      <element name="nav_4" type="button" xpos="6" ypos="52" width="208" height="25" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="0" color="color_ink">
+        <element name="ic" type="animation" xpos="6" ypos="4"><image>icon_pencil_sm.png</image></element>
+        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">4. Editar Galeria</element>
+      </element>
+      <element name="nav_5" type="button" xpos="6" ypos="27" width="208" height="25" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="0" color="color_ink">
+        <element name="ic" type="animation" xpos="6" ypos="4"><image>icon_download_sm.png</image></element>
+        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">5. Exportar XML</element>
+      </element>
+      <element name="nav_6" type="button" xpos="6" ypos="2" width="208" height="25" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="0" color="color_ink">
+        <element name="ic" type="animation" xpos="6" ypos="4"><image>icon_gear_sm.png</image></element>
+        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">6. Configuracion</element>
       </element>
     </element>
-  
-   
+    <!-- Title/icon match EDITOR @86/92. -->
+    <element name="ic_nav" type="animation" xpos="50" ypos="97"><image>icon_folder_sm.png</image></element>
+    <element name="lbl_nav" type="text" xpos="76" ypos="91" sizefont="11" color="color_ink">#[TRANSLATE_138]</element>
+
+    <!-- ===== LEFT GALLERIES ===== -->
+    <!-- Bottom aligned with VISTA PREVIA @512. height=216 → top=296; title@282 (gap 14). -->
+    <element name="frame_records" type="form" xpos="48" ypos="512" width="220" height="216"
+             roundrect="0" linecolor="color_line" color="color_panel"></element>
+    <element name="ic_list" type="animation" xpos="50" ypos="293"><image>icon_list_sm.png</image></element>
+    <element name="lbl_records" type="text" xpos="76" ypos="287" sizefont="11" color="color_ink">#[TRANSLATE_102]</element>
+
+    <!-- frame top=296; 8px pad → first row top=304 → ypos=332; pitch 32 -->
+    <element name="gal_1" type="button" xpos="54" ypos="332" width="208" height="28" selectablestatus="active" allocationtext="none" sizefont="10" roundrect="0" color="color_ink">
+      <element name="ic" type="animation" xpos="6" ypos="5"><image>icon_file_sm.png</image></element>
+      <element name="dt" type="text" xpos="148" ypos="8" sizefont="9" color="color_muted">24/05/2024</element>
+      <element name="tx" type="text" xpos="30" ypos="7" sizefont="10" color="color_ink">productos.xml</element>
+    </element>
+    <element name="gal_2" type="button" xpos="54" ypos="364" width="208" height="28" selectablestatus="active" allocationtext="none" sizefont="10" roundrect="0" color="color_ink">
+      <element name="ic" type="animation" xpos="6" ypos="5"><image>icon_file_sm.png</image></element>
+      <element name="dt" type="text" xpos="148" ypos="8" sizefont="9" color="color_muted">23/05/2024</element>
+      <element name="tx" type="text" xpos="30" ypos="7" sizefont="10" color="color_ink">catalogo.xml</element>
+    </element>
+    <element name="gal_3" type="button" xpos="54" ypos="396" width="208" height="28" selectablestatus="active" allocationtext="none" sizefont="10" roundrect="0" color="color_ink">
+      <element name="ic" type="animation" xpos="6" ypos="5"><image>icon_file_sm.png</image></element>
+      <element name="dt" type="text" xpos="148" ypos="8" sizefont="9" color="color_muted">22/05/2024</element>
+      <element name="tx" type="text" xpos="30" ypos="7" sizefont="10" color="color_ink">noticias.xml</element>
+    </element>
+    <element name="gal_4" type="button" xpos="54" ypos="428" width="208" height="28" selectablestatus="active" allocationtext="none" sizefont="10" roundrect="0" color="color_ink">
+      <element name="ic" type="animation" xpos="6" ypos="5"><image>icon_file_sm.png</image></element>
+      <element name="dt" type="text" xpos="148" ypos="8" sizefont="9" color="color_muted">20/05/2024</element>
+      <element name="tx" type="text" xpos="30" ypos="7" sizefont="10" color="color_ink">eventos.xml</element>
+    </element>
+    <element name="gal_5" type="button" xpos="54" ypos="460" width="208" height="28" selectablestatus="active" allocationtext="none" sizefont="10" roundrect="0" color="color_ink">
+      <element name="ic" type="animation" xpos="6" ypos="5"><image>icon_file_sm.png</image></element>
+      <element name="dt" type="text" xpos="148" ypos="8" sizefont="9" color="color_muted">18/05/2024</element>
+      <element name="tx" type="text" xpos="30" ypos="7" sizefont="10" color="color_ink">banner.xml</element>
+    </element>
+    <element name="lbl_records_foot" type="text" xpos="54" ypos="496" sizefont="9" color="color_muted">#[TRANSLATE_139]</element>
+
+    <!-- ===== CENTER EDITOR ===== -->
+    <!-- title@86 → frame top=100 (gap 14). -->
+    <element name="frame_form" type="form" xpos="288" ypos="318" width="400" height="218"
+             roundrect="0" linecolor="color_line" color="color_panel"></element>
+    <element name="ic_editor" type="animation" xpos="290" ypos="97"><image>icon_pencil_sm.png</image></element>
+    <element name="lbl_editor" type="text" xpos="312" ypos="91" sizefont="11" color="color_ink">#[TRANSLATE_103]</element>
+
+    <element name="lbl_nombre" type="text" xpos="300" ypos="118" sizefont="9" color="color_muted">#[TRANSLATE_104]</element>
+    <element name="edit_nombre" type="edittext" maxsizetext="28" xpos="300" ypos="148" width="376" height="20"
+             sizefont="12" roundrect="2" bckgrdcolor="color_edit_bg" linecolor="color_line" color="color_ink">galeria_productos</element>
+
+    <element name="lbl_titulo" type="text" xpos="300" ypos="170" sizefont="9" color="color_muted">#[TRANSLATE_105]</element>
+    <element name="edit_titulo" type="edittext" maxsizetext="32" xpos="300" ypos="200" width="376" height="20"
+             sizefont="12" roundrect="2" bckgrdcolor="color_edit_bg" linecolor="color_line" color="color_ink">Productos Destacados</element>
+
+    <element name="lbl_cat" type="text" xpos="300" ypos="222" sizefont="9" color="color_muted">#[TRANSLATE_108]</element>
+    <element name="edit_cat" type="edittext" maxsizetext="16" xpos="300" ypos="252" width="210" height="20"
+             sizefont="12" roundrect="2" bckgrdcolor="color_edit_bg" linecolor="color_line" color="color_ink">Productos</element>
+    <element name="ic_dd1" type="animation" xpos="494" ypos="250"><image>icon_dropdown_sm.png</image></element>
+
+    <element name="lbl_idioma" type="text" xpos="528" ypos="222" sizefont="9" color="color_muted">#[TRANSLATE_140]</element>
+    <element name="edit_idioma" type="edittext" maxsizetext="8" xpos="528" ypos="252" width="148" height="20"
+             sizefont="12" roundrect="2" bckgrdcolor="color_edit_bg" linecolor="color_line" color="color_ink">es</element>
+    <element name="ic_dd2" type="animation" xpos="660" ypos="250"><image>icon_dropdown_sm.png</image></element>
+
+    <element name="lbl_desc" type="text" xpos="300" ypos="274" sizefont="9" color="color_muted">#[TRANSLATE_109]</element>
+    <element name="notes_l1" type="text" xpos="300" ypos="292" sizefont="10" color="color_ink">Galeria de productos destacados para el escaparate</element>
+    <element name="notes_l2" type="text" xpos="300" ypos="308" sizefont="10" color="color_ink">digital. Incluye metadatos, idioma y estructura XML.</element>
+
+    <!-- ===== CENTER PREVIEW ===== -->
+    <!-- title@340 → frame top=354 (gap 14). Soft parent owns L-margins; card nested so
+         FormBackdrop restores on the card cannot wipe soft fill with the grid Capture. -->
+    <element name="frame_preview" type="form" xpos="288" ypos="512" width="400" height="158"
+             roundrect="0" linecolor="color_muted" color="color_soft">
+      <!-- nested ypos = offset up from parent bottom: 44 → card bottom @468, top @370 -->
+      <element name="preview_card" type="form" xpos="10" ypos="44" width="380" height="98"
+               roundrect="0" linecolor="color_line" color="color_panel"></element>
+    </element>
+    <element name="ic_preview" type="animation" xpos="290" ypos="351"><image>icon_file_sm.png</image></element>
+    <element name="lbl_preview" type="text" xpos="312" ypos="345" sizefont="11" color="color_ink">#[TRANSLATE_141]</element>
+    <element name="drop_A" type="animation" xpos="308" ypos="444"><image>dropcap_A.png</image></element>
+    <element name="xml_l1" type="text" xpos="380" ypos="384" sizefont="11" color="color_ink">[gallery] id="productos" lang="es"</element>
+    <element name="xml_l2" type="text" xpos="380" ypos="402" sizefont="11" color="color_ink">  [meta] title="Productos Destacados"</element>
+    <element name="xml_l3" type="text" xpos="380" ypos="420" sizefont="11" color="color_ink">  [items] count="12"</element>
+    <element name="xml_l4" type="text" xpos="380" ypos="438" sizefont="11" color="color_ink">    [item] id="001"</element>
+    <element name="xml_l5" type="text" xpos="380" ypos="456" sizefont="11" color="color_ink">[/gallery]</element>
+    <!-- Strip mid=490: icon center + text baseline aligned; inset matches card. -->
+    <element name="ic_info" type="animation" xpos="308" ypos="500"><image>icon_info_sm.png</image></element>
+    <element name="hint_drag" type="text" xpos="334" ypos="494" sizefont="9" color="color_muted">#[TRANSLATE_143]</element>
+
+    <!-- ===== RIGHT PANEL ===== -->
+    <!-- Title aligned with EDITOR@86; 20px clear under status_box bottom 70. -->
+    <element name="ic_wave" type="animation" xpos="716" ypos="92"><image>icon_wave_sm.png</image></element>
+    <element name="lbl_right" type="text" xpos="738" ypos="86" sizefont="11" color="color_ink">#[TRANSLATE_144]</element>
+
+    <element name="lbl_prog_sec" type="text" xpos="716" ypos="108" sizefont="9" color="color_muted">#[TRANSLATE_145]</element>
+
+    <element name="lbl_val" type="text" xpos="716" ypos="126" sizefont="10" color="color_ink">Validacion</element>
+    <element name="progress_val" type="progressbar" xpos="820" ypos="124" width="120" height="10"
+             allocationtext="none" direction="horizontal" roundcap="no"
+             progressrect="0,0,120,10"
+             linecolor="color_line" bckgrdcolor="color_bar_bg" color="color_bar" level="100"></element>
+    <element name="pct_val" type="text" xpos="948" ypos="126" sizefont="10" color="color_ink">100%</element>
+
+    <element name="lbl_gen" type="text" xpos="716" ypos="148" sizefont="10" color="color_ink">Generacion XML</element>
+    <element name="progressbar0" type="progressbar" xpos="820" ypos="146" width="120" height="10"
+             allocationtext="none" direction="horizontal" roundcap="no"
+             progressrect="0,0,120,10"
+             linecolor="color_line" bckgrdcolor="color_bar_bg" color="color_bar" level="75"></element>
+    <element name="pct_gen" type="text" xpos="948" ypos="148" sizefont="10" color="color_ink">75%</element>
+
+    <element name="lbl_pack" type="text" xpos="716" ypos="170" sizefont="10" color="color_ink">Empaquetado</element>
+    <element name="progress_pack" type="progressbar" xpos="820" ypos="168" width="120" height="10"
+             allocationtext="none" direction="horizontal" roundcap="no"
+             progressrect="0,0,120,10"
+             linecolor="color_line" bckgrdcolor="color_bar_bg" color="color_bar" level="45"></element>
+    <element name="pct_pack" type="text" xpos="948" ypos="170" sizefont="10" color="color_ink">45%</element>
+
+    <element name="sep1" type="form" xpos="716" ypos="184" width="270" height="1" roundrect="0" linecolor="color_div" color="color_div"></element>
+
+    <element name="lbl_calidad" type="text" xpos="716" ypos="200" sizefont="9" color="color_muted">#[TRANSLATE_122]</element>
+    <element name="lbl_err" type="text" xpos="900" ypos="216" sizefont="9" color="color_muted">#[TRANSLATE_150]</element>
+    <element name="progressbar1" type="progressradial" xpos="790" ypos="288" width="100" height="88"
+             level="92" thickness="9" roundcap="yes" startangle="180" sweepangle="180"
+             bckgrdcolor="color_bar_bg" color="color_bar" linecolor="color_line">
+      <element type="text" name="text1" xpos="center" ypos="36" sizefont="15" color="color_ink">92%</element>
+    </element>
+    <element name="lbl_excelente" type="text" xpos="816" ypos="238" sizefont="10" color="color_ink">#[TRANSLATE_149]</element>
+
+    <element name="sep2" type="form" xpos="716" ypos="280" width="270" height="1" roundrect="0" linecolor="color_div" color="color_div"></element>
+
+    <!-- Cluster centered under CALIDAD arc (790–890, mid≈840): scale | bar | values. Raised 20px with sep2. -->
+    <element name="lbl_mem" type="text" xpos="716" ypos="294" sizefont="9" color="color_muted">#[TRANSLATE_123]</element>
+    <element name="mem_100" type="text" xpos="794" ypos="308" sizefont="8" color="color_muted">100%</element>
+    <element name="mem_50" type="text" xpos="794" ypos="348" sizefont="8" color="color_muted">50%</element>
+    <element name="mem_0" type="text" xpos="794" ypos="378" sizefont="8" color="color_muted">0%</element>
+    <element type="progressimage" name="temp_bar" xpos="828" ypos="380" allocationtext="none" direction="vertical"
+             offsetstart="4" offsetend="4" level="48" imageempty="mem_bar_empty.png" imagefull="mem_bar_full.png">
+    </element>
+    <element name="lbl_mem_detail" type="text" xpos="862" ypos="332" sizefont="11" color="color_muted">256 / 512 MB</element>
+    <element name="lbl_mem_pct" type="text" xpos="862" ypos="354" sizefont="14" color="color_ink">48%</element>
+
+    <element name="sep3" type="form" xpos="716" ypos="412" width="270" height="1" roundrect="0" linecolor="color_div" color="color_div"></element>
+
+    <!-- Chart needs >=~48px height: SVG margins eat ~8–12px/side. bottom=482 top=430. -->
+    <element name="lbl_chart" type="text" xpos="716" ypos="426" sizefont="9" color="color_muted">#[TRANSLATE_125]</element>
+    <element name="demo_chart" type="statisticschart" chart="lines" title=""
+             xpos="716" ypos="482" width="270" height="52" color="96,125,139">
+    </element>
+    <element name="chart_t0" type="text" xpos="720" ypos="494" sizefont="8" color="color_muted">10:40</element>
+    <element name="chart_t1" type="text" xpos="838" ypos="494" sizefont="8" color="color_muted">10:41</element>
+    <element name="chart_t2" type="text" xpos="956" ypos="494" sizefont="8" color="color_muted">10:42</element>
+
+    <element name="ic_last" type="animation" xpos="716" ypos="516"><image>icon_check_sm.png</image></element>
+    <element name="lbl_last" type="text" xpos="742" ypos="510" sizefont="9" color="color_ink">#[TRANSLATE_152]</element>
+
+    <!-- Logo lives in background_manual.jpg (no overlay icon). -->
+
+    <!-- Footer top=526 -->
+    <element name="zone_footer" type="form" xpos="48" ypos="568" width="952" height="42"
+             roundrect="0" linecolor="color_line" color="color_panel">
+      <element name="footer_meta" type="text" xpos="10" ypos="16" sizefont="10" color="color_muted">#[TRANSLATE_153]</element>
+
+      <element name="btn_guardar" type="button" xpos="300" ypos="10" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="2" visiblelimit="active,preselect,select" linecolor="color_line" color="color_panel">
+        <element name="ic" type="animation" xpos="2" ypos="2"><image>icon_save_manual_sm.png</image></element>
+        <element name="tx" type="text" xpos="24" ypos="6" sizefont="11" color="color_ink">btn_guardar</element>
+      </element>
+      <element name="btn_guardar_como" type="button" xpos="390" ypos="10" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="2" visiblelimit="active,preselect,select" linecolor="color_line" color="color_panel">
+        <element name="ic" type="animation" xpos="2" ypos="2"><image>icon_file_sm.png</image></element>
+        <element name="tx" type="text" xpos="24" ypos="6" sizefont="11" color="color_ink">btn_guardar_como</element>
+      </element>
+      <element name="btn_validar" type="button" xpos="530" ypos="10" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="2" visiblelimit="active,preselect,select" linecolor="color_line" color="color_panel">
+        <element name="ic" type="animation" xpos="2" ypos="2"><image>icon_check_sm.png</image></element>
+        <element name="tx" type="text" xpos="24" ypos="6" sizefont="11" color="color_ink">btn_validar</element>
+      </element>
+      <element name="btn_generar" type="button" xpos="650" ypos="10" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="2" visiblelimit="active,preselect,select" linecolor="color_line" color="color_panel">
+        <element name="ic" type="animation" xpos="2" ypos="2"><image>icon_play_manual_sm.png</image></element>
+        <element name="tx" type="text" xpos="24" ypos="6" sizefont="11" color="color_ink">btn_generar</element>
+      </element>
+      <element name="btn_vista" type="button" xpos="770" ypos="10" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="2" visiblelimit="active,preselect,select" linecolor="color_line" color="color_panel">
+        <element name="ic" type="animation" xpos="2" ypos="2"><image>icon_eye_sm.png</image></element>
+        <element name="tx" type="text" xpos="24" ypos="6" sizefont="11" color="color_ink">btn_vista</element>
+      </element>
+      <element name="sep_close" type="form" xpos="870" ypos="8" width="1" height="26" roundrect="0" linecolor="color_div" color="color_div"></element>
+      <element name="btn_cerrar" type="button" xpos="882" ypos="10" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="2" visiblelimit="active,preselect,select" linecolor="color_line" color="color_panel">
+        <element name="ic" type="animation" xpos="2" ypos="2"><image>icon_close_sm.png</image></element>
+        <element name="tx" type="text" xpos="24" ypos="6" sizefont="11" color="color_ink">btn_cerrar</element>
+      </element>
+    </element>
+
   </layout>
-  
- 
-</layouts> 
-
-
+</layouts>

@@ -102,10 +102,10 @@ enum UI_OPTIONS_BUTTONS
 #define APPLICATION_SUBVERSION                    1
 #define APPLICATION_SUBVERSIONERR                 1
 
-#define APPLICATION_NAMEAPP                       _L("UI_Options")
-#define APPLICATION_NAMEFILE                      _L("ui_options")
+#define APPLICATION_NAMEAPP                       NL("UI_Options")
+#define APPLICATION_NAMEFILE                      NL("ui_options")
 
-#define APPLICATION_OWNER                         _L("EndoraSoft")
+#define APPLICATION_OWNER                         NL("EndoraSoft")
 
 #define APPLICATION_YEAROFCREATION                2018
 
@@ -163,7 +163,8 @@ class UI_OPTIONS : public APPFLOWGRAPHICS, public XFSMACHINE
 
     bool                            UserInterface_ElementSelected           (UI_ELEMENT* element);
     bool                            UserInterface_ChangeLiteralText         (UI_ELEMENT_TEXT* element_text, XSTRING* maskvalue, XSTRING* maskresult);
-    bool                            UserInterface_CFGChromes                (GRPSCREEN* screen);    
+    bool                            UserInterface_CFGChromes                (GRPSCREEN* screen);
+    bool                            UserInterface_SelectExclusiveRow        (XCHAR** rownames, XDWORD nrows, UI_ELEMENT* selected, XCHAR* chevronname = NULL);    
 
     bool                            UnitTest_AVIVideoWrite                  ();
 

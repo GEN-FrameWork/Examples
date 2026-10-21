@@ -108,6 +108,8 @@
 #include "UI_Element_ProgressBar.h"
 #include "UI_Element_ProgressRadial.h"
 #include "UI_Element_ProgressImage.h"
+#include "UI_Element_StatisticsChart.h"
+#include "UI_Element_Form.h"
 #include "UI_SkinCanvas.h"
 
 #include "UI_CSSParser.h"
@@ -551,112 +553,65 @@ bool UI_OPTIONS::UpdateInput()
               switch(c)
                 {
                   
-                  case UI_OPTIONS_BUTTON_F1       : { UI_ELEMENT_PROGRESSBAR* element_progressbar = (UI_ELEMENT_PROGRESSBAR*)GEN_USERINTERFACE.Element_Get(_L("progressbar0"), UI_ELEMENT_TYPE_PROGRESSBAR);
+                  case UI_OPTIONS_BUTTON_F1       : { UI_ELEMENT_PROGRESSBAR* element_progressbar = (UI_ELEMENT_PROGRESSBAR*)GEN_USERINTERFACE.Element_Get(NL("progressbar0"), UI_ELEMENT_TYPE_PROGRESSBAR);
                                                       if(element_progressbar) 
                                                         { 
-                                                          float level =element_progressbar->GetLevel();
-                                                          level++;                                                          
+                                                          float level = element_progressbar->GetLevel();
+                                                          level++;
+                                                          if(level > 100.0f) level = 100.0f;
                                                           element_progressbar->SetLevel(level);
-
                                                           GEN_USERINTERFACE.Elements_SetToRedraw(element_progressbar); 
                                                         }
-                                                    
 
-                                                      UI_ELEMENT_PROGRESS_RADIAL* element_progressradial = (UI_ELEMENT_PROGRESS_RADIAL*)GEN_USERINTERFACE.Element_Get(_L("progressbar1"), UI_ELEMENT_TYPE_PROGRESSRADIAL);
+                                                      UI_ELEMENT_PROGRESS_RADIAL* element_progressradial = (UI_ELEMENT_PROGRESS_RADIAL*)GEN_USERINTERFACE.Element_Get(NL("progressbar1"), UI_ELEMENT_TYPE_PROGRESSRADIAL);
                                                       if(element_progressradial) 
                                                         { 
                                                           float level = element_progressradial->GetLevel();
-                                                          level++;                                                          
+                                                          level++;
+                                                          if(level > 100.0f) level = 100.0f;
                                                           element_progressradial->SetLevel(level);
-
                                                           GEN_USERINTERFACE.Elements_SetToRedraw(element_progressradial); 
                                                         }
 
-
-                                                      element_progressbar = (UI_ELEMENT_PROGRESSBAR*)GEN_USERINTERFACE.Element_Get(_L("progressbar3"), UI_ELEMENT_TYPE_PROGRESSBAR);
-                                                      if(element_progressbar) 
-                                                        { 
-                                                          float level =element_progressbar->GetLevel();
-                                                          level++;                                                          
-                                                          element_progressbar->SetLevel(level);
-
-                                                          GEN_USERINTERFACE.Elements_SetToRedraw(element_progressbar); 
-                                                        }
-
-
-                                                      element_progressbar = (UI_ELEMENT_PROGRESSBAR*)GEN_USERINTERFACE.Element_Get(_L("progressbar4"), UI_ELEMENT_TYPE_PROGRESSBAR);
-                                                      if(element_progressbar) 
-                                                        { 
-                                                          float level =element_progressbar->GetLevel();
-                                                          level++;                                                          
-                                                          element_progressbar->SetLevel(level);
-
-                                                          GEN_USERINTERFACE.Elements_SetToRedraw(element_progressbar); 
-                                                        }
-
-
-                                                      UI_ELEMENT_PROGRESS_IMAGE* element_progressimage = (UI_ELEMENT_PROGRESS_IMAGE*)GEN_USERINTERFACE.Element_Get(_L("temp_bar"), UI_ELEMENT_TYPE_PROGRESSIMAGE);
+                                                      UI_ELEMENT_PROGRESS_IMAGE* element_progressimage = (UI_ELEMENT_PROGRESS_IMAGE*)GEN_USERINTERFACE.Element_Get(NL("temp_bar"), UI_ELEMENT_TYPE_PROGRESSIMAGE);
                                                       if(element_progressimage) 
                                                         { 
                                                           float level = element_progressimage->GetLevel();
-                                                          level++;                                                          
+                                                          level++;
+                                                          if(level > 100.0f) level = 100.0f;
                                                           element_progressimage->SetLevel(level);
-
                                                           GEN_USERINTERFACE.Elements_SetToRedraw(element_progressimage); 
                                                         }
                                                     }
                                                     break;
 
-                  case UI_OPTIONS_BUTTON_F2       : { UI_ELEMENT_PROGRESSBAR* element_progressbar = (UI_ELEMENT_PROGRESSBAR*)GEN_USERINTERFACE.Element_Get(_L("progressbar0"), UI_ELEMENT_TYPE_PROGRESSBAR);
+                  case UI_OPTIONS_BUTTON_F2       : { UI_ELEMENT_PROGRESSBAR* element_progressbar = (UI_ELEMENT_PROGRESSBAR*)GEN_USERINTERFACE.Element_Get(NL("progressbar0"), UI_ELEMENT_TYPE_PROGRESSBAR);
                                                       if(element_progressbar) 
                                                         { 
-                                                          float level =element_progressbar->GetLevel();
-                                                          level--;                                                          
+                                                          float level = element_progressbar->GetLevel();
+                                                          level--;
+                                                          if(level < 0.0f) level = 0.0f;
                                                           element_progressbar->SetLevel(level);
-
                                                           GEN_USERINTERFACE.Elements_SetToRedraw(element_progressbar); 
                                                         }
-                                                    
 
-                                                      UI_ELEMENT_PROGRESS_RADIAL* element_progressradial = (UI_ELEMENT_PROGRESS_RADIAL*)GEN_USERINTERFACE.Element_Get(_L("progressbar1"), UI_ELEMENT_TYPE_PROGRESSRADIAL);
+                                                      UI_ELEMENT_PROGRESS_RADIAL* element_progressradial = (UI_ELEMENT_PROGRESS_RADIAL*)GEN_USERINTERFACE.Element_Get(NL("progressbar1"), UI_ELEMENT_TYPE_PROGRESSRADIAL);
                                                       if(element_progressradial) 
                                                         { 
                                                           float level = element_progressradial->GetLevel();
-                                                          level--;                                                          
+                                                          level--;
+                                                          if(level < 0.0f) level = 0.0f;
                                                           element_progressradial->SetLevel(level);
-
                                                           GEN_USERINTERFACE.Elements_SetToRedraw(element_progressradial); 
                                                         }
 
-
-                                                      element_progressbar = (UI_ELEMENT_PROGRESSBAR*)GEN_USERINTERFACE.Element_Get(_L("progressbar3"), UI_ELEMENT_TYPE_PROGRESSBAR);
-                                                      if(element_progressbar) 
-                                                        { 
-                                                          float level =element_progressbar->GetLevel();
-                                                          level--;                                                          
-                                                          element_progressbar->SetLevel(level);
-
-                                                          GEN_USERINTERFACE.Elements_SetToRedraw(element_progressbar); 
-                                                        }
-
-                                                      element_progressbar = (UI_ELEMENT_PROGRESSBAR*)GEN_USERINTERFACE.Element_Get(_L("progressbar4"), UI_ELEMENT_TYPE_PROGRESSBAR);
-                                                      if(element_progressbar) 
-                                                        { 
-                                                          float level =element_progressbar->GetLevel();
-                                                          level--;                                                          
-                                                          element_progressbar->SetLevel(level);
-
-                                                          GEN_USERINTERFACE.Elements_SetToRedraw(element_progressbar); 
-                                                        }
-
-
-                                                      UI_ELEMENT_PROGRESS_IMAGE* element_progressimage = (UI_ELEMENT_PROGRESS_IMAGE*)GEN_USERINTERFACE.Element_Get(_L("temp_bar"), UI_ELEMENT_TYPE_PROGRESSIMAGE);
+                                                      UI_ELEMENT_PROGRESS_IMAGE* element_progressimage = (UI_ELEMENT_PROGRESS_IMAGE*)GEN_USERINTERFACE.Element_Get(NL("temp_bar"), UI_ELEMENT_TYPE_PROGRESSIMAGE);
                                                       if(element_progressimage) 
                                                         { 
                                                           float level = element_progressimage->GetLevel();
-                                                          level--;                                                          
+                                                          level--;
+                                                          if(level < 0.0f) level = 0.0f;
                                                           element_progressimage->SetLevel(level);
-
                                                           GEN_USERINTERFACE.Elements_SetToRedraw(element_progressimage); 
                                                         }
                                                     }
@@ -670,7 +625,7 @@ bool UI_OPTIONS::UpdateInput()
                                                       /*  
                                                       static bool on = false;
 
-                                                      UI_ELEMENT_ANIMATION* element = (UI_ELEMENT_ANIMATION*)GEN_USERINTERFACE.GetElement(_L("image"), UI_ELEMENT_TYPE_ANIMATION);
+                                                      UI_ELEMENT_ANIMATION* element = (UI_ELEMENT_ANIMATION*)GEN_USERINTERFACE.GetElement(NL("image"), UI_ELEMENT_TYPE_ANIMATION);
                                                       if(element) element->SetVisible(on);      
 
                                                       on = !on;
@@ -690,7 +645,7 @@ bool UI_OPTIONS::UpdateInput()
               switch(c)
                 {
                   case UI_OPTIONS_BUTTON_UP     : 
-                  case UI_OPTIONS_BUTTON_DOWN   : { UI_ELEMENT_MENU* element_menu = (UI_ELEMENT_MENU*)GEN_USERINTERFACE.Element_Get(_L("ListBoxMenuID"), UI_ELEMENT_TYPE_MENU);
+                  case UI_OPTIONS_BUTTON_DOWN   : { UI_ELEMENT_MENU* element_menu = (UI_ELEMENT_MENU*)GEN_USERINTERFACE.Element_Get(NL("nav_menu"), UI_ELEMENT_TYPE_MENU);
                                                     if(element_menu) 
                                                       {                                                                                                                         
                                                         UI_PROPERTY_SCROLLEABLE* property_scrolleable = dynamic_cast<UI_PROPERTY_SCROLLEABLE*>(element_menu);
@@ -699,13 +654,12 @@ bool UI_OPTIONS::UpdateInput()
                                                             property_scrolleable->Scroll_SetStep(UI_PROPERTY_SCROLLEABLE_TYPE_VERTICAL, ((c==UI_OPTIONS_BUTTON_DOWN)?1:-1));   
                                                             GEN_USERINTERFACE.Elements_SetToRedraw(element_menu);                                                                                                                 
                                                           }
-                                                                                                                                                                        
                                                       }
                                                   }
                                                   break;    
 
-                  case UI_OPTIONS_BUTTON_LEFT   : makeaction = _L("WALK WEST" );   break;
-                  case UI_OPTIONS_BUTTON_RIGHT  : makeaction = _L("WALK EAST" );   break;
+                  case UI_OPTIONS_BUTTON_LEFT   : makeaction = NL("WALK WEST" );   break;
+                  case UI_OPTIONS_BUTTON_RIGHT  : makeaction = NL("WALK EAST" );   break;
                   case UI_OPTIONS_BUTTON_SPACE  : break;
                   
                 }
@@ -734,12 +688,12 @@ bool UI_OPTIONS::Ini_Graphics(GRPSCREEN* screen)
   //--------------------------------------------------------------------------------------
 
   screen->SetWidth(1024);
-  screen->SetHeight(768);
+  screen->SetHeight(576);
 
   //screen->Styles_Set(GRPSCREENSTYLE_TRANSPARENT);
   //screen->Styles_Set(GRPSCREENSTYLE_FULLSCREEN);
   
-  screen->GetTitle()->Set(_L("User Interface Canvas"));  
+  screen->GetTitle()->Set(NL("User Interface Canvas"));  
   screen->SetDesktopScreenSelected(GRPSCREENTYPE_DESKTOP_MAIN);
 
   //--------------------------------------------------------------------------------------
@@ -758,22 +712,22 @@ bool UI_OPTIONS::Ini_Graphics(GRPSCREEN* screen)
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_GRAPHICS, pathvf);
   pathvf.Slash_Add();
 
-  //pathvf.Add(_L("test_render.svg"));                 
-  //pathvf.Add(_L("tiger.svg"));
-  //pathvf.Add(_L("test_use.svg"));
-  //pathvf.Add(_L("test_gradient.svg"));
-  //pathvf.Add(_L("test_text.svg"));
-  //pathvf.Add(_L("test_block1.svg"));
-  //pathvf.Add(_L("test_stroke.svg"));
-  //pathvf.Add(_L("thermometer.svg"));
-  //pathvf.Add(_L("icon_close_activated.svg"));
+  //pathvf.Add(NL("test_render.svg"));                 
+  //pathvf.Add(NL("tiger.svg"));
+  //pathvf.Add(NL("test_use.svg"));
+  //pathvf.Add(NL("test_gradient.svg"));
+  //pathvf.Add(NL("test_text.svg"));
+  //pathvf.Add(NL("test_block1.svg"));
+  //pathvf.Add(NL("test_stroke.svg"));
+  //pathvf.Add(NL("thermometer.svg"));
+  //pathvf.Add(NL("icon_close_activated.svg"));
  
-  //pathvf.Add(_L("cube.dxf"));  
-  //pathvf.Add(_L("bridge.dxf"));
-  //pathvf.Add(_L("compass.dxf"));
-  //pathvf.Add(_L("harley-davidson.dxf"));
-  //pathvf.Add(_L("plate_120x80.dxf"));
-  //pathvf.Add(_L("plate_120x80_mtext_test.dxf"));
+  //pathvf.Add(NL("cube.dxf"));  
+  //pathvf.Add(NL("bridge.dxf"));
+  //pathvf.Add(NL("compass.dxf"));
+  //pathvf.Add(NL("harley-davidson.dxf"));
+  //pathvf.Add(NL("plate_120x80.dxf"));
+  //pathvf.Add(NL("plate_120x80_mtext_test.dxf"));
 
   //--------------------------------------------------------------------------------------
 
@@ -862,7 +816,7 @@ bool UI_OPTIONS::Ini_UserInterface(bool on)
  
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS, xpath);
   xpath.Slash_Add();
-  xpath.Add(_L("example/example.xml"));
+  xpath.Add(NL("example/example.xml"));
     
   if(!GEN_USERINTERFACE.Load(xpath, screen, 0)) 
     {
@@ -873,82 +827,34 @@ bool UI_OPTIONS::Ini_UserInterface(bool on)
   GEN_USERINTERFACE.SubscribeOutputEvents(true, this, &GEN_USERINTERFACE.GetInstance());   
 
 
-  GEN_USERINTERFACE.CreaterVirtualKeyboard(GEN_USERINTERFACE.Layouts_Get(_L("example")), screen);   
+  GEN_USERINTERFACE.CreaterVirtualKeyboard(GEN_USERINTERFACE.Layouts_Get(NL("example")), screen);   
 
   GEN_USERINTERFACE.Layout_PutBackground();
 
   GEN_USERINTERFACE.Elements_SetToRedraw();
-        
-  UI_ELEMENT_MENU* element_menu = (UI_ELEMENT_MENU*)GEN_USERINTERFACE.Element_Get(_L("ListBoxMenuID"), UI_ELEMENT_TYPE_MENU);
-  if(element_menu)
+
+  // Nav / galleries: exclusive gray highlight (no red select ring — that left ghost underlines).
+  {
+    XCHAR* nav_rows[] = { NL("nav_1"), NL("nav_2"), NL("nav_3"), NL("nav_4"), NL("nav_5"), NL("nav_6") };
+    UI_ELEMENT* nav_sel = GEN_USERINTERFACE.Element_Get(NL("nav_3"), UI_ELEMENT_TYPE_BUTTON);
+    UserInterface_SelectExclusiveRow(nav_rows, 6, nav_sel, NULL);
+
+    XCHAR* gal_rows[] = { NL("gal_1"), NL("gal_2"), NL("gal_3"), NL("gal_4"), NL("gal_5") };
+    UI_ELEMENT* gal_sel = GEN_USERINTERFACE.Element_Get(NL("gal_1"), UI_ELEMENT_TYPE_BUTTON);
+    UserInterface_SelectExclusiveRow(gal_rows, 5, gal_sel, NULL);
+  }
+
+  // --- RIGHT: recent activity chart (slate) -----------------------------------------------------
+  UI_ELEMENT_STATISTICSCHART* demo_chart = (UI_ELEMENT_STATISTICSCHART*)GEN_USERINTERFACE.Element_Get(NL("demo_chart"), UI_ELEMENT_TYPE_STATISTICSCHART);
+  if(demo_chart)
     {
-      XSTRING                     option_text; 
-      double                      option_marginheight = 10; 
-      double                      option_height       = 35; 
-      UI_ELEMENT_MENU_OPTION_CFG  option_cfg;
-
-      for(int c=0; c<8; c++)
-        {      
-          option_text.Format(_L("Option %02d"), c+1);
-
-          option_cfg.index        = c+1;
-          option_cfg.nameoption   = option_text.Get();
-          option_cfg.leyend       = option_text.Get();
-          option_cfg.colorstr     = _L("white,255");
-          option_cfg.sizefont     = 22;
-          option_cfg.marginwidth  = 10;
-          option_cfg.marginheight = 15;
-          option_cfg.width        = 250; // element_menu->GetBoundaryLine()->width-30;
-          option_cfg.height       = option_height;
-
-          UI_ELEMENT_OPTION* element_option = element_menu->Option_AddText(option_cfg);   
-          if(element_option)
-            {
-              //element_option->SetVisibleLimitType(element_option->GetVisibleLimitType() | UI_ELEMENT_OPTION_VISIBLE_LIMIT_ACTIVE);     
-              //element_option->SetVisibleLimitType(element_option->GetVisibleLimitType() | UI_ELEMENT_OPTION_VISIBLE_LIMIT_DEACTIVE);
-              element_option->SetVisibleLimitType(element_option->GetVisibleLimitType() | UI_ELEMENT_OPTION_VISIBLE_LIMIT_PRESELECT);
-              element_option->SetVisibleLimitType(element_option->GetVisibleLimitType() | UI_ELEMENT_OPTION_VISIBLE_LIMIT_SELECT);                          
-            }
-        }
-                     
-      GEN_USERINTERFACE.Layouts_Get(_L("example"))->GetSkin()->CalculeBoundaryLine_AllElements(element_menu, true); 
-
-      UI_PROPERTY_SCROLLEABLE* property_scrolleable = dynamic_cast<UI_PROPERTY_SCROLLEABLE*>(element_menu);
-      if(property_scrolleable) 
-        {
-          property_scrolleable->Scroll_SetBarWidth(UI_PROPERTY_SCROLLEABLE_TYPE_ALL, 16.0f);
-
-          UI_COLOR thumbcolor;
-          UI_COLOR trackcolor;
-
-          thumbcolor.SetFromString(_L("white,75"));
-          trackcolor.SetFromString(_L("white,50"));
-    
-          property_scrolleable->Scroll_SetBarColors(UI_PROPERTY_SCROLLEABLE_TYPE_ALL, thumbcolor, trackcolor);          
-          property_scrolleable->Scroll_SetBarSeparation(UI_PROPERTY_SCROLLEABLE_TYPE_ALL, 5, 0);          
-        }
-          
-      element_menu->GetVisibleRect()->CopyFrom((*element_menu->GetBoundaryLine()));
-      element_menu->GetVisibleRect()->x = element_menu->GetXPosition();
-      element_menu->GetVisibleRect()->y = element_menu->GetYPosition();
-    
-      element_menu->SetFather(NULL);   
-
-      //UI_ELEMENT_PROGRESSBAR* element_progressbar = (UI_ELEMENT_PROGRESSBAR*)GEN_USERINTERFACE.GetElement(_L("progressbarID"), UI_ELEMENT_TYPE_PROGRESSBAR);
-      //if(element_progressbar)  element_progressbar->ContinuousCycle_Set(true, 33, 10, 10); 
-
-
-      UI_ELEMENT_FORM* element_form = (UI_ELEMENT_FORM*)GEN_USERINTERFACE.Element_Get(_L("menu_horz"), UI_ELEMENT_TYPE_FORM);
-      if(element_form)
-        {
-          UI_PROPERTY_SCROLLEABLE* property_scrolleable = dynamic_cast<UI_PROPERTY_SCROLLEABLE*>(element_form);   // era element_menu
-          if(property_scrolleable)
-            {
-              property_scrolleable->Scroll_SetOverflow(UI_PROPERTY_SCROLLEABLE_TYPE_VERTICAL, UI_OVERFLOW_VISIBLE);
-            }
-        }
+      float samples[] = { 28.0f, 42.0f, 35.0f, 58.0f, 50.0f, 72.0f, 64.0f, 80.0f, 55.0f, 68.0f };
+      demo_chart->SetChartType(UI_ELEMENT_STATISTICSCHART_TYPE_LINES);
+      demo_chart->SetTitle(NL(""));
+      demo_chart->SetSerieFromSamples(NL("Actividad"), samples, (int)(sizeof(samples)/sizeof(samples[0])), 96, 125, 139);
+      demo_chart->SetNeedsRebuild(true);
+      GEN_USERINTERFACE.Elements_SetToRedraw(demo_chart);
     }
-  
 
   return true;
 }
@@ -1017,23 +923,8 @@ bool UI_OPTIONS::DrawFrame()
   //--------------------------------------------------------------------------------------
 
   
-  UI_ELEMENT_BUTTON* element_button_mainmenu = (UI_ELEMENT_BUTTON*)GEN_USERINTERFACE.Element_Get(_L("menu-btn"), UI_ELEMENT_TYPE_BUTTON);
-  if(element_button_mainmenu)
-    {
-      UI_LAYOUT* layout = GEN_USERINTERFACE.Layouts_Get(_L("example"));
-      if(layout)
-        {
-          UI_ELEMENT* element_menu_horz = layout->Elements_Get(_L("menu_horz"));
-          if(element_menu_horz) GEN_USERINTERFACE.Elements_SetToRedraw(element_menu_horz, true);
-        }
-
-      GEN_USERINTERFACE.Elements_SetToRedraw(element_button_mainmenu, true);
-    } 
-  
-
-  //--------------------------------------------------------------------------------------
-
-  canvas->DrawFramerate(screen, 4, (double)(screen->GetHeight() - 10));
+  // Keep framerate off the footer chrome / button strip (was overlapping the frame edge).
+  canvas->DrawFramerate(screen, (double)(screen->GetWidth() - 88), 14.0);
 
   //--------------------------------------------------------------------------------------
 
@@ -1042,6 +933,103 @@ bool UI_OPTIONS::DrawFrame()
   GEN_USERINTERFACE.Update(); 
 
   //--------------------------------------------------------------------------------------
+
+  return true;
+}
+
+
+/**-------------------------------------------------------------------------------------------------------------------
+*
+* @fn         bool UI_OPTIONS::UserInterface_SelectExclusiveRow(XCHAR** rownames, XDWORD nrows, UI_ELEMENT* selected, XCHAR* chevronname)
+* @brief      One gray highlight among sibling list buttons. Optional chevronname unused (kept for call sites).
+* @ingroup    EXAMPLES
+*
+*---------------------------------------------------------------------------------------------------------------------*/
+bool UI_OPTIONS::UserInterface_SelectExclusiveRow(XCHAR** rownames, XDWORD nrows, UI_ELEMENT* selected, XCHAR* chevronname)
+{
+  if(!rownames || !nrows) return false;
+
+  (void)chevronname;
+
+  static XCHAR* nav_labels[] = { NL("1. Inicio"), NL("2. Nuevo Galeria"), NL("3. Abrir Galeria"), NL("4. Editar Galeria"), NL("5. Exportar XML"), NL("6. Configuracion") };
+
+  bool anychanged = false;
+  UI_ELEMENT* listfather = NULL;
+
+  for(XDWORD i = 0; i < nrows; i++)
+    {
+      UI_ELEMENT_BUTTON* row = (UI_ELEMENT_BUTTON*)GEN_USERINTERFACE.Element_Get(rownames[i], UI_ELEMENT_TYPE_BUTTON);
+      if(!row) continue;
+
+      if(!listfather) listfather = row->GetFather();
+
+      bool on = ((UI_ELEMENT*)row == selected);
+      // Prior selection wash (opaque light blue). Used so we only dirty when highlight actually flips.
+      // 220,236,250 ≈ prior 220,228,232 lightened ~25% and tinted azul claro (no red select ring).
+      bool was_on = (row->GetBackgroundColor()->GetAlpha() == 255) &&
+                    (row->GetBackgroundColor()->GetRed()   == 220) &&
+                    (row->GetBackgroundColor()->GetGreen() == 236) &&
+                    (row->GetBackgroundColor()->GetBlue()  == 250);
+      bool changed = (on != was_on);
+
+      if(on)
+        {
+          // Selection wash (opaque light blue).
+          row->GetBackgroundColor()->SetFromString(NL("220,236,250,255"));
+          // Keep framework select latch off so Draw_Option does not paint the default red ring.
+          row->SetSelected(false);
+        }
+       else
+        {
+          // Opaque white so DrawBackgroundColor / option erase clears prior selection + glyph ink.
+          // (Alpha 0 left old gray/text stacked on hover redraws.)
+          row->GetBackgroundColor()->SetFromString(NL("255,255,255,255"));
+          row->SetSelected(false);
+        }
+
+      // Nav rows: mark selection with trailing '>' in the label (avoids orphan chevron animation).
+      if((nrows == 6) && (i < 6) && row->Get_UIText())
+        {
+          XSTRING label = nav_labels[i];
+          if(on) label.Add(NL("   >"));
+
+          UI_ELEMENT_TEXT* tx = row->Get_UIText();
+          if(tx->GetText()->Compare(label.Get(), true))
+            {
+              UI_LAYOUT* layout = row->GetLayout();
+              if(layout && layout->GetSkin() && (layout->GetSkin()->GetDrawMode() == UI_SKIN_DRAWMODE_CANVAS))
+                {
+                  ((UI_SKINCANVAS*)layout->GetSkin())->PrepareTextContentChange(tx);
+                }
+              tx->GetText()->Set(label.Get());
+              changed = true;
+            }
+        }
+
+      // Discard TEXT/ANIM backdrops without restore so the new wash is re-captured (avoids white punch
+      // into gray on filenames AND icons). Nav rows may be compose children of frame_nav — dirty the
+      // father form so Draw_Form repaints them. Gallery rows are layout-root siblings — dirty each row.
+      if(changed)
+        {
+          anychanged = true;
+          UI_LAYOUT* layout = row->GetLayout();
+          if(layout && layout->GetSkin() && (layout->GetSkin()->GetDrawMode() == UI_SKIN_DRAWMODE_CANVAS))
+            {
+              UI_SKINCANVAS* skin = (UI_SKINCANVAS*)layout->GetSkin();
+              for(XDWORD c=0; c<row->GetComposeElements()->GetSize(); c++)
+                {
+                  UI_ELEMENT* sub = row->GetComposeElements()->Get(c);
+                  if(!sub) continue;
+                  if(sub->GetType() == UI_ELEMENT_TYPE_TEXT)      skin->DiscardTextBackdrop(sub);
+                  if(sub->GetType() == UI_ELEMENT_TYPE_ANIMATION) skin->DiscardAnimBackdrop(sub);
+                }
+            }
+
+          if(!row->GetFather()) GEN_USERINTERFACE.Elements_SetToRedraw(row, true);
+        }
+    }
+
+  if(anychanged && listfather) GEN_USERINTERFACE.Elements_SetToRedraw(listfather, true);
 
   return true;
 }
@@ -1070,6 +1058,21 @@ bool UI_OPTIONS::UserInterface_ElementSelected(UI_ELEMENT* element)
       case UI_ELEMENT_CHROMEROLE_MINIMIZE : if(GetMainScreen()) GetMainScreen()->Minimize(true);
                                             break;
 
+      case UI_ELEMENT_CHROMEROLE_LANGUAGE :
+                                            #ifdef XTRANSLATION_ACTIVE
+                                            if(GEN_XTRANSLATION.IsInitialized() && GEN_XTRANSLATION.SetActual_Next())
+                                              {
+                                                // Layouts_ApplyTranslations restores rebuild/composition caches
+                                                // (no full Layout_PutBackground — that wiped ListBoxMenu/edit under
+                                                // chrome auto-hide) then re-resolves #[TRANSLATE_N].
+                                                GEN_USERINTERFACE.Layouts_ApplyTranslations();
+                                                #ifdef APPFLOW_CFG_GENERAL_ACTIVE
+                                                APPFLOW_CFG.Language_PersistActual();
+                                                #endif
+                                              }
+                                            #endif
+                                            break;
+
       case UI_ELEMENT_CHROMEROLE_MAXIMIZE : if(GetMainScreen()) GetMainScreen()->Maximize(true);
                                             break;
 
@@ -1086,44 +1089,57 @@ bool UI_OPTIONS::UserInterface_ElementSelected(UI_ELEMENT* element)
 
   elementname = element->GetName()->Get();
 
-  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, _L("UI Element [%s]: Selected! "), element->GetName()->Get());
-                                                            
-  if(!elementname.Compare(_L("menu-btn"), true))
-    {
-      UI_LAYOUT* layout = GEN_USERINTERFACE.Layouts_Get(_L("example"));
-      if(layout) 
-        {
-          UI_ELEMENT* _element = layout->Elements_Get(_L("menu_horz"));
-          if(_element)
-            {                                                                                                                                           
-              _element->SetVisible(!_element->IsVisible());   
-            }  
-        }
-    } 
-                                                      
-  if(elementname.Find(_L("ListBoxMenuButtonID"), true) != XSTRING_NOTFOUND)
-    {
-      UI_LAYOUT* layout = GEN_USERINTERFACE.Layouts_Get(_L("example"));
-      if(layout) 
-        {
-          UI_ELEMENT_LISTBOX* element_listbox = (UI_ELEMENT_LISTBOX*)layout->Elements_Get(_L("ListBoxID"));
-          if(element_listbox)
-            {
-              UI_LAYOUT* layout_menu = GEN_USERINTERFACE.Element_GetLayout(_L("ListBoxMenuID"), UI_ELEMENT_TYPE_MENU);
+  XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, NL("UI Element [%s]: Selected! "), element->GetName()->Get());
 
-              UI_ELEMENT_TEXT* element_text = (UI_ELEMENT_TEXT*)element->GetComposeElements()->Get(0);
-              if(element_text) 
-                {
-                  element_listbox->GetText()->Set(element_text->GetText()->Get());                                                                       
-                  GEN_USERINTERFACE.Elements_SetToRedraw(element_listbox);                                                                    
-                }
+  // Left menus: exclusive gray row (standalone buttons do not clear siblings).
+  if(elementname.Find(NL("nav_"), true) == 0)
+    {
+      XCHAR* nav_rows[] = { NL("nav_1"), NL("nav_2"), NL("nav_3"), NL("nav_4"), NL("nav_5"), NL("nav_6") };
+      UserInterface_SelectExclusiveRow(nav_rows, 6, element, NULL);
+    }
 
-              GEN_USERINTERFACE.Elements_SetToRedraw();
-              GEN_USERINTERFACE.Element_SetModal(NULL);
-              if(element->GetFather()) element->GetFather()->SetVisible(false);
-            }
+  if(elementname.Find(NL("gal_"), true) == 0)
+    {
+      XCHAR* gal_rows[] = { NL("gal_1"), NL("gal_2"), NL("gal_3"), NL("gal_4"), NL("gal_5") };
+      UserInterface_SelectExclusiveRow(gal_rows, 5, element, NULL);
+    }
+
+  if(!elementname.Compare(NL("chk_enabled"), true))
+    {
+      UI_ELEMENT* hint = GEN_USERINTERFACE.Element_Get(NL("hint_text"), UI_ELEMENT_TYPE_TEXT);
+      if(hint)
+        {
+          hint->SetVisible(!hint->IsVisible());
+          GEN_USERINTERFACE.Elements_SetToRedraw(hint);
         }
-    }                        
+    }
+
+  if(!elementname.Compare(NL("btn_nuevo"), true)   ||
+     !elementname.Compare(NL("btn_guardar"), true) ||
+     !elementname.Compare(NL("btn_ejecutar"), true)||
+     !elementname.Compare(NL("btn_exportar"), true))
+    {
+      UI_ELEMENT_TEXT* status = (UI_ELEMENT_TEXT*)GEN_USERINTERFACE.Element_Get(NL("status_text"), UI_ELEMENT_TYPE_TEXT);
+      if(status)
+        {
+          // Force live STATUS mask refresh on next ChangeTextElementValue tick via makeaction tag.
+          makeaction = elementname;
+        }
+    }
+
+  // Footer "Cerrar" — quit the application (click may select the button or a child ic/tx).
+  {
+    UI_ELEMENT* walk = element;
+    while(walk)
+      {
+        if(walk->GetName() && !walk->GetName()->Compare(NL("btn_cerrar"), true))
+          {
+            SetExitType(APPFLOWBASE_EXITTYPE_BY_USER);
+            break;
+          }
+        walk = walk->GetFather();
+      }
+  }
 
   return true;
 }
@@ -1148,26 +1164,41 @@ bool UI_OPTIONS::UserInterface_ChangeLiteralText(UI_ELEMENT_TEXT* element_text, 
   if(!maskvalue)      return false;
   if(!maskresolved)   return false;
 
-  if(!maskvalue->Compare(_L("VERSION"), true))
+  if(!maskvalue->Compare(NL("VERSION"), true))
     {
-      maskresolved->Format(_L("%d.%d.%d"), APPLICATION_VERSION, APPLICATION_SUBVERSION, APPLICATION_SUBVERSIONERR);      
-      if(APPLICATION_VERSION < 1) maskresolved->AddFormat(_L(" Beta"));             
+      maskresolved->Format(NL("%d.%d.%d"), APPLICATION_VERSION, APPLICATION_SUBVERSION, APPLICATION_SUBVERSIONERR);
+      if(APPLICATION_VERSION < 1) maskresolved->AddFormat(NL(" Beta"));
     }
 
-  if(!maskvalue->Compare(_L("TEST_TEXT"), true))
+  if(!maskvalue->Compare(NL("STATUS"), true))
     {
-      maskresolved->Set(_L("Tests"));      
+      if(!makeaction.IsEmpty())
+        {
+          maskresolved->Format(NL("%s"), makeaction.Get());
+        }
+       else
+        {
+          maskresolved->Set(NL("LISTO"));
+        }
     }
 
-  if(!maskvalue->Compare(_L("TEST_TEXT2"), true))
+  if(!maskvalue->Compare(NL("USER"), true))
+    {
+      maskresolved->Set(NL("Usuario: Tecnico · Perfil: Editor"));
+    }
+
+  if(!maskvalue->Compare(NL("TEST_TAG"), true))
+    {
+      maskresolved->Set(NL("masks"));
+    }
+
+  if(!maskvalue->Compare(NL("TEST_COUNTER"), true))
     {
       static int counter = 0;
-
-      maskresolved->Format(_L("%d"), counter);      
-
+      maskresolved->Format(NL("%d"), counter);
       counter++;
     }
- 
+
   return true;
 }
 
@@ -1189,33 +1220,23 @@ bool UI_OPTIONS::UserInterface_CFGChromes(GRPSCREEN* screen)
 
   #ifdef GRP_SCREEN_CUSTOMCHROMES_ACTIVE
 
-  /*
-  XPATH xpath;
-
-  GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS, xpath);
-  xpath.Slash_Add();
-  xpath.Add(_L("chrome/chrome.xml"));
-  //xpath.Add(_L("chrome.zip"));
-
-
-  cfgchromes.SetCustomLayoutFile(xpath.Get());
-  cfgchromes.SetCustomLayoutName(_L("chrome"));
-  */
-
-  cfgchromes.SetCustomAutoHide(500);
+  // defaultwindowschromes.zip: invisible caption strip (no icons) for drag only.
+  // Keep auto-hide off so the transparent band stays hit-testable.
+  cfgchromes.SetCustomAutoHide(0);
 
   #else
 
   cfgchromes.SetNativeCaptionActive(true);
-  cfgchromes.SetNativeIconActive(true);
-  cfgchromes.SetNativeTitleActive(true); 
-  cfgchromes.SetNativeMinimizeActive(true);
-  cfgchromes.SetNativeMaximizeActive(true);
+  cfgchromes.SetNativeIconActive(false);
+  cfgchromes.SetNativeTitleActive(false); 
+  cfgchromes.SetNativeMinimizeActive(false);
+  cfgchromes.SetNativeMaximizeActive(false);
   cfgchromes.SetNativeCloseActive(true);  
 
   #endif
 
-  cfgchromes.SetResizeActive(true);
+  // Fixed-size demo window — no thick frame / user resize.
+  cfgchromes.SetResizeActive(false);
 
   screen->SetCFGChromes(cfgchromes);
 
@@ -1257,7 +1278,7 @@ bool UI_OPTIONS::UnitTest_AVIVideoWrite()
             {
               xpath_img = xpath;
 
-              name_img.Format(_L("frames/ezgif-frame-%03d.jpg"), c);
+              name_img.Format(NL("frames/ezgif-frame-%03d.jpg"), c);
               xpath_img += name_img;
 
               if(fileimg->Open(xpath_img))
@@ -1293,13 +1314,13 @@ bool UI_OPTIONS::UnitTest_AVIVideoWrite()
                      
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_GRAPHICS, xpath);
   xpath.Slash_Add();
-  xpath.Add(_L("prueba.avi"));
+  xpath.Add(NL("prueba.avi"));
 
   GRPVIDEOFILE_PROPERTYS propertys;
 
   propertys.width     = 480;
   propertys.height    = 480;
-  propertys.codecstr  = _L("MJPG");
+  propertys.codecstr  = NL("MJPG");
 
   if(xfileAVI->Create(xpath.Get(), propertys))
     {      
