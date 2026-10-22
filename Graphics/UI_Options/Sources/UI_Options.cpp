@@ -1,4 +1,4 @@
-/**-------------------------------------------------------------------------------------------------------------------
+﻿/**-------------------------------------------------------------------------------------------------------------------
 * 
 * @file       UI_Options.cpp
 * 
@@ -120,6 +120,7 @@
 #include "APPFlowExtended.h"
 
 #include "UI_Options_CFG.h"
+#include "UI_Options_TranslateID.h"
 
 
 /*---- PRECOMPILATION INCLUDES ---------------------------------------------------------------------------------------*/
@@ -274,9 +275,7 @@ bool UI_OPTIONS::AppProc_Ini()
     if(!GEN_XTRANSLATION.Ini(xpath))
       {
         return false;
-      }
-
-    GEN_XTRANSLATION.SetActual(XLANGUAGE_ISO_639_3_CODE_ENG);
+      }    
   }
 
   //--------------------------------------------------------------------------------------
@@ -951,7 +950,23 @@ bool UI_OPTIONS::UserInterface_SelectExclusiveRow(XCHAR** rownames, XDWORD nrows
 
   (void)chevronname;
 
-  static XCHAR* nav_labels[] = { NL("1. Inicio"), NL("2. Nuevo Galeria"), NL("3. Abrir Galeria"), NL("4. Editar Galeria"), NL("5. Exportar XML"), NL("6. Configuracion") };
+  // Resolve each call via TL() (not static _L literals) so language changes apply.
+  // IDs match example.xml #[TRANSLATE_160]..[165] / ui_options.lng "00160".."00165".
+  static const XDWORD nav_label_ids[6] = {
+                                           UI_OPTIONS_TRANSLATEID_EXAMPLE_N1_HOME          ,
+                                           UI_OPTIONS_TRANSLATEID_EXAMPLE_N2_NEW_GALLERY   ,
+                                           UI_OPTIONS_TRANSLATEID_EXAMPLE_N3_OPEN_GALLERY  ,
+                                           UI_OPTIONS_TRANSLATEID_EXAMPLE_N4_EDIT_GALLERY  ,
+                                           UI_OPTIONS_TRANSLATEID_EXAMPLE_N5_EXPORT_XML    ,
+                                           UI_OPTIONS_TRANSLATEID_EXAMPLE_N6_CONFIGURATION
+                                         };
+
+  XSTRING nav_labels[6];
+  for(XDWORD n = 0; n < 6; n++)
+    {
+      XCHAR* sentence = TL(nav_label_ids[n]);
+      if(sentence) nav_labels[n].Set(sentence);
+    }
 
   bool anychanged = false;
   UI_ELEMENT* listfather = NULL;
@@ -1066,6 +1081,27 @@ bool UI_OPTIONS::UserInterface_ElementSelected(UI_ELEMENT* element)
                                                 // (no full Layout_PutBackground — that wiped ListBoxMenu/edit under
                                                 // chrome auto-hide) then re-resolves #[TRANSLATE_N].
                                                 GEN_USERINTERFACE.Layouts_ApplyTranslations();
+
+                                                // Re-apply nav exclusive row so TL() labels + trailing '>' match the new language.
+                                                {
+                                                  XCHAR* nav_rows[] = { NL("nav_1"), NL("nav_2"), NL("nav_3"), NL("nav_4"), NL("nav_5"), NL("nav_6") };
+                                                  UI_ELEMENT* nav_sel = NULL;
+                                                  for(XDWORD i = 0; i < 6; i++)
+                                                    {
+                                                      UI_ELEMENT_BUTTON* row = (UI_ELEMENT_BUTTON*)GEN_USERINTERFACE.Element_Get(nav_rows[i], UI_ELEMENT_TYPE_BUTTON);
+                                                      if(!row) continue;
+                                                      if((row->GetBackgroundColor()->GetAlpha() == 255) &&
+                                                         (row->GetBackgroundColor()->GetRed()   == 220) &&
+                                                         (row->GetBackgroundColor()->GetGreen() == 236) &&
+                                                         (row->GetBackgroundColor()->GetBlue()  == 250))
+                                                        {
+                                                          nav_sel = (UI_ELEMENT*)row;
+                                                          break;
+                                                        }
+                                                    }
+                                                  if(nav_sel) UserInterface_SelectExclusiveRow(nav_rows, 6, nav_sel, NULL);
+                                                }
+
                                                 #ifdef APPFLOW_CFG_GENERAL_ACTIVE
                                                 APPFLOW_CFG.Language_PersistActual();
                                                 #endif
@@ -1178,7 +1214,7 @@ bool UI_OPTIONS::UserInterface_ChangeLiteralText(UI_ELEMENT_TEXT* element_text, 
         }
        else
         {
-          maskresolved->Set(NL("LISTO"));
+          maskresolved->Set(TL(UI_OPTIONS_TRANSLATEID_UI_OPTIONS_LIST));
         }
     }
 

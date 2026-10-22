@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  GEN XML Gallery — Manual Técnico 1024x576.
+  GEN XML Gallery _ Manual T_cnico 1024x576.
   Top-level ypos = bottom edge (larger ypos = lower on screen).
   Nested child ypos = offset UP from parent bottom (larger = closer to parent top).
   Section titles/icons are declared AFTER their frames so they paint above FormBackdrop restores.
 
   Vertical rhythm:
-    title → frame top = 14px
+    title _ frame top = 14px
     header icon = frame_left+2, text = frame_left+24, icon ypos = text ypos+6
-    frame inner top/bottom pad ≈ 6–8px
-    section gap (frame bottom → next title) ≈ 16px
+    frame inner top/bottom pad _ 6_8px
+    section gap (frame bottom _ next title) _ 16px
 -->
 <layouts>
   <skin name="" drawmode="canvas" rasterfont="verdana18" vectorfont="Nunito-SemiBold.ttf" backgroundimg="background_manual.jpg"> </skin>
@@ -38,7 +38,7 @@
     <!-- HEADER title clears GEN FRAMEWORK mark in background_manual.jpg (logo is in the bg). -->
     <element name="hdr_title" type="text" xpos="220" ypos="48" sizefont="12" color="color_ink">#[TRANSLATE_101]</element>
 
-    <!-- LISTO: optical center; ~8px pad. Raised exactly 5px (70→65). Transparent caption allows overlap. -->
+    <!-- LISTO: optical center; ~8px pad. Raised exactly 5px (70_65). Transparent caption allows overlap. -->
     <element name="status_box" type="form" xpos="720" ypos="65" width="280" height="56"
              roundrect="0" linecolor="color_line" color="color_panel">
       <element name="ic_ready" type="animation" xpos="14" ypos="29"><image>icon_ready_sm.png</image></element>
@@ -51,33 +51,33 @@
     <element name="div_r" type="form" xpos="700" ypos="512" width="1" height="440" roundrect="0" linecolor="color_div" color="color_div"></element>
 
     <!-- ===== LEFT NAV ===== -->
-    <!-- Aligned with EDITOR: title@86 → frame top=100 (gap 14). bottom=254; clear of GALLERYS. -->
+    <!-- Aligned with EDITOR: title@86 _ frame top=100 (gap 14). bottom=254; clear of GALLERYS. -->
     <element name="frame_nav" type="form" xpos="48" ypos="254" width="220" height="154"
              roundrect="0" linecolor="color_line" color="color_panel">
-      <!-- 6×25 + 2px pads; pitch 25 -->
+      <!-- 6_25 + 2px pads; pitch 25 -->
       <element name="nav_1" type="button" xpos="6" ypos="127" width="208" height="25" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="0" color="color_ink">
         <element name="ic" type="animation" xpos="6" ypos="4"><image>icon_home_sm.png</image></element>
-        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">1. Inicio</element>
+        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">#[TRANSLATE_160]</element>
       </element>
       <element name="nav_2" type="button" xpos="6" ypos="102" width="208" height="25" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="0" color="color_ink">
         <element name="ic" type="animation" xpos="6" ypos="4"><image>icon_plus_manual_sm.png</image></element>
-        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">2. Nuevo Galeria</element>
+        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">#[TRANSLATE_161]</element>
       </element>
       <element name="nav_3" type="button" xpos="6" ypos="77" width="208" height="25" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="0" color="color_ink">
         <element name="ic" type="animation" xpos="6" ypos="4"><image>icon_folder_sm.png</image></element>
-        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">3. Abrir Galeria</element>
+        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">#[TRANSLATE_162]</element>
       </element>
       <element name="nav_4" type="button" xpos="6" ypos="52" width="208" height="25" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="0" color="color_ink">
         <element name="ic" type="animation" xpos="6" ypos="4"><image>icon_pencil_sm.png</image></element>
-        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">4. Editar Galeria</element>
+        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">#[TRANSLATE_163]</element>
       </element>
       <element name="nav_5" type="button" xpos="6" ypos="27" width="208" height="25" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="0" color="color_ink">
         <element name="ic" type="animation" xpos="6" ypos="4"><image>icon_download_sm.png</image></element>
-        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">5. Exportar XML</element>
+        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">#[TRANSLATE_164]</element>
       </element>
       <element name="nav_6" type="button" xpos="6" ypos="2" width="208" height="25" selectablestatus="active" allocationtext="none" sizefont="11" roundrect="0" color="color_ink">
         <element name="ic" type="animation" xpos="6" ypos="4"><image>icon_gear_sm.png</image></element>
-        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">6. Configuracion</element>
+        <element name="tx" type="text" xpos="30" ypos="6" sizefont="11" color="color_ink">#[TRANSLATE_165]</element>
       </element>
     </element>
     <!-- Title/icon match EDITOR @86/92. -->
@@ -85,42 +85,42 @@
     <element name="lbl_nav" type="text" xpos="76" ypos="91" sizefont="11" color="color_ink">#[TRANSLATE_138]</element>
 
     <!-- ===== LEFT GALLERIES ===== -->
-    <!-- Bottom aligned with VISTA PREVIA @512. height=216 → top=296; title@282 (gap 14). -->
+    <!-- Bottom aligned with VISTA PREVIA @512. height=216 _ top=296; title@282 (gap 14). -->
     <element name="frame_records" type="form" xpos="48" ypos="512" width="220" height="216"
              roundrect="0" linecolor="color_line" color="color_panel"></element>
     <element name="ic_list" type="animation" xpos="50" ypos="293"><image>icon_list_sm.png</image></element>
     <element name="lbl_records" type="text" xpos="76" ypos="287" sizefont="11" color="color_ink">#[TRANSLATE_102]</element>
 
-    <!-- frame top=296; 8px pad → first row top=304 → ypos=332; pitch 32 -->
+    <!-- frame top=296; 8px pad _ first row top=304 _ ypos=332; pitch 32 -->
     <element name="gal_1" type="button" xpos="54" ypos="332" width="208" height="28" selectablestatus="active" allocationtext="none" sizefont="10" roundrect="0" color="color_ink">
       <element name="ic" type="animation" xpos="6" ypos="5"><image>icon_file_sm.png</image></element>
       <element name="dt" type="text" xpos="148" ypos="8" sizefont="9" color="color_muted">24/05/2024</element>
-      <element name="tx" type="text" xpos="30" ypos="7" sizefont="10" color="color_ink">productos.xml</element>
+      <element name="tx" type="text" xpos="30" ypos="7" sizefont="10" color="color_ink">#[TRANSLATE_166]</element>
     </element>
     <element name="gal_2" type="button" xpos="54" ypos="364" width="208" height="28" selectablestatus="active" allocationtext="none" sizefont="10" roundrect="0" color="color_ink">
       <element name="ic" type="animation" xpos="6" ypos="5"><image>icon_file_sm.png</image></element>
       <element name="dt" type="text" xpos="148" ypos="8" sizefont="9" color="color_muted">23/05/2024</element>
-      <element name="tx" type="text" xpos="30" ypos="7" sizefont="10" color="color_ink">catalogo.xml</element>
+      <element name="tx" type="text" xpos="30" ypos="7" sizefont="10" color="color_ink">#[TRANSLATE_167]</element>
     </element>
     <element name="gal_3" type="button" xpos="54" ypos="396" width="208" height="28" selectablestatus="active" allocationtext="none" sizefont="10" roundrect="0" color="color_ink">
       <element name="ic" type="animation" xpos="6" ypos="5"><image>icon_file_sm.png</image></element>
       <element name="dt" type="text" xpos="148" ypos="8" sizefont="9" color="color_muted">22/05/2024</element>
-      <element name="tx" type="text" xpos="30" ypos="7" sizefont="10" color="color_ink">noticias.xml</element>
+      <element name="tx" type="text" xpos="30" ypos="7" sizefont="10" color="color_ink">#[TRANSLATE_168]</element>
     </element>
     <element name="gal_4" type="button" xpos="54" ypos="428" width="208" height="28" selectablestatus="active" allocationtext="none" sizefont="10" roundrect="0" color="color_ink">
       <element name="ic" type="animation" xpos="6" ypos="5"><image>icon_file_sm.png</image></element>
       <element name="dt" type="text" xpos="148" ypos="8" sizefont="9" color="color_muted">20/05/2024</element>
-      <element name="tx" type="text" xpos="30" ypos="7" sizefont="10" color="color_ink">eventos.xml</element>
+      <element name="tx" type="text" xpos="30" ypos="7" sizefont="10" color="color_ink">#[TRANSLATE_169]</element>
     </element>
     <element name="gal_5" type="button" xpos="54" ypos="460" width="208" height="28" selectablestatus="active" allocationtext="none" sizefont="10" roundrect="0" color="color_ink">
       <element name="ic" type="animation" xpos="6" ypos="5"><image>icon_file_sm.png</image></element>
       <element name="dt" type="text" xpos="148" ypos="8" sizefont="9" color="color_muted">18/05/2024</element>
-      <element name="tx" type="text" xpos="30" ypos="7" sizefont="10" color="color_ink">banner.xml</element>
+      <element name="tx" type="text" xpos="30" ypos="7" sizefont="10" color="color_ink">#[TRANSLATE_170]</element>
     </element>
     <element name="lbl_records_foot" type="text" xpos="54" ypos="496" sizefont="9" color="color_muted">#[TRANSLATE_139]</element>
 
     <!-- ===== CENTER EDITOR ===== -->
-    <!-- title@86 → frame top=100 (gap 14). -->
+    <!-- title@86 _ frame top=100 (gap 14). -->
     <element name="frame_form" type="form" xpos="288" ypos="318" width="400" height="218"
              roundrect="0" linecolor="color_line" color="color_panel"></element>
     <element name="ic_editor" type="animation" xpos="290" ypos="97"><image>icon_pencil_sm.png</image></element>
@@ -145,26 +145,26 @@
     <element name="ic_dd2" type="animation" xpos="660" ypos="250"><image>icon_dropdown_sm.png</image></element>
 
     <element name="lbl_desc" type="text" xpos="300" ypos="274" sizefont="9" color="color_muted">#[TRANSLATE_109]</element>
-    <element name="notes_l1" type="text" xpos="300" ypos="292" sizefont="10" color="color_ink">Galeria de productos destacados para el escaparate</element>
-    <element name="notes_l2" type="text" xpos="300" ypos="308" sizefont="10" color="color_ink">digital. Incluye metadatos, idioma y estructura XML.</element>
+    <element name="notes_l1" type="text" xpos="300" ypos="292" sizefont="10" color="color_ink">#[TRANSLATE_171]</element>
+    <element name="notes_l2" type="text" xpos="300" ypos="308" sizefont="10" color="color_ink">#[TRANSLATE_172]</element>
 
     <!-- ===== CENTER PREVIEW ===== -->
-    <!-- title@340 → frame top=354 (gap 14). Soft parent owns L-margins; card nested so
+    <!-- title@340 _ frame top=354 (gap 14). Soft parent owns L-margins; card nested so
          FormBackdrop restores on the card cannot wipe soft fill with the grid Capture. -->
     <element name="frame_preview" type="form" xpos="288" ypos="512" width="400" height="158"
              roundrect="0" linecolor="color_muted" color="color_soft">
-      <!-- nested ypos = offset up from parent bottom: 44 → card bottom @468, top @370 -->
+      <!-- nested ypos = offset up from parent bottom: 44 _ card bottom @468, top @370 -->
       <element name="preview_card" type="form" xpos="10" ypos="44" width="380" height="98"
                roundrect="0" linecolor="color_line" color="color_panel"></element>
     </element>
     <element name="ic_preview" type="animation" xpos="290" ypos="351"><image>icon_file_sm.png</image></element>
     <element name="lbl_preview" type="text" xpos="312" ypos="345" sizefont="11" color="color_ink">#[TRANSLATE_141]</element>
     <element name="drop_A" type="animation" xpos="308" ypos="444"><image>dropcap_A.png</image></element>
-    <element name="xml_l1" type="text" xpos="380" ypos="384" sizefont="11" color="color_ink">[gallery] id="productos" lang="es"</element>
-    <element name="xml_l2" type="text" xpos="380" ypos="402" sizefont="11" color="color_ink">  [meta] title="Productos Destacados"</element>
-    <element name="xml_l3" type="text" xpos="380" ypos="420" sizefont="11" color="color_ink">  [items] count="12"</element>
-    <element name="xml_l4" type="text" xpos="380" ypos="438" sizefont="11" color="color_ink">    [item] id="001"</element>
-    <element name="xml_l5" type="text" xpos="380" ypos="456" sizefont="11" color="color_ink">[/gallery]</element>
+    <element name="xml_l1" type="text" xpos="380" ypos="384" sizefont="11" color="color_ink" translate="false">[gallery] id="productos" lang="es"</element>
+    <element name="xml_l2" type="text" xpos="380" ypos="402" sizefont="11" color="color_ink" translate="false">  [meta] title="Productos Destacados"</element>
+    <element name="xml_l3" type="text" xpos="380" ypos="420" sizefont="11" color="color_ink" translate="false">  [items] count="12"</element>
+    <element name="xml_l4" type="text" xpos="380" ypos="438" sizefont="11" color="color_ink" translate="false">    [item] id="001"</element>
+    <element name="xml_l5" type="text" xpos="380" ypos="456" sizefont="11" color="color_ink" translate="false">[/gallery]</element>
     <!-- Strip mid=490: icon center + text baseline aligned; inset matches card. -->
     <element name="ic_info" type="animation" xpos="308" ypos="500"><image>icon_info_sm.png</image></element>
     <element name="hint_drag" type="text" xpos="334" ypos="494" sizefont="9" color="color_muted">#[TRANSLATE_143]</element>
@@ -176,26 +176,26 @@
 
     <element name="lbl_prog_sec" type="text" xpos="716" ypos="108" sizefont="9" color="color_muted">#[TRANSLATE_145]</element>
 
-    <element name="lbl_val" type="text" xpos="716" ypos="126" sizefont="10" color="color_ink">Validacion</element>
+    <element name="lbl_val" type="text" xpos="716" ypos="126" sizefont="10" color="color_ink">#[TRANSLATE_173]</element>
     <element name="progress_val" type="progressbar" xpos="820" ypos="124" width="120" height="10"
              allocationtext="none" direction="horizontal" roundcap="no"
              progressrect="0,0,120,10"
              linecolor="color_line" bckgrdcolor="color_bar_bg" color="color_bar" level="100"></element>
-    <element name="pct_val" type="text" xpos="948" ypos="126" sizefont="10" color="color_ink">100%</element>
+    <element name="pct_val" type="text" xpos="948" ypos="126" sizefont="10" color="color_ink" translate="false">100%</element>
 
-    <element name="lbl_gen" type="text" xpos="716" ypos="148" sizefont="10" color="color_ink">Generacion XML</element>
+    <element name="lbl_gen" type="text" xpos="716" ypos="148" sizefont="10" color="color_ink">#[TRANSLATE_174]</element>
     <element name="progressbar0" type="progressbar" xpos="820" ypos="146" width="120" height="10"
              allocationtext="none" direction="horizontal" roundcap="no"
              progressrect="0,0,120,10"
              linecolor="color_line" bckgrdcolor="color_bar_bg" color="color_bar" level="75"></element>
-    <element name="pct_gen" type="text" xpos="948" ypos="148" sizefont="10" color="color_ink">75%</element>
+    <element name="pct_gen" type="text" xpos="948" ypos="148" sizefont="10" color="color_ink" translate="false">75%</element>
 
-    <element name="lbl_pack" type="text" xpos="716" ypos="170" sizefont="10" color="color_ink">Empaquetado</element>
+    <element name="lbl_pack" type="text" xpos="716" ypos="170" sizefont="10" color="color_ink">#[TRANSLATE_175]</element>
     <element name="progress_pack" type="progressbar" xpos="820" ypos="168" width="120" height="10"
              allocationtext="none" direction="horizontal" roundcap="no"
              progressrect="0,0,120,10"
              linecolor="color_line" bckgrdcolor="color_bar_bg" color="color_bar" level="45"></element>
-    <element name="pct_pack" type="text" xpos="948" ypos="170" sizefont="10" color="color_ink">45%</element>
+    <element name="pct_pack" type="text" xpos="948" ypos="170" sizefont="10" color="color_ink" translate="false">45%</element>
 
     <element name="sep1" type="form" xpos="716" ypos="184" width="270" height="1" roundrect="0" linecolor="color_div" color="color_div"></element>
 
@@ -210,20 +210,20 @@
 
     <element name="sep2" type="form" xpos="716" ypos="280" width="270" height="1" roundrect="0" linecolor="color_div" color="color_div"></element>
 
-    <!-- Cluster centered under CALIDAD arc (790–890, mid≈840): scale | bar | values. Raised 20px with sep2. -->
+    <!-- Cluster centered under CALIDAD arc (790_890, mid_840): scale | bar | values. Raised 20px with sep2. -->
     <element name="lbl_mem" type="text" xpos="716" ypos="294" sizefont="9" color="color_muted">#[TRANSLATE_123]</element>
-    <element name="mem_100" type="text" xpos="794" ypos="308" sizefont="8" color="color_muted">100%</element>
-    <element name="mem_50" type="text" xpos="794" ypos="348" sizefont="8" color="color_muted">50%</element>
-    <element name="mem_0" type="text" xpos="794" ypos="378" sizefont="8" color="color_muted">0%</element>
+    <element name="mem_100" type="text" xpos="794" ypos="308" sizefont="8" color="color_muted" translate="false">100%</element>
+    <element name="mem_50" type="text" xpos="794" ypos="348" sizefont="8" color="color_muted" translate="false">50%</element>
+    <element name="mem_0" type="text" xpos="794" ypos="378" sizefont="8" color="color_muted" translate="false">0%</element>
     <element type="progressimage" name="temp_bar" xpos="828" ypos="380" allocationtext="none" direction="vertical"
              offsetstart="4" offsetend="4" level="48" imageempty="mem_bar_empty.png" imagefull="mem_bar_full.png">
     </element>
-    <element name="lbl_mem_detail" type="text" xpos="862" ypos="332" sizefont="11" color="color_muted">256 / 512 MB</element>
-    <element name="lbl_mem_pct" type="text" xpos="862" ypos="354" sizefont="14" color="color_ink">48%</element>
+    <element name="lbl_mem_detail" type="text" xpos="862" ypos="332" sizefont="11" color="color_muted">#[TRANSLATE_176]</element>
+    <element name="lbl_mem_pct" type="text" xpos="862" ypos="354" sizefont="14" color="color_ink" translate="false">48%</element>
 
     <element name="sep3" type="form" xpos="716" ypos="412" width="270" height="1" roundrect="0" linecolor="color_div" color="color_div"></element>
 
-    <!-- Chart needs >=~48px height: SVG margins eat ~8–12px/side. bottom=482 top=430. -->
+    <!-- Chart needs >=~48px height: SVG margins eat ~8_12px/side. bottom=482 top=430. -->
     <element name="lbl_chart" type="text" xpos="716" ypos="426" sizefont="9" color="color_muted">#[TRANSLATE_125]</element>
     <element name="demo_chart" type="statisticschart" chart="lines" title=""
              xpos="716" ypos="482" width="270" height="52" color="96,125,139">

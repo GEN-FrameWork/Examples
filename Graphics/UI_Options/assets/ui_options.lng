@@ -510,6 +510,166 @@
       "[/gallery]",
       "[/gallery]",
       "[/gallery]"
+    ],
+
+    "00160" : [ 0,
+      "1. Inicio" ,
+      "1. Home" ,
+      "1. Accueil" ,
+      "1. Zuhause" ,
+      "1. 主页"
+    ],
+
+    "00161" : [ 0,
+      "2. Nuevo Galeria" ,
+      "2. New Gallery" ,
+      "2. Nouvelle galerie" ,
+      "2. Neue Galerie" ,
+      "2. 新画廊"
+    ],
+
+    "00162" : [ 0,
+      "3. Abrir galería" ,
+      "3. Open Gallery" ,
+      "3. Ouvrir la galerie" ,
+      "3. Öffnen Sie die Galerie" ,
+      "3.开放画廊"
+    ],
+
+    "00163" : [ 0,
+      "4. Editar galería" ,
+      "4. Edit Gallery" ,
+      "4. Modifier la galerie" ,
+      "4. Galerie bearbeiten" ,
+      "4. 编辑图库"
+    ],
+
+    "00164" : [ 0,
+      "5. Exportar XML" ,
+      "5. Export XML" ,
+      "5. Exporter du XML" ,
+      "5. XML exportieren" ,
+      "5.导出XML"
+    ],
+
+    "00165" : [ 0,
+      "6. Configuracion" ,
+      "6. Configuration" ,
+      "6. Configuration" ,
+      "6. Konfiguration" ,
+      "6. 配置"
+    ],
+
+    "00166" : [ 0,
+      "productos.xml" ,
+      "products.xml" ,
+      "produits.xml" ,
+      "products.xml" ,
+      "产品.xml"
+    ],
+
+    "00167" : [ 0,
+      "catalogo.xml" ,
+      "catalogo.xml" ,
+      "catalogue.xml" ,
+      "Catalogo.xml" ,
+      "目录.xml"
+    ],
+
+    "00168" : [ 0,
+      "noticias.xml" ,
+      "news.xml" ,
+      "nouvelles.xml" ,
+      "news.xml" ,
+      "新闻.xml"
+    ],
+
+    "00169" : [ 0,
+      "eventos.xml" ,
+      "events.xml" ,
+      "événements.xml" ,
+      "events.xml" ,
+      "事件.xml"
+    ],
+
+    "00170" : [ 0,
+      "banner.xml" ,
+      "banner.xml" ,
+      "bannière.xml" ,
+      "banner.xml" ,
+      "横幅.xml"
+    ],
+
+    "00171" : [ 0,
+      "Galeria de productos destacados para el escaparate" ,
+      "Gallery of featured products for the showcase" ,
+      "Galerie de produits phares pour la vitrine" ,
+      "Galerie der vorgestellten Produkte für die Vitrine" ,
+      "展示的特色产品画廊"
+    ],
+
+    "00172" : [ 0,
+      "digital. Incluye metadatos, idioma y estructura XML." ,
+      "digital. " ,
+      "numérique. Comprend les métadonnées, le langage et la structure XML." ,
+      "digital. Beinhaltet Metadaten, Sprache und XML-Struktur." ,
+      "数字的。包括元数据、语言和 XML 结构。"
+    ],
+
+    "00173" : [ 0,
+      "Validacion" ,
+      "Validation" ,
+      "Validation" ,
+      "Validierung" ,
+      "验证"
+    ],
+
+    "00174" : [ 0,
+      "Generación XML" ,
+      "XML Generation" ,
+      "Génération XML" ,
+      "XML-Generierung" ,
+      "XML生成"
+    ],
+
+    "00175" : [ 0,
+      "Empaquetado" ,
+      "Packaging" ,
+      "Conditionnement" ,
+      "Verpackung" ,
+      "包装"
+    ],
+
+    "00176" : [ 0,
+      "256 / 512MB" ,
+      "256 / 512 MB" ,
+      "256/512 Mo" ,
+      "256/512 MB" ,
+      "256 / 512 MB"
+    ],
+
+    "00177" : [ 0,
+      "3. Abrir galería" ,
+      "3. Open Gallery" ,
+      "3. Ouvrir la galerie" ,
+      "3. Öffnen Sie die Galerie" ,
+      "3.开放画廊"
+    ],
+
+    "00178" : [ 0,
+      "4. Editar galería" ,
+      "4. Edit Gallery" ,
+      "4. Modifier la galerie" ,
+      "4. Galerie bearbeiten" ,
+      "4. 编辑图库"
+    ],
+
+    "00179" : [ 0,
+      "LISTA" ,
+      "LIST" ,
+      "LISTE" ,
+      "LISTE" ,
+      "列表"
     ]
   }
 }
