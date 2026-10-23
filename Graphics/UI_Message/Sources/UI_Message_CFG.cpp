@@ -32,11 +32,12 @@
 
 /*---- INCLUDES ------------------------------------------------------------------------------------------------------*/
 
+#include "UI_Message_CFG.h"
+
 #include "XLog.h"
 
 #include "UI_Message.h"
 
-#include "UI_Message_CFG.h"
 
 #include "XMemory_Control.h"
 
@@ -154,11 +155,11 @@ bool UI_MESSAGE_CFG::DoDefault()
   log_activesectionsID.Empty();
 
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_INITIATION;
-  log_activesectionsID                  += _L(",");
+  log_activesectionsID                  += NL(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_GENERIC;
-  log_activesectionsID                  += _L(",");
+  log_activesectionsID                  += NL(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_STATUSAPP;
-  log_activesectionsID                  += _L(",");
+  log_activesectionsID                  += NL(",");
   log_activesectionsID                  += APPFLOW_CFG_LOG_SECTIONID_ENDING;
 
   log_levelmask                         = XLOGLEVEL_ALL;

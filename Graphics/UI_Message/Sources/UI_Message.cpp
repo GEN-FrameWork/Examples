@@ -109,6 +109,7 @@
 #include "APPFlowExtended.h"
 
 #include "UI_Message_CFG.h"
+#include "UI_Message_TranslateID.h"
 
 
 /*---- PRECOMPILATION INCLUDES ---------------------------------------------------------------------------------------*/
@@ -256,8 +257,6 @@ bool UI_MESSAGE::AppProc_Ini()
       {
         return false;
       }
-
-    GEN_XTRANSLATION.SetActual(XLANGUAGE_ISO_639_3_CODE_ENG);
   }
 
   //--------------------------------------------------------------------------------------
@@ -581,7 +580,7 @@ bool UI_MESSAGE::Ini_Graphics(GRPSCREEN* screen)
   screen->Style_Add(GRPSCREENSTYLE_HEIGHTWITHOUTTASKBAR);
   screen->Style_Add(GRPSCREENSTYLE_NOICONTASKBAR);
 
-  screen->GetTitle()->Set(_L("Hola radiola"));  
+  screen->GetTitle()->Set(TL(UI_MESSAGE_TRANSLATEID_UI_MESSAGE_HELLO_RADIOLA));  
 
   screen->SetDesktopScreenSelected(GRPSCREENTYPE_DESKTOP_MAIN);
 
@@ -670,7 +669,7 @@ bool UI_MESSAGE::Ini_UserInterface(bool on)
  
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_UI_LAYOUTS, xpath);
   xpath.Slash_Add();
-  xpath.Add(_L("message.zip"));
+  xpath.Add(NL("message.zip"));
     
 
   if(!GEN_USERINTERFACE.Load(xpath, screen, 0)) 
@@ -731,7 +730,22 @@ bool UI_MESSAGE::DrawFrame()
  
   canvas->ReleaseDrawFramerate();
 
-  GEN_USERINTERFACE.Elements_RebuildDrawAreas(_L("message"));  
+  // Transparent window + form color="black,75": AGG paints fills with "over" blending. If the
+  // form (or its blinking icon) is redrawn without a fresh zero-alpha canvas, that 75% fill
+  // compounds toward opaque and the desktop no longer shows through. Buffer_SetToZero at Ini
+  // alone is not enough — clear every frame, drop stale FormBackdrop/rebuild caches, and
+  // force a full layout paint on the clean surface.
+  if(screen->Style_Is(GRPSCREENSTYLE_TRANSPARENT))
+    {
+      canvas->Buffer_SetToZero();
+      GEN_USERINTERFACE.InvalidateCompositionCachesForScreen(screen);
+      GEN_USERINTERFACE.Elements_SetToRedraw();
+    }
+   else
+    {
+      GEN_USERINTERFACE.Elements_RebuildDrawAreas(NL("message"));
+    }
+
   GEN_USERINTERFACE.Update();
 
   canvas->DrawFramerate(screen, 10, 30);
@@ -780,14 +794,14 @@ bool UI_MESSAGE::UserInterface_ChangeLiteralText(UI_ELEMENT_TEXT* element_text, 
   if(!maskvalue)      return false;
   if(!maskresolved)   return false;
 
-  if(!maskvalue->Compare(_L("TITLE"), true))
+  if(!maskvalue->Compare(NL("TITLE"), true))
     {
-      maskresolved->Set(_L("Esto es una prueba del titulo"));
+      maskresolved->Set(TL(UI_MESSAGE_TRANSLATEID_UI_MESSAGE_THIS_IS_PROOF_OF_THE_TITLE));
     }
 
-  if(!maskvalue->Compare(_L("MESSAGE"), true))
+  if(!maskvalue->Compare(NL("MESSAGE"), true))
     {
-      maskresolved->Set(_L("Este es un contenido para un ![COLOR red, 70]mensaje de prueba![END COLOR] y ver si se puede crear correctamente desde la configuracion"));      
+      maskresolved->Set(TL(UI_MESSAGE_TRANSLATEID_UI_MESSAGE_THIS_IS_A_CONTENT_FOR_A_RED_COLOR_70_TEST_MESSAG));      
     }
 
   return true;
@@ -813,7 +827,7 @@ void UI_MESSAGE::HandleEvent_UserInterface(UI_XEVENT* event)
       case  UI_XEVENT_TYPE_OUTPUT_SELECTED        : { UI_ELEMENT* element = event->GetElement();
                                                       if(element) 
                                                         {
-                                                          if(!element->GetName()->Compare(_L("ok-btn"), true))
+                                                          if(!element->GetName()->Compare(NL("ok-btn"), true))
                                                             {                                                             
                                                               exitmessage = true;
                                                             }
