@@ -24,7 +24,7 @@
     cpu_temp_bar            progressimage      SetLevel()
     cpu_usage_radial        progressradial     SetLevel()
     cpu_history_chart       statisticschart    HistoryChart_Apply()  CPU / Memoria / Disco
-    card_datetime           form               default in same slot (always unless chart)
+    card_datetime           form               same slot as history; hidden while chart is shown
     ram_usage_radial        progressradial     SetLevel()
     ram_linear_bar          progressbar     SetLevel()
     disk_usage_radial       progressradial  SetLevel()
@@ -238,7 +238,7 @@
       </element>
     </element>
     </element><!-- /cards_grid -->
-    <!-- Bottom-left slot: Fecha/hora is ALWAYS present. History stacks on top for CPU / Memoria / Disco. -->
+    <!-- Bottom-left slot: Fecha/hora XOR History (CPU / Memoria / Disco). Same AABB; exclusive SetVisible. -->
     <element name="card_datetime"   type="form" class="card" xpos="238"  ypos="828" width="376" height="346">
       <element name="card-header" type="form" class="card-header" style="margin: 12,0,0,24;" width="328" height="48">
         <element name="dt_hdr_icon" type="image" width="48" height="48">icons/card_calendar.svg</element>
@@ -254,7 +254,7 @@
         </element>
       </element>
     </element>
-    <element name="card_cpu_history" type="form" class="card" xpos="238"  ypos="828" width="376" height="346">
+    <element name="card_cpu_history" type="form" class="card" xpos="238"  ypos="828" width="376" height="346" visible="0">
       <element name="card-header" type="form" class="card-header" style="margin: 12,0,0,24;" width="328" height="48">
         <element name="cpuhist_hdr_icon" type="image" width="48" height="48">icons/card_cpu.svg</element>
         <element name="cpuhist_hdr_text" type="text" class="card-title" style="margin: 0,0,0,10;">#[TRANSLATE_116]</element>

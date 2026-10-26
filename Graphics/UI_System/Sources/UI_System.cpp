@@ -86,6 +86,7 @@
 #include "UI_Element_Text.h"
 #include "UI_Element_Form.h"
 #include "UI_Element_Button.h"
+#include "UI_Property_Selectable.h"
 #include "UI_Element_ProgressBar.h"
 #include "UI_Element_ProgressRadial.h"
 #include "UI_Element_ProgressImage.h"
@@ -1174,7 +1175,7 @@ bool UI_SYSTEM::CpuHistoryChart_PushSample(float cpuusagepercent)
 /**-------------------------------------------------------------------------------------------------------------------
 *
 * @fn         bool UI_SYSTEM::DashboardSlot_ApplySection(UI_SYSTEM_SECTIONID sectionID)
-* @brief      Swaps the bottom-left slot: Fecha/hora by default; StatisticsChart on CPU / Memoria / Disco.
+* @brief      Swaps the bottom-left slot: Fecha/hora XOR StatisticsChart (CPU / Memoria / Disco).
 * @note       MAIN THREAD ONLY.
 * @ingroup    EXAMPLES
 *
@@ -1185,7 +1186,8 @@ bool UI_SYSTEM::CpuHistoryChart_PushSample(float cpuusagepercent)
 *---------------------------------------------------------------------------------------------------------------------*/
 bool UI_SYSTEM::DashboardSlot_ApplySection(UI_SYSTEM_SECTIONID sectionID)
 {
-  // Fecha/hora stays visible forever in this slot. CPU / Memoria / Disco overlay the chart on top.
+  // Mutual exclusive slot: Fecha/hora OR StatisticsChart (CPU / Memoria / Disco).
+  // Keeping both visible left date/time text (and TextBackdrop white plate) painted over the chart.
   bool showhistory = ((sectionID == UI_SYSTEM_SECTIONID_CPU)     ||
                       (sectionID == UI_SYSTEM_SECTIONID_MEMORIA) ||
                       (sectionID == UI_SYSTEM_SECTIONID_DISCO));
@@ -1195,15 +1197,15 @@ bool UI_SYSTEM::DashboardSlot_ApplySection(UI_SYSTEM_SECTIONID sectionID)
 
   if(!element_datetime || !element_history) return false;
 
-  // Base layer: never hide Fecha/hora (avoids empty AABB when chart overlay fails or is torn down).
-  if(!element_datetime->IsVisible())
-    {
-      element_datetime->SetVisible(true);
-    }
-  element_datetime->SetTransitionStateShow(UI_ELEMENT_TRANSITION_STATE_SHOW_NONE);
-
   if(showhistory)
     {
+      if(element_datetime->IsVisible())
+        {
+          element_datetime->SetVisible(false);
+        }
+      element_datetime->SetTransitionStateShow(UI_ELEMENT_TRANSITION_STATE_SHOW_NONE);
+      element_datetime->SetMustReDraw(false);
+
       element_history->SetVisible(true);
       element_history->SetTransitionStateShow(UI_ELEMENT_TRANSITION_STATE_SHOW_NONE);
       element_history->SetMustReDraw(true);
@@ -1211,7 +1213,6 @@ bool UI_SYSTEM::DashboardSlot_ApplySection(UI_SYSTEM_SECTIONID sectionID)
     }
    else
     {
-      // Hide chart without RestoreOnHide (that would stomp the date card). Repaint Fecha/hora instead.
       if(element_history->IsVisible())
         {
           element_history->SetVisible(false);
@@ -1220,6 +1221,8 @@ bool UI_SYSTEM::DashboardSlot_ApplySection(UI_SYSTEM_SECTIONID sectionID)
       element_history->SetMustReDraw(false);
       element_history->SetTransitionStateShow(UI_ELEMENT_TRANSITION_STATE_SHOW_NONE);
 
+      element_datetime->SetVisible(true);
+      element_datetime->SetTransitionStateShow(UI_ELEMENT_TRANSITION_STATE_SHOW_NONE);
       element_datetime->SetMustReDraw(true);
       GEN_USERINTERFACE.Elements_SetToRedraw(element_datetime, true);
 
@@ -1241,7 +1244,7 @@ bool UI_SYSTEM::DashboardSlot_ApplySection(UI_SYSTEM_SECTIONID sectionID)
 *             the active sidebar section. Throttled to UI_SYSTEM_CHART_REBUILD_PERIOD_SECONDS unless forced
 *             (section change). Empty state shows "--" until enough samples exist.
 * @note       MAIN THREAD ONLY (touches GEN_USERINTERFACE). Fecha/hora is the default slot card;
-*             chart for CPU / Memoria / Disco (never leave the slot empty).
+*             chart replaces it for CPU / Memoria / Disco (never leave the slot empty).
 * @ingroup    EXAMPLES
 *
 * @param[in]  forced : True to bypass the rebuild throttle.
@@ -2254,7 +2257,19 @@ bool UI_SYSTEM::UserInterface_SelectSection(UI_SYSTEM_SECTIONID sectionID)
       bool isactive = (c == (int)sectionID);
 
       UI_ELEMENT* element_btn = GEN_USERINTERFACE.Element_Get(navbtnnames[c], UI_ELEMENT_TYPE_BUTTON);
-      if(element_btn) element_btn->SetSelected(isactive);
+      if(element_btn)
+        {
+          // Latch CSS button.nav-hit:selected. Default TimeSelected(100) + UnSelectedElement() would
+          // clear IsSelected ~100ms after click (momentary classic buttons). UI_Options avoids that by
+          // keeping SetSelected(false) and painting an opaque wash by hand — UI_System uses :selected.
+          UI_PROPERTY_SELECTABLE* selectable = dynamic_cast<UI_PROPERTY_SELECTABLE*>(element_btn);
+          if(selectable)
+            {
+              selectable->SetTimeSelected(isactive ? 0 : UI_PROPERTY_SELECTABLE_DEFAULT_TIMESELECTED);
+              if(isactive && selectable->GetXTimerSelected()) selectable->GetXTimerSelected()->Reset();
+            }
+          element_btn->SetSelected(isactive);
+        }
 
       UI_ELEMENT* element_row = GEN_USERINTERFACE.Element_Get(navrownames[c], UI_ELEMENT_TYPE_FORM);
       if(element_row)
