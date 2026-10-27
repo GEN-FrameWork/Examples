@@ -1,6 +1,8 @@
 -- Translation scraper (Lua) — Google gtx primary, MyMemory fallback
 -- args: text (required), tl (required), sl (optional), timeout (optional)
 -- results: ok, translation, detected
+-- Percent-encode query robustly. '%' uses a placeholder first because ReplaceAllString
+-- re-scans and would loop forever on "%" → "%25".
 
 function main()
   local text
@@ -33,7 +35,22 @@ function main()
     return 0
   end
 
-  q = ReplaceAllString(text, " ", "%20")
+  q = text
+  q = ReplaceAllString(q, "%", "__PCT__")
+  q = ReplaceAllString(q, " ", "%20")
+  q = ReplaceAllString(q, "\n", "%0A")
+  q = ReplaceAllString(q, "\r", "%0D")
+  q = ReplaceAllString(q, "\t", "%09")
+  q = ReplaceAllString(q, "&", "%26")
+  q = ReplaceAllString(q, "#", "%23")
+  q = ReplaceAllString(q, "+", "%2B")
+  q = ReplaceAllString(q, "?", "%3F")
+  q = ReplaceAllString(q, "=", "%3D")
+  q = ReplaceAllString(q, "\"", "%22")
+  q = ReplaceAllString(q, "{", "%7B")
+  q = ReplaceAllString(q, "}", "%7D")
+  q = ReplaceAllString(q, "__PCT__", "%25")
+
   url = AddString("https://translate.googleapis.com/translate_a/single?client=gtx&sl=", sl)
   url = AddString(url, "&tl=")
   url = AddString(url, tl)
