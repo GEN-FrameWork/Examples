@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  UI_Console example layout.
+  Canvas / window: 900 x 600.
+  ROOT ypos  = bottom edge from screen top.
+  CHILD ypos = distance UP from father bottom.
+
+  log_console is a direct child of frame_main (not nested in another form) so
+  CalculePosition resolves on-screen coordinates correctly.
+-->
+<layouts>
+
+  <skin name="" drawmode="canvas" rasterfont="verdana18" vectorfont="Nunito-SemiBold.ttf" backgroundcolor="24,28,36"></skin>
+
+  <color name="frame_line">70,80,95,255</color>
+  <color name="frame_back">32,36,44,255</color>
+  <color name="console_back">12,14,18,255</color>
+  <color name="title_ink">230,235,240,255</color>
+  <color name="btn_back">45,52,64,255</color>
+  <color name="btn_ink">220,225,230,255</color>
+
+  <layout name="console" backgroundcolor="24,28,36">
+
+    <element name="frame_main" type="form" xpos="center" ypos="center" width="860" height="540"
+             roundrect="10" border-width="2" linecolor="frame_line" bckgrdcolor="frame_back" sizefont="14">
+
+      <element name="title" type="text" xpos="20" ypos="510" sizefont="20" color="title_ink">#[TITLE]</element>
+
+      <element name="log_console" type="console" xpos="20" ypos="50" width="820" height="440"
+               roundrect="4" border-width="1" linecolor="frame_line" bckgrdcolor="console_back"
+               sizefont="14" linespacing="3" maxlines="500"
+               autoscroll="true" wordwrap="false" overflow-y="auto" overflow-x="auto"></element>
+
+      <element name="clear-btn" type="button" xpos="20" ypos="12" width="100" height="28"
+               bckgrdcolor="btn_back" roundrect="6" allocationtext="center" sizefont="12"
+               selectablestatus="active">
+        <element name="clear-btn-text" type="text" xpos="center" ypos="center" sizefont="12" color="btn_ink">#[BTN_CLEAR]</element>
+      </element>
+
+      <element name="copy-btn" type="button" xpos="128" ypos="12" width="100" height="28"
+               bckgrdcolor="btn_back" roundrect="6" allocationtext="center" sizefont="12"
+               selectablestatus="active">
+        <element name="copy-btn-text" type="text" xpos="center" ypos="center" sizefont="12" color="btn_ink">#[BTN_COPY]</element>
+      </element>
+
+      <element name="autoscroll-chk" type="checkbox" xpos="236" ypos="12" width="148" height="28"
+               bckgrdcolor="btn_back" roundrect="6" allocationtext="none" sizefont="12"
+               selectablestatus="active">
+        <element name="autoscroll-chk-anim" type="animation" xpos="8" ypos="center" width="14" height="14">
+          <image>checkbox_off.png</image>
+          <image>checkbox_on.png</image>
+        </element>
+        <element name="autoscroll-chk-text" type="text" xpos="28" ypos="center" sizefont="12" color="btn_ink">#[CHK_AUTOSCROLL]</element>
+      </element>
+
+      <element name="exit-btn" type="button" xpos="720" ypos="12" width="120" height="28"
+               bckgrdcolor="btn_back" roundrect="6" allocationtext="center" sizefont="12"
+               selectablestatus="active">
+        <element name="exit-btn-text" type="text" xpos="center" ypos="center" sizefont="12" color="btn_ink">#[BTN_EXIT]</element>
+      </element>
+
+    </element>
+
+  </layout>
+
+</layouts>

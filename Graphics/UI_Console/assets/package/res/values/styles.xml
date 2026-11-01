@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    TransparentTheme
+    ================
+    Required for GRPSCREENSTYLE_TRANSPARENT to work on Android.
+
+    Without this theme the Activity window is treated as opaque by the Android
+    compositor regardless of whether the EGL surface was created with an alpha
+    channel.  Two attributes are mandatory:
+
+      windowIsTranslucent  – tells SurfaceFlinger to composite this window
+                             against whatever is behind it (launcher, other apps).
+      windowBackground     – must be fully transparent so the default opaque
+                             white/black system background is not drawn under
+                             the NativeActivity surface.
+
+    backgroundDimEnabled=false prevents the system from darkening the content
+    behind this window (the default behaviour for dialogs/popups).
+
+    NOTE: for a true "see-through to launcher" effect the canvas pixels that
+    should be transparent must have alpha=0 (the UI system already does this
+    via canvas->Buffer_SetToZero() for the background areas).  The EGL surface
+    alpha channel (fixed by SetUseAlpha in GRPANDROIDScreen) carries those
+    pixels to the compositor.
+-->
+<resources>
+    <style name="TransparentTheme" parent="@android:style/Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="@GEN_ANDROID_APP_ID@"
+          android:versionCode="1"
+          android:versionName="1.0">
+
+    <uses-sdk android:minSdkVersion="@GEN_ANDROID_MIN_SDK@"
+              android:targetSdkVersion="@GEN_ANDROID_TARGET_SDK@" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" />
+
+    <application android:label="@GEN_ANDROID_APP_LABEL@"
+                 android:icon="@drawable/icon"
+                 android:hasCode="false">
+
+        <activity android:name="android.app.NativeActivity"
+                  android:label="@GEN_ANDROID_APP_LABEL@"
+                  android:exported="true"
+                  android:theme="@style/TransparentTheme"
+                  android:screenOrientation="user"
+                  android:configChanges="orientation|screenSize|keyboardHidden">
+            <meta-data android:name="android.app.lib_name"
+                       android:value="@GEN_ANDROID_LIB_NAME@" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

@@ -1,0 +1,51 @@
+{
+  "languages"       : [ "Spanish" ,
+                        "English" ,
+                        "French"  ,
+                        "German"  ,
+                        "Chinese"
+                      ],
+
+
+  "translations": {
+    "00102" : [ 0,
+      "UI_Console" ,
+      "UI_Console" ,
+      "UI_Console" ,
+      "UI_Console" ,
+      "UI_Console"
+    ],
+
+    "00103" : [ 0,
+      "Consola grafica GEN" ,
+      "GEN graphical console" ,
+      "Console graphique GEN" ,
+      "GEN grafische Konsole" ,
+      "GEN 图形控制台"
+    ],
+
+    "00104" : [ 0,
+      "Limpiar" ,
+      "Clear" ,
+      "Effacer" ,
+      "Leeren" ,
+      "清除"
+    ],
+
+    "00105" : [ 0,
+      "Salir" ,
+      "Exit" ,
+      "Quitter" ,
+      "Beenden" ,
+      "退出"
+    ],
+
+    "00106" : [ 0,
+      "Autoscroll" ,
+      "Autoscroll" ,
+      "Defilement auto" ,
+      "Autoscroll" ,
+      "自动滚动"
+    ]
+  }
+}
