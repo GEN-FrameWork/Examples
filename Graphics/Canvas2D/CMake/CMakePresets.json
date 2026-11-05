@@ -39,12 +39,22 @@
       },
       "cacheVariables": {
         "TARGET": "INTEL32",
-        "CMAKE_INSTALL_PREFIX": "${sourceDir}/Build/Windows/intel32"
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/Build/Windows/intel32",
+        "CMAKE_C_COMPILER": "clang-cl",
+        "CMAKE_CXX_COMPILER": "clang-cl",
+        "CMAKE_C_FLAGS_INIT": "/clang:-m32",
+        "CMAKE_CXX_FLAGS_INIT": "/clang:-m32",
+        "CMAKE_EXE_LINKER_FLAGS_INIT": "/MACHINE:X86",
+        "CMAKE_SHARED_LINKER_FLAGS_INIT": "/MACHINE:X86"
       },
       "vendor": {
         "microsoft.com/VisualStudioSettings/CMake/1.0": {
-          "hostOS": [ "Windows" ],
-          "inheritedEnvironments": [ "msvc_x86_x64" ],
+          "hostOS": [
+            "Windows"
+          ],
+          "inheritedEnvironments": [
+            "msvc_x86_x64"
+          ],
           "intelliSenseMode": "windows-msvc-x86"
         }
       }
@@ -66,12 +76,22 @@
       },
       "cacheVariables": {
         "TARGET": "INTEL64",
-        "CMAKE_INSTALL_PREFIX": "${sourceDir}/Build/Windows/intel64"
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/Build/Windows/intel64",
+        "CMAKE_C_COMPILER": "clang-cl",
+        "CMAKE_CXX_COMPILER": "clang-cl",
+        "CMAKE_C_FLAGS_INIT": "/clang:-m64",
+        "CMAKE_CXX_FLAGS_INIT": "/clang:-m64",
+        "CMAKE_EXE_LINKER_FLAGS_INIT": "/MACHINE:X64",
+        "CMAKE_SHARED_LINKER_FLAGS_INIT": "/MACHINE:X64"
       },
       "vendor": {
         "microsoft.com/VisualStudioSettings/CMake/1.0": {
-          "hostOS": [ "Windows" ],
-          "inheritedEnvironments": [ "msvc_x64_x64" ],
+          "hostOS": [
+            "Windows"
+          ],
+          "inheritedEnvironments": [
+            "msvc_x64_x64"
+          ],
           "intelliSenseMode": "windows-msvc-x64"
         }
       }
@@ -89,7 +109,9 @@
       },
       "vendor": {
         "microsoft.com/VisualStudioSettings/CMake/1.0": {
-          "hostOS": [ "Linux" ],
+          "hostOS": [
+            "Linux"
+          ],
           "intelliSenseMode": "linux-gcc-x64"
         },
         "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
@@ -110,7 +132,9 @@
       },
       "vendor": {
         "microsoft.com/VisualStudioSettings/CMake/1.0": {
-          "hostOS": [ "Linux" ],
+          "hostOS": [
+            "Linux"
+          ],
           "intelliSenseMode": "linux-gcc-arm64"
         },
         "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
@@ -131,7 +155,9 @@
       },
       "vendor": {
         "microsoft.com/VisualStudioSettings/CMake/1.0": {
-          "hostOS": [ "Linux" ],
+          "hostOS": [
+            "Linux"
+          ],
           "intelliSenseMode": "linux-gcc-arm"
         },
         "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
@@ -152,7 +178,9 @@
       },
       "vendor": {
         "microsoft.com/VisualStudioSettings/CMake/1.0": {
-          "hostOS": [ "Linux" ],
+          "hostOS": [
+            "Linux"
+          ],
           "intelliSenseMode": "linux-gcc-arm"
         },
         "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
@@ -173,7 +201,9 @@
       },
       "vendor": {
         "microsoft.com/VisualStudioSettings/CMake/1.0": {
-          "hostOS": [ "Linux" ],
+          "hostOS": [
+            "Linux"
+          ],
           "intelliSenseMode": "linux-gcc-arm"
         },
         "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
@@ -201,7 +231,9 @@
       },
       "vendor": {
         "microsoft.com/VisualStudioSettings/CMake/1.0": {
-          "hostOS": [ "Windows" ],
+          "hostOS": [
+            "Windows"
+          ],
           "intelliSenseMode": "android-clang-arm"
         }
       }
@@ -226,7 +258,9 @@
       },
       "vendor": {
         "microsoft.com/VisualStudioSettings/CMake/1.0": {
-          "hostOS": [ "Windows" ],
+          "hostOS": [
+            "Windows"
+          ],
           "intelliSenseMode": "android-clang-arm64"
         }
       }
@@ -272,13 +306,17 @@
       "name": "8-android-armv7",
       "displayName": "8 - Android ARMv7 (32Bits)",
       "configurePreset": "8-android-armv7",
-      "targets": [ "android_apk" ]
+      "targets": [
+        "android_apk"
+      ]
     },
     {
       "name": "9-android-arm64",
       "displayName": "9 - Android ARM64 (64Bits)",
       "configurePreset": "9-android-arm64",
-      "targets": [ "android_apk" ]
+      "targets": [
+        "android_apk"
+      ]
     }
   ],
   "testPresets": [
@@ -286,55 +324,73 @@
       "name": "1-windows-intel32",
       "displayName": "1 - Windows INTEL x32",
       "configurePreset": "1-windows-intel32",
-      "output": { "outputOnFailure": true }
+      "output": {
+        "outputOnFailure": true
+      }
     },
     {
       "name": "2-windows-intel64",
       "displayName": "2 - Windows INTEL x64",
       "configurePreset": "2-windows-intel64",
-      "output": { "outputOnFailure": true }
+      "output": {
+        "outputOnFailure": true
+      }
     },
     {
       "name": "3-linux-intel64",
       "displayName": "3 - Linux INTEL x64",
       "configurePreset": "3-linux-intel64",
-      "output": { "outputOnFailure": true }
+      "output": {
+        "outputOnFailure": true
+      }
     },
     {
       "name": "4-linux-arm64",
       "displayName": "4 - Linux ARM x64",
       "configurePreset": "4-linux-arm64",
-      "output": { "outputOnFailure": true }
+      "output": {
+        "outputOnFailure": true
+      }
     },
     {
       "name": "5-linux-arm",
       "displayName": "5 - Linux ARM",
       "configurePreset": "5-linux-arm",
-      "output": { "outputOnFailure": true }
+      "output": {
+        "outputOnFailure": true
+      }
     },
     {
       "name": "6-linux-rpi32",
       "displayName": "6 - Linux Raspberry Pi x32",
       "configurePreset": "6-linux-rpi32",
-      "output": { "outputOnFailure": true }
+      "output": {
+        "outputOnFailure": true
+      }
     },
     {
       "name": "7-linux-rpi64",
       "displayName": "7 - Linux Raspberry Pi x64",
       "configurePreset": "7-linux-rpi64",
-      "output": { "outputOnFailure": true }
+      "output": {
+        "outputOnFailure": true
+      }
     },
     {
       "name": "8-android-armv7",
       "displayName": "8 - Android ARMv7 (32Bits)",
       "configurePreset": "8-android-armv7",
-      "output": { "outputOnFailure": true }
+      "output": {
+        "outputOnFailure": true
+      }
     },
     {
       "name": "9-android-arm64",
       "displayName": "9 - Android ARM64 (64Bits)",
       "configurePreset": "9-android-arm64",
-      "output": { "outputOnFailure": true }
+      "output": {
+        "outputOnFailure": true
+      }
     }
   ]
 }
