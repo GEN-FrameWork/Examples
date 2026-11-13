@@ -65,41 +65,56 @@ form.sidebar {
   flex-direction:   column;
 }
 
-/* Phase 4 ("migración del ejemplo", second sub-step, revised after two live-app regressions -- see
-   dashboard.xml's own comment on "footer_bg" for the full story): the footer's icon/text/divider content is
-   real XML children of this element instead of root-level siblings hand-positioned in absolute canvas
-   coordinates -- "display: flex" (the only recognized value; see UI_MANAGER::GetLayoutElement_Base()'s
-   Flexbox SCOPE ADDENDUM) makes this the FIRST real flex container in the example. flex-direction/justify-
-   content stay at their engine defaults (row / flex-start). "align-items: center" (NOT left at its flex-start
-   default any more) vertically centers every child -- image, form, or text -- in the footer's 44px using the
-   engine's own PackFlexLine() cross-axis centering, independent of each child's real (auto-measured, for
-   text) height; this replaced an earlier version where each child instead carried its OWN per-item vertical
-   margin (icons/dividers) or "align-self: flex-end" (the three captions) to reproduce the original mockup's
-   pixel positions by hand -- correct in isolation, but the two groups ended up on visibly different cross-axis
-   baselines once actually on screen.   Each child's own "margin" (shorthand TOP,RIGHT,BOTTOM,LEFT or margin-left / margin-top longhands --
-   see UI_MANAGER::GetLayoutElement_Base() / UI_PROPERTYREGISTRY::ResolveMarginEdges) now supplies
-   ONLY the horizontal gap to its predecessor along the row (main axis); see dashboard.xml for those numbers. */
+/* Prototype footer: no outer frame — System Monitor (sidebar width) | Team | SO | Uptime.
+   Team separator (footer_div_0) sits at card_datetime left: brand 210 + margin-left 28 = 238. */
 form.footer {
-  background-color: var(--footer-bg);
-  border-color:     var(--sidebar-line);
-  border-width:     1;
-  border-radius:    0;
-  /* Full-width bar. Equipo/SO chips sit flush-left under the sidebar brand; spacer pushes Uptime right. */
-  padding:          0;
+  background-color: var(--page-bg);
+  border-width:     0;
+  padding:          0 5 0 0;
   display:          flex;
   align-items:      center;
+  overflow:         hidden;
+  overflow-x:       hidden;
 }
 
-/* Rounded icon+label chips in the footer (Equipo / SO). */
-form.footer-chip {
-  background-color: var(--card-bg);
-  border-color:     var(--sidebar-line);
-  border-width:     1;
-  border-radius:    16;
-  padding:          0 4 0 4;
+/* Title + version under the sidebar column. Opaque plate avoids TextBackdrop lime poison. */
+form.footer-brand {
+  background-color: var(--page-bg);
+  border-width:     0;
+  padding:          0;
+  margin-top:       6;
+  display:          flex;
+  flex-direction:   column;
+  align-items:      center;
+  justify-content:  center;
+  flex-shrink:      0;
+  flex-grow:        0;
+  overflow:         visible;
+}
+
+/* One column: icon + caption packed to the left (not centered), with left inset. */
+form.footer-block {
+  background-color: 0,0,0,0;
+  border-width:     0;
+  padding:          0,3,0,5;
   display:          flex;
   align-items:      center;
+  justify-content:  flex-start;
+  flex-shrink:      1;
+  overflow:         visible;
+  overflow-x:       visible;
+  overflow-y:       visible;
+}
+
+/* Vertical rules — same ink as card borders (Team sep is the reference). Never border-radius. */
+form.vr-line {
+  background-color: 48,54,61;
+  border-width:     0;
+  padding:          0;
+  margin-left:      7;
+  margin-right:     7;
   flex-shrink:      0;
+  flex-grow:        0;
 }
 
 
@@ -113,7 +128,7 @@ form.footer-chip {
        "row-gap: 8" is the constant 8px gap between consecutive rows (the SAME gap the original mockup's
        118/174/230/... ypos ladder reproduces one 56 = 48 (row height) + 8 (gap) step at a time -- see
        dashboard.xml for the derivation). Paints nothing of its own (transparent background, no border): it
-       exists purely to host the flex layout, exactly like the footer's own "footer_spacer" trick.
+       exists purely to host the flex layout (transparent, no border).
      ".nav-row" (each of the 8 rows) : "display: flex; align-items: center;" is the SAME row-direction,
        cross-axis-centering pattern "form.footer" above already uses, for the exact same reason -- an icon and
        a text label with different real heights, centered as a unit rather than each hand-pinned to its own
@@ -133,23 +148,17 @@ form.sidebar-nav {
      buttons, so the band reads "a few pixels too high" relative to icon+label (2026-10 regression). */
 }
 
-/* Brand row at the bottom of the sidebar (icon + Sistema / version). Must be a sidebar_bg child so
-   FormBackdrop restore force-dirties it with the sidebar (root-sibling brand_* vanished after live UI updates). */
+/* Brand at sidebar bottom: "System Monitor" + version, centered (no icon — footer already has the computer).
+   Opaque sidebar-bg plate kills TextBackdrop GetBitmap phosphor-lime (28,255,16) over the version. */
 form.sidebar-brand {
-  background-color: 0,0,0,0;
-  border-width:     0;
-  display:          flex;
-  align-items:      center;
-  flex-shrink:      0;
-}
-
-form.sidebar-brand-text {
-  background-color: 0,0,0,0;
+  background-color: var(--sidebar-bg);
   border-width:     0;
   display:          flex;
   flex-direction:   column;
+  align-items:      center;
   justify-content:  center;
   flex-shrink:      0;
+  margin-bottom:    6;
 }
 
 form.nav-row {
@@ -179,8 +188,7 @@ form.nav-row {
    dropped to 0 (it was invisible either way) and "card-header" carries the ORIGINAL 24/12 offset itself,
    as its own margin -- the exact same division of responsibility already used for "footer"/"sidebar-nav"
    (father: 0 padding; child: margin does the positioning). ".card-header" paints nothing of its own
-   (transparent background, no border), same "exists purely to host layout" trick as "footer_spacer"/
-   "sidebar-nav".
+   (transparent background, no border), same "exists purely to host layout" trick as "sidebar-nav".
 
    CORRECTION (same sub-step, caught against Abraham's real Windows build): "display: flex;
    flex-direction: column;" below is NOT optional, unlike what the first version of this rule shipped
@@ -219,7 +227,7 @@ form.card-header {
    (badge slot + status row + quality/IP), same flex pattern as the other cards.
 
    Two reusable, purely structural wrappers (transparent, borderless -- exist only to host a flex arrangement,
-   same "exists purely to host layout" trick as "footer_spacer"/"sidebar-nav"/"card-header"): ".flex-row" and
+   same "exists purely to host layout" trick as "sidebar-nav"/"card-header"): ".flex-row" and
    ".flex-col" are the row/column equivalents of each other, kept as ONE pair of classes reused across every
    card body below (value+unit rows, icon+caption rows, the RAM scale row) rather than one throwaway class per
    instance, since none of them differ in anything but layout PROPERTIES -- which travel per-instance through
@@ -272,7 +280,6 @@ form.inner-box {
 form.hr-line {
   background-color: var(--inner-line);
   border-width:     0;
-  border-radius:    0;
   padding:          0;
 }
 
@@ -347,8 +354,8 @@ form.nav-row:selected .nav-label { color: var(--accent-blue); }
 
 /* Phase 5 demo: stack skips unknown "nosuch_face", paints with catalog "alt" (Inter-Black). */
 /* languagefonts appends cjk after default so Latin digits/symbols keep Nunito in Chinese. */
-.brand       { color: var(--text-normal); font-family: nosuch_face, alt; }
-.brand-dim   { color: var(--text-muted);   }
+.brand       { color: var(--text-normal); font-family: nosuch_face, alt; text-align: center; background-color: var(--page-bg); }
+.brand-dim   { color: var(--text-muted); text-align: center; background-color: var(--page-bg); }
 
 
 /* Track D.2: titles via CSS font-size (alias of sizefont). Default 17; -lg 19; -sm 16. */
@@ -378,7 +385,7 @@ form.nav-row:selected .nav-label { color: var(--accent-blue); }
 .label-dim     { color: var(--text-muted);    }
 .label-accent  { color: var(--accent-blue);   }
 
-.foot          { color: var(--text-muted); font-size: 14; }
+.foot          { color: var(--text-normal); font-size: 15; }
 
 
 /* --- Cards grid (Track L.1) -----------------------------------------------------------------------

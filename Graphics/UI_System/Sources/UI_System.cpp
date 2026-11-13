@@ -587,7 +587,7 @@ bool UI_SYSTEM::Ini_Graphics(GRPSCREEN* screen)
   //--------------------------------------------------------------------------------------
 
   screen->SetWidth(1440);
-  screen->SetHeight(900);
+  screen->SetHeight(884);
 
   // Seed title before chrome/native caption load; refreshed again after UI init.
   screen->GetTitle()->Set(TL(UI_SYSTEM_TRANSLATEID_UI_SYSTEM_SYSTEM_MONITOR));
@@ -683,11 +683,11 @@ bool UI_SYSTEM::Ini_UserInterface(bool on)
     UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(NL("dashboard"));
     if(dashboard)
       {
-        dashboard->SetDesignSize(1440, 900);
+        dashboard->SetDesignSize(1440, 884);
         dashboard->SetMinHitSize(UI_LAYOUT_MINHITSIZE_DEFAULT);
         if(UI_STYLESHEET* sheet = dashboard->GetStyleSheet())
           {
-            sheet->SetMediaViewport(1440, 900);
+            sheet->SetMediaViewport(1440, 884);
           }
 
         bool   useenv     = false;
@@ -2019,21 +2019,7 @@ bool UI_SYSTEM::UserInterface_ElementSelected(UI_ELEMENT* element)
                                             #endif
                                             break;
 
-      case UI_ELEMENT_CHROMEROLE_MAXIMIZE : { // Toggle grow _ restore. Enable autofit so maximize uses the screen.
-                                              UI_LAYOUT* dashboard = GEN_USERINTERFACE.Layouts_Get(NL("dashboard"));
-                                              if(dashboard && dashboard->IsUIScaleActive())
-                                                {
-                                                  dashboard->SetUIScaleAutofit(true);
-                                                  APPFLOW_CFG.SetUIScaleAutofit(true);
-                                                }
-                                              if(GetMainScreen())
-                                                {
-                                                  if(GetMainScreen()->IsClientSizeAtMaximum())
-                                                    GetMainScreen()->Maximize(false);
-                                                   else
-                                                    GetMainScreen()->Maximize(true);
-                                                }
-                                            }
+      case UI_ELEMENT_CHROMEROLE_MAXIMIZE : // Disabled: fixed-size window (ResizeActive=false; button hidden in chrome XML).
                                             break;
 
       case UI_ELEMENT_CHROMEROLE_CLOSE    : // UI_System: chrome close selected
@@ -2295,12 +2281,13 @@ bool UI_SYSTEM::UserInterface_CFGChromes(GRPSCREEN* screen)
   cfgchromes.SetNativeIconActive(true);
   cfgchromes.SetNativeTitleActive(true); 
   cfgchromes.SetNativeMinimizeActive(true);
-  cfgchromes.SetNativeMaximizeActive(true);
+  cfgchromes.SetNativeMaximizeActive(false);
   cfgchromes.SetNativeCloseActive(true);  
 
   #endif
 
-  cfgchromes.SetResizeActive(true);
+  // Fixed 1440×884 demo — no thick-frame resize / maximize (custom maximize hidden in chrome XML).
+  cfgchromes.SetResizeActive(false);
 
   screen->SetCFGChromes(cfgchromes);
 
@@ -2389,9 +2376,10 @@ bool UI_SYSTEM::UserInterface_UpdateWindowTitle()
               double         width         = 0.0f;
               double         height        = 0.0f;
 
-              // Erase current glyph ink (e.g. 系统监控器) WHILE the old TextBackdrop/geometry still
-              // match what is on screen — must run before Set() / remasure. Restores caption FormBackdrop
-              // so CJK overhang outside the text box is cleared too (translucent black,25 does not).
+              // Erase BEFORE Set/remeasure while old geometry still matches the ink on screen.
+              // PrepareTextContentChange clears the pre-Set title AABB (frost caption) so leftovers
+              // like "...Sistema" cannot sit beside 系统监控器.
+              ui_skincanvas->EraseElementRebuildArea(titleelement);
               ui_skincanvas->PrepareTextContentChange(titleelement);
 
               titletext->GetText()->Set(newtitle.Get());

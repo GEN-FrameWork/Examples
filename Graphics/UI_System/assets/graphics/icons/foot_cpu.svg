@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+     width="20363" height="20363"
+     viewBox="0 0 21000 21000"
+     style="shape-rendering:geometricPrecision; fill-rule:nonzero; clip-rule:evenodd"
+     fill="#8B949E">
+  <defs><style type="text/css"><![CDATA[
+    * {fill:#8B949E}
+  ]]></style></defs>
+  <path class="fil0" d="M6500 6500l8000 0 0 8000 -8000 0 0 -8000z"/>
+  <path class="fil0" d="M8500 2000l1500 0 0 4000 -1500 0 0 -4000z"/>
+  <path class="fil0" d="M11000 2000l1500 0 0 4000 -1500 0 0 -4000z"/>
+  <path class="fil0" d="M8500 15000l1500 0 0 4000 -1500 0 0 -4000z"/>
+  <path class="fil0" d="M11000 15000l1500 0 0 4000 -1500 0 0 -4000z"/>
+  <path class="fil0" d="M2000 8500l4000 0 0 1500 -4000 0 0 -1500z"/>
+  <path class="fil0" d="M2000 11000l4000 0 0 1500 -4000 0 0 -1500z"/>
+  <path class="fil0" d="M15000 8500l4000 0 0 1500 -4000 0 0 -1500z"/>
+  <path class="fil0" d="M15000 11000l4000 0 0 1500 -4000 0 0 -1500z"/>
+</svg>

@@ -2,11 +2,11 @@
 <!--
   ===================================================================================================
   UI_System - "Monitor del Sistema" dashboard
-  Canvas 1440 x 900. The custom window chrome owns y 0..46, so all content starts at y >= 46.
+  Canvas 1440 x 884. The custom window chrome owns y 0..46, so all content starts at y >= 46.
 
   DESIGN PX / UISCALE (Opci_n A)
   ==============================
-    Authors work in design pixels (1440x900). UI_LAYOUT holds designWidth/Height + uiScale
+    Authors work in design pixels (1440x884). UI_LAYOUT holds designWidth/Height + uiScale
     (default 1.0). Opt-in: this layout has a <stylesheet>, so IsUIScaleActive() is true.
     Layouts without stylesheet (e.g. UI_Options) ignore UIScale and stay XML-only.
     scale=1.0 must remain visually identical to the Fase 0 baseline.
@@ -75,12 +75,13 @@
 
   <stylesheet >dashboard.css</stylesheet>
 
-  <layout name="dashboard" backgroundcolor="13,17,23" designwidth="1440" designheight="900">
+  <layout name="dashboard" backgroundcolor="13,17,23" designwidth="1440" designheight="884">
 
 
-    <element name="sidebar_bg" type="form" class="sidebar" xpos="0" ypos="856" width="210" height="810">
+    <!-- Bottom edge aligned with bottom cards (card_datetime/disk/connection ypos = 814). -->
+    <element name="sidebar_bg" type="form" class="sidebar" xpos="0" ypos="814" width="210" height="758">
       
-      <element name="sidebar_nav" type="form" class="sidebar-nav" width="210" height="810">
+      <element name="sidebar_nav" type="form" class="sidebar-nav" width="210" height="758">
       <element name="nav-resumen-row" type="form" class="nav-row" style="margin: 24,0,0,0;" width="210" height="48">
         <element name="nav-resumen-accent" type="form" class="nav-accent-mark" width="4" height="48"></element>
         <element name="nav-resumen-icon" type="image" style="margin: 0,0,0,22;" width="44" height="44">icons/nav_home.svg</element>
@@ -123,39 +124,35 @@
       </element>
       </element>
 
-      <!-- Brand INSIDE sidebar_bg (same FormBackdrop fix as sidebar_nav): root siblings were wiped when
-           the sidebar restored and stayed blank after live footer/mask updates. sidebar-nav flex-grows;
-           this block sits at the bottom as a row (icon | text column). -->
-      <element name="brand_block" type="form" class="sidebar-brand" width="210" height="72">
-        <element name="brand_icon" type="image" style="margin: 0,0,0,26; flex-shrink: 0;" width="52" height="52">icons/brand_system.svg</element>
-        <element name="brand_textcol" type="form" class="sidebar-brand-text" style="margin: 0,0,0,10;" width="120" height="52">
-          <element name="brand_text" type="text" class="brand" style="margin-bottom: 5;" sizefont="15">#[TRANSLATE_119]</element>
-          <element name="brand_version" type="text" class="brand-dim" style="color: 88,166,255; margin-top: 4;" sizefont="13">v#[APP_VERSION]</element>
-        </element>
-      </element>
     </element>
 
     
-    <element name="footer_bg" type="form" class="footer" xpos="0" ypos="900" width="1440" height="44">
-      <!-- Equipo + SO flush left under the sidebar brand (margin-left matches brand_icon ~26). -->
-      <element name="footer_equipo_chip" type="form" class="footer-chip" style="margin: 0,0,0,26; flex-shrink: 0;" width="200" height="32">
-        <element name="footer_equipo_icon" type="image" style="margin: 0,0,0,8; flex-shrink: 0;" width="22" height="22">icons/foot_computer.svg</element>
-        <element name="footer_equipo_text" type="text"  class="foot" style="margin: 0,10,0,6; flex-shrink: 0;">#[FOOTER_EQUIPO]</element>
+    <!-- Footer: System Monitor + version under the sidebar column; separator; Team at card_datetime x=238. -->
+    <element name="footer_bg" type="form" class="footer" xpos="0" ypos="876" width="1440" height="52">
+      <element name="footer_brand_block" type="form" class="footer-brand" style="flex-shrink: 0; flex-grow: 0;" width="210" height="44">
+        <element name="footer_brand_text" type="text" class="brand" style="margin-bottom: 5; text-align: center; flex-shrink: 0;" width="210" sizefont="15">#[TRANSLATE_120]</element>
+        <element name="footer_brand_version" type="text" class="brand-dim" style="color: 88,166,255; text-align: center; flex-shrink: 0;" width="210" sizefont="13">v#[APP_VERSION]</element>
       </element>
-      <element name="footer_so_chip" type="form" class="footer-chip" style="margin: 0,0,0,10; flex-shrink: 0;" width="260" height="32">
-        <element name="footer_so_icon"     type="image" style="margin: 0,0,0,8; flex-shrink: 0;" width="22" height="22">icons/foot_gear.svg</element>
-        <element name="footer_so_text"     type="text"  class="foot" style="margin: 0,10,0,6; flex-shrink: 0;">#[FOOTER_SO]</element>
+      <element name="footer_div_0" type="form" class="vr-line" style="flex-shrink: 0; flex-grow: 0; margin-left: 28; margin-right: 7; background-color: 48,54,61;" width="3" height="28"></element>
+      <element name="footer_equipo_block" type="form" class="footer-block" style="flex-grow: 1;" width="0" height="40">
+        <element name="footer_equipo_icon" type="image" style="margin: 0,0,0,0; flex-shrink: 0;" width="32" height="32">icons/foot_computer.svg</element>
+        <element name="footer_equipo_text" type="text"  class="foot" style="margin: 0,0,0,3; flex-shrink: 0;" sizefont="15">#[FOOTER_EQUIPO]</element>
       </element>
-      <!-- Invisible spacer pushes Uptime chip flush right. -->
-      <element name="footer_spacer"      type="form"  style="flex-grow: 1; background-color: 0,0,0,0; border-width: 0;" width="0" height="0"></element>
-      <element name="footer_uptime_chip" type="form" class="footer-chip" style="margin: 0,24,0,0; flex-shrink: 0;" width="320" height="32">
-        <element name="footer_uptime_icon" type="image" style="margin: 0,0,0,8; flex-shrink: 0;" width="22" height="22">icons/foot_clock.svg</element>
-        <element name="footer_uptime_text" type="text"  class="foot" style="margin: 0,10,0,6; flex-shrink: 0;">#[FOOTER_UPTIME]</element>
+      <element name="footer_div_1" type="form" class="vr-line" style="flex-shrink: 0; flex-grow: 0; background-color: 48,54,61;" width="3" height="28"></element>
+      <element name="footer_so_block" type="form" class="footer-block" style="flex-grow: 1;" width="0" height="40">
+        <element name="footer_so_icon" type="image" style="margin: 0,0,0,0; flex-shrink: 0;" width="32" height="32">icons/foot_os.png</element>
+        <element name="footer_so_text" type="text"  class="foot" style="margin: 0,0,0,3; flex-shrink: 0;" sizefont="15">#[FOOTER_SO]</element>
+      </element>
+      <element name="footer_div_2" type="form" class="vr-line" style="flex-shrink: 0; flex-grow: 0; background-color: 48,54,61;" width="3" height="28"></element>
+      <element name="footer_uptime_block" type="form" class="footer-block" style="flex-grow: 1;" width="0" height="40">
+        <element name="footer_uptime_icon" type="image" style="margin: 0,0,0,0; flex-shrink: 0;" width="32" height="32">icons/foot_clock.svg</element>
+        <element name="footer_uptime_text" type="text"  class="foot" style="margin: 0,0,0,3; flex-shrink: 0;" sizefont="15">#[FOOTER_UPTIME]</element>
       </element>
     </element>
 
    
-    <element name="cards_grid" type="form" class="cards-grid" xpos="238" ypos="460" width="1172" height="390">
+    <!-- Top edge aligned with sidebar top (sidebar ypos 814 height 758 → top 56; grid top = ypos-height). -->
+    <element name="cards_grid" type="form" class="cards-grid" xpos="238" ypos="446" width="1172" height="390">
     <element name="card_cpu_temp"   type="form" class="card" width="376" height="390">
 
       <element name="card-header" type="form" class="card-header" style="margin-top: 12; margin-left: 24;" width="328" height="48">
@@ -239,7 +236,7 @@
     </element>
     </element><!-- /cards_grid -->
     <!-- Bottom-left slot: Fecha/hora XOR History (CPU / Memoria / Disco). Same AABB; exclusive SetVisible. -->
-    <element name="card_datetime"   type="form" class="card" xpos="238"  ypos="828" width="376" height="346">
+    <element name="card_datetime"   type="form" class="card" xpos="238"  ypos="814" width="376" height="346">
       <element name="card-header" type="form" class="card-header" style="margin: 12,0,0,24;" width="328" height="48">
         <element name="dt_hdr_icon" type="image" width="48" height="48">icons/card_calendar.svg</element>
         <element name="dt_hdr_text" type="text" class="card-title" style="margin: 0,0,0,10;">#[TRANSLATE_114]</element>
@@ -254,7 +251,7 @@
         </element>
       </element>
     </element>
-    <element name="card_cpu_history" type="form" class="card" xpos="238"  ypos="828" width="376" height="346" visible="0">
+    <element name="card_cpu_history" type="form" class="card" xpos="238"  ypos="814" width="376" height="346" visible="0">
       <element name="card-header" type="form" class="card-header" style="margin: 12,0,0,24;" width="328" height="48">
         <element name="cpuhist_hdr_icon" type="image" width="48" height="48">icons/card_cpu.svg</element>
         <element name="cpuhist_hdr_text" type="text" class="card-title" style="margin: 0,0,0,10;">#[TRANSLATE_116]</element>
@@ -266,7 +263,7 @@
                  xpos="center" ypos="center" sizefont="15" visible="0">--</element>
       </element>
     </element>
-    <element name="card_disk"       type="form" class="card" xpos="636"  ypos="828" width="376" height="346">
+    <element name="card_disk"       type="form" class="card" xpos="636"  ypos="814" width="376" height="346">
       <element name="card-header" type="form" class="card-header" style="margin: 12,0,0,24;" width="328" height="48">
         <element name="disk_hdr_icon" type="image" width="48" height="48">icons/card_disk.svg</element>
         <element name="disk_hdr_text" type="text" class="card-title" style="margin: 0,0,0,10;">#[TRANSLATE_117]</element>
@@ -309,14 +306,14 @@
         <element name="disk_next_icon" type="image" width="44" height="44">icons/disk_next.svg</element>
       </element>
     </element>
-    <element name="card_connection" type="form" class="card" xpos="1034" ypos="828" width="376" height="346">
+    <element name="card_connection" type="form" class="card" xpos="1034" ypos="814" width="376" height="346">
       <element name="card-header" type="form" class="card-header" style="margin: 12,0,0,24;" width="328" height="48">
         <element name="conn_hdr_icon" type="image" width="48" height="48">icons/card_wifi.svg</element>
         <element name="conn_hdr_text" type="text" class="card-title card-title-sm" style="margin: 0,0,0,10;">#[TRANSLATE_118]</element>
       </element>
       <!-- Distribucion del prototipo: fila [badge|Conectado] arriba; debajo quality/IP/IP publica
            alineados al borde izquierdo del badge; icono de red a la derecha. Compacto (sin scroll). -->
-      <element name="conn_body" type="form" class="flex-row" style="margin: 20,0,0,24; align-items: center;" width="328" height="200">
+      <element name="conn_body" type="form" class="flex-row" style="margin: 20,0,0,24; align-items: center; justify-content: space-between;" width="328" height="200">
         <!-- Left column wide enough for badge + "Desconectado" at 22pt (was 220: text clipped on offline). -->
         <element name="conn-left" type="form" class="flex-col" style="flex-shrink: 0;" width="248" height="190">
           <element name="conn-status-row" type="form" class="flex-row" style="align-items: center;" width="248" height="72">
@@ -330,7 +327,8 @@
           <element name="connection_ip"        type="text" class="label" style="margin: 10,0,0,0;" sizefont="16">#[LOCAL_IP]</element>
           <element name="connection_public_ip" type="text" class="label" style="margin: 10,0,0,0;" sizefont="16">#[PUBLIC_IP]</element>
         </element>
-        <element name="conn_row_spacer" type="form" style="flex-grow: 1; background-color: 0,0,0,0; border-width: 0;" width="0" height="0"></element>
+        <!-- No zero-size flex spacer: it hit the compact-legend page wipe and left a dark stub
+             beside connection_net_icon. space-between keeps the net icon on the right. -->
         <element name="connection_net_icon" type="image" style="flex-shrink: 0;" width="72" height="72">icons/internet-net.svg</element>
       </element>
     </element>
@@ -342,19 +340,19 @@
     <!-- Hit targets. They carry an explicit width/height and no sub-elements, so
          CalculateBoundaryLine_Option leaves the box alone and the whole row stays clickable.
          Declared AFTER sidebar_bg/nav so they paint on top of the icons/labels. -->
-    <element name="nav-resumen-btn"       type="button" class="nav-hit" xpos="0" ypos="118" width="210" height="48" roundrect="0"></element>
-    <element name="nav-cpu-btn"           type="button" class="nav-hit" xpos="0" ypos="174" width="210" height="48" roundrect="0"></element>
-    <element name="nav-memoria-btn"       type="button" class="nav-hit" xpos="0" ypos="230" width="210" height="48" roundrect="0"></element>
-    <element name="nav-red-btn"           type="button" class="nav-hit" xpos="0" ypos="286" width="210" height="48" roundrect="0"></element>
-    <element name="nav-disco-btn"         type="button" class="nav-hit" xpos="0" ypos="342" width="210" height="48" roundrect="0"></element>
-    <element name="nav-procesos-btn"      type="button" class="nav-hit" xpos="0" ypos="398" width="210" height="48" roundrect="0"></element>
-    <element name="nav-alertas-btn"       type="button" class="nav-hit" xpos="0" ypos="454" width="210" height="48" roundrect="0"></element>
-    <element name="nav-configuracion-btn" type="button" class="nav-hit" xpos="0" ypos="510" width="210" height="48" roundrect="0"></element>
+    <element name="nav-resumen-btn"       type="button" class="nav-hit" xpos="0" ypos="128" width="210" height="48" roundrect="0"></element>
+    <element name="nav-cpu-btn"           type="button" class="nav-hit" xpos="0" ypos="184" width="210" height="48" roundrect="0"></element>
+    <element name="nav-memoria-btn"       type="button" class="nav-hit" xpos="0" ypos="240" width="210" height="48" roundrect="0"></element>
+    <element name="nav-red-btn"           type="button" class="nav-hit" xpos="0" ypos="296" width="210" height="48" roundrect="0"></element>
+    <element name="nav-disco-btn"         type="button" class="nav-hit" xpos="0" ypos="352" width="210" height="48" roundrect="0"></element>
+    <element name="nav-procesos-btn"      type="button" class="nav-hit" xpos="0" ypos="408" width="210" height="48" roundrect="0"></element>
+    <element name="nav-alertas-btn"       type="button" class="nav-hit" xpos="0" ypos="464" width="210" height="48" roundrect="0"></element>
+    <element name="nav-configuracion-btn" type="button" class="nav-hit" xpos="0" ypos="520" width="210" height="48" roundrect="0"></element>
 
     <!-- Disk card cycle hit targets _ pixel-aligned to cyan SVG icons (capture: 662,766_701,805 /
          946,766_985,805). Root ypos = bottom edge (hit test uses y - height). -->
-    <element name="disk_prev_btn" type="button" class="disk-nav-hit" xpos="662" ypos="806" width="40" height="40" roundrect="20"></element>
-    <element name="disk_next_btn" type="button" class="disk-nav-hit" xpos="946" ypos="806" width="40" height="40" roundrect="20"></element>
+    <element name="disk_prev_btn" type="button" class="disk-nav-hit" xpos="662" ypos="792" width="40" height="40" roundrect="20"></element>
+    <element name="disk_next_btn" type="button" class="disk-nav-hit" xpos="946" ypos="792" width="40" height="40" roundrect="20"></element>
 
 
     <!-- CARD bodies are nested under each card_* element above. -->
