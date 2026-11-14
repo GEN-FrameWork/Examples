@@ -1,267 +1,556 @@
-{
-  "languages"       : [ "Spanish" ,
-                        "English" ,
-                        "French"  ,
-                        "German"  ,
-                        "Chinese"
-                      ],
-
-  "translations"    : {
-
-                        "00001" : [ 0,
-                                    "Activando conexion servidor" ,
-                                    "Activating server connection" ,
-                                    "Activation de la connexion au serveur" ,
-                                    "Serververbindung wird aktiviert" ,
-                                    "激活服务器连接"
-                                  ],
-
-                        "00002" : [ 0,
-                                    "Activando conexion cliente" ,
-                                    "Activating client connection" ,
-                                    "Activation de la connexion client" ,
-                                    "Client-Verbindung wird aktiviert" ,
-                                    "激活客户端连接"
-                                  ],
-
-                        "00003" : [ 0,
-                                    "De acuerdo" ,
-                                    "Ok" ,
-                                    "D'accord" ,
-                                    "OK" ,
-                                    "好的"
-                                  ],
-
-                        "00004" : [ 0,
-                                    "Error" ,
-                                    "Error" ,
-                                    "Erreur" ,
-                                    "Fehler" ,
-                                    "错误"
-                                  ],
-
-                        "00005" : [ 0,
-                                    " Pulsa una tecla para continuar... (%d)" ,
-                                    "Press a key to continue... (%d)" ,
-                                    "Appuyez sur une touche pour continuer... (%d)" ,
-                                    "Drücken Sie eine Taste, um fortzufahren... (%d)" ,
-                                    "按任意键继续... (%d)"
-                                  ],
-
-                        "00006" : [ 0,
-                                    "Desactivando conexion servidor" ,
-                                    "Deactivating server connection" ,
-                                    "Désactivation de la connexion au serveur" ,
-                                    "Serververbindung deaktivieren" ,
-                                    "停用服务器连接"
-                                  ],
-
-                        "00007" : [ 0,
-                                    "Desactivando conexion cliente" ,
-                                    "Deactivating client connection" ,
-                                    "Désactivation de la connexion client" ,
-                                    "Client-Verbindung deaktivieren" ,
-                                    "停用客户端连接"
-                                  ],
-
-                        "00008" : [ 0,
-                                    "De acuerdo." ,
-                                    "Ok." ,
-                                    "D'accord." ,
-                                    "OK." ,
-                                    "好的。"
-                                  ],
-
-                        "00009" : [ 0,
-                                    "Tecla presionada: 0x%02X [%c]" ,
-                                    "Key pressed: 0x%02X [%c]" ,
-                                    "Touche enfoncée : 0x%02X [%c]" ,
-                                    "Taste gedrückt: 0x%02X [%c]" ,
-                                    "按下按键：0x%02X [%c]"
-                                  ],
-
-                        "00010" : [ 0,
-                                    "Modo de protocolo" ,
-                                    "Protocol mode" ,
-                                    "Mode protocole" ,
-                                    "Protokollmodus" ,
-                                    "协议模式"
-                                  ],
-
-                        "00011" : [ 0,
-                                    "Servidor" ,
-                                    "Server" ,
-                                    "Serveur" ,
-                                    "Server" ,
-                                    "服务器"
-                                  ],
-
-                        "00012" : [ 0,
-                                    "Cliente" ,
-                                    "Customer" ,
-                                    "Client" ,
-                                    "Kunde" ,
-                                    "顾客"
-                                  ],
-
-                        "00013" : [ 0,
-                                    "Puerto [%d]" ,
-                                    "Puerto [%d] " ,
-                                    "Port [%d]" ,
-                                    "Puerto [%d]" ,
-                                    "波多黎各 [%d]"
-                                  ],
-
-                        "00014" : [ 0,
-                                    "Dispositivos conectados" ,
-                                    "Connected devices" ,
-                                    "Appareils connectés" ,
-                                    "Angeschlossene Geräte" ,
-                                    "连接设备"
-                                  ],
-
-                        "00015" : [ 0,
-                                    "Ninguno." ,
-                                    "None." ,
-                                    "Aucun." ,
-                                    "Keiner." ,
-                                    "没有任何。"
-                                  ],
-
-                        "00016" : [ 0,
-                                    "Estado dispositivo" ,
-                                    "Device status" ,
-                                    "État de l'appareil" ,
-                                    "Gerätestatus" ,
-                                    "设备状态"
-                                  ],
-
-                        "00017" : [ 0,
-                                    "Desconectado" ,
-                                    "Offline" ,
-                                    "Hors ligne" ,
-                                    "Offline" ,
-                                    "离线"
-                                  ],
-
-                        "00018" : [ 0,
-                                    "Conectado" ,
-                                    "Connected" ,
-                                    "Connecté" ,
-                                    "Verbunden" ,
-                                    "已连接"
-                                  ],
-
-                        "00019" : [ 0,
-                                    "Punto de prueba" ,
-                                    "Test Point" ,
-                                    "Point de test" ,
-                                    "Testpunkt" ,
-                                    "测试点"
-                                  ],
-
-                        "00020" : [ 0,
-                                    "Protocolo del servidor Ini de %s: no se obtiene la versión del protocolo." ,
-                                    "Ini Server protocol from %s: Not get version protocol." ,
-                                    "Protocole du serveur Ini de %s : pas d'obtention du protocole de version." ,
-                                    "Ini-Serverprotokoll von %s: Versionsprotokoll nicht abgerufen." ,
-                                    "来自 %s 的 Ini 服务器协议：未获取版本协议。"
-                                  ],
-
-                        "00021" : [ 0,
-                                    "Protocolo del servidor Ini de %s: versión del protocolo no válida." ,
-                                    "Ini Server protocol from %s: Not version protocol valid." ,
-                                    "Protocole du serveur Ini de %s : protocole de version non valide." ,
-                                    "Ini-Serverprotokoll von %s: Nicht gültige Protokollversion." ,
-                                    "来自 %s 的 Ini 服务器协议：版本协议无效。"
-                                  ],
-
-                        "00022" : [ 0,
-                                    "Protocolo del servidor Ini de %s: no se obtiene la versión de la aplicación." ,
-                                    "Ini Server protocol from %s: Not get application version." ,
-                                    "Protocole du serveur Ini de %s : ne récupère pas la version de l'application." ,
-                                    "Ini-Server-Protokoll von %s: Anwendungsversion nicht abgerufen." ,
-                                    "来自 %s 的 Ini 服务器协议：未获取应用程序版本。"
-                                  ],
-
-                        "00023" : [ 0,
-                                    "Protocolo del servidor Ini de %s: no se obtiene el nombre de la aplicación." ,
-                                    "Ini Server protocol from %s: Not get application name." ,
-                                    "Protocole du serveur Ini de %s : n'obtient pas le nom de l'application." ,
-                                    "INI-Serverprotokoll von %s: Anwendungsname nicht abgerufen." ,
-                                    "来自 %s 的 Ini 服务器协议：未获取应用程序名称。"
-                                  ],
-
-                        "00024" : [ 0,
-                                    "Protocolo del servidor Ini de %s: no se obtiene el ID de la máquina." ,
-                                    "Ini Server protocol from %s: Not get machine ID." ,
-                                    "Protocole du serveur Ini de %s : n'obtient pas l'ID de la machine." ,
-                                    "Ini-Serverprotokoll von %s: Maschinen-ID nicht erhalten." ,
-                                    "来自 %s 的 Ini 服务器协议：未获取计算机 ID。"
-                                  ],
-
-                        "00025" : [ 0,
-                                    "Protocolo de cliente Ini: no se obtiene la versión del protocolo." ,
-                                    "Ini Client protocol:  Not get version protocol." ,
-                                    "Protocole client Ini : ne pas obtenir le protocole de version." ,
-                                    "Ini-Client-Protokoll: Versionsprotokoll nicht abgerufen." ,
-                                    "Ini 客户端协议：未获取版本协议。"
-                                  ],
-
-                        "00026" : [ 0,
-                                    "Protocolo de cliente Ini: versión del protocolo no válida." ,
-                                    "Ini Client protocol:  Not version protocol valid." ,
-                                    "Protocole Ini Client : protocole de version non valide." ,
-                                    "Ini-Client-Protokoll: Nicht gültige Protokollversion." ,
-                                    "Ini 客户端协议：版本协议无效。"
-                                  ],
-
-                        "00027" : [ 0,
-                                    "Protocolo de cliente inicial: no se obtiene el nombre del centro." ,
-                                    "Ini Client protocol:  Not get center name." ,
-                                    "Protocole client Ini : n'obtient pas le nom du centre." ,
-                                    "Ini-Client-Protokoll: Center-Name nicht erhalten." ,
-                                    "Ini 客户端协议：未获取中心名称。"
-                                  ],
-
-                        "00028" : [ 0,
-                                    "Protocolo de cliente Ini: no se obtiene la ubicación." ,
-                                    "Ini Client protocol:  Not get location." ,
-                                    "Protocole client Ini : ne permet pas d'obtenir l'emplacement." ,
-                                    "Ini-Client-Protokoll: Standort kann nicht ermittelt werden." ,
-                                    "Ini 客户端协议：无法获取位置。"
-                                  ],
-
-                        "00029" : [ 0,
-                                    "Protocolo del servidor Ini: no protocolo de instancia." ,
-                                    "Ini Server protocol: Not instance protocol." ,
-                                    "Protocole du serveur Ini : pas de protocole d'instance." ,
-                                    "Ini-Server-Protokoll: Kein Instanzprotokoll." ,
-                                    "Ini Server 协议：不是实例协议。"
-                                  ],
-
-                        "00030" : [ 0,
-                                    "Protocolo del servidor Ini de %s: no datos del protocolo de instancia." ,
-                                    "Ini Server protocol from %s: Not instance protocol data." ,
-                                    "Protocole du serveur Ini de %s : pas de données de protocole d'instance." ,
-                                    "Ini-Serverprotokoll von %s: Keine Instanzprotokolldaten." ,
-                                    "来自 %s 的 Ini 服务器协议：不是实例协议数据。"
-                                  ],
-
-                        "00031" : [ 0,
-                                    "Servidor de protocolo EGM" ,
-                                    "EGM Protocol Server" ,
-                                    "Serveur de protocole EGM" ,
-                                    "EGM-Protokollserver" ,
-                                    "EGM协议服务器"
-                                  ],
-
-                        "00032" : [ 0,
-                                    "Cliente de protocolo EGM" ,
-                                    "EGM Protocol Client" ,
-                                    "Client de protocole EGM" ,
-                                    "EGM-Protokoll-Client" ,
-                                    "EGM 协议客户端"
-                                  ]
-                      }
-}
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<lng>
+  <languages>
+    <language>Spanish</language>
+    <language>English</language>
+    <language>French</language>
+    <language>German</language>
+    <language>Chinese</language>
+  </languages>
+  <translations>
+    <sentence id="00001" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Activando conexion servidor]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Activating server connection]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Activation de la connexion au serveur]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Serververbindung wird aktiviert]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[激活服务器连接]]>
+      </text>
+    </sentence>
+    <sentence id="00002" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Activando conexion cliente]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Activating client connection]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Activation de la connexion client]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Client-Verbindung wird aktiviert]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[激活客户端连接]]>
+      </text>
+    </sentence>
+    <sentence id="00003" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[De acuerdo]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Ok]]>
+      </text>
+      <text lang="French">
+        <![CDATA[D'accord]]>
+      </text>
+      <text lang="German">
+        <![CDATA[OK]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[好的]]>
+      </text>
+    </sentence>
+    <sentence id="00004" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Error]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Error]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Erreur]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Fehler]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[错误]]>
+      </text>
+    </sentence>
+    <sentence id="00005" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[ Pulsa una tecla para continuar... (%d)]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Press a key to continue... (%d)]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Appuyez sur une touche pour continuer... (%d)]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Drücken Sie eine Taste, um fortzufahren... (%d)]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[按任意键继续... (%d)]]>
+      </text>
+    </sentence>
+    <sentence id="00006" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Desactivando conexion servidor]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Deactivating server connection]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Désactivation de la connexion au serveur]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Serververbindung deaktivieren]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[停用服务器连接]]>
+      </text>
+    </sentence>
+    <sentence id="00007" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Desactivando conexion cliente]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Deactivating client connection]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Désactivation de la connexion client]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Client-Verbindung deaktivieren]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[停用客户端连接]]>
+      </text>
+    </sentence>
+    <sentence id="00008" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[De acuerdo.]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Ok.]]>
+      </text>
+      <text lang="French">
+        <![CDATA[D'accord.]]>
+      </text>
+      <text lang="German">
+        <![CDATA[OK.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[好的。]]>
+      </text>
+    </sentence>
+    <sentence id="00009" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Tecla presionada: 0x%02X [%c]]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Key pressed: 0x%02X [%c]]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Touche enfoncée : 0x%02X [%c]]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Taste gedrückt: 0x%02X [%c]]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[按下按键：0x%02X [%c]]]>
+      </text>
+    </sentence>
+    <sentence id="00010" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Modo de protocolo]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Protocol mode]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Mode protocole]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Protokollmodus]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[协议模式]]>
+      </text>
+    </sentence>
+    <sentence id="00011" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Servidor]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Server]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Serveur]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Server]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[服务器]]>
+      </text>
+    </sentence>
+    <sentence id="00012" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Cliente]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Customer]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Client]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Kunde]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[顾客]]>
+      </text>
+    </sentence>
+    <sentence id="00013" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Puerto [%d]]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Puerto [%d] ]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Port [%d]]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Puerto [%d]]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[波多黎各 [%d]]]>
+      </text>
+    </sentence>
+    <sentence id="00014" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Dispositivos conectados]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Connected devices]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Appareils connectés]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Angeschlossene Geräte]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[连接设备]]>
+      </text>
+    </sentence>
+    <sentence id="00015" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Ninguno.]]>
+      </text>
+      <text lang="English">
+        <![CDATA[None.]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Aucun.]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Keiner.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[没有任何。]]>
+      </text>
+    </sentence>
+    <sentence id="00016" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Estado dispositivo]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Device status]]>
+      </text>
+      <text lang="French">
+        <![CDATA[État de l'appareil]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Gerätestatus]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[设备状态]]>
+      </text>
+    </sentence>
+    <sentence id="00017" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Desconectado]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Offline]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Hors ligne]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Offline]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[离线]]>
+      </text>
+    </sentence>
+    <sentence id="00018" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Conectado]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Connected]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Connecté]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Verbunden]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[已连接]]>
+      </text>
+    </sentence>
+    <sentence id="00019" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Punto de prueba]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Test Point]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Point de test]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Testpunkt]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[测试点]]>
+      </text>
+    </sentence>
+    <sentence id="00020" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Protocolo del servidor Ini de %s: no se obtiene la versión del protocolo.]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Ini Server protocol from %s: Not get version protocol.]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Protocole du serveur Ini de %s : pas d'obtention du protocole de version.]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Ini-Serverprotokoll von %s: Versionsprotokoll nicht abgerufen.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[来自 %s 的 Ini 服务器协议：未获取版本协议。]]>
+      </text>
+    </sentence>
+    <sentence id="00021" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Protocolo del servidor Ini de %s: versión del protocolo no válida.]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Ini Server protocol from %s: Not version protocol valid.]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Protocole du serveur Ini de %s : protocole de version non valide.]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Ini-Serverprotokoll von %s: Nicht gültige Protokollversion.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[来自 %s 的 Ini 服务器协议：版本协议无效。]]>
+      </text>
+    </sentence>
+    <sentence id="00022" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Protocolo del servidor Ini de %s: no se obtiene la versión de la aplicación.]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Ini Server protocol from %s: Not get application version.]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Protocole du serveur Ini de %s : ne récupère pas la version de l'application.]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Ini-Server-Protokoll von %s: Anwendungsversion nicht abgerufen.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[来自 %s 的 Ini 服务器协议：未获取应用程序版本。]]>
+      </text>
+    </sentence>
+    <sentence id="00023" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Protocolo del servidor Ini de %s: no se obtiene el nombre de la aplicación.]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Ini Server protocol from %s: Not get application name.]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Protocole du serveur Ini de %s : n'obtient pas le nom de l'application.]]>
+      </text>
+      <text lang="German">
+        <![CDATA[INI-Serverprotokoll von %s: Anwendungsname nicht abgerufen.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[来自 %s 的 Ini 服务器协议：未获取应用程序名称。]]>
+      </text>
+    </sentence>
+    <sentence id="00024" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Protocolo del servidor Ini de %s: no se obtiene el ID de la máquina.]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Ini Server protocol from %s: Not get machine ID.]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Protocole du serveur Ini de %s : n'obtient pas l'ID de la machine.]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Ini-Serverprotokoll von %s: Maschinen-ID nicht erhalten.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[来自 %s 的 Ini 服务器协议：未获取计算机 ID。]]>
+      </text>
+    </sentence>
+    <sentence id="00025" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Protocolo de cliente Ini: no se obtiene la versión del protocolo.]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Ini Client protocol:  Not get version protocol.]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Protocole client Ini : ne pas obtenir le protocole de version.]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Ini-Client-Protokoll: Versionsprotokoll nicht abgerufen.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[Ini 客户端协议：未获取版本协议。]]>
+      </text>
+    </sentence>
+    <sentence id="00026" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Protocolo de cliente Ini: versión del protocolo no válida.]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Ini Client protocol:  Not version protocol valid.]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Protocole Ini Client : protocole de version non valide.]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Ini-Client-Protokoll: Nicht gültige Protokollversion.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[Ini 客户端协议：版本协议无效。]]>
+      </text>
+    </sentence>
+    <sentence id="00027" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Protocolo de cliente inicial: no se obtiene el nombre del centro.]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Ini Client protocol:  Not get center name.]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Protocole client Ini : n'obtient pas le nom du centre.]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Ini-Client-Protokoll: Center-Name nicht erhalten.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[Ini 客户端协议：未获取中心名称。]]>
+      </text>
+    </sentence>
+    <sentence id="00028" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Protocolo de cliente Ini: no se obtiene la ubicación.]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Ini Client protocol:  Not get location.]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Protocole client Ini : ne permet pas d'obtenir l'emplacement.]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Ini-Client-Protokoll: Standort kann nicht ermittelt werden.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[Ini 客户端协议：无法获取位置。]]>
+      </text>
+    </sentence>
+    <sentence id="00029" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Protocolo del servidor Ini: no protocolo de instancia.]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Ini Server protocol: Not instance protocol.]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Protocole du serveur Ini : pas de protocole d'instance.]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Ini-Server-Protokoll: Kein Instanzprotokoll.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[Ini Server 协议：不是实例协议。]]>
+      </text>
+    </sentence>
+    <sentence id="00030" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Protocolo del servidor Ini de %s: no datos del protocolo de instancia.]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Ini Server protocol from %s: Not instance protocol data.]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Protocole du serveur Ini de %s : pas de données de protocole d'instance.]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Ini-Serverprotokoll von %s: Keine Instanzprotokolldaten.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[来自 %s 的 Ini 服务器协议：不是实例协议数据。]]>
+      </text>
+    </sentence>
+    <sentence id="00031" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Servidor de protocolo EGM]]>
+      </text>
+      <text lang="English">
+        <![CDATA[EGM Protocol Server]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Serveur de protocole EGM]]>
+      </text>
+      <text lang="German">
+        <![CDATA[EGM-Protokollserver]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[EGM协议服务器]]>
+      </text>
+    </sentence>
+    <sentence id="00032" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Cliente de protocolo EGM]]>
+      </text>
+      <text lang="English">
+        <![CDATA[EGM Protocol Client]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Client de protocole EGM]]>
+      </text>
+      <text lang="German">
+        <![CDATA[EGM-Protokoll-Client]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[EGM 协议客户端]]>
+      </text>
+    </sentence>
+  </translations>
+</lng>

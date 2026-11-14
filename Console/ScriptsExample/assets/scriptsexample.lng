@@ -1,65 +1,133 @@
-{
-  "languages"       : [ "Spanish" ,
-                        "English" ,
-                        "French"  ,
-                        "German"  ,
-                        "Chinese" ,
-                        "Basque"
-                      ],
-                       
-                     
-  "translations" 		: { "00100" : [ 0,
-                                    "hola radiola" ,
-                                    "hi radiola" ,
-                                    "salut radiola" ,
-                                    "hallo radiola" ,
-                                    "你好 radiola" ,
-                                    "kaixo radiola"
-                                  ],
-                        
-                        "00101" : [ 70,
-                                    "mas mensage" ,
-                                    "more message" ,
-                                    "plus de message" ,
-                                    "mehr Nachricht" ,
-                                    "更多消息" ,
-                                    "mezu gehiago"
-                                  ],
-
-                        "00102" : [ 0,
-                                    "Tecla presionada: 0x%02X [%c]" ,
-                                    "Key pressed: 0x%02X [%c]" ,
-                                    "Touche enfoncée : 0x%02X [%c]" ,
-                                    "Taste gedrückt: 0x%02X [%c]" ,
-                                    "按下按键：0x%02X [%c]" ,
-                                    "Tekla sakatuta: 0x%02X [%c]"
-                                  ],
-
-                        "00103" : [ 0,
-                                    "Ejecute exec en %d milisegundos (%.2f segundos)." ,
-                                    "Run exec in %d milliseconds (%.2f seconds)." ,
-                                    "Exécutez exec dans %d millisecondes (%.2f secondes)." ,
-                                    "Führen Sie exec in %d Millisekunden (%.2f Sekunden) aus." ,
-                                    "在 %d 毫秒（%.2f 秒）内运行 exec。" ,
-                                    "Exekutatu exec %d milisegundotan (%.2f segundotan)."
-                                  ],
-
-                        "00104" : [ 0,
-                                    "ERROR de secuencia de comandos [%d]: %s línea %d -\\u003e \\\"%s\\\"" ,
-                                    "Script ERROR [%d]: %s line %d -> \"%s\"" ,
-                                    "ERREUR de script [%d] : %s ligne %d -\\u003e \\\"%s\\\"" ,
-                                    "Skriptfehler [%d]: %s Zeile %d -\\u003e „%s“" ,
-                                    "脚本错误 [%d]：%s 行 %d -\\u003e“%s”" ,
-                                    "Script ERROREA [%d]: %s lerroa %d -\\u003e \\\"%s\\\""
-                                  ],
-
-                        "00105" : [ 0,
-                                    "Script BREAK: línea %d -\\u003e \\\"%s\\\"" ,
-                                    "Script BREAK: line %d -> \"%s\"" ,
-                                    "Script BREAK : ligne %d -\\u003e \\\"%s\\\"" ,
-                                    "Skriptunterbrechung: Zeile %d -\\u003e „%s“" ,
-                                    "脚本 BREAK：第 %d 行 -\\u003e“%s”" ,
-                                    "Script BREAK: lerroa %d -\\u003e \\\"%s\\\""
-                                  ]
-                      }										
-}											 	
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<lng>
+  <languages>
+    <language>Spanish</language>
+    <language>English</language>
+    <language>French</language>
+    <language>German</language>
+    <language>Chinese</language>
+    <language>Basque</language>
+  </languages>
+  <translations>
+    <sentence id="00100" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[hola radiola]]>
+      </text>
+      <text lang="English">
+        <![CDATA[hi radiola]]>
+      </text>
+      <text lang="French">
+        <![CDATA[salut radiola]]>
+      </text>
+      <text lang="German">
+        <![CDATA[hallo radiola]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[你好 radiola]]>
+      </text>
+      <text lang="Basque">
+        <![CDATA[kaixo radiola]]>
+      </text>
+    </sentence>
+    <sentence id="00101" fixed="70">
+      <text lang="Spanish">
+        <![CDATA[mas mensage]]>
+      </text>
+      <text lang="English">
+        <![CDATA[more message]]>
+      </text>
+      <text lang="French">
+        <![CDATA[plus de message]]>
+      </text>
+      <text lang="German">
+        <![CDATA[mehr Nachricht]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[更多消息]]>
+      </text>
+      <text lang="Basque">
+        <![CDATA[mezu gehiago]]>
+      </text>
+    </sentence>
+    <sentence id="00102" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Tecla presionada: 0x%02X [%c]]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Key pressed: 0x%02X [%c]]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Touche enfoncée : 0x%02X [%c]]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Taste gedrückt: 0x%02X [%c]]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[按下按键：0x%02X [%c]]]>
+      </text>
+      <text lang="Basque">
+        <![CDATA[Tekla sakatuta: 0x%02X [%c]]]>
+      </text>
+    </sentence>
+    <sentence id="00103" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Ejecute exec en %d milisegundos (%.2f segundos).]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Run exec in %d milliseconds (%.2f seconds).]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Exécutez exec dans %d millisecondes (%.2f secondes).]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Führen Sie exec in %d Millisekunden (%.2f Sekunden) aus.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[在 %d 毫秒（%.2f 秒）内运行 exec。]]>
+      </text>
+      <text lang="Basque">
+        <![CDATA[Exekutatu exec %d milisegundotan (%.2f segundotan).]]>
+      </text>
+    </sentence>
+    <sentence id="00104" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[ERROR de secuencia de comandos [%d]: %s línea %d -\u003e \"%s\"]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Script ERROR [%d]: %s line %d -> "%s"]]>
+      </text>
+      <text lang="French">
+        <![CDATA[ERREUR de script [%d] : %s ligne %d -\u003e \"%s\"]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Skriptfehler [%d]: %s Zeile %d -\u003e „%s“]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[脚本错误 [%d]：%s 行 %d -\u003e“%s”]]>
+      </text>
+      <text lang="Basque">
+        <![CDATA[Script ERROREA [%d]: %s lerroa %d -\u003e \"%s\"]]>
+      </text>
+    </sentence>
+    <sentence id="00105" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Script BREAK: línea %d -\u003e \"%s\"]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Script BREAK: line %d -> "%s"]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Script BREAK : ligne %d -\u003e \"%s\"]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Skriptunterbrechung: Zeile %d -\u003e „%s“]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[脚本 BREAK：第 %d 行 -\u003e“%s”]]>
+      </text>
+      <text lang="Basque">
+        <![CDATA[Script BREAK: lerroa %d -\u003e \"%s\"]]>
+      </text>
+    </sentence>
+  </translations>
+</lng>

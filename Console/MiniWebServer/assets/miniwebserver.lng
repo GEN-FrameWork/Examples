@@ -1,169 +1,352 @@
-{
-  "languages"       : [ "Spanish" ,
-                        "English" ,
-                        "French"  ,
-                        "German"  ,
-                        "Chinese"
-                      ],
-
-  "translations"    : { "00001" : [ 0,
-                                    "app correcto" ,
-                                    "app ok"       ,
-                                    "app oui"      ,
-                                    "app korrekt"  ,
-                                    "app 正确"
-                                  ],
-
-                        "00002" : [ 0,
-                                    "app enviada"  ,
-                                    "app sent"     ,
-                                    "app envoyee"  ,
-                                    "app gesendet" ,
-                                    "app 已发送"
-                                  ],
-
-                        "00003" : [ 0,
-                                    "Inicializando Web Server " ,
-                                    "Initializing Web Server" ,
-                                    "Initialisation du serveur Web" ,
-                                    "Webserver wird initialisiert" ,
-                                    "初始化网络服务器"
-                                  ],
-
-                        "00004" : [ 0,
-                                    "De acuerdo" ,
-                                    "Ok" ,
-                                    "D'accord" ,
-                                    "OK" ,
-                                    "好的"
-                                  ],
-
-                        "00005" : [ 0,
-                                    "Error" ,
-                                    "Error" ,
-                                    "Erreur" ,
-                                    "Fehler" ,
-                                    "错误"
-                                  ],
-
-                        "00006" : [ 0,
-                                    "Inicializando Web Socket" ,
-                                    "Initializing Web Socket" ,
-                                    "Initialisation du socket Web" ,
-                                    "Web-Socket wird initialisiert" ,
-                                    "初始化网络套接字"
-                                  ],
-
-                        "00007" : [ 0,
-                                    "ID de generación %d: %s" ,
-                                    "GEN  ID %d : %s" ,
-                                    "Identifiant de génération %d : %s" ,
-                                    "GEN-ID %d: %s" ,
-                                    "GEN ID %d：%s"
-                                  ],
-
-                        "00008" : [ 0,
-                                    "ID DE APLICACIÓN %d: %s" ,
-                                    "APP  ID %d : %s" ,
-                                    "Identifiant de l'application %d : %s" ,
-                                    "APP-ID %d: %s" ,
-                                    "应用程序 ID %d : %s"
-                                  ],
-
-                        "00009" : [ 0,
-                                    " Pulsa una tecla para continuar... (%d)" ,
-                                    "Press a key to continue... (%d)" ,
-                                    "Appuyez sur une touche pour continuer... (%d)" ,
-                                    "Drücken Sie eine Taste, um fortzufahren... (%d)" ,
-                                    "按任意键继续... (%d)"
-                                  ],
-
-                        "00010" : [ 0,
-                                    "Desactivando servidor web" ,
-                                    "Deactivating web server" ,
-                                    "Désactivation du serveur Web" ,
-                                    "Webserver deaktivieren" ,
-                                    "停用网络服务器"
-                                  ],
-
-                        "00011" : [ 0,
-                                    "Deshabilitar WebSocket" ,
-                                    "Disabling WebSocket" ,
-                                    "Désactivation de WebSocket" ,
-                                    "WebSocket deaktivieren" ,
-                                    "禁用 WebSocket"
-                                  ],
-
-                        "00012" : [ 0,
-                                    "Tecla presionada: 0x%02X [%c]" ,
-                                    "Key pressed: 0x%02X [%c]" ,
-                                    "Touche enfoncée : 0x%02X [%c]" ,
-                                    "Taste gedrückt: 0x%02X [%c]" ,
-                                    "按下按键：0x%02X [%c]"
-                                  ],
-
-                        "00013" : [ 0,
-                                    "Servidor web" ,
-                                    "Web Server" ,
-                                    "Serveur Web" ,
-                                    "Webserver" ,
-                                    "网络服务器"
-                                  ],
-
-                        "00014" : [ 0,
-                                    "Puerto" ,
-                                    "Port" ,
-                                    "Port" ,
-                                    "Hafen" ,
-                                    "港口"
-                                  ],
-
-                        "00015" : [ 0,
-                                    "Acceso Autenticado" ,
-                                    "Authenticated Access" ,
-                                    "Accès authentifié" ,
-                                    "Authentifizierter Zugriff" ,
-                                    "认证访问"
-                                  ],
-
-                        "00016" : [ 0,
-                                    "Y" ,
-                                    "And" ,
-                                    "Et" ,
-                                    "Und" ,
-                                    "和"
-                                  ],
-
-                        "00017" : [ 0,
-                                    "No" ,
-                                    "No" ,
-                                    "Non" ,
-                                    "NEIN" ,
-                                    "不"
-                                  ],
-
-                        "00018" : [ 0,
-                                    "Plugin(s) Activo(s)" ,
-                                    "Active Plugin(s)" ,
-                                    "Plugins actifs" ,
-                                    "Aktive Plugin(s)" ,
-                                    "活动插件"
-                                  ],
-
-                        "00019" : [ 0,
-                                    "Solo sirve API Rest" ,
-                                    "Only serves API Rest" ,
-                                    "Ne sert que l'API Rest" ,
-                                    "Stellt nur API-Rest bereit" ,
-                                    "只提供Rest API服务"
-                                  ],
-
-                        "00020" : [ 0,
-                                    "Conexiones activas" ,
-                                    "Active connections" ,
-                                    "Connexions actives" ,
-                                    "Aktive Verbindungen" ,
-                                    "活跃连接数"
-                                  ]
-                      }
-}
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<lng>
+  <languages>
+    <language>Spanish</language>
+    <language>English</language>
+    <language>French</language>
+    <language>German</language>
+    <language>Chinese</language>
+  </languages>
+  <translations>
+    <sentence id="00001" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[app correcto]]>
+      </text>
+      <text lang="English">
+        <![CDATA[app ok]]>
+      </text>
+      <text lang="French">
+        <![CDATA[app oui]]>
+      </text>
+      <text lang="German">
+        <![CDATA[app korrekt]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[app 正确]]>
+      </text>
+    </sentence>
+    <sentence id="00002" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[app enviada]]>
+      </text>
+      <text lang="English">
+        <![CDATA[app sent]]>
+      </text>
+      <text lang="French">
+        <![CDATA[app envoyee]]>
+      </text>
+      <text lang="German">
+        <![CDATA[app gesendet]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[app 已发送]]>
+      </text>
+    </sentence>
+    <sentence id="00003" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Inicializando Web Server ]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Initializing Web Server]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Initialisation du serveur Web]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Webserver wird initialisiert]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[初始化网络服务器]]>
+      </text>
+    </sentence>
+    <sentence id="00004" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[De acuerdo]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Ok]]>
+      </text>
+      <text lang="French">
+        <![CDATA[D'accord]]>
+      </text>
+      <text lang="German">
+        <![CDATA[OK]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[好的]]>
+      </text>
+    </sentence>
+    <sentence id="00005" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Error]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Error]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Erreur]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Fehler]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[错误]]>
+      </text>
+    </sentence>
+    <sentence id="00006" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Inicializando Web Socket]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Initializing Web Socket]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Initialisation du socket Web]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Web-Socket wird initialisiert]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[初始化网络套接字]]>
+      </text>
+    </sentence>
+    <sentence id="00007" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[ID de generación %d: %s]]>
+      </text>
+      <text lang="English">
+        <![CDATA[GEN  ID %d : %s]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Identifiant de génération %d : %s]]>
+      </text>
+      <text lang="German">
+        <![CDATA[GEN-ID %d: %s]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[GEN ID %d：%s]]>
+      </text>
+    </sentence>
+    <sentence id="00008" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[ID DE APLICACIÓN %d: %s]]>
+      </text>
+      <text lang="English">
+        <![CDATA[APP  ID %d : %s]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Identifiant de l'application %d : %s]]>
+      </text>
+      <text lang="German">
+        <![CDATA[APP-ID %d: %s]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[应用程序 ID %d : %s]]>
+      </text>
+    </sentence>
+    <sentence id="00009" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[ Pulsa una tecla para continuar... (%d)]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Press a key to continue... (%d)]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Appuyez sur une touche pour continuer... (%d)]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Drücken Sie eine Taste, um fortzufahren... (%d)]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[按任意键继续... (%d)]]>
+      </text>
+    </sentence>
+    <sentence id="00010" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Desactivando servidor web]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Deactivating web server]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Désactivation du serveur Web]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Webserver deaktivieren]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[停用网络服务器]]>
+      </text>
+    </sentence>
+    <sentence id="00011" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Deshabilitar WebSocket]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Disabling WebSocket]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Désactivation de WebSocket]]>
+      </text>
+      <text lang="German">
+        <![CDATA[WebSocket deaktivieren]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[禁用 WebSocket]]>
+      </text>
+    </sentence>
+    <sentence id="00012" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Tecla presionada: 0x%02X [%c]]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Key pressed: 0x%02X [%c]]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Touche enfoncée : 0x%02X [%c]]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Taste gedrückt: 0x%02X [%c]]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[按下按键：0x%02X [%c]]]>
+      </text>
+    </sentence>
+    <sentence id="00013" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Servidor web]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Web Server]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Serveur Web]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Webserver]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[网络服务器]]>
+      </text>
+    </sentence>
+    <sentence id="00014" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Puerto]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Port]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Port]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Hafen]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[港口]]>
+      </text>
+    </sentence>
+    <sentence id="00015" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Acceso Autenticado]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Authenticated Access]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Accès authentifié]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Authentifizierter Zugriff]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[认证访问]]>
+      </text>
+    </sentence>
+    <sentence id="00016" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Y]]>
+      </text>
+      <text lang="English">
+        <![CDATA[And]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Et]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Und]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[和]]>
+      </text>
+    </sentence>
+    <sentence id="00017" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[No]]>
+      </text>
+      <text lang="English">
+        <![CDATA[No]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Non]]>
+      </text>
+      <text lang="German">
+        <![CDATA[NEIN]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[不]]>
+      </text>
+    </sentence>
+    <sentence id="00018" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Plugin(s) Activo(s)]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Active Plugin(s)]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Plugins actifs]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Aktive Plugin(s)]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[活动插件]]>
+      </text>
+    </sentence>
+    <sentence id="00019" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Solo sirve API Rest]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Only serves API Rest]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Ne sert que l'API Rest]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Stellt nur API-Rest bereit]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[只提供Rest API服务]]>
+      </text>
+    </sentence>
+    <sentence id="00020" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Conexiones activas]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Active connections]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Connexions actives]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Aktive Verbindungen]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[活跃连接数]]>
+      </text>
+    </sentence>
+  </translations>
+</lng>

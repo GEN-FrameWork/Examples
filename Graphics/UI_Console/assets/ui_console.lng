@@ -1,51 +1,97 @@
-{
-  "languages"       : [ "Spanish" ,
-                        "English" ,
-                        "French"  ,
-                        "German"  ,
-                        "Chinese"
-                      ],
-
-
-  "translations": {
-    "00102" : [ 0,
-      "UI_Console" ,
-      "UI_Console" ,
-      "UI_Console" ,
-      "UI_Console" ,
-      "UI_Console"
-    ],
-
-    "00103" : [ 0,
-      "Consola grafica GEN" ,
-      "GEN graphical console" ,
-      "Console graphique GEN" ,
-      "GEN grafische Konsole" ,
-      "GEN 图形控制台"
-    ],
-
-    "00104" : [ 0,
-      "Limpiar" ,
-      "Clear" ,
-      "Effacer" ,
-      "Leeren" ,
-      "清除"
-    ],
-
-    "00105" : [ 0,
-      "Salir" ,
-      "Exit" ,
-      "Quitter" ,
-      "Beenden" ,
-      "退出"
-    ],
-
-    "00106" : [ 0,
-      "Autoscroll" ,
-      "Autoscroll" ,
-      "Defilement auto" ,
-      "Autoscroll" ,
-      "自动滚动"
-    ]
-  }
-}
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<lng>
+  <languages>
+    <language>Spanish</language>
+    <language>English</language>
+    <language>French</language>
+    <language>German</language>
+    <language>Chinese</language>
+  </languages>
+  <translations>
+    <sentence id="00102" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[UI_Console]]>
+      </text>
+      <text lang="English">
+        <![CDATA[UI_Console]]>
+      </text>
+      <text lang="French">
+        <![CDATA[UI_Console]]>
+      </text>
+      <text lang="German">
+        <![CDATA[UI_Console]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[UI_Console]]>
+      </text>
+    </sentence>
+    <sentence id="00103" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Consola grafica GEN]]>
+      </text>
+      <text lang="English">
+        <![CDATA[GEN graphical console]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Console graphique GEN]]>
+      </text>
+      <text lang="German">
+        <![CDATA[GEN grafische Konsole]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[GEN 图形控制台]]>
+      </text>
+    </sentence>
+    <sentence id="00104" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Limpiar]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Clear]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Effacer]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Leeren]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[清除]]>
+      </text>
+    </sentence>
+    <sentence id="00105" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Salir]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Exit]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Quitter]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Beenden]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[退出]]>
+      </text>
+    </sentence>
+    <sentence id="00106" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Autoscroll]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Autoscroll]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Defilement auto]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Autoscroll]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[自动滚动]]>
+      </text>
+    </sentence>
+  </translations>
+</lng>

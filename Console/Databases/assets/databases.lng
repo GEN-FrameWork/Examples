@@ -1,155 +1,318 @@
-{
-  "languages"       : [ "Spanish" ,
-                        "English" ,
-                        "French"  ,
-                        "German"  ,
-                        "Chinese"
-                      ],
-
-  "translations"    : {
-
-                        "00001" : [ 0,
-                                    "Tecla presionada: 0x%02X [%c]" ,
-                                    "Key pressed: 0x%02X [%c]" ,
-                                    "Touche enfoncée : 0x%02X [%c]" ,
-                                    "Taste gedrückt: 0x%02X [%c]" ,
-                                    "按下按键：0x%02X [%c]"
-                                  ],
-
-                        "00002" : [ 0,
-                                    "Creando Conexion " ,
-                                    "Creating Connection" ,
-                                    "Créer une connexion" ,
-                                    "Verbindung herstellen" ,
-                                    "创建连接"
-                                  ],
-
-                        "00003" : [ 0,
-                                    "De acuerdo" ,
-                                    "Ok" ,
-                                    "D'accord" ,
-                                    "OK" ,
-                                    "好的"
-                                  ],
-
-                        "00004" : [ 0,
-                                    "Error" ,
-                                    "Error" ,
-                                    "Erreur" ,
-                                    "Fehler" ,
-                                    "错误"
-                                  ],
-
-                        "00005" : [ 0,
-                                    "Abriendo/conectando Base de datos" ,
-                                    "Opening/connecting Database" ,
-                                    "Ouverture/connexion de la base de données" ,
-                                    "Datenbank öffnen/verbinden" ,
-                                    "打开/连接数据库"
-                                  ],
-
-                        "00006" : [ 0,
-                                    "%s Segura para subprocesos: %s" ,
-                                    "%s Thread Safe: %s" ,
-                                    "%s Thread Safe : %s" ,
-                                    "%s Thread-sicher: %s" ,
-                                    "%s 线程安全：%s"
-                                  ],
-
-                        "00007" : [ 0,
-                                    "Y" ,
-                                    "And" ,
-                                    "Et" ,
-                                    "Und" ,
-                                    "和"
-                                  ],
-
-                        "00008" : [ 0,
-                                    "No" ,
-                                    "No" ,
-                                    "Non" ,
-                                    "NEIN" ,
-                                    "不"
-                                  ],
-
-                        "00009" : [ 0,
-                                    "Borrando tabla" ,
-                                    "Deleting table" ,
-                                    "Suppression du tableau" ,
-                                    "Tabelle wird gelöscht" ,
-                                    "删除表"
-                                  ],
-
-                        "00010" : [ 0,
-                                    "Creando tabla" ,
-                                    "Creating table" ,
-                                    "Création d'un tableau" ,
-                                    "Tabelle erstellen" ,
-                                    "创建表"
-                                  ],
-
-                        "00011" : [ 0,
-                                    "Escribiendo registro" ,
-                                    "Writing record" ,
-                                    "Rédaction d'un dossier" ,
-                                    "Aufzeichnung schreiben" ,
-                                    "书写记录"
-                                  ],
-
-                        "00012" : [ 0,
-                                    "nombre %s -\\u003e %s" ,
-                                    "name %s -> %s" ,
-                                    "nom %s -\\u003e %s" ,
-                                    "Name %s -\\u003e %s" ,
-                                    "名称 %s -\\u003e %s"
-                                  ],
-
-                        "00013" : [ 0,
-                                    "Numero registros tabla" ,
-                                    "Number of table records" ,
-                                    "Nombre d'enregistrements de table" ,
-                                    "Anzahl der Tabellendatensätze" ,
-                                    "表记录数"
-                                  ],
-
-                        "00014" : [ 0,
-                                    "%d registro(s)" ,
-                                    "%d record(s)" ,
-                                    "%d enregistrement(s)" ,
-                                    "%d Datensatz(e)" ,
-                                    "%d 条记录"
-                                  ],
-
-                        "00015" : [ 0,
-                                    "Leyendo registro" ,
-                                    "Reading record" ,
-                                    "Enregistrement de lecture" ,
-                                    "Leseprotokoll" ,
-                                    "阅读记录"
-                                  ],
-
-                        "00016" : [ 0,
-                                    " Pulsa una tecla para continuar... (%d)" ,
-                                    "Press a key to continue... (%d)" ,
-                                    "Appuyez sur une touche pour continuer... (%d)" ,
-                                    "Drücken Sie eine Taste, um fortzufahren... (%d)" ,
-                                    "按任意键继续... (%d)"
-                                  ],
-
-                        "00017" : [ 0,
-                                    "Tipo Base de datos" ,
-                                    "Database Type" ,
-                                    "Type de base de données" ,
-                                    "Datenbanktyp" ,
-                                    "数据库类型"
-                                  ],
-
-                        "00018" : [ 0,
-                                    "N / A" ,
-                                    "N/A" ,
-                                    "N / A" ,
-                                    "N / A" ,
-                                    "不适用"
-                                  ]
-                      }
-}
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<lng>
+  <languages>
+    <language>Spanish</language>
+    <language>English</language>
+    <language>French</language>
+    <language>German</language>
+    <language>Chinese</language>
+  </languages>
+  <translations>
+    <sentence id="00001" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Tecla presionada: 0x%02X [%c]]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Key pressed: 0x%02X [%c]]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Touche enfoncée : 0x%02X [%c]]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Taste gedrückt: 0x%02X [%c]]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[按下按键：0x%02X [%c]]]>
+      </text>
+    </sentence>
+    <sentence id="00002" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Creando Conexion ]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Creating Connection]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Créer une connexion]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Verbindung herstellen]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[创建连接]]>
+      </text>
+    </sentence>
+    <sentence id="00003" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[De acuerdo]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Ok]]>
+      </text>
+      <text lang="French">
+        <![CDATA[D'accord]]>
+      </text>
+      <text lang="German">
+        <![CDATA[OK]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[好的]]>
+      </text>
+    </sentence>
+    <sentence id="00004" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Error]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Error]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Erreur]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Fehler]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[错误]]>
+      </text>
+    </sentence>
+    <sentence id="00005" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Abriendo/conectando Base de datos]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Opening/connecting Database]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Ouverture/connexion de la base de données]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Datenbank öffnen/verbinden]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[打开/连接数据库]]>
+      </text>
+    </sentence>
+    <sentence id="00006" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[%s Segura para subprocesos: %s]]>
+      </text>
+      <text lang="English">
+        <![CDATA[%s Thread Safe: %s]]>
+      </text>
+      <text lang="French">
+        <![CDATA[%s Thread Safe : %s]]>
+      </text>
+      <text lang="German">
+        <![CDATA[%s Thread-sicher: %s]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[%s 线程安全：%s]]>
+      </text>
+    </sentence>
+    <sentence id="00007" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Y]]>
+      </text>
+      <text lang="English">
+        <![CDATA[And]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Et]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Und]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[和]]>
+      </text>
+    </sentence>
+    <sentence id="00008" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[No]]>
+      </text>
+      <text lang="English">
+        <![CDATA[No]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Non]]>
+      </text>
+      <text lang="German">
+        <![CDATA[NEIN]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[不]]>
+      </text>
+    </sentence>
+    <sentence id="00009" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Borrando tabla]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Deleting table]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Suppression du tableau]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Tabelle wird gelöscht]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[删除表]]>
+      </text>
+    </sentence>
+    <sentence id="00010" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Creando tabla]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Creating table]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Création d'un tableau]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Tabelle erstellen]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[创建表]]>
+      </text>
+    </sentence>
+    <sentence id="00011" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Escribiendo registro]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Writing record]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Rédaction d'un dossier]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Aufzeichnung schreiben]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[书写记录]]>
+      </text>
+    </sentence>
+    <sentence id="00012" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[nombre %s -\u003e %s]]>
+      </text>
+      <text lang="English">
+        <![CDATA[name %s -> %s]]>
+      </text>
+      <text lang="French">
+        <![CDATA[nom %s -\u003e %s]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Name %s -\u003e %s]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[名称 %s -\u003e %s]]>
+      </text>
+    </sentence>
+    <sentence id="00013" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Numero registros tabla]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Number of table records]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Nombre d'enregistrements de table]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Anzahl der Tabellendatensätze]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[表记录数]]>
+      </text>
+    </sentence>
+    <sentence id="00014" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[%d registro(s)]]>
+      </text>
+      <text lang="English">
+        <![CDATA[%d record(s)]]>
+      </text>
+      <text lang="French">
+        <![CDATA[%d enregistrement(s)]]>
+      </text>
+      <text lang="German">
+        <![CDATA[%d Datensatz(e)]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[%d 条记录]]>
+      </text>
+    </sentence>
+    <sentence id="00015" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Leyendo registro]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Reading record]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Enregistrement de lecture]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Leseprotokoll]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[阅读记录]]>
+      </text>
+    </sentence>
+    <sentence id="00016" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[ Pulsa una tecla para continuar... (%d)]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Press a key to continue... (%d)]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Appuyez sur une touche pour continuer... (%d)]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Drücken Sie eine Taste, um fortzufahren... (%d)]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[按任意键继续... (%d)]]>
+      </text>
+    </sentence>
+    <sentence id="00017" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Tipo Base de datos]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Database Type]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Type de base de données]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Datenbanktyp]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[数据库类型]]>
+      </text>
+    </sentence>
+    <sentence id="00018" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[N / A]]>
+      </text>
+      <text lang="English">
+        <![CDATA[N/A]]>
+      </text>
+      <text lang="French">
+        <![CDATA[N / A]]>
+      </text>
+      <text lang="German">
+        <![CDATA[N / A]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[不适用]]>
+      </text>
+    </sentence>
+  </translations>
+</lng>

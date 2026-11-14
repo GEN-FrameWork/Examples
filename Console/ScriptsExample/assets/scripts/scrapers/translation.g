@@ -42,18 +42,21 @@ int main()
     }
 
   // Percent-encode query. Shield '%' before emitting "%25" (Replace re-scans).
-  // Braces via SPrintf — G PreScan forbids '{' / '}' inside string literals.
+  // Braces/TAB via SPrintf — G PreScan forbids '{' / '}' in string literals; TAB
+  // must not use "\t" on older G runtimes that treated unknown escapes as letter 't'.
   string lb;
   string rb;
-  lb = SPrintf("", "%c", 123);
-  rb = SPrintf("", "%c", 125);
+  string tab;
+  lb  = SPrintf("", "%c", 123);
+  rb  = SPrintf("", "%c", 125);
+  tab = SPrintf("", "%c", 9);
 
   q = text;
   q = ReplaceAllString(q, "%", "__PCT__");
   q = ReplaceAllString(q, " ", "%20");
   q = ReplaceAllString(q, "\n", "%0A");
   q = ReplaceAllString(q, "\r", "%0D");
-  q = ReplaceAllString(q, "\t", "%09");
+  q = ReplaceAllString(q, tab, "%09");
   q = ReplaceAllString(q, "&", "%26");
   q = ReplaceAllString(q, "#", "%23");
   q = ReplaceAllString(q, "+", "%2B");

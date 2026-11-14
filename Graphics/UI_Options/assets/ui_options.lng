@@ -1,675 +1,1329 @@
-{
-  "languages"       : [ "Spanish" ,
-                        "English" ,
-                        "French"  ,
-                        "German"  ,
-                        "Chinese"
-                      ],
-
-
-  "translations": {
-    "00100": [
-      0,
-      "GEN XML Galeria",
-      "GEN XML Gallery",
-      "GEN XML Gallery",
-      "GEN XML Gallery",
-      "GEN XML Gallery"
-    ],
-
-    "00101": [
-      0,
-      "GENERADOR DE GALERIAS XML",
-      "XML GALLERY GENERATOR",
-      "GENERATEUR DE GALLERYS XML",
-      "XML-GALLERY-GENERATOR",
-      "XML Gallery 生成器"
-    ],
-
-    "00102": [
-      0,
-      "GALERIAS EXISTENTES (5)",
-      "EXISTING GALLERIES (5)",
-      "GALLERYS EXISTANTES (5)",
-      "VORHANDENE GALLERYS (5)",
-      "已有 Gallery (5)"
-    ],
-
-    "00103": [
-      0,
-      "EDITOR DE GALERIA",
-      "GALLERY EDITOR",
-      "EDITEUR DE GALLERY",
-      "GALLERY-EDITOR",
-      "Gallery 编辑器"
-    ],
-
-    "00104": [
-      0,
-      "NOMBRE DEL GALERIA",
-      "GALLERY NAME",
-      "NOM DU GALLERY",
-      "GALLERY-NAME",
-      "Gallery 名称"
-    ],
-
-    "00105": [
-      0,
-      "TITULO",
-      "TITLE",
-      "TITRE",
-      "TITEL",
-      "标题"
-    ],
-
-    "00106": [
-      0,
-      "Responsable",
-      "Owner",
-      "Responsable",
-      "Verantwortlich",
-      "负责人"
-    ],
-
-    "00107": [
-      0,
-      "Registro habilitado",
-      "Record enabled",
-      "Enregistrement actif",
-      "Datensatz aktiv",
-      "记录已启用"
-    ],
-
-    "00108": [
-      0,
-      "CATEGORIA",
-      "CATEGORY",
-      "CATEGORIE",
-      "KATEGORIE",
-      "类别"
-    ],
-
-    "00109": [
-      0,
-      "DESCRIPCION",
-      "DESCRIPTION",
-      "DESCRIPTION",
-      "BESCHREIBUNG",
-      "描述"
-    ],
-
-    "00110": [
-      0,
-      "Nuevo",
-      "New",
-      "Nouveau",
-      "Neu",
-      "新建"
-    ],
-
-    "00111": [
-      0,
-      "Guardar",
-      "Save",
-      "Enregistrer",
-      "Speichern",
-      "保存"
-    ],
-
-    "00112": [
-      0,
-      "Ejecutar",
-      "Run",
-      "Executer",
-      "Ausfuhren",
-      "运行"
-    ],
-
-    "00113": [
-      0,
-      "Exportar XML",
-      "Export XML",
-      "Exporter XML",
-      "XML exportieren",
-      "导出 XML"
-    ],
-
-    "00114": [
-      0,
-      "Primaria",
-      "Primary",
-      "Primaire",
-      "Primar",
-      "主要"
-    ],
-
-    "00115": [
-      0,
-      "Secundaria",
-      "Secondary",
-      "Secondaire",
-      "Sekundar",
-      "次要"
-    ],
-
-    "00120": [
-      0,
-      "Galeria de productos destacados para el escaparate digital. Incluye metadatos, idioma y estructura XML lista para empaquetado.",
-      "Featured products gallery for the digital storefront. Includes metadata, language and XML structure ready for packaging.",
-      "Galerie de produits mis en avant pour la vitrine digitale. Inclut metadonnees, langue et structure XML prete a empaqueter.",
-      "Galerie hervorgehobener Produkte fur den digitalen Schaufenster. Enthalt Metadaten, Sprache und XML-Struktur.",
-      "数字橱窗精选产品 Gallery。包含元数据、语言与可打包的 XML 结构。"
-    ],
-
-    "00121": [
-      0,
-      "Barra de progreso",
-      "Progress bar",
-      "Barre de progression",
-      "Fortschrittsbalken",
-      "进度条"
-    ],
-
-    "00122": [
-      0,
-      "CALIDAD XML",
-      "XML QUALITY",
-      "QUALITE XML",
-      "XML-QUALITAT",
-      "XML 质量"
-    ],
-
-    "00123": [
-      0,
-      "MEMORIA / RECURSOS",
-      "MEMORY / RESOURCES",
-      "MEMOIRE / RESSOURCES",
-      "SPEICHER / RESSOURCEN",
-      "内存 / 资源"
-    ],
-
-    "00124": [
-      0,
-      "Ciclo continuo",
-      "Continuous cycle",
-      "Cycle continu",
-      "Dauerschleife",
-      "连续循环"
-    ],
-
-    "00125": [
-      0,
-      "ACTIVIDAD RECIENTE",
-      "RECENT ACTIVITY",
-      "ACTIVITE RECENTE",
-      "LETZTE AKTIVITAT",
-      "最近活动"
-    ],
-
-    "00126": [
-      0,
-      "Estado de botones",
-      "Button states",
-      "Etats des boutons",
-      "Schaltflachen-Status",
-      "按钮状态"
-    ],
-
-    "00127": [
-      0,
-      "Default",
-      "Default",
-      "Defaut",
-      "Standard",
-      "默认"
-    ],
-
-    "00128": [
-      0,
-      "Focus",
-      "Focus",
-      "Focus",
-      "Fokus",
-      "焦点"
-    ],
-
-    "00129": [
-      0,
-      "Pressed",
-      "Pressed",
-      "Presse",
-      "Gedruckt",
-      "按下"
-    ],
-
-    "00130": [
-      0,
-      "Disabled",
-      "Disabled",
-      "Desactive",
-      "Deaktiviert",
-      "禁用"
-    ],
-
-    "00131": [
-      0,
-      "cambia idioma en el chrome",
-      "change language in the chrome",
-      "changez la langue dans le chrome",
-      "Sprache in der Titelleiste andern",
-      "在标题栏切换语言"
-    ],
-
-    "00132": [
-      0,
-      "Guardar como...",
-      "Save as...",
-      "Enregistrer sous...",
-      "Speichern unter...",
-      "另存为..."
-    ],
-
-    "00133": [
-      0,
-      "Validar XML",
-      "Validate XML",
-      "Valider XML",
-      "XML validieren",
-      "验证 XML"
-    ],
-
-    "00134": [
-      0,
-      "Generar XML",
-      "Generate XML",
-      "Generer XML",
-      "XML erzeugen",
-      "生成 XML"
-    ],
-
-    "00135": [
-      0,
-      "Vista XML",
-      "XML view",
-      "Vue XML",
-      "XML-Ansicht",
-      "XML 视图"
-    ],
-
-    "00136": [
-      0,
-      "Cerrar",
-      "Close",
-      "Fermer",
-      "Schliessen",
-      "关闭"
-    ],
-
-    "00137": [
-      0,
-      "v1.2.0 · 24/05/2024 10:42",
-      "v1.2.0 · 24/05/2024 10:42",
-      "v1.2.0 · 24/05/2024 10:42",
-      "v1.2.0 · 24/05/2024 10:42",
-      "v1.2.0 · 24/05/2024 10:42"
-    ],
-
-    "00159": [
-      0,
-      "Usuario: Tecnico · Perfil: Editor",
-      "User: Technician · Profile: Editor",
-      "Utilisateur: Technicien · Profil: Editeur",
-      "Benutzer: Techniker · Profil: Editor",
-      "用户: 技术员 · 角色: 编辑"
-    ],
-
-    "00138": [
-      0,
-      "NAVEGACION",
-      "NAVIGATION",
-      "NAVIGATION",
-      "NAVIGATION",
-      "导航"
-    ],
-
-    "00139": [
-      0,
-      "5 elementos · Orden: Nombre",
-      "5 items · Sort: Name",
-      "5 elements · Tri: Nom",
-      "5 Elemente · Sortierung: Name",
-      "5 项 · 排序: 名称"
-    ],
-
-    "00140": [
-      0,
-      "IDIOMA",
-      "LANGUAGE",
-      "LANGUE",
-      "SPRACHE",
-      "语言"
-    ],
-
-    "00141": [
-      0,
-      "VISTA PREVIA · ESTRUCTURA XML",
-      "PREVIEW · XML STRUCTURE",
-      "APERCU · STRUCTURE XML",
-      "VORSCHAU · XML-STRUKTUR",
-      "预览 · XML 结构"
-    ],
-
-    "00142": [
-      0,
-      "<gallery id=\"productos\" lang=\"es\">\n  <meta title=\"Productos Destacados\"/>\n  <items count=\"12\">\n    <item id=\"001\"/>\n  </items>\n</gallery>",
-      "<gallery id=\"productos\" lang=\"es\">\n  <meta title=\"Productos Destacados\"/>\n  <items count=\"12\">\n    <item id=\"001\"/>\n  </items>\n</gallery>",
-      "<gallery id=\"productos\" lang=\"es\">\n  <meta title=\"Productos Destacados\"/>\n  <items count=\"12\">\n    <item id=\"001\"/>\n  </items>\n</gallery>",
-      "<gallery id=\"productos\" lang=\"es\">\n  <meta title=\"Productos Destacados\"/>\n  <items count=\"12\">\n    <item id=\"001\"/>\n  </items>\n</gallery>",
-      "<gallery id=\"productos\" lang=\"es\">\n  <meta title=\"Productos Destacados\"/>\n  <items count=\"12\">\n    <item id=\"001\"/>\n  </items>\n</gallery>"
-    ],
-
-    "00143": [
-      0,
-      "Arrastre elementos desde la paleta lateral para construir la estructura.",
-      "Drag elements from the side palette to build the structure.",
-      "Faites glisser des elements depuis la palette laterale pour construire la structure.",
-      "Ziehen Sie Elemente aus der Seitenpalette, um die Struktur aufzubauen.",
-      "从侧栏拖放元素以构建结构。"
-    ],
-
-    "00144": [
-      0,
-      "MONITOREO Y PROCESAMIENTO",
-      "MONITORING AND PROCESSING",
-      "SURVEILLANCE ET TRAITEMENT",
-      "UBERWACHUNG UND VERARBEITUNG",
-      "监控与处理"
-    ],
-
-    "00145": [
-      0,
-      "PROGRESO GENERAL",
-      "OVERALL PROGRESS",
-      "PROGRES GENERAL",
-      "GESAMTFORTSCHRITT",
-      "总体进度"
-    ],
-
-    "00146": [
-      0,
-      "Validacion  100%",
-      "Validation  100%",
-      "Validation  100%",
-      "Validierung  100%",
-      "验证  100%"
-    ],
-
-    "00147": [
-      0,
-      "Generacion XML  75%",
-      "XML generation  75%",
-      "Generation XML  75%",
-      "XML-Erzeugung  75%",
-      "生成 XML  75%"
-    ],
-
-    "00148": [
-      0,
-      "Empaquetado  45%",
-      "Packaging  45%",
-      "Emballage  45%",
-      "Paketierung  45%",
-      "打包  45%"
-    ],
-
-    "00149": [
-      0,
-      "Excelente",
-      "Excellent",
-      "Excellent",
-      "Ausgezeichnet",
-      "优秀"
-    ],
-
-    "00150": [
-      0,
-      "Err: 0 · Adv: 1",
-      "Err: 0 · Warn: 1",
-      "Err: 0 · Av: 1",
-      "Err: 0 · Warn: 1",
-      "错: 0 · 警: 1"
-    ],
-
-    "00151": [
-      0,
-      "48%   256 / 512 MB",
-      "48%   256 / 512 MB",
-      "48%   256 / 512 MB",
-      "48%   256 / 512 MB",
-      "48%   256 / 512 MB"
-    ],
-
-    "00152": [
-      0,
-      "Ultima accion: Estructura guardada correctamente.",
-      "Last action: Structure saved successfully.",
-      "Derniere action: Structure enregistree correctement.",
-      "Letzte Aktion: Struktur erfolgreich gespeichert.",
-      "上次操作: 结构已成功保存。"
-    ],
-
-    "00153": [
-      0,
-      "MANUAL TECNICO · GEN XML GALERIA · HOJA 3/8",
-      "TECHNICAL MANUAL · GEN XML GALLERY · PAGE 3/8",
-      "MANUEL TECHNIQUE · GEN XML GALLERY · PAGE 3/8",
-      "TECHNISCHES HANDBUCH · GEN XML GALLERY · SEITE 3/8",
-      "技术手册 · GEN XML GALLERY · 第 3/8 页"
-    ],
-
-    "00154": [
-      0,
-      "[gallery]  id=\"productos\"  lang=\"es\"",
-      "[gallery]  id=\"productos\"  lang=\"es\"",
-      "[gallery]  id=\"productos\"  lang=\"es\"",
-      "[gallery]  id=\"productos\"  lang=\"es\"",
-      "[gallery]  id=\"productos\"  lang=\"es\""
-    ],
-
-    "00155": [
-      0,
-      "  [meta]  title=\"Productos Destacados\"",
-      "  [meta]  title=\"Productos Destacados\"",
-      "  [meta]  title=\"Productos Destacados\"",
-      "  [meta]  title=\"Productos Destacados\"",
-      "  [meta]  title=\"Productos Destacados\""
-    ],
-
-    "00156": [
-      0,
-      "  [items]  count=\"12\"",
-      "  [items]  count=\"12\"",
-      "  [items]  count=\"12\"",
-      "  [items]  count=\"12\"",
-      "  [items]  count=\"12\""
-    ],
-
-    "00157": [
-      0,
-      "    [item]  id=\"001\" /",
-      "    [item]  id=\"001\" /",
-      "    [item]  id=\"001\" /",
-      "    [item]  id=\"001\" /",
-      "    [item]  id=\"001\" /"
-    ],
-
-    "00158": [
-      0,
-      "[/gallery]",
-      "[/gallery]",
-      "[/gallery]",
-      "[/gallery]",
-      "[/gallery]"
-    ],
-
-    "00160" : [ 0,
-      "1. Inicio" ,
-      "1. Home" ,
-      "1. Accueil" ,
-      "1. Zuhause" ,
-      "1. 主页"
-    ],
-
-    "00161" : [ 0,
-      "2. Nuevo Galeria" ,
-      "2. New Gallery" ,
-      "2. Nouvelle galerie" ,
-      "2. Neue Galerie" ,
-      "2. 新画廊"
-    ],
-
-    "00162" : [ 0,
-      "3. Abrir galería" ,
-      "3. Open Gallery" ,
-      "3. Ouvrir la galerie" ,
-      "3. Öffnen Sie die Galerie" ,
-      "3.开放画廊"
-    ],
-
-    "00163" : [ 0,
-      "4. Editar galería" ,
-      "4. Edit Gallery" ,
-      "4. Modifier la galerie" ,
-      "4. Galerie bearbeiten" ,
-      "4. 编辑图库"
-    ],
-
-    "00164" : [ 0,
-      "5. Exportar XML" ,
-      "5. Export XML" ,
-      "5. Exporter du XML" ,
-      "5. XML exportieren" ,
-      "5.导出XML"
-    ],
-
-    "00165" : [ 0,
-      "6. Configuracion" ,
-      "6. Configuration" ,
-      "6. Configuration" ,
-      "6. Konfiguration" ,
-      "6. 配置"
-    ],
-
-    "00166" : [ 0,
-      "productos.xml" ,
-      "products.xml" ,
-      "produits.xml" ,
-      "products.xml" ,
-      "产品.xml"
-    ],
-
-    "00167" : [ 0,
-      "catalogo.xml" ,
-      "catalogo.xml" ,
-      "catalogue.xml" ,
-      "Catalogo.xml" ,
-      "目录.xml"
-    ],
-
-    "00168" : [ 0,
-      "noticias.xml" ,
-      "news.xml" ,
-      "nouvelles.xml" ,
-      "news.xml" ,
-      "新闻.xml"
-    ],
-
-    "00169" : [ 0,
-      "eventos.xml" ,
-      "events.xml" ,
-      "événements.xml" ,
-      "events.xml" ,
-      "事件.xml"
-    ],
-
-    "00170" : [ 0,
-      "banner.xml" ,
-      "banner.xml" ,
-      "bannière.xml" ,
-      "banner.xml" ,
-      "横幅.xml"
-    ],
-
-    "00171" : [ 0,
-      "Galeria de productos destacados para el escaparate" ,
-      "Gallery of featured products for the showcase" ,
-      "Galerie de produits phares pour la vitrine" ,
-      "Galerie der vorgestellten Produkte für die Vitrine" ,
-      "展示的特色产品画廊"
-    ],
-
-    "00172" : [ 0,
-      "digital. Incluye metadatos, idioma y estructura XML." ,
-      "digital. " ,
-      "numérique. Comprend les métadonnées, le langage et la structure XML." ,
-      "digital. Beinhaltet Metadaten, Sprache und XML-Struktur." ,
-      "数字的。包括元数据、语言和 XML 结构。"
-    ],
-
-    "00173" : [ 0,
-      "Validacion" ,
-      "Validation" ,
-      "Validation" ,
-      "Validierung" ,
-      "验证"
-    ],
-
-    "00174" : [ 0,
-      "Generación XML" ,
-      "XML Generation" ,
-      "Génération XML" ,
-      "XML-Generierung" ,
-      "XML生成"
-    ],
-
-    "00175" : [ 0,
-      "Empaquetado" ,
-      "Packaging" ,
-      "Conditionnement" ,
-      "Verpackung" ,
-      "包装"
-    ],
-
-    "00176" : [ 0,
-      "256 / 512MB" ,
-      "256 / 512 MB" ,
-      "256/512 Mo" ,
-      "256/512 MB" ,
-      "256 / 512 MB"
-    ],
-
-    "00177" : [ 0,
-      "3. Abrir galería" ,
-      "3. Open Gallery" ,
-      "3. Ouvrir la galerie" ,
-      "3. Öffnen Sie die Galerie" ,
-      "3.开放画廊"
-    ],
-
-    "00178" : [ 0,
-      "4. Editar galería" ,
-      "4. Edit Gallery" ,
-      "4. Modifier la galerie" ,
-      "4. Galerie bearbeiten" ,
-      "4. 编辑图库"
-    ],
-
-    "00179" : [ 0,
-      "LISTA" ,
-      "LIST" ,
-      "LISTE" ,
-      "LISTE" ,
-      "列表"
-    ]
-  }
-}
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<lng>
+  <languages>
+    <language>Spanish</language>
+    <language>English</language>
+    <language>French</language>
+    <language>German</language>
+    <language>Chinese</language>
+  </languages>
+  <translations>
+    <sentence id="00100" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[GEN XML Galeria]]>
+      </text>
+      <text lang="English">
+        <![CDATA[GEN XML Gallery]]>
+      </text>
+      <text lang="French">
+        <![CDATA[GEN XML Gallery]]>
+      </text>
+      <text lang="German">
+        <![CDATA[GEN XML Gallery]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[GEN XML Gallery]]>
+      </text>
+    </sentence>
+    <sentence id="00101" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[GENERADOR DE GALERIAS XML]]>
+      </text>
+      <text lang="English">
+        <![CDATA[XML GALLERY GENERATOR]]>
+      </text>
+      <text lang="French">
+        <![CDATA[GENERATEUR DE GALLERYS XML]]>
+      </text>
+      <text lang="German">
+        <![CDATA[XML-GALLERY-GENERATOR]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[XML Gallery 生成器]]>
+      </text>
+    </sentence>
+    <sentence id="00102" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[GALERIAS EXISTENTES (5)]]>
+      </text>
+      <text lang="English">
+        <![CDATA[EXISTING GALLERIES (5)]]>
+      </text>
+      <text lang="French">
+        <![CDATA[GALLERYS EXISTANTES (5)]]>
+      </text>
+      <text lang="German">
+        <![CDATA[VORHANDENE GALLERYS (5)]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[已有 Gallery (5)]]>
+      </text>
+    </sentence>
+    <sentence id="00103" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[EDITOR DE GALERIA]]>
+      </text>
+      <text lang="English">
+        <![CDATA[GALLERY EDITOR]]>
+      </text>
+      <text lang="French">
+        <![CDATA[EDITEUR DE GALLERY]]>
+      </text>
+      <text lang="German">
+        <![CDATA[GALLERY-EDITOR]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[Gallery 编辑器]]>
+      </text>
+    </sentence>
+    <sentence id="00104" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[NOMBRE DEL GALERIA]]>
+      </text>
+      <text lang="English">
+        <![CDATA[GALLERY NAME]]>
+      </text>
+      <text lang="French">
+        <![CDATA[NOM DU GALLERY]]>
+      </text>
+      <text lang="German">
+        <![CDATA[GALLERY-NAME]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[Gallery 名称]]>
+      </text>
+    </sentence>
+    <sentence id="00105" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[TITULO]]>
+      </text>
+      <text lang="English">
+        <![CDATA[TITLE]]>
+      </text>
+      <text lang="French">
+        <![CDATA[TITRE]]>
+      </text>
+      <text lang="German">
+        <![CDATA[TITEL]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[标题]]>
+      </text>
+    </sentence>
+    <sentence id="00106" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Responsable]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Owner]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Responsable]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Verantwortlich]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[负责人]]>
+      </text>
+    </sentence>
+    <sentence id="00107" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Registro habilitado]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Record enabled]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Enregistrement actif]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Datensatz aktiv]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[记录已启用]]>
+      </text>
+    </sentence>
+    <sentence id="00108" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[CATEGORIA]]>
+      </text>
+      <text lang="English">
+        <![CDATA[CATEGORY]]>
+      </text>
+      <text lang="French">
+        <![CDATA[CATEGORIE]]>
+      </text>
+      <text lang="German">
+        <![CDATA[KATEGORIE]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[类别]]>
+      </text>
+    </sentence>
+    <sentence id="00109" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[DESCRIPCION]]>
+      </text>
+      <text lang="English">
+        <![CDATA[DESCRIPTION]]>
+      </text>
+      <text lang="French">
+        <![CDATA[DESCRIPTION]]>
+      </text>
+      <text lang="German">
+        <![CDATA[BESCHREIBUNG]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[描述]]>
+      </text>
+    </sentence>
+    <sentence id="00110" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Nuevo]]>
+      </text>
+      <text lang="English">
+        <![CDATA[New]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Nouveau]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Neu]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[新建]]>
+      </text>
+    </sentence>
+    <sentence id="00111" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Guardar]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Save]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Enregistrer]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Speichern]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[保存]]>
+      </text>
+    </sentence>
+    <sentence id="00112" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Ejecutar]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Run]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Executer]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Ausfuhren]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[运行]]>
+      </text>
+    </sentence>
+    <sentence id="00113" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Exportar XML]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Export XML]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Exporter XML]]>
+      </text>
+      <text lang="German">
+        <![CDATA[XML exportieren]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[导出 XML]]>
+      </text>
+    </sentence>
+    <sentence id="00114" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Primaria]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Primary]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Primaire]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Primar]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[主要]]>
+      </text>
+    </sentence>
+    <sentence id="00115" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Secundaria]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Secondary]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Secondaire]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Sekundar]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[次要]]>
+      </text>
+    </sentence>
+    <sentence id="00120" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Galeria de productos destacados para el escaparate digital. Incluye metadatos, idioma y estructura XML lista para empaquetado.]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Featured products gallery for the digital storefront. Includes metadata, language and XML structure ready for packaging.]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Galerie de produits mis en avant pour la vitrine digitale. Inclut metadonnees, langue et structure XML prete a empaqueter.]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Galerie hervorgehobener Produkte fur den digitalen Schaufenster. Enthalt Metadaten, Sprache und XML-Struktur.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[数字橱窗精选产品 Gallery。包含元数据、语言与可打包的 XML 结构。]]>
+      </text>
+    </sentence>
+    <sentence id="00121" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Barra de progreso]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Progress bar]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Barre de progression]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Fortschrittsbalken]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[进度条]]>
+      </text>
+    </sentence>
+    <sentence id="00122" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[CALIDAD XML]]>
+      </text>
+      <text lang="English">
+        <![CDATA[XML QUALITY]]>
+      </text>
+      <text lang="French">
+        <![CDATA[QUALITE XML]]>
+      </text>
+      <text lang="German">
+        <![CDATA[XML-QUALITAT]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[XML 质量]]>
+      </text>
+    </sentence>
+    <sentence id="00123" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[MEMORIA / RECURSOS]]>
+      </text>
+      <text lang="English">
+        <![CDATA[MEMORY / RESOURCES]]>
+      </text>
+      <text lang="French">
+        <![CDATA[MEMOIRE / RESSOURCES]]>
+      </text>
+      <text lang="German">
+        <![CDATA[SPEICHER / RESSOURCEN]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[内存 / 资源]]>
+      </text>
+    </sentence>
+    <sentence id="00124" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Ciclo continuo]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Continuous cycle]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Cycle continu]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Dauerschleife]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[连续循环]]>
+      </text>
+    </sentence>
+    <sentence id="00125" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[ACTIVIDAD RECIENTE]]>
+      </text>
+      <text lang="English">
+        <![CDATA[RECENT ACTIVITY]]>
+      </text>
+      <text lang="French">
+        <![CDATA[ACTIVITE RECENTE]]>
+      </text>
+      <text lang="German">
+        <![CDATA[LETZTE AKTIVITAT]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[最近活动]]>
+      </text>
+    </sentence>
+    <sentence id="00126" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Estado de botones]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Button states]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Etats des boutons]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Schaltflachen-Status]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[按钮状态]]>
+      </text>
+    </sentence>
+    <sentence id="00127" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Default]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Default]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Defaut]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Standard]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[默认]]>
+      </text>
+    </sentence>
+    <sentence id="00128" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Focus]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Focus]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Focus]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Fokus]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[焦点]]>
+      </text>
+    </sentence>
+    <sentence id="00129" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Pressed]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Pressed]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Presse]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Gedruckt]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[按下]]>
+      </text>
+    </sentence>
+    <sentence id="00130" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Disabled]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Disabled]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Desactive]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Deaktiviert]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[禁用]]>
+      </text>
+    </sentence>
+    <sentence id="00131" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[cambia idioma en el chrome]]>
+      </text>
+      <text lang="English">
+        <![CDATA[change language in the chrome]]>
+      </text>
+      <text lang="French">
+        <![CDATA[changez la langue dans le chrome]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Sprache in der Titelleiste andern]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[在标题栏切换语言]]>
+      </text>
+    </sentence>
+    <sentence id="00132" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Guardar como...]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Save as...]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Enregistrer sous...]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Speichern unter...]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[另存为...]]>
+      </text>
+    </sentence>
+    <sentence id="00133" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Validar XML]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Validate XML]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Valider XML]]>
+      </text>
+      <text lang="German">
+        <![CDATA[XML validieren]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[验证 XML]]>
+      </text>
+    </sentence>
+    <sentence id="00134" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Generar XML]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Generate XML]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Generer XML]]>
+      </text>
+      <text lang="German">
+        <![CDATA[XML erzeugen]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[生成 XML]]>
+      </text>
+    </sentence>
+    <sentence id="00135" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Vista XML]]>
+      </text>
+      <text lang="English">
+        <![CDATA[XML view]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Vue XML]]>
+      </text>
+      <text lang="German">
+        <![CDATA[XML-Ansicht]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[XML 视图]]>
+      </text>
+    </sentence>
+    <sentence id="00136" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Cerrar]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Close]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Fermer]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Schliessen]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[关闭]]>
+      </text>
+    </sentence>
+    <sentence id="00137" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[v1.2.0 · 24/05/2024 10:42]]>
+      </text>
+      <text lang="English">
+        <![CDATA[v1.2.0 · 24/05/2024 10:42]]>
+      </text>
+      <text lang="French">
+        <![CDATA[v1.2.0 · 24/05/2024 10:42]]>
+      </text>
+      <text lang="German">
+        <![CDATA[v1.2.0 · 24/05/2024 10:42]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[v1.2.0 · 24/05/2024 10:42]]>
+      </text>
+    </sentence>
+    <sentence id="00138" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[NAVEGACION]]>
+      </text>
+      <text lang="English">
+        <![CDATA[NAVIGATION]]>
+      </text>
+      <text lang="French">
+        <![CDATA[NAVIGATION]]>
+      </text>
+      <text lang="German">
+        <![CDATA[NAVIGATION]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[导航]]>
+      </text>
+    </sentence>
+    <sentence id="00139" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[5 elementos · Orden: Nombre]]>
+      </text>
+      <text lang="English">
+        <![CDATA[5 items · Sort: Name]]>
+      </text>
+      <text lang="French">
+        <![CDATA[5 elements · Tri: Nom]]>
+      </text>
+      <text lang="German">
+        <![CDATA[5 Elemente · Sortierung: Name]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[5 项 · 排序: 名称]]>
+      </text>
+    </sentence>
+    <sentence id="00140" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[IDIOMA]]>
+      </text>
+      <text lang="English">
+        <![CDATA[LANGUAGE]]>
+      </text>
+      <text lang="French">
+        <![CDATA[LANGUE]]>
+      </text>
+      <text lang="German">
+        <![CDATA[SPRACHE]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[语言]]>
+      </text>
+    </sentence>
+    <sentence id="00141" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[VISTA PREVIA · ESTRUCTURA XML]]>
+      </text>
+      <text lang="English">
+        <![CDATA[PREVIEW · XML STRUCTURE]]>
+      </text>
+      <text lang="French">
+        <![CDATA[APERCU · STRUCTURE XML]]>
+      </text>
+      <text lang="German">
+        <![CDATA[VORSCHAU · XML-STRUKTUR]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[预览 · XML 结构]]>
+      </text>
+    </sentence>
+    <sentence id="00142" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[<gallery id="productos" lang="es">
+  <meta title="Productos Destacados"/>
+  <items count="12">
+    <item id="001"/>
+  </items>
+</gallery>]]>
+      </text>
+      <text lang="English">
+        <![CDATA[<gallery id="productos" lang="es">
+  <meta title="Productos Destacados"/>
+  <items count="12">
+    <item id="001"/>
+  </items>
+</gallery>]]>
+      </text>
+      <text lang="French">
+        <![CDATA[<gallery id="productos" lang="es">
+  <meta title="Productos Destacados"/>
+  <items count="12">
+    <item id="001"/>
+  </items>
+</gallery>]]>
+      </text>
+      <text lang="German">
+        <![CDATA[<gallery id="productos" lang="es">
+  <meta title="Productos Destacados"/>
+  <items count="12">
+    <item id="001"/>
+  </items>
+</gallery>]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[<gallery id="productos" lang="es">
+  <meta title="Productos Destacados"/>
+  <items count="12">
+    <item id="001"/>
+  </items>
+</gallery>]]>
+      </text>
+    </sentence>
+    <sentence id="00143" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Arrastre elementos desde la paleta lateral para construir la estructura.]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Drag elements from the side palette to build the structure.]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Faites glisser des elements depuis la palette laterale pour construire la structure.]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Ziehen Sie Elemente aus der Seitenpalette, um die Struktur aufzubauen.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[从侧栏拖放元素以构建结构。]]>
+      </text>
+    </sentence>
+    <sentence id="00144" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[MONITOREO Y PROCESAMIENTO]]>
+      </text>
+      <text lang="English">
+        <![CDATA[MONITORING AND PROCESSING]]>
+      </text>
+      <text lang="French">
+        <![CDATA[SURVEILLANCE ET TRAITEMENT]]>
+      </text>
+      <text lang="German">
+        <![CDATA[UBERWACHUNG UND VERARBEITUNG]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[监控与处理]]>
+      </text>
+    </sentence>
+    <sentence id="00145" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[PROGRESO GENERAL]]>
+      </text>
+      <text lang="English">
+        <![CDATA[OVERALL PROGRESS]]>
+      </text>
+      <text lang="French">
+        <![CDATA[PROGRES GENERAL]]>
+      </text>
+      <text lang="German">
+        <![CDATA[GESAMTFORTSCHRITT]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[总体进度]]>
+      </text>
+    </sentence>
+    <sentence id="00146" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Validacion  100%]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Validation  100%]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Validation  100%]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Validierung  100%]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[验证  100%]]>
+      </text>
+    </sentence>
+    <sentence id="00147" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Generacion XML  75%]]>
+      </text>
+      <text lang="English">
+        <![CDATA[XML generation  75%]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Generation XML  75%]]>
+      </text>
+      <text lang="German">
+        <![CDATA[XML-Erzeugung  75%]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[生成 XML  75%]]>
+      </text>
+    </sentence>
+    <sentence id="00148" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Empaquetado  45%]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Packaging  45%]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Emballage  45%]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Paketierung  45%]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[打包  45%]]>
+      </text>
+    </sentence>
+    <sentence id="00149" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Excelente]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Excellent]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Excellent]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Ausgezeichnet]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[优秀]]>
+      </text>
+    </sentence>
+    <sentence id="00150" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Err: 0 · Adv: 1]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Err: 0 · Warn: 1]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Err: 0 · Av: 1]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Err: 0 · Warn: 1]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[错: 0 · 警: 1]]>
+      </text>
+    </sentence>
+    <sentence id="00151" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[48%   256 / 512 MB]]>
+      </text>
+      <text lang="English">
+        <![CDATA[48%   256 / 512 MB]]>
+      </text>
+      <text lang="French">
+        <![CDATA[48%   256 / 512 MB]]>
+      </text>
+      <text lang="German">
+        <![CDATA[48%   256 / 512 MB]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[48%   256 / 512 MB]]>
+      </text>
+    </sentence>
+    <sentence id="00152" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Ultima accion: Estructura guardada correctamente.]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Last action: Structure saved successfully.]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Derniere action: Structure enregistree correctement.]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Letzte Aktion: Struktur erfolgreich gespeichert.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[上次操作: 结构已成功保存。]]>
+      </text>
+    </sentence>
+    <sentence id="00153" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[MANUAL TECNICO · GEN XML GALERIA · HOJA 3/8]]>
+      </text>
+      <text lang="English">
+        <![CDATA[TECHNICAL MANUAL · GEN XML GALLERY · PAGE 3/8]]>
+      </text>
+      <text lang="French">
+        <![CDATA[MANUEL TECHNIQUE · GEN XML GALLERY · PAGE 3/8]]>
+      </text>
+      <text lang="German">
+        <![CDATA[TECHNISCHES HANDBUCH · GEN XML GALLERY · SEITE 3/8]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[技术手册 · GEN XML GALLERY · 第 3/8 页]]>
+      </text>
+    </sentence>
+    <sentence id="00154" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[[gallery]  id="productos"  lang="es"]]>
+      </text>
+      <text lang="English">
+        <![CDATA[[gallery]  id="productos"  lang="es"]]>
+      </text>
+      <text lang="French">
+        <![CDATA[[gallery]  id="productos"  lang="es"]]>
+      </text>
+      <text lang="German">
+        <![CDATA[[gallery]  id="productos"  lang="es"]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[[gallery]  id="productos"  lang="es"]]>
+      </text>
+    </sentence>
+    <sentence id="00155" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[  [meta]  title="Productos Destacados"]]>
+      </text>
+      <text lang="English">
+        <![CDATA[  [meta]  title="Productos Destacados"]]>
+      </text>
+      <text lang="French">
+        <![CDATA[  [meta]  title="Productos Destacados"]]>
+      </text>
+      <text lang="German">
+        <![CDATA[  [meta]  title="Productos Destacados"]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[  [meta]  title="Productos Destacados"]]>
+      </text>
+    </sentence>
+    <sentence id="00156" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[  [items]  count="12"]]>
+      </text>
+      <text lang="English">
+        <![CDATA[  [items]  count="12"]]>
+      </text>
+      <text lang="French">
+        <![CDATA[  [items]  count="12"]]>
+      </text>
+      <text lang="German">
+        <![CDATA[  [items]  count="12"]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[  [items]  count="12"]]>
+      </text>
+    </sentence>
+    <sentence id="00157" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[    [item]  id="001" /]]>
+      </text>
+      <text lang="English">
+        <![CDATA[    [item]  id="001" /]]>
+      </text>
+      <text lang="French">
+        <![CDATA[    [item]  id="001" /]]>
+      </text>
+      <text lang="German">
+        <![CDATA[    [item]  id="001" /]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[    [item]  id="001" /]]>
+      </text>
+    </sentence>
+    <sentence id="00158" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[[/gallery]]]>
+      </text>
+      <text lang="English">
+        <![CDATA[[/gallery]]]>
+      </text>
+      <text lang="French">
+        <![CDATA[[/gallery]]]>
+      </text>
+      <text lang="German">
+        <![CDATA[[/gallery]]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[[/gallery]]]>
+      </text>
+    </sentence>
+    <sentence id="00159" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Usuario: Tecnico · Perfil: Editor]]>
+      </text>
+      <text lang="English">
+        <![CDATA[User: Technician · Profile: Editor]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Utilisateur: Technicien · Profil: Editeur]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Benutzer: Techniker · Profil: Editor]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[用户: 技术员 · 角色: 编辑]]>
+      </text>
+    </sentence>
+    <sentence id="00160" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[1. Inicio]]>
+      </text>
+      <text lang="English">
+        <![CDATA[1. Home]]>
+      </text>
+      <text lang="French">
+        <![CDATA[1. Accueil]]>
+      </text>
+      <text lang="German">
+        <![CDATA[1. Zuhause]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[1. 主页]]>
+      </text>
+    </sentence>
+    <sentence id="00161" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[2. Nuevo Galeria]]>
+      </text>
+      <text lang="English">
+        <![CDATA[2. New Gallery]]>
+      </text>
+      <text lang="French">
+        <![CDATA[2. Nouvelle galerie]]>
+      </text>
+      <text lang="German">
+        <![CDATA[2. Neue Galerie]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[2. 新画廊]]>
+      </text>
+    </sentence>
+    <sentence id="00162" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[3. Abrir galería]]>
+      </text>
+      <text lang="English">
+        <![CDATA[3. Open Gallery]]>
+      </text>
+      <text lang="French">
+        <![CDATA[3. Ouvrir la galerie]]>
+      </text>
+      <text lang="German">
+        <![CDATA[3. Öffnen Sie die Galerie]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[3.开放画廊]]>
+      </text>
+    </sentence>
+    <sentence id="00163" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[4. Editar galería]]>
+      </text>
+      <text lang="English">
+        <![CDATA[4. Edit Gallery]]>
+      </text>
+      <text lang="French">
+        <![CDATA[4. Modifier la galerie]]>
+      </text>
+      <text lang="German">
+        <![CDATA[4. Galerie bearbeiten]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[4. 编辑图库]]>
+      </text>
+    </sentence>
+    <sentence id="00164" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[5. Exportar XML]]>
+      </text>
+      <text lang="English">
+        <![CDATA[5. Export XML]]>
+      </text>
+      <text lang="French">
+        <![CDATA[5. Exporter du XML]]>
+      </text>
+      <text lang="German">
+        <![CDATA[5. XML exportieren]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[5.导出XML]]>
+      </text>
+    </sentence>
+    <sentence id="00165" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[6. Configuracion]]>
+      </text>
+      <text lang="English">
+        <![CDATA[6. Configuration]]>
+      </text>
+      <text lang="French">
+        <![CDATA[6. Configuration]]>
+      </text>
+      <text lang="German">
+        <![CDATA[6. Konfiguration]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[6. 配置]]>
+      </text>
+    </sentence>
+    <sentence id="00166" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[productos.xml]]>
+      </text>
+      <text lang="English">
+        <![CDATA[products.xml]]>
+      </text>
+      <text lang="French">
+        <![CDATA[produits.xml]]>
+      </text>
+      <text lang="German">
+        <![CDATA[products.xml]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[产品.xml]]>
+      </text>
+    </sentence>
+    <sentence id="00167" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[catalogo.xml]]>
+      </text>
+      <text lang="English">
+        <![CDATA[catalogo.xml]]>
+      </text>
+      <text lang="French">
+        <![CDATA[catalogue.xml]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Catalogo.xml]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[目录.xml]]>
+      </text>
+    </sentence>
+    <sentence id="00168" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[noticias.xml]]>
+      </text>
+      <text lang="English">
+        <![CDATA[news.xml]]>
+      </text>
+      <text lang="French">
+        <![CDATA[nouvelles.xml]]>
+      </text>
+      <text lang="German">
+        <![CDATA[news.xml]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[新闻.xml]]>
+      </text>
+    </sentence>
+    <sentence id="00169" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[eventos.xml]]>
+      </text>
+      <text lang="English">
+        <![CDATA[events.xml]]>
+      </text>
+      <text lang="French">
+        <![CDATA[événements.xml]]>
+      </text>
+      <text lang="German">
+        <![CDATA[events.xml]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[事件.xml]]>
+      </text>
+    </sentence>
+    <sentence id="00170" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[banner.xml]]>
+      </text>
+      <text lang="English">
+        <![CDATA[banner.xml]]>
+      </text>
+      <text lang="French">
+        <![CDATA[bannière.xml]]>
+      </text>
+      <text lang="German">
+        <![CDATA[banner.xml]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[横幅.xml]]>
+      </text>
+    </sentence>
+    <sentence id="00171" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Galeria de productos destacados para el escaparate]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Gallery of featured products for the showcase]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Galerie de produits phares pour la vitrine]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Galerie der vorgestellten Produkte für die Vitrine]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[展示的特色产品画廊]]>
+      </text>
+    </sentence>
+    <sentence id="00172" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[digital. Incluye metadatos, idioma y estructura XML.]]>
+      </text>
+      <text lang="English">
+        <![CDATA[digital. ]]>
+      </text>
+      <text lang="French">
+        <![CDATA[numérique. Comprend les métadonnées, le langage et la structure XML.]]>
+      </text>
+      <text lang="German">
+        <![CDATA[digital. Beinhaltet Metadaten, Sprache und XML-Struktur.]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[数字的。包括元数据、语言和 XML 结构。]]>
+      </text>
+    </sentence>
+    <sentence id="00173" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Validacion]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Validation]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Validation]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Validierung]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[验证]]>
+      </text>
+    </sentence>
+    <sentence id="00174" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Generación XML]]>
+      </text>
+      <text lang="English">
+        <![CDATA[XML Generation]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Génération XML]]>
+      </text>
+      <text lang="German">
+        <![CDATA[XML-Generierung]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[XML生成]]>
+      </text>
+    </sentence>
+    <sentence id="00175" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Empaquetado]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Packaging]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Conditionnement]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Verpackung]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[包装]]>
+      </text>
+    </sentence>
+    <sentence id="00176" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[256 / 512MB]]>
+      </text>
+      <text lang="English">
+        <![CDATA[256 / 512 MB]]>
+      </text>
+      <text lang="French">
+        <![CDATA[256/512 Mo]]>
+      </text>
+      <text lang="German">
+        <![CDATA[256/512 MB]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[256 / 512 MB]]>
+      </text>
+    </sentence>
+    <sentence id="00177" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[3. Abrir galería]]>
+      </text>
+      <text lang="English">
+        <![CDATA[3. Open Gallery]]>
+      </text>
+      <text lang="French">
+        <![CDATA[3. Ouvrir la galerie]]>
+      </text>
+      <text lang="German">
+        <![CDATA[3. Öffnen Sie die Galerie]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[3.开放画廊]]>
+      </text>
+    </sentence>
+    <sentence id="00178" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[4. Editar galería]]>
+      </text>
+      <text lang="English">
+        <![CDATA[4. Edit Gallery]]>
+      </text>
+      <text lang="French">
+        <![CDATA[4. Modifier la galerie]]>
+      </text>
+      <text lang="German">
+        <![CDATA[4. Galerie bearbeiten]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[4. 编辑图库]]>
+      </text>
+    </sentence>
+    <sentence id="00179" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[LISTA]]>
+      </text>
+      <text lang="English">
+        <![CDATA[LIST]]>
+      </text>
+      <text lang="French">
+        <![CDATA[LISTE]]>
+      </text>
+      <text lang="German">
+        <![CDATA[LISTE]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[列表]]>
+      </text>
+    </sentence>
+  </translations>
+</lng>

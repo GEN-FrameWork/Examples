@@ -1,331 +1,692 @@
-{
-  "languages"       : [ "Spanish" ,
-                        "English" ,
-                        "French"  ,
-                        "German"  ,
-                        "Chinese"
-                      ],
-
-
-  "translations": {
-                        "00100" : [ 0,
-                                    "Resumen" ,
-                                    "Summary" ,
-                                    "Résumé" ,
-                                    "Übersicht" ,
-                                    "摘要"
-                                  ],
-
-                        "00101" : [ 0,
-                                    "CPU" ,
-                                    "CPU" ,
-                                    "CPU" ,
-                                    "CPU" ,
-                                    "CPU"
-                                  ],
-
-                        "00102" : [ 0,
-                                    "Memoria" ,
-                                    "Memory" ,
-                                    "Mémoire" ,
-                                    "Speicher" ,
-                                    "内存"
-                                  ],
-
-                        "00103" : [ 0,
-                                    "Red" ,
-                                    "Network" ,
-                                    "Réseau" ,
-                                    "Netzwerk" ,
-                                    "网络"
-                                  ],
-
-                        "00104" : [ 0,
-                                    "Disco" ,
-                                    "Disk" ,
-                                    "Disque" ,
-                                    "Datenträger" ,
-                                    "磁盘"
-                                  ],
-
-                        "00105" : [ 0,
-                                    "Procesos" ,
-                                    "Processes" ,
-                                    "Processus" ,
-                                    "Prozesse" ,
-                                    "进程"
-                                  ],
-
-                        "00106" : [ 0,
-                                    "Alertas" ,
-                                    "Alerts" ,
-                                    "Alertes" ,
-                                    "Warnungen" ,
-                                    "警报"
-                                  ],
-
-                        "00107" : [ 0,
-                                    "Configuracion" ,
-                                    "Configuration" ,
-                                    "Configuration" ,
-                                    "Konfiguration" ,
-                                    "配置"
-                                  ],
-
-                        "00108" : [ 0,
-                                    "Temperatura CPU" ,
-                                    "CPU Temperature" ,
-                                    "Température CPU" ,
-                                    "CPU-Temperatur" ,
-                                    "CPU 温度"
-                                  ],
-
-                        "00109" : [ 0,
-                                    "Temperatura actual" ,
-                                    "Current temperature" ,
-                                    "Température actuelle" ,
-                                    "Aktuelle Temperatur" ,
-                                    "当前温度"
-                                  ],
-
-                        "00110" : [ 0,
-                                    "Uso actual de CPU" ,
-                                    "Current CPU usage" ,
-                                    "Utilisation actuelle du CPU" ,
-                                    "Aktuelle CPU-Auslastung" ,
-                                    "当前 CPU 使用率"
-                                  ],
-
-                        "00111" : [ 0,
-                                    "Uso actual" ,
-                                    "Current usage" ,
-                                    "Utilisation actuelle" ,
-                                    "Aktuelle Auslastung" ,
-                                    "当前使用率"
-                                  ],
-
-                        "00112" : [ 0,
-                                    "Consumo de memoria RAM" ,
-                                    "RAM memory usage" ,
-                                    "Consommation de mémoire RAM" ,
-                                    "RAM-Speicherverbrauch" ,
-                                    "RAM 内存使用"
-                                  ],
-
-                        "00113" : [ 0,
-                                    "En uso / Total" ,
-                                    "Used / Total" ,
-                                    "Utilisé / Total" ,
-                                    "Belegt / Gesamt" ,
-                                    "已用 / 总计"
-                                  ],
-
-                        "00114" : [ 0,
-                                    "Fecha y hora del sistema" ,
-                                    "System date and time" ,
-                                    "Date et heure du système" ,
-                                    "Systemdatum und -zeit" ,
-                                    "系统日期和时间"
-                                  ],
-
-                        "00115" : [ 0,
-                                    "Hora local del sistema" ,
-                                    "Local system time" ,
-                                    "Heure locale du système" ,
-                                    "Lokale Systemzeit" ,
-                                    "本地系统时间"
-                                  ],
-
-                        "00116" : [ 0,
-                                    "Historico de CPU" ,
-                                    "CPU history" ,
-                                    "Historique du CPU" ,
-                                    "CPU-Verlauf" ,
-                                    "CPU 历史"
-                                  ],
-
-                        "00117" : [ 0,
-                                    "Almacenamiento del sistema" ,
-                                    "System storage" ,
-                                    "Stockage du système" ,
-                                    "Systemspeicher" ,
-                                    "系统存储"
-                                  ],
-
-                        "00118" : [ 0,
-                                    "Estado de la conexion a internet" ,
-                                    "Internet connection status" ,
-                                    "État de la connexion Internet" ,
-                                    "Internetverbindungsstatus" ,
-                                    "互联网连接状态"
-                                  ],
-
-                        "00119" : [ 0,
-                                    "Sistema" ,
-                                    "System" ,
-                                    "Système" ,
-                                    "System" ,
-                                    "系统"
-                                  ],
-
-                        "00120" : [ 0,
-                                    "Monitor del Sistema" ,
-                                    "System Monitor" ,
-                                    "Moniteur système" ,
-                                    "Systemmonitor" ,
-                                    "系统监控器"
-                                  ],
-
-                        "00121" : [ 0,
-                                    "Consumo de memoria" ,
-                                    "Memory consumption" ,
-                                    "Consommation de mémoire" ,
-                                    "Speicherverbrauch" ,
-                                    "内存消耗"
-                                  ],
-
-                        "00122" : [ 0,
-                                    "Uso por volumen" ,
-                                    "Volume usage" ,
-                                    "Utilisation du volume" ,
-                                    "Volumennutzung" ,
-                                    "体积使用量"
-                                  ],
-
-                        "00123" : [ 0,
-                                    "Discoteca %" ,
-                                    "Disco %" ,
-                                    "Disco %" ,
-                                    "Disco %" ,
-                                    "迪斯科 %"
-                                  ],
-
-                        "00124" : [ 0,
-                                    "Volumen" ,
-                                    "Volume" ,
-                                    "Volume" ,
-                                    "Volumen" ,
-                                    "体积"
-                                  ],
-
-                        "00125" : [ 0,
-                                    "Su volumen" ,
-                                    "Its volume" ,
-                                    "Son volume" ,
-                                    "Sein Volumen" ,
-                                    "它的体积"
-                                  ],
-
-                        "00126" : [ 0,
-                                    "Conectado" ,
-                                    "Connected" ,
-                                    "Connecté" ,
-                                    "Verbunden" ,
-                                    "已连接"
-                                  ],
-
-                        "00127" : [ 0,
-                                    "Conexion estable" ,
-                                    "Stable connection" ,
-                                    "Connexion stable" ,
-                                    "Stabile Verbindung" ,
-                                    "连接稳定"
-                                  ],
-
-                        "00128" : [ 0,
-                                    "Desconectado" ,
-                                    "Offline" ,
-                                    "Hors ligne" ,
-                                    "Offline" ,
-                                    "离线"
-                                  ],
-
-                        "00129" : [ 0,
-                                    "Sin conexión_n" ,
-                                    "Without connection_n" ,
-                                    "Sans connexion_n" ,
-                                    "Ohne Verbindung_n" ,
-                                    "没有连接_n"
-                                  ],
-
-                        "00130" : [ 0,
-                                    "IP pública: --" ,
-                                    "Public IP: --" ,
-                                    "IP publique : --" ,
-                                    "Öffentliche IP: --" ,
-                                    "公共IP：--"
-                                  ],
-
-                        "00131" : [ 0,
-                                    "IP pública: %s" ,
-                                    "Public IP: %s" ,
-                                    "IP publique : %s" ,
-                                    "Öffentliche IP: %s" ,
-                                    "公共 IP：%s"
-                                  ],
-
-                        "00132" : [ 0,
-                                    "Equipo: %s" ,
-                                    "Team: %s" ,
-                                    "Équipe : %s" ,
-                                    "Team: %s" ,
-                                    "团队：%s"
-                                  ],
-
-                        "00133" : [ 0,
-                                    "Equipo: --" ,
-                                    "Equipment: --" ,
-                                    "Équipement: --" ,
-                                    "Ausrüstung: --" ,
-                                    "设备：  - "
-                                  ],
-
-                        "00134" : [ 0,
-                                    "Tiempo de actividad: %s" ,
-                                    "Uptime: %s" ,
-                                    "Temps de disponibilité : %s" ,
-                                    "Betriebszeit: %s" ,
-                                    "正常运行时间：%s"
-                                  ],
-
-                        "00135" : [ 0,
-                                    "Tiempo de actividad: 0 segundos" ,
-                                    "Activity time: 0 seconds" ,
-                                    "Temps d'activité : 0 seconde" ,
-                                    "Aktivitätszeit: 0 Sekunden" ,
-                                    "活动时间：0秒"
-                                  ],
-
-                        "00136" : [ 0,
-                                    "Escala/zoom de la interfaz de usuario (0,75 .. 2,0)" ,
-                                    "UI scale / zoom (0.75 .. 2.0)" ,
-                                    "Échelle / zoom de l'interface utilisateur (0,75 .. 2,0)" ,
-                                    "UI-Skalierung/Zoom (0,75 .. 2,0)" ,
-                                    "UI 比例/缩放 (0.75 .. 2.0)"
-                                  ],
-
-                        "00137" : [ 0,
-                                    "Escalar automáticamente la interfaz de usuario a la ventana (Fase 5)" ,
-                                    "Autofit UI scale to window (Fase 5)" ,
-                                    "Ajuster automatiquement l'échelle de l'interface utilisateur à la fenêtre (phase 5)" ,
-                                    "UI-Skalierung automatisch an Fenster anpassen (Phase 5)" ,
-                                    "自动调整 UI 比例以适应窗口 (Fase 5)"
-                                  ],
-
-                        "00138" : [ 0,
-                                    "Título" ,
-                                    "Title" ,
-                                    "Titre" ,
-                                    "Titel" ,
-                                    "标题"
-                                  ],
-
-                        "00139" : [ 0,
-                                    "°C" ,
-                                    "°C" ,
-                                    "°C" ,
-                                    "°C" ,
-                                    "°C"
-                                  ]
-  }										
-}											 		
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<lng>
+  <languages>
+    <language>Spanish</language>
+    <language>English</language>
+    <language>French</language>
+    <language>German</language>
+    <language>Chinese</language>
+  </languages>
+  <translations>
+    <sentence id="00100" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Resumen]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Summary]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Résumé]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Übersicht]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[摘要]]>
+      </text>
+    </sentence>
+    <sentence id="00101" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[CPU]]>
+      </text>
+      <text lang="English">
+        <![CDATA[CPU]]>
+      </text>
+      <text lang="French">
+        <![CDATA[CPU]]>
+      </text>
+      <text lang="German">
+        <![CDATA[CPU]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[CPU]]>
+      </text>
+    </sentence>
+    <sentence id="00102" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Memoria]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Memory]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Mémoire]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Speicher]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[内存]]>
+      </text>
+    </sentence>
+    <sentence id="00103" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Red]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Network]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Réseau]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Netzwerk]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[网络]]>
+      </text>
+    </sentence>
+    <sentence id="00104" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Disco]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Disk]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Disque]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Datenträger]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[磁盘]]>
+      </text>
+    </sentence>
+    <sentence id="00105" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Procesos]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Processes]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Processus]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Prozesse]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[进程]]>
+      </text>
+    </sentence>
+    <sentence id="00106" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Alertas]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Alerts]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Alertes]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Warnungen]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[警报]]>
+      </text>
+    </sentence>
+    <sentence id="00107" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Configuracion]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Configuration]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Configuration]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Konfiguration]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[配置]]>
+      </text>
+    </sentence>
+    <sentence id="00108" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Temperatura CPU]]>
+      </text>
+      <text lang="English">
+        <![CDATA[CPU Temperature]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Température CPU]]>
+      </text>
+      <text lang="German">
+        <![CDATA[CPU-Temperatur]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[CPU 温度]]>
+      </text>
+    </sentence>
+    <sentence id="00109" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Temperatura actual]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Current temperature]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Température actuelle]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Aktuelle Temperatur]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[当前温度]]>
+      </text>
+    </sentence>
+    <sentence id="00110" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Uso actual de CPU]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Current CPU usage]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Utilisation actuelle du CPU]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Aktuelle CPU-Auslastung]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[当前 CPU 使用率]]>
+      </text>
+    </sentence>
+    <sentence id="00111" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Uso actual]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Current usage]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Utilisation actuelle]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Aktuelle Auslastung]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[当前使用率]]>
+      </text>
+    </sentence>
+    <sentence id="00112" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Consumo de memoria RAM]]>
+      </text>
+      <text lang="English">
+        <![CDATA[RAM memory usage]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Consommation de mémoire RAM]]>
+      </text>
+      <text lang="German">
+        <![CDATA[RAM-Speicherverbrauch]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[RAM 内存使用]]>
+      </text>
+    </sentence>
+    <sentence id="00113" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[En uso / Total]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Used / Total]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Utilisé / Total]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Belegt / Gesamt]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[已用 / 总计]]>
+      </text>
+    </sentence>
+    <sentence id="00114" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Fecha y hora del sistema]]>
+      </text>
+      <text lang="English">
+        <![CDATA[System date and time]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Date et heure du système]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Systemdatum und -zeit]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[系统日期和时间]]>
+      </text>
+    </sentence>
+    <sentence id="00115" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Hora local del sistema]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Local system time]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Heure locale du système]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Lokale Systemzeit]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[本地系统时间]]>
+      </text>
+    </sentence>
+    <sentence id="00116" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Historico de CPU]]>
+      </text>
+      <text lang="English">
+        <![CDATA[CPU history]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Historique du CPU]]>
+      </text>
+      <text lang="German">
+        <![CDATA[CPU-Verlauf]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[CPU 历史]]>
+      </text>
+    </sentence>
+    <sentence id="00117" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Almacenamiento del sistema]]>
+      </text>
+      <text lang="English">
+        <![CDATA[System storage]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Stockage du système]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Systemspeicher]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[系统存储]]>
+      </text>
+    </sentence>
+    <sentence id="00118" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Estado de la conexion a internet]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Internet connection status]]>
+      </text>
+      <text lang="French">
+        <![CDATA[État de la connexion Internet]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Internetverbindungsstatus]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[互联网连接状态]]>
+      </text>
+    </sentence>
+    <sentence id="00119" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Sistema]]>
+      </text>
+      <text lang="English">
+        <![CDATA[System]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Système]]>
+      </text>
+      <text lang="German">
+        <![CDATA[System]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[系统]]>
+      </text>
+    </sentence>
+    <sentence id="00120" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Monitor del Sistema]]>
+      </text>
+      <text lang="English">
+        <![CDATA[System Monitor]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Moniteur système]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Systemmonitor]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[系统监控器]]>
+      </text>
+    </sentence>
+    <sentence id="00121" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Consumo de memoria]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Memory consumption]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Consommation de mémoire]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Speicherverbrauch]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[内存消耗]]>
+      </text>
+    </sentence>
+    <sentence id="00122" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Uso por volumen]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Volume usage]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Utilisation du volume]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Volumennutzung]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[体积使用量]]>
+      </text>
+    </sentence>
+    <sentence id="00123" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Discoteca %]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Disco %]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Disco %]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Disco %]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[迪斯科 %]]>
+      </text>
+    </sentence>
+    <sentence id="00124" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Volumen]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Volume]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Volume]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Volumen]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[体积]]>
+      </text>
+    </sentence>
+    <sentence id="00125" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Su volumen]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Its volume]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Son volume]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Sein Volumen]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[它的体积]]>
+      </text>
+    </sentence>
+    <sentence id="00126" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Conectado]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Connected]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Connecté]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Verbunden]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[已连接]]>
+      </text>
+    </sentence>
+    <sentence id="00127" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Conexion estable]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Stable connection]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Connexion stable]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Stabile Verbindung]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[连接稳定]]>
+      </text>
+    </sentence>
+    <sentence id="00128" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Desconectado]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Offline]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Hors ligne]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Offline]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[离线]]>
+      </text>
+    </sentence>
+    <sentence id="00129" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Sin conexión_n]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Without connection_n]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Sans connexion_n]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Ohne Verbindung_n]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[没有连接_n]]>
+      </text>
+    </sentence>
+    <sentence id="00130" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[IP pública: --]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Public IP: --]]>
+      </text>
+      <text lang="French">
+        <![CDATA[IP publique : --]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Öffentliche IP: --]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[公共IP：--]]>
+      </text>
+    </sentence>
+    <sentence id="00131" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[IP pública: %s]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Public IP: %s]]>
+      </text>
+      <text lang="French">
+        <![CDATA[IP publique : %s]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Öffentliche IP: %s]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[公共 IP：%s]]>
+      </text>
+    </sentence>
+    <sentence id="00132" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Equipo: %s]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Team: %s]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Équipe : %s]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Team: %s]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[团队：%s]]>
+      </text>
+    </sentence>
+    <sentence id="00133" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Equipo: --]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Equipment: --]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Équipement: --]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Ausrüstung: --]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[设备：  - ]]>
+      </text>
+    </sentence>
+    <sentence id="00134" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Tiempo de actividad: %s]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Uptime: %s]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Temps de disponibilité : %s]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Betriebszeit: %s]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[正常运行时间：%s]]>
+      </text>
+    </sentence>
+    <sentence id="00135" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Tiempo de actividad: 0 segundos]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Activity time: 0 seconds]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Temps d'activité : 0 seconde]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Aktivitätszeit: 0 Sekunden]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[活动时间：0秒]]>
+      </text>
+    </sentence>
+    <sentence id="00136" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Escala/zoom de la interfaz de usuario (0,75 .. 2,0)]]>
+      </text>
+      <text lang="English">
+        <![CDATA[UI scale / zoom (0.75 .. 2.0)]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Échelle / zoom de l'interface utilisateur (0,75 .. 2,0)]]>
+      </text>
+      <text lang="German">
+        <![CDATA[UI-Skalierung/Zoom (0,75 .. 2,0)]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[UI 比例/缩放 (0.75 .. 2.0)]]>
+      </text>
+    </sentence>
+    <sentence id="00137" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Escalar automáticamente la interfaz de usuario a la ventana (Fase 5)]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Autofit UI scale to window (Fase 5)]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Ajuster automatiquement l'échelle de l'interface utilisateur à la fenêtre (phase 5)]]>
+      </text>
+      <text lang="German">
+        <![CDATA[UI-Skalierung automatisch an Fenster anpassen (Phase 5)]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[自动调整 UI 比例以适应窗口 (Fase 5)]]>
+      </text>
+    </sentence>
+    <sentence id="00138" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[Título]]>
+      </text>
+      <text lang="English">
+        <![CDATA[Title]]>
+      </text>
+      <text lang="French">
+        <![CDATA[Titre]]>
+      </text>
+      <text lang="German">
+        <![CDATA[Titel]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[标题]]>
+      </text>
+    </sentence>
+    <sentence id="00139" fixed="0">
+      <text lang="Spanish">
+        <![CDATA[°C]]>
+      </text>
+      <text lang="English">
+        <![CDATA[°C]]>
+      </text>
+      <text lang="French">
+        <![CDATA[°C]]>
+      </text>
+      <text lang="German">
+        <![CDATA[°C]]>
+      </text>
+      <text lang="Chinese">
+        <![CDATA[°C]]>
+      </text>
+    </sentence>
+  </translations>
+</lng>
