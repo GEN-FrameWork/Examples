@@ -54,6 +54,8 @@ option(INP_FEATURE                                              "Inputs"        
 option(USERINTERFACE_FEATURE                                    "User Interace"                                           ON )
 #option(USERINTERFACE_DEBUG_FEATURE                              "Debug User Interace"                                     ON )
 
+option(XCLIPBOARD_FEATURE                                       "Clipboard functions (portable text)"                     ON )
+
 
 # --------------------------------------------------------------------
 # Config Application Macro

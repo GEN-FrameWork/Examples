@@ -27,6 +27,8 @@ option(LINUX_X11_FEATURE                                        "Linux X11"     
 
 option(USERINTERFACE_FEATURE                                    "User Interace"                                           ON )
 #option(USERINTERFACE_DEBUG_FEATURE                              "Debug User Interace"                                     ON )
+
+option(XCLIPBOARD_FEATURE                                       "Clipboard functions (portable text)"                     ON )
         
 option(APPFLOW_FEATURE                                          "Application Flow modules"                                ON )
 option(APPFLOW_EXTENDED_FEATURE                                 "Application Flow Extended"                               ON )  

@@ -467,11 +467,22 @@ bool UI_MESSAGE::AppProc_End()
 *---------------------------------------------------------------------------------------------------------------------*/
 bool UI_MESSAGE::UpdateInput()
 {
-   int  width  = GetMainScreen()->GetWidth();
-   int  height = GetMainScreen()->GetHeight();
+  int width  = GetMainScreen()->GetWidth();
+  int height = GetMainScreen()->GetHeight();
+  (void)width;
 
-  if(cursor)    
-    {  
+  static int cursor_x = 0;
+  static int cursor_y = 0;
+
+  int  now_cursor_x = 0;
+  int  now_cursor_y = 0;
+  bool edit_owned   = false;
+
+  if(cursor)
+    {
+      now_cursor_x = (int)cursor->GetX();
+      now_cursor_y = (int)height - (int)cursor->GetY();
+
       if(cursor->GetMotion()->IsReadyToTest(50))
         {
           cursor->GetMotion()->InvertYAxis(height);
@@ -480,51 +491,73 @@ bool UI_MESSAGE::UpdateInput()
 
           cursor->GetMotion()->Reset();
         }
-       else    
+       else if(cursor->GetMotion()->GetNPoints() < 50)
         {
-          if(cursor->GetMotion()->GetNPoints() < 50)
-            {         
-              static int   cursor_x       = 0;
-              static int   cursor_y       = 0;
-              int          now_cursor_x   = (int)cursor->GetX();
-              int          now_cursor_y   = (int)height - (int)cursor->GetY();
-              bool         changed        = false;
+          bool changed = false;
 
-              if(cursor_x != now_cursor_x)  
-                { 
-                  cursor_x = now_cursor_x;
-                  changed  = true;
-                }
+          if(cursor_x != now_cursor_x)
+            {
+              cursor_x = now_cursor_x;
+              changed  = true;
+            }
 
-              if(cursor_y != now_cursor_y)  
-                {
-                  cursor_y = now_cursor_y;          
-                  changed  = true;
-                }
+          if(cursor_y != now_cursor_y)
+            {
+              cursor_y = now_cursor_y;
+              changed  = true;
+            }
 
-              if(changed)
+          if(changed)
+            {
+              GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_CURSOR_MOVE, cursor_x, cursor_y);
+            }
+
+          bool mouseheld = (button[UI_MESSAGE_BUTTON_MOUSE] && button[UI_MESSAGE_BUTTON_MOUSE]->IsPressed());
+          if(mouseheld)
+            {
+              edit_owned = GEN_USERINTERFACE.EditText_OnPointer(now_cursor_x, now_cursor_y, true);
+              if(edit_owned) cursor->GetMotion()->Reset();
+            }
+           else
+            {
+              edit_owned = GEN_USERINTERFACE.EditText_OnPointer(cursor_x, cursor_y, false);
+            }
+
+          if(button[UI_MESSAGE_BUTTON_TOUCHSCREEN])
+            {
+              if(button[UI_MESSAGE_BUTTON_TOUCHSCREEN]->IsPressed())
                 {
                   GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_CURSOR_MOVE, cursor_x, cursor_y);
-                }
-
-              if(button[UI_MESSAGE_BUTTON_MOUSE]->IsPressedWithRelease())
-                {
-                  GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_SELECCTION, cursor_x, cursor_y);   
-
-                  cursor->GetMotion()->Reset();       
-                }
-    
-              if(button[UI_MESSAGE_BUTTON_TOUCHSCREEN])
-                {             
-                  if(button[UI_MESSAGE_BUTTON_TOUCHSCREEN]->IsPressed())
-                    {             
-                      GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_CURSOR_MOVE, cursor_x, cursor_y);
-                      GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_SELECCTION, cursor_x, cursor_y);          
-
+                  if(GEN_USERINTERFACE.EditText_OnPointer(cursor_x, cursor_y, true))
+                    {
+                      cursor->GetMotion()->Reset();
+                    }
+                   else
+                    {
+                      GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_SELECCTION, cursor_x, cursor_y);
                       cursor->GetMotion()->Reset();
                     }
                 }
+               else
+                {
+                  GEN_USERINTERFACE.EditText_OnPointer(cursor_x, cursor_y, false);
+                }
             }
+        }
+
+      if(button[UI_MESSAGE_BUTTON_MOUSE] && button[UI_MESSAGE_BUTTON_MOUSE]->IsPressedWithRelease())
+        {
+          if(!edit_owned)
+            {
+              edit_owned = GEN_USERINTERFACE.EditText_OnPointer(now_cursor_x, now_cursor_y, false);
+            }
+
+          if(!edit_owned)
+            {
+              GEN_USERINTERFACE.SendEvent(UI_XEVENT_TYPE_INPUT_SELECCTION, now_cursor_x, now_cursor_y);
+            }
+
+          cursor->GetMotion()->Reset();
         }
     }
 
