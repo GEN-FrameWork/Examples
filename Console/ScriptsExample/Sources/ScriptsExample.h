@@ -2,8 +2,8 @@
 * 
 * @file       ScriptsExample.h
 * 
-* @class      Scripts Example class 
-* @brief      Scripts Example 
+* @class      SCRIPTSEXAMPLE
+* @brief      Scripts Example class
 * @ingroup    EXAMPLES
 * 
 * @copyright  EndoraSoft. All rights reserved.

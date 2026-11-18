@@ -2,7 +2,7 @@
 * 
 * @file       ScriptsExample_CFG.cpp
 * 
-* @class      Scripts Example Config class 
+* @class      SCRIPTSEXAMPLE_CFG 
 * @brief      Scripts Example Config
 * @ingroup    EXAMPLES
 * 

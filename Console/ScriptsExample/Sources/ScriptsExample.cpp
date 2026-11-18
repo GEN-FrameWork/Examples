@@ -2,7 +2,7 @@
 * 
 * @file       ScriptsExample.cpp
 * 
-* @class      Scripts Example class 
+* @class      SCRIPTSEXAMPLE 
 * @brief      Scripts Example 
 * @ingroup    EXAMPLES
 * 

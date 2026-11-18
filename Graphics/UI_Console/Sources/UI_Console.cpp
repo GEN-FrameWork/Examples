@@ -852,6 +852,20 @@ bool UI_CONSOLE::Console_SeedDemoLines()
 }
 
 
+/**-------------------------------------------------------------------------------------------------------------------
+*
+* @fn         bool UI_CONSOLE::Console_HandleSelection(int cursor_x, int cursor_y, bool shiftdown, bool extending)
+* @brief      Updates console line selection from a cursor hit (click or drag extend).
+* @ingroup    EXAMPLES
+*
+* @param[in]  cursor_x : Cursor X in console local coordinates.
+* @param[in]  cursor_y : Cursor Y in console local coordinates.
+* @param[in]  shiftdown : True when Shift extends the selection range.
+* @param[in]  extending : True while dragging a selection.
+*
+* @return     bool : true if the operation is successful; otherwise false.
+*
+*---------------------------------------------------------------------------------------------------------------------*/
 bool UI_CONSOLE::Console_HandleSelection(int cursor_x, int cursor_y, bool shiftdown, bool extending)
 {
   if(!consoleelement) return false;
@@ -874,6 +888,15 @@ bool UI_CONSOLE::Console_HandleSelection(int cursor_x, int cursor_y, bool shiftd
 }
 
 
+/**-------------------------------------------------------------------------------------------------------------------
+*
+* @fn         bool UI_CONSOLE::Console_CopySelection()
+* @brief      Copies the console selection (or full buffer) to the clipboard.
+* @ingroup    EXAMPLES
+*
+* @return     bool : true if the operation is successful; otherwise false.
+*
+*---------------------------------------------------------------------------------------------------------------------*/
 bool UI_CONSOLE::Console_CopySelection()
 {
   if(!consoleelement) return false;

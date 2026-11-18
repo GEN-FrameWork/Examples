@@ -4,7 +4,7 @@
 * 
 * @class      NETCONN_COREPROTOCOL_REGISTERDATA
 * @brief      Net Connection Core Protocol Register Data class
-* @ingroup    DATAIO
+* @ingroup    EXAMPLES
 * 
 * @copyright  EndoraSoft. All rights reserved.
 * 
