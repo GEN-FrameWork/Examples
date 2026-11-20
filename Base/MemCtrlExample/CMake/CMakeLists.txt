@@ -4,11 +4,16 @@
 # --------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.16.0)
-project(memctrlexample)
 
+# --------------------------------------------------------------------
+# PreProject
 
 set(GEN_DIRECTORY "../../../..") 
 
+option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON)
+include("${GEN_DIRECTORY}/Common/CMake/GEN_PreProject.cmake")
+
+project(memctrlexample)
 
 # --------------------------------------------------------------------
 # Activate features/Defines
@@ -17,7 +22,6 @@ option(DEBUG_FEATURE                                            "Activate Debug 
 option(XTRACE_FEATURE                                           "Activate XTrace"                                         ON )
 option(XMEMORY_CONTROL_FEATURE                                  "Activate XMemory Control"                                ON )
 
-option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON )
 
 option(XSLEEP_FEATURE                                           "Activate Sleep functions"                                ON )                                    
 

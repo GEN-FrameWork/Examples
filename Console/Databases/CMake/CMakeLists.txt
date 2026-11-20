@@ -4,11 +4,16 @@
 # --------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.16.0)
-project(databases)
 
+# --------------------------------------------------------------------
+# PreProject
 
 set(GEN_DIRECTORY "../../../..") 
 
+option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON)
+include("${GEN_DIRECTORY}/Common/CMake/GEN_PreProject.cmake")
+
+project(databases)
 
 # --------------------------------------------------------------------
 # Activate features/Defines
@@ -18,7 +23,6 @@ option(XTRACE_FEATURE                                           "XTrace"        
 option(XTRACE_NOINTERNET_FEATURE                                "No need for trace dependencies with Internet"            ON )
 option(XMEMORY_CONTROL_FEATURE                                  "XMemory Control"                                         ON )
 
-option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON )
                     
 option(DIO_FEATURE                                              "Input/Output"                                            ON )
 option(DIO_PUBLICINTERNETIP_FEATURE                             "Public Internet IP"                                      ON )

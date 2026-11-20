@@ -4,11 +4,16 @@
 # --------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.16.0)
-project(windowchromes)
 
+# --------------------------------------------------------------------
+# PreProject
 
 set(GEN_DIRECTORY "../../../..") 
 
+option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON)
+include("${GEN_DIRECTORY}/Common/CMake/GEN_PreProject.cmake")
+
+project(windowchromes)
 
 # --------------------------------------------------------------------
 # features/Defines
@@ -22,7 +27,6 @@ option(XTHREADCOLLECTED_FEATURE                                 "Thread Collecte
 
 option(GRP_OPENGL_FEATURE                                       "Graphics Open GL"                                        ON )
 
-option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON )
 
 #option(LINUX_X11_FEATURE                                        "Linux X11"                                               ON )
 option(LINUX_WAYLAND_FEATURE                                    "Linux WAYLAND"                                           ON )
@@ -62,7 +66,6 @@ option(XCLIPBOARD_FEATURE                                       "Clipboard funct
 
 set(APP_CFG_WINDOWCHROMES "-DAPPFLOW_CFG=WINDOWCHROMES_CFG::GetInstance()")
 add_definitions(${APP_CFG_WINDOWCHROMES})
-
 
 
 # --------------------------------------------------------------------

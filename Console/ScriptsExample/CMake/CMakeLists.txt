@@ -4,11 +4,16 @@
 # --------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.16.0)
-project(scriptsexample)
 
+# --------------------------------------------------------------------
+# PreProject
 
 set(GEN_DIRECTORY "../../../..") 
 
+option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON)
+include("${GEN_DIRECTORY}/Common/CMake/GEN_PreProject.cmake")
+
+project(scriptsexample)
 
 # --------------------------------------------------------------------
 # Activate features/Defines
@@ -21,7 +26,6 @@ option(XMEMORY_CONTROL_FEATURE                                  "Activate XMemor
 option(COVERAGE_CREATEINFO_FEATURE                              "Coverage - Create Info"                                  ON ) 
 option(COVERAGE_GENERATESHOWINFO_FEATURE                        "Coverage - Generate Show Info"                           ON ) 
 
-#option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON )
 
 option(LINUX_X11_FEATURE                                        "Linux X11"                                               ON )    
 

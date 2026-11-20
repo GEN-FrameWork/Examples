@@ -4,11 +4,16 @@
 # --------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.16.0)
-project(ui_options)
 
+# --------------------------------------------------------------------
+# PreProject
 
 set(GEN_DIRECTORY "../../../..") 
 
+option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON)
+include("${GEN_DIRECTORY}/Common/CMake/GEN_PreProject.cmake")
+
+project(ui_options)
 
 # --------------------------------------------------------------------
 # features/Defines
@@ -21,7 +26,6 @@ option(XTRACE_FEATURE                                           "XTrace"        
 
 option(GRP_OPENGL_FEATURE                                       "Graphics Open GL"                                        ON )
 
-option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON )
 
 option(LINUX_X11_FEATURE                                        "Linux X11"                                               ON )
 #option(LINUX_WAYLAND_FEATURE                                    "Linux WAYLAND"                                           ON )
@@ -56,13 +60,11 @@ option(USERINTERFACE_FEATURE                                    "User Interace" 
 option(XCLIPBOARD_FEATURE                                       "Clipboard functions (portable text)"                     ON )
 
 
-
 # --------------------------------------------------------------------
 # Config Application Macro
 
 set(APP_CFG_UI_OPTIONS "-DAPPFLOW_CFG=UI_OPTIONS_CFG::GetInstance()")
 add_definitions(${APP_CFG_UI_OPTIONS})
-
 
 
 # --------------------------------------------------------------------

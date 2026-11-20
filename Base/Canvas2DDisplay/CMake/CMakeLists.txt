@@ -4,11 +4,16 @@
 # --------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.16.0)
-project(canvas2ddisplay)
 
+# --------------------------------------------------------------------
+# PreProject
 
 set(GEN_DIRECTORY "../../../..") 
 
+option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON)
+include("${GEN_DIRECTORY}/Common/CMake/GEN_PreProject.cmake")
+
+project(canvas2ddisplay)
 
 # --------------------------------------------------------------------
 # Activate features/Defines
@@ -17,7 +22,6 @@ option(DEBUG_FEATURE                                            "Debug mode"    
 option(XTRACE_FEATURE                                           "XTrace"                                                  ON )
 option(XMEMORY_CONTROL_FEATURE                                  "XMemory Control"                                         ON )
 
-option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON )
                                                                                                 
 option(DIO_FEATURE                                              "Data Input/Output"                                       ON ) 
 option(DIO_STREAM_FEATURE                                       "Data Input/Output Stream"                                ON )

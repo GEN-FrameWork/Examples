@@ -4,11 +4,16 @@
 # --------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.16.0)
-project(binconnpro)
 
+# --------------------------------------------------------------------
+# PreProject
 
 set(GEN_DIRECTORY "../../../..") 
 
+option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON)
+include("${GEN_DIRECTORY}/Common/CMake/GEN_PreProject.cmake")
+
+project(binconnpro)
 
 # --------------------------------------------------------------------
 # features/Defines
@@ -18,7 +23,6 @@ option(XTRACE_FEATURE                                           "XTrace"        
 option(XTRACE_NOINTERNET_FEATURE                                "No need for trace dependencies with Internet"            ON )
 option(XMEMORY_CONTROL_FEATURE                                  "XMemory Control"                                         ON )
 
-option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON )
 
 option(COVERAGE_CREATEINFO_FEATURE                              "Coverage - Create Info"                                  ON ) 
 option(COVERAGE_GENERATESHOWINFO_FEATURE                        "Coverage - Generate Show Info"                           ON ) 
@@ -46,8 +50,6 @@ option(APPFLOW_CFG_INTERNETSERVICES_FEATURE                     "Application Flo
 option(APPFLOW_CFG_CHECKRESOURCESHARDWARE_FEATURE               "Application Flow CFG Check Resorces HW"                  ON )  
 option(APPFLOW_CFG_DNSRESOLVER_FEATURE                          "Application Flow CFG DNS "                               ON )   
 option(APPFLOW_CFG_DIOLOCATION_FEATURE                          "Application Flow CFG DIO Location"                       ON )   
-
-
 
 
 # --------------------------------------------------------------------

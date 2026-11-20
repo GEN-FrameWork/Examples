@@ -4,11 +4,16 @@
 # --------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.16.0)
-project(canvas2d)
 
+# --------------------------------------------------------------------
+# PreProject
 
 set(GEN_DIRECTORY "../../../..") 
 
+option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON)
+include("${GEN_DIRECTORY}/Common/CMake/GEN_PreProject.cmake")
+
+project(canvas2d)
 
 option(DEBUG_FEATURE                                            "Debug mode"                                              ON )
 option(XTRACE_FEATURE                                           "XTrace"                                                  ON )
@@ -16,7 +21,6 @@ option(XTRACE_FEATURE                                           "XTrace"        
 option(XTHREADCOLLECTED_FEATURE                                 "Thread Collected"                                        ON )
 option(XMEMORY_CONTROL_FEATURE                                  "XMemory Control"                                         ON )
 
-option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON )
 
 option(GRP_OPENGL_FEATURE                                       "Graphics Open GL"                                        ON )
 
