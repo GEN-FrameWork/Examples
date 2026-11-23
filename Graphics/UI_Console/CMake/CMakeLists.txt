@@ -88,6 +88,30 @@ list(APPEND GEN_SOURCES_MODULES_LIST "${APP_DIRECTORY_APPLICATION}/UI_Console_CF
 
 
 # --------------------------------------------------------------------
+# Platform packaging (Package/Windows|Android|Linux)
+
+set(APP_DIRECTORY_PACKAGE "../Package")
+
+if(COMPILE_FOR_WINDOWS)
+  set(APP_DIRECTORY_PACKAGE_WINDOWS "${APP_DIRECTORY_PACKAGE}/Windows")
+  list(APPEND GEN_INCLUDES_DIR_LIST ${APP_DIRECTORY_PACKAGE_WINDOWS})
+  set(APP_RESOURCE_FILE "${APP_DIRECTORY_PACKAGE_WINDOWS}/UI_Console.rc")
+endif()
+
+
+# --------------------------------------------------------------------
 # End Proyect
 
 include("${GEN_DIRECTORY}/Common/CMake/GEN_End.cmake")
+
+
+# --------------------------------------------------------------------
+# Linux packaging: .desktop + hicolor icons (build dir + ~/.local/share)
+
+if(COMPILE_FOR_LINUX)
+  include("${GEN_DIRECTORY}/Common/CMake/Main/GEN_Main_Linux_DesktopPackage.cmake")
+  gen_add_linux_desktop_package(
+    STEM   "ui_console"
+    PKGDIR "${CMAKE_CURRENT_SOURCE_DIR}/${APP_DIRECTORY_PACKAGE}/Linux"
+  )
+endif()

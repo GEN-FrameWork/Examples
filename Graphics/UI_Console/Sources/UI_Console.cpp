@@ -766,7 +766,7 @@ bool UI_CONSOLE::DrawFrame()
       return true;
     }
 
-  canvas->ReleaseDrawFramerate();
+  // canvas->ReleaseDrawFramerate();
 
   // Console paints an opaque backdrop when dirty (AddLine/Clear/scroll). Do not force a
   // full rebuild every frame — that remeasured the whole buffer and collapsed FPS under flood.
@@ -774,7 +774,7 @@ bool UI_CONSOLE::DrawFrame()
   GEN_USERINTERFACE.Elements_RebuildDrawAreas(NL("console"));
   GEN_USERINTERFACE.Update();
 
-  canvas->DrawFramerate(screen, 10, 30);
+  //canvas->DrawFramerate(screen, 10, 30);
 
   return true;
 }

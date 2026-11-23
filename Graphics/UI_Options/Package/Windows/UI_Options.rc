@@ -1,0 +1,9 @@
+// UI_Options — Windows resources (application icon).
+// Location: Package/Windows/  |  APP_RESOURCE_FILE in app CMake (COMPILE_FOR_WINDOWS).
+
+#include "resource.h"
+
+/////////////////////////////////////////////////////////////////////////////
+// Icon (lowest ID first → Windows uses it as the application icon)
+
+IDI_APPICON ICON "appicon.ico"

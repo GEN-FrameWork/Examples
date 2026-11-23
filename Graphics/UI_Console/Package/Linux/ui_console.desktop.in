@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=UI_Console
+GenericName=UI_Console
+Comment=GEN UI Console example
+Exec=__GEN_EXEC_PATH__
+TryExec=__GEN_EXEC_PATH__
+Icon=__GEN_ICON_PATH__
+Path=__GEN_BIN_DIR__
+Terminal=false
+Categories=Development;Graphics;
+StartupNotify=true
+StartupWMClass=ui_console

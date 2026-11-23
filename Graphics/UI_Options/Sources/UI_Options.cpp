@@ -948,7 +948,7 @@ bool UI_OPTIONS::DrawFrame()
       return true;
     }
 
-  canvas->ReleaseDrawFramerate();  
+  //canvas->ReleaseDrawFramerate();  
  
   canvas->RebuildAllAreas();
 
@@ -956,7 +956,7 @@ bool UI_OPTIONS::DrawFrame()
 
   
   // Keep framerate off the footer chrome / button strip (was overlapping the frame edge).
-  canvas->DrawFramerate(screen, (double)(screen->GetWidth() - 88), 14.0);
+  // canvas->DrawFramerate(screen, (double)(screen->GetWidth() - 88), 14.0);
 
   //--------------------------------------------------------------------------------------
 
