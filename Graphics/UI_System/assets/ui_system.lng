@@ -620,40 +620,6 @@
         <![CDATA[活动时间：0秒]]>
       </text>
     </sentence>
-    <sentence id="00136" fixed="0">
-      <text lang="Spanish">
-        <![CDATA[Escala/zoom de la interfaz de usuario (0,75 .. 2,0)]]>
-      </text>
-      <text lang="English">
-        <![CDATA[UI scale / zoom (0.75 .. 2.0)]]>
-      </text>
-      <text lang="French">
-        <![CDATA[Échelle / zoom de l'interface utilisateur (0,75 .. 2,0)]]>
-      </text>
-      <text lang="German">
-        <![CDATA[UI-Skalierung/Zoom (0,75 .. 2,0)]]>
-      </text>
-      <text lang="Chinese">
-        <![CDATA[UI 比例/缩放 (0.75 .. 2.0)]]>
-      </text>
-    </sentence>
-    <sentence id="00137" fixed="0">
-      <text lang="Spanish">
-        <![CDATA[Escalar automáticamente la interfaz de usuario a la ventana (Fase 5)]]>
-      </text>
-      <text lang="English">
-        <![CDATA[Autofit UI scale to window (Fase 5)]]>
-      </text>
-      <text lang="French">
-        <![CDATA[Ajuster automatiquement l'échelle de l'interface utilisateur à la fenêtre (phase 5)]]>
-      </text>
-      <text lang="German">
-        <![CDATA[UI-Skalierung automatisch an Fenster anpassen (Phase 5)]]>
-      </text>
-      <text lang="Chinese">
-        <![CDATA[自动调整 UI 比例以适应窗口 (Fase 5)]]>
-      </text>
-    </sentence>
     <sentence id="00138" fixed="0">
       <text lang="Spanish">
         <![CDATA[Título]]>

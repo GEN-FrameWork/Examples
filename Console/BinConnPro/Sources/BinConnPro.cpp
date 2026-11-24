@@ -233,12 +233,8 @@ bool BINCONNPRO::AppProc_Ini()
   if(!xmutexshowallstatus) return false;
 
   //--------------------------------------------------------------------------------------------------
+  // Load .lng before first APPFLOW_CFG access (constructor Ini/DoVariableMapping may use TL).
 
-  APPFLOW_CFG_SETAUTOMATICTRACETARGETS
-
-  //--------------------------------------------------------------------------------------------------
-
-  
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_ROOT, xpathsection);
   xpath.Create(3 , xpathsection.Get(), APPLICATION_NAMEFILE, XTRANSLATION_NAMEFILEEXT);
 
@@ -246,7 +242,11 @@ bool BINCONNPRO::AppProc_Ini()
     {
       return false;
     }
-  
+
+  //--------------------------------------------------------------------------------------------------
+
+  APPFLOW_CFG_SETAUTOMATICTRACETARGETS
+
   //--------------------------------------------------------------------------------------------------
 
   APPFLOW_EXTENDED.APPStart(&APPFLOW_CFG, this);

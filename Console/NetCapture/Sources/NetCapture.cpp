@@ -197,10 +197,7 @@ bool NETCAPTURE::AppProc_Ini()
   if(!xmutexshowallstatus) return false;
 
   //--------------------------------------------------------------------------------------
-
-  APPFLOW_CFG_SETAUTOMATICTRACETARGETS
-  
-  //--------------------------------------------------------------------------------------
+  // Load .lng before first APPFLOW_CFG access (constructor Ini/DoVariableMapping may use TL).
 
   GEN_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE_ROOT, xpathsection);
   xpath.Create(3 , xpathsection.Get(), APPLICATION_NAMEFILE, XTRANSLATION_NAMEFILEEXT);
@@ -209,7 +206,11 @@ bool NETCAPTURE::AppProc_Ini()
     {
       return false;
     }
-  
+
+  //--------------------------------------------------------------------------------------
+
+  APPFLOW_CFG_SETAUTOMATICTRACETARGETS
+
   //--------------------------------------------------------------------------------------
 
   APPFLOW_EXTENDED.APPStart(&APPFLOW_CFG, this);

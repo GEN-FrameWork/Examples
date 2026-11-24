@@ -348,56 +348,5 @@
         <![CDATA[[错误]未知类！]]>
       </text>
     </sentence>
-    <sentence id="00021" fixed="0">
-      <text lang="Spanish">
-        <![CDATA[¿Está el servidor activo?]]>
-      </text>
-      <text lang="English">
-        <![CDATA[Is server active]]>
-      </text>
-      <text lang="French">
-        <![CDATA[Le serveur est-il actif]]>
-      </text>
-      <text lang="German">
-        <![CDATA[Ist der Server aktiv?]]>
-      </text>
-      <text lang="Chinese">
-        <![CDATA[服务器是否活跃]]>
-      </text>
-    </sentence>
-    <sentence id="00022" fixed="0">
-      <text lang="Spanish">
-        <![CDATA[Tipo de transporte]]>
-      </text>
-      <text lang="English">
-        <![CDATA[Transport type]]>
-      </text>
-      <text lang="French">
-        <![CDATA[Type de transport]]>
-      </text>
-      <text lang="German">
-        <![CDATA[Transportart]]>
-      </text>
-      <text lang="Chinese">
-        <![CDATA[运输类型]]>
-      </text>
-    </sentence>
-    <sentence id="00023" fixed="0">
-      <text lang="Spanish">
-        <![CDATA[Configuración de transporte]]>
-      </text>
-      <text lang="English">
-        <![CDATA[Transport config]]>
-      </text>
-      <text lang="French">
-        <![CDATA[Configuration des transports]]>
-      </text>
-      <text lang="German">
-        <![CDATA[Transportkonfiguration]]>
-      </text>
-      <text lang="Chinese">
-        <![CDATA[传输配置]]>
-      </text>
-    </sentence>
   </translations>
 </lng>
