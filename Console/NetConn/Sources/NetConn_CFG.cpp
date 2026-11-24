@@ -134,6 +134,9 @@ bool NETCONN_CFG::DoVariableMapping()
   //-----------------------------------------------------
   // Connection
 
+  AddRemark(NETCONN_CFG_SECTION_CONNECTION, NL("--------------------------------------------------------------------------------------------------------------------------------------------"), 0, 1);
+  AddRemark(NETCONN_CFG_SECTION_CONNECTION, NL(" Connection section of configuration"), 0, 2);
+
   AddValue(XFILECFG_VALUETYPE_BOOLEAN, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_ISSERVER, &connection_isserver, NL("Is server active"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
   AddValue(XFILECFG_VALUETYPE_STRING, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_TRANSPORTTYPE, &connection_transporttype, NL("Transport type"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
   AddValue(XFILECFG_VALUETYPE_STRING, NETCONN_CFG_SECTION_CONNECTION, NETCONN_CFG_CONNECTION_TRANSPORTCONFIG, &connection_transportconfig, NL("Transport config"), APPFLOW_CFG_DEFAULT_REMARK_COLUMN);
