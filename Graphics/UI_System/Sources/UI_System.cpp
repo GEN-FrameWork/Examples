@@ -2037,7 +2037,7 @@ bool UI_SYSTEM::UserInterface_ElementSelected(UI_ELEMENT* element)
 
   XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE, NL("UI Element [%s]: Selected! "), element->GetName()->Get());
 
-  // Chrome / window controls. Test IDs: ActionScriptQA/assets/scripts/Tests_UISystem_ListTest.json
+  // Chrome / window controls. Test IDs: ActionScriptQA/assets/Tests/Tests_UISystem/Tests_UISystem_ListTest.json
   switch(element->GetChromeRole())
     {
       case UI_ELEMENT_CHROMEROLE_ICON     : break;
